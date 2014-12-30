@@ -38,4 +38,22 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Tell the programme to actually use the mailer in devlopment
+  config.action_mailer.perform_deliveries = true
+
+  # Tells the mailer which url to use for links within the email
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  # Sets up the configuration for Mailgun to send the email on the bhalf of the app
+  config.action_mailer.default_options = {from: 'postmaster@m.minervasi.com'}
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :authentication => :plain,
+    :address => "smtp.mailgun.org",
+    :port => 587,
+    :domain => "m.minervasi.com",
+    :user_name => "postmaster@m.minervasi.com",
+    :password => "25728e5aaa92789f4d12fc7e2fe1e4ab"
+  }
 end

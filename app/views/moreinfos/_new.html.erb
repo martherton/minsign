@@ -1,0 +1,11 @@
+<% @moreinfo = Moreinfo.new %>
+
+<%= simple_form_for @moreinfo do |f| %>
+	
+
+	<%= f.input :email %>
+	
+
+	<%= f.button :submit, 'Receive updates' %>
+
+<% end %>

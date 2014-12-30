@@ -43,3 +43,14 @@ group :development, :test do
   gem 'spring'
 end
 
+gem 'simple_form'
+
+
+gem 'rolify'
+
+gem 'devise'
+
+gem 'pundit'
+
+gem 'gibbon', github: "amro/gibbon"
+
