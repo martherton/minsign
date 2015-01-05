@@ -20,7 +20,7 @@ en:
       confirmation_instructions:
         subject: "Confirmation instructions"
       reset_password_instructions:
-        subject: "Reset password instructions"
+        subject: "Minerva SI set password instructions"
       unlock_instructions:
         subject: "Unlock instructions"
     omniauth_callbacks:
@@ -42,6 +42,8 @@ en:
       updated: "Your account has been updated successfully."
       user:
         signed_up_but_not_approved: 'You have signed up successfully but your account has not been approved by your administrator yet'
+        signed_up_but_unconfirmed: 'We have received your request to sign up.  Please check your email for a link to confirm your email address'
+
     sessions:
       signed_in: "Signed in successfully."
       signed_out: "Signed out successfully."

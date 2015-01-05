@@ -1,0 +1,7 @@
+<%= simple_form_for [@user], url: user_path, method: :put do |f| %>
+<%= f.input :email %>
+<%= f.input :approved %>
+<%= f.association :roles, as: :check_boxes %>
+<%= f.button :submit, "Alter user info" %>
+  * Required field
+<% end %>

@@ -1,0 +1,12 @@
+<% policy_scope(@users).each do |user| %>
+<%= user.email %>
+<%= user.fname %>
+<%= user.lname %>
+<%= user.company %>
+<%= user.position %>
+<%= user.confirmed_at %>
+<%= user.approved %>
+<%= user.role_ids %>
+<%= link_to "Edit", edit_user_path(user.id) %>
+
+<% end %>

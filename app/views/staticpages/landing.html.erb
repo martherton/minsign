@@ -2,3 +2,9 @@ Sign up for more information
 <%= render 'moreinfos/new' %>
 Register for a user account
 <%= render 'users/registrations/new' %>
+Login
+<%= render 'users/sessions/new' %>
+
+
+
+<%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>

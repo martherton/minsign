@@ -8,6 +8,13 @@
 </head>
 <body>
 
+<% if user_signed_in? %>
+    <p></p>
+    <h4>Logged in: <%= current_user.email %></h4>
+<% end %>
+<% flash.each do |key, value| %>
+  <%= content_tag :div, value, class: "flash #{key}" %>
+<% end %>
 <%= yield %>
 
 </body>

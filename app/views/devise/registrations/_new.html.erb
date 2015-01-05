@@ -4,12 +4,15 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :fname, required: true, label: 'Your first name' %>
-    <%= f.input :lname, required: true, label: 'Your last name' %>
-    <%= f.input :fname, required: true, label: 'Your company name' %>
-    <%= f.input :fname, required: true, label: 'Your position' %>
-
+    <div class="emailinput" >
+     <%= f.input :email, required: true, autofocus: true %>
+    </div>
+    <div class="suppinfo">
+      <%= f.input :fname, required: true, label: 'Your first name' %>
+      <%= f.input :lname, required: true, label: 'Your last name' %>
+      <%= f.input :company, required: true, label: 'Your company name' %>
+      <%= f.input :position, required: true, label: 'Your position' %>
+    </div>  
   </div>
 
   <div class="form-actions">

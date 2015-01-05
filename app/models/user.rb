@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  rolify
+  after_create :assign_default_role #adds the default user role
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -19,6 +21,7 @@ class User < ActiveRecord::Base
 
  # Add to appropriate Mailchimp list
   def subscribe_to_mailchimp_unapproved testing=false
+    if @emailinfo.nil?
     return true if (Rails.env.test? && !testing)
     list_id = ENV['MAILCHIMP_MINERVA_LIST_ID']
 
@@ -29,6 +32,7 @@ class User < ActiveRecord::Base
       merge_vars: { :GROUPINGS => [{ :id =>"18233", :name => "Status of people", :groups => ['Signed up but unapproved']}] },
     })
     response
+    end
   end
 
 # Allow sign up without password
@@ -44,4 +48,9 @@ class User < ActiveRecord::Base
         password == password_confirmation && !password.blank?
   end
 
+  def assign_default_role
+    add_role(:user)
+  end
+
+  
 end
