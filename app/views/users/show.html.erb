@@ -1,0 +1,8 @@
+Dashboard
+<br>
+<%= @user.fname %>
+<%= @user.lname %>
+<% @user.roles.each do |role| %>
+<p><%= role.name %></p>
+<% end %>
+

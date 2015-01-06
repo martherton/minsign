@@ -10,6 +10,8 @@ class UserPolicy < ApplicationPolicy
    @user = model
  end
 
+
+
   class Scope < ApplicationPolicy::Scope
     attr_reader :user, :scope
 
@@ -27,7 +29,7 @@ class UserPolicy < ApplicationPolicy
     end
 
     def index?
-    @current_user.has_role? :admin
-  end
+      @current_user.has_role? :admin
+    end
   end
 end 

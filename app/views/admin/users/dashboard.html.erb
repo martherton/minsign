@@ -1,0 +1,12 @@
+Dashboard
+<br>
+<%= @user.fname %>
+<%= @user.lname %>
+<% @user.roles.each do |role| %>
+<p><%= role.name %></p>
+<% end %>
+
+<%= link_to "Module Index", admin_linkcats_path %>
+<%= link_to "User Index", admin_users_path %>
+<%= link_to "Searches Admin", admin_finds_path %>
+<%= link_to "Back to App", new_user_find_path(current_user.id) %>

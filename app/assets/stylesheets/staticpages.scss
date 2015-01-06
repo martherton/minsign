@@ -1,3 +1,276 @@
 // Place all the styles related to the staticpages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+html,
+body {
+	height: 100%;
+	padding: 0;
+}
+
+
+
+.container1 {
+	
+	
+  background-image:  url(image-path('simple2.jpg')); 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  	height: 100%;
+  	max-width: 100%;
+  	
+
+}
+
+.container2 {
+	height: 100%;
+	background-color: #FED456;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+.container3 {
+	
+	
+  background-image:  url(image-path('simple3.jpg')); 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  	height: 100%;
+  	max-width: 100%;
+  	
+}
+
+.container4 {
+	height: 100%;
+	background-color: #456FED;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+.container5 {
+	
+	
+  background-image:  url(image-path('simple4.jpg')); 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  	height: 100%;
+  	max-width: 100%;
+
+
+}
+
+
+
+
+
+
+/*colour scheme-----
+------------------*/
+
+.aboutbox,
+.loginbox,
+.registerbox,
+.logo img {
+	background-color: #456789;
+}
+
+.about h2,
+.login h2,
+.register h2,
+#scroll h2 {
+	color: #FFFFFF;
+}
+
+/*MAke scroll indicator invisible at lowest level and touch
+------------------*/
+
+#scroll {
+	display: none;
+}
+
+/* ===================== MEDIA QUERIES ===================== */
+
+/* 320+ 
+------------------------------------------ */
+@media only screen and (min-width: 20em) {
+  /* Masthead specific styling for small screen*/
+  
+.logo {
+	margin: 1em;
+	opacity: 0.5;
+}
+
+.logo img {
+	max-width: 100%;
+
+}
+
+.loginbox,
+.registerbox,
+.aboutbox {
+	height: 5em;
+	opacity: 0.5;
+	z-index: 1;
+}
+
+.login h2,
+.about h2,
+.register h2 {
+	height: 0;
+	position: relative;
+	top: 1.5em;
+	z-index: 2;
+	text-align: center;
+}
+
+.login h2 a,
+.register h2 a {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+.about h2 {
+	font-size: 1em;
+}
+
+}
+/* 480+ 
+------------------------------------------ */
+@media only screen and (min-width: 30em) {
+  /* Masthead */
+
+
+
+}
+
+
+
+/* 480-767-only 
+------------------------------------------ */
+@media only screen and (min-width: 30em) and (max-width: 47.9375em) {
+  /* Sidebar */  
+
+
+  
+}
+/* 600-767-only 
+------------------------------------------ */
+@media only screen and (min-width: 37.5em) and (max-width: 47.9375em) {
+  /* Sidebar */
+  
+
+
+}
+
+/* 768+ 
+------------------------------------------- */
+@media only screen and (min-width: 48em) {
+
+    /* Main Content where you can start adding columns*/
+
+    main {
+    float: left;
+    width: 62.5%;
+  } /*Only an example it can alter in terms of percentage*/
+
+    /* Sidebar */
+  .sidebar {
+    float: right;
+    margin-top: 1.875em;
+    width: 31.25%;
+  }  /* Again can alter percentages*/
+
+  .about h2 {
+	font-size: 2em;
+}
+
+ .loginbox,
+.login,
+.registerbox,
+.register
+ {
+	position: absolute;
+	top: 8%;
+	width: 9em;
+	margin: 0;
+}
+
+.login h2 a:hover,
+.register h2 a:hover {
+	color: #DBDBDB;
+}
+
+.loginbox,
+.login {
+	left: 58%;
+
+}
+
+.registerbox,
+.register {
+	left: 78%;
+}
+
+.login h2,
+.register h2 {
+	margin: 0;
+	margin-top: -0.8em;
+}
+
+
+.container1,
+.container3,
+.container5 {
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+#scroll {
+	display: block;
+	position: absolute;
+	left: 50%;
+	bottom: 13%;
+}
+
+#scroll h2 {
+	margin: 0;
+}
+
+/* Transitional slides
+-------------*/
+
+
+
+}
+  /* --- end media queries ---- */
+
+
+/* html5boilerplate.com Clearfix
+--------------------------------- */
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.clearfix {
+  *zoom: 1;
+}
+
+
+
+

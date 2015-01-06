@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable
+  has_many :linkcats
+  has_many :wlinks
+  has_many :finds       
 
 	#method after a registration
 	after_create do
@@ -47,6 +50,8 @@ class User < ActiveRecord::Base
         self.errors[:password_confirmation] << "does not match password" if password != password_confirmation
         password == password_confirmation && !password.blank?
   end
+
+  # Adds a base user role as the de minimis setting for the sign up.
 
   def assign_default_role
     add_role(:user)

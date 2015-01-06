@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   # path after sign in
 
   def after_sign_in_path_for(resource)
-  	thanks_path
+  	new_user_find_path(current_user.id)
 	end
   # Send back to root after sign out
   

@@ -1,0 +1,16 @@
+<%= link_to "Create Link", new_admin_wlink_path(query: params[:query]) %>
+<h4>All links will open in a new tab</h4>
+	
+<h4>Links for Module -<%= Linkcat.find(params[:query]).linkcatname %></h4>
+
+<% @wlinks.each do |wlink| %>
+	<%= User.find(wlink.user_id).fname %>
+	<%= link_to wlink.wlinkname, wlink.wlinkurl, target: '_blank' %>
+	<%= wlink.wlinkdesc %>
+	<%= wlink.wlinkveri %>
+
+	<%= link_to "Edit", edit_admin_wlink_path(wlink.id) %>
+	<!--<%= link_to "More detail", admin_wlink_path(wlink.id) %> -->
+
+	
+<% end %>

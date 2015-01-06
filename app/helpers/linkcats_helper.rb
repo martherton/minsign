@@ -1,0 +1,2 @@
+module LinkcatsHelper
+end

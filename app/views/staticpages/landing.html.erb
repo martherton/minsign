@@ -1,10 +1,72 @@
-Sign up for more information
-<%= render 'moreinfos/new' %>
-Register for a user account
-<%= render 'users/registrations/new' %>
-Login
+
+<section class="container1">
+	<div class="logo">
+	<img src="/assets/logo.png" />
+	</div>
+
+	<% if user_signed_in? %>
+
+	<% else %>
+		<div class="login">
+		<h2><a href="#loginform" class="mainlink" >Log in</a></h2>
+		</div>
+
+		<div class="loginbox">
+		</div>
+
+		<div class="register">
+		<h2><a href="#registerform" class="mainlink" >Register</a></h2>
+		</div>
+
+		<div class="registerbox">
+		</div>
+
+	<% end %>
+
+<div class="about">
+<h2>Minerva: simplifying information for professional investors.</h2>
+</div>
+<div class="aboutbox">
+</div>
+<div class="animate-in ultra-slo-mo" data-anim-type="bounce-in-down" data-anim-delay="200" id="scroll">
+<h2>V</h2>
+</div>
+
+</div>
+
+</section>
+<section class="container2">
+<div class="explanation1">
+Description of what the company does
+</div>
+</section>
+
+<section class="container3">
+Strap LIne
+</section>
+
+<section class="container4">
+More Description
+</section>
+
+<section class="container5">
+
+<div class="loginform" id="loginform" %>
 <%= render 'users/sessions/new' %>
 
+</div>
+<div class="registerform" id="registerform" >
+<%= render 'users/registrations/new' %>
+
+</div>
+<div class="moreinfo" id="moreinfoform" >
+	<%= render 'moreinfos/new' %>
+</div>
+</section>
 
 
-<%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+
+
+
+
+

@@ -1,0 +1,11 @@
+<%= link_to "Create Module", new_admin_linkcat_path %>
+
+
+<% policy_scope(@linkcats).each do |linkcat| %>
+	<%= link_to linkcat.linkcatname, admin_linkcat_path(linkcat.id) %>
+	<%= User.find(linkcat.user_id).fname %>
+	<%= linkcat.linkcattype %>
+	<%= linkcat.linkcatdesc %>
+	<%= link_to "Edit", edit_admin_linkcat_path(linkcat.id) %>
+	<%= link_to "View all links for this module", admin_wlinks_path(query: linkcat.id) %>
+<% end %>

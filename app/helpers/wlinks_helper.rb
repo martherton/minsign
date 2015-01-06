@@ -1,0 +1,2 @@
+module WlinksHelper
+end

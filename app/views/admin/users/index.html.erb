@@ -1,3 +1,6 @@
+
+
+
 <% policy_scope(@users).each do |user| %>
 <%= user.email %>
 <%= user.fname %>
@@ -7,6 +10,8 @@
 <%= user.confirmed_at %>
 <%= user.approved %>
 <%= user.role_ids %>
-<%= link_to "Edit", edit_user_path(user.id) %>
+<%= link_to "Edit", edit_admin_user_path(user.id) %>
+
 
 <% end %>
+

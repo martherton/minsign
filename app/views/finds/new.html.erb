@@ -1,0 +1,17 @@
+<h1>New search</h1>
+<div class="newopen">
+
+<%= simple_form_for [@user, @find], url: user_finds_path, method: :post do |f| %>
+
+<h4>Module to search</h4><%= f.input :linkcat_id, collection: Linkcat.all, label_method: :linkcatname, value_method: :id, label: false %>
+	<h4>Search term</h4><%= f.input :searchterm, label: false %>
+	<div class="hidlinkcat" >
+	
+	<%= f.input :user_id, input_html: { value: params[:user_id]} %>
+
+	</div>
+
+	<%= f.button :submit, 'Search' %>
+
+<% end %>
+</div>

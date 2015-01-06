@@ -1,0 +1,130 @@
+html, body {
+         height: 100%;
+         margin: 0;
+         padding: 0;
+     }
+
+/* Putting in the web fonts
+---------------------------
+-----------*/
+
+
+
+/*BASIC ELEMENT STYLING
+-------------------
+----------*/
+
+body {                                                                             /*Sets the basic font sizing which all others refer to*/
+  font: 100%/1.2 Georgia, "Times New Roman", serif;
+  
+}
+
+* {                                                                               /*Sets all boxes to border-box width and height include content, padding and border NOT margin*/
+  -webkit-box-sizing: border-box; /* Android <= 2.3, iOS <= 4 */
+  -moz-box-sizing: border-box; /* Firefox 1+ */
+  box-sizing: border-box; /* Chrome, IE 8+, Opera, Safari 5.1 */
+}
+
+.page {
+  /* these declarations combine to center entire page in browser */
+  margin: 0 auto;
+  max-width: 960px;
+}
+
+img {                                                                           /* Get rid of image borders*/
+  border: 0;
+}
+
+
+
+/*Setting all pictures max width
+--------------------------------
+-------*/
+
+.examplephoto {
+	max-width: 100%;
+}
+
+
+
+
+
+
+
+
+/* ===================== MEDIA QUERIES ===================== */
+
+/* 320+ 
+------------------------------------------ */
+@media only screen and (min-width: 20em) {
+  /* Masthead specific styling for small screen*/
+  
+}
+/* 480+ 
+------------------------------------------ */
+@media only screen and (min-width: 30em) {
+  /* Masthead */
+}
+
+
+
+/* 480-767-only 
+------------------------------------------ */
+@media only screen and (min-width: 30em) and (max-width: 47.9375em) {
+  /* Sidebar */  
+  
+}
+/* 600-767-only 
+------------------------------------------ */
+@media only screen and (min-width: 37.5em) and (max-width: 47.9375em) {
+  /* Sidebar */
+  
+
+  
+
+}
+
+/* 768+ 
+------------------------------------------- */
+@media only screen and (min-width: 48em) {
+
+    /* Main Content where you can start adding columns*/
+
+    main {
+    float: left;
+    width: 62.5%;
+  } /*Only an example it can alter in terms of percentage*/
+
+    /* Sidebar */
+  .sidebar {
+    float: right;
+    margin-top: 1.875em;
+    width: 31.25%;
+  }  /* Again can alter percentages*/
+
+  
+
+
+}
+  /* --- end media queries ---- */
+
+
+/* html5boilerplate.com Clearfix
+--------------------------------- */
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.clearfix {
+  *zoom: 1;
+}
