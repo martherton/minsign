@@ -24,7 +24,7 @@ class Admin::LinkcatsController < ApplicationController
 		    @user = current_user
 		    @linkcat = @user.linkcats.new(linkcat_params)
 		    if @linkcat.save
-		    	redirect_to root_path
+		    	redirect_to admin_linkcats_path
 		  	else
 		    	render :new
 		   	end 
@@ -32,6 +32,16 @@ class Admin::LinkcatsController < ApplicationController
 			redirect_to	new_user_find_path(current_user.id)
 		end	   	
 	end
+
+	def edit
+		if current_user.has_role? :admin
+
+	    @user = current_user
+	    @linkcat = @user.linkcats.find(params[:id])
+	  else
+			redirect_to	new_user_find_path(current_user.id)
+	  end  
+	end	
 
 	def update
 		if current_user.has_role? :admin
@@ -41,7 +51,7 @@ class Admin::LinkcatsController < ApplicationController
 
 	    if @linkcat.update(linkcat_params)
 	        flash[:success] = "Your linkcat was updated"
-	        redirect_to admin_linkcat_path(@linkcat.id)
+	        redirect_to admin_linkcats_path
 	    else
 	      flash[:error] = "Oops. There has been a problem, please retry."
 	      render :edit

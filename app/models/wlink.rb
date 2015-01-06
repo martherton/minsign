@@ -8,4 +8,9 @@ class Wlink < ActiveRecord::Base
 
 	acts_as_taggable
 
+	def self.search(query)
+  	
+  	where("wlinkname like ? or wlinkdesc like ?", "%#{query}%", "%#{query}") 
+
+	end
 end

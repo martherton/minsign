@@ -1,8 +1,10 @@
-<h1>Add a new link</h1>
+<h1>Edit the new link</h1>
 <% @linkcatid = params[:query]%>
+<%= link_to "Delete link", admin_wlink_path(params[:id]), method: :delete %>
+
 <div class="newopen">
 
-<%= simple_form_for [@user, @wlink], url: admin_wlinks_path(query: @linkcatid), method: :post do |f| %>
+<%= simple_form_for [@user, @wlink], url: admin_wlink_path(params[:id]), method: :put do |f| %>
 
 <h4>Name</h4><%= f.input :wlinkname, label: false %>
 	<h4>url</h4><%= f.input :wlinkurl, label: false %>
@@ -13,7 +15,7 @@
                               order: [:month, :year],label: false %>
 	<h4>Veracity(1 high, 3 low)</h4><%= f.input :wlinkveri, collection: ["1","2","3"], label: false %>
 
-	<h4>Tags (separate by commas)</h4><%= f.text_field :tag_list, label:false %>
+	<h4>Tags (separate by commas)</h4><%= f.text_field :tag_list, value: @wlink.tag_list.to_s, label: false %>
 	<div class="hidlinkcat" >
 	<%= f.input :linkcat_id, input_html: { value: params[:query]} %>
 	<%= f.input :user_id, input_html: { value: current_user.id} %>
@@ -21,7 +23,8 @@
 	</div>
 	<h4>Will be created in the Module</h4><%= Linkcat.find(params[:query]).linkcatname %>
 
-	<%= f.button :submit, 'Add new link' %>
+	<%= f.button :submit, 'Edit link' %>
 
 <% end %>
 </div>
+

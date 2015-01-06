@@ -1,0 +1,16 @@
+<h2>Edit module</h2>
+
+<div class="newopen" >
+
+<%= simple_form_for @linkcat, url: admin_linkcat_path(params[:id]), method: :put do |f| %>
+
+  <h4>Name</h4><%= f.input :linkcatname, label: false %>
+
+  <h4>Type</h4><%= f.input :linkcattype, collection: ["Curated Weblinks","Other"], label: false %>
+
+  <h4>Description</h4><%= f.input :linkcatdesc, label: false %>
+
+  <%= f.button :submit, 'Edit module' %>
+
+<% end %>
+</div>

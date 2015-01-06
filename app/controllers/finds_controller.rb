@@ -7,8 +7,14 @@ class FindsController < ApplicationController
 	end
 
 	def new
-		@user = current_user
-		@find = @user.finds.new
+		
+		if current_user.has_role? :user or :user
+			@user = current_user
+			
+			@find = @user.finds.new
+		else
+			redirect_to root_path
+		end		
 	end
 	
 	def show
@@ -20,10 +26,27 @@ class FindsController < ApplicationController
 	end	
 	
 	def create
-
+		if current_user.has_role? :admin or :user
+				
+		    @user = current_user
+		    @find = @user.finds.new(find_params)
+		    if @find.save
+		    	redirect_to user_wlinks_path(current_user.id, queryid: @find.linkcat_id, query: @find.searchterm)
+		  	else
+		    	render :new
+		   	end 
+		else
+			redirect_to	new_user_find_path(current_user.id)
+		end	   
 	end
 
 	def destroy
 
 	end
+
+	private
+
+	def find_params
+		params.require(:find).permit(:searchterm, :linkcat_id, :user_id)
+	end	
 end

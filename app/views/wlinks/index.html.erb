@@ -1,0 +1,9 @@
+<h4>Search results</h4>
+
+<% @wlinks.each do |wlink| %>
+	
+	<%= link_to wlink.wlinkname, wlink.wlinkurl, target: '_blank' %>
+	<%= wlink.wlinkdesc %>
+	<%= wlink.wlinkveri %>
+<% end %>
+

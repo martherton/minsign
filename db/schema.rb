@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150106102358) do
+ActiveRecord::Schema.define(version: 20150106112325) do
 
   create_table "finds", force: :cascade do |t|
     t.string   "searchterm"
@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 20150106102358) do
     t.integer  "user_id"
     t.integer  "linkcat_id"
     t.string   "wlinksource"
-    t.integer  "wlinkyear"
+    t.date     "wlinkyear"
   end
 
 end
