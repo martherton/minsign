@@ -14,6 +14,8 @@
                               end_year: Date.today.year, discard_day: true,
                               order: [:month, :year],label: false %>
 	<h4>Veracity(1 high, 3 low)</h4><%= f.input :wlinkveri, collection: ["1","2","3"], label: false %>
+	<h4>Language</h4><%= f.input :wlinklang, label: false %>
+
 
 	<h4>Tags (separate by commas)</h4><%= f.text_field :tag_list, value: @wlink.tag_list.to_s, label: false %>
 	<div class="hidlinkcat" >

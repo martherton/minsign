@@ -1,9 +1,14 @@
 <h4>Search results</h4>
-
-<% @wlinks.each do |wlink| %>
-	
-	<%= link_to wlink.wlinkname, wlink.wlinkurl, target: '_blank' %>
-	<%= wlink.wlinkdesc %>
-	<%= wlink.wlinkveri %>
-<% end %>
+<% @linkcatmax.each do |linkcatmax| %> <!--This limits the search results -->
+	<% if @wlinks.count > linkcatmax.linkcatmaxres %>
+	 <h4>Search term too generic</h4>
+	<% else %> 
+		<% @wlinks.each do |wlink| %>
+			
+			<%= link_to wlink.wlinkname, wlink.wlinkurl, target: '_blank' %>
+			<%= wlink.wlinkdesc %>
+			<%= wlink.wlinkveri %>
+		<% end %>
+	<% end %>	
+<%end %>
 

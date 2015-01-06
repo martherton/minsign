@@ -1,0 +1,42 @@
+
+
+<h4>Filters</h4>
+<%= simple_form_for :search, url: admin_finds_path, method: :get do |f| %>
+	<h4>search for specific term</h4><%= f.input :q, label: false %>
+	<%= f.button :submit, "Search" %> 
+<% end %>	
+<%= simple_form_for :search, url: admin_finds_path, method: :get do |f| %>
+	<h4>search for a specific users searches</h4><%= f.input :q1, collection: @users,  label_method: :email, label: false %>
+	<%= f.button :submit, "Find" %> 
+<% end %>	
+<%= simple_form_for :search, url: admin_finds_path, method: :get do |f| %>
+	<h4>search for a specific module searches</h4><%= f.input :q2, collection: @linkcats,  label_method: :linkcatname, label: false %>
+	<%= f.button :submit, "Find" %> 
+<% end %>	
+<h4>Total number of searches:<%= @findscount %></h4>
+
+<% @findslinkcat.each do |findslinkcat, count| %>
+	<%= Linkcat.find(findslinkcat).linkcatname %>
+	<%= "#{count}" %>
+	</br>
+<% end %>	
+
+<% @findsuser.each do |findsuser, count| %>
+	<%= User.find(findsuser).lname %>
+	<%= "#{count}" %>
+	</br>
+<% end %>	
+
+<% @finds.each do |finds| %>
+	<%= finds.id %>
+	<%= finds.searchterm %>
+	<% @user = User.where(:id => finds.user_id) %>
+	<% @linkcat = Linkcat.where(:id => finds.linkcat_id) %>
+	<% @user.each do |user| %>
+		<%= user.fname %>
+	<% end %>
+	<% @linkcat.each do |linkcat| %>
+	  <%= linkcat.linkcatname %>
+	<% end %>  
+<% end %>	
+

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150106112325) do
+ActiveRecord::Schema.define(version: 20150106181000) do
 
   create_table "finds", force: :cascade do |t|
     t.string   "searchterm"
@@ -26,8 +26,10 @@ ActiveRecord::Schema.define(version: 20150106112325) do
     t.string   "linkcattype"
     t.text     "linkcatdesc"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "linkcatview"
+    t.integer  "linkcatmaxres"
   end
 
   create_table "moreinfos", force: :cascade do |t|
@@ -119,6 +121,7 @@ ActiveRecord::Schema.define(version: 20150106112325) do
     t.integer  "linkcat_id"
     t.string   "wlinksource"
     t.date     "wlinkyear"
+    t.string   "wlinklang"
   end
 
 end

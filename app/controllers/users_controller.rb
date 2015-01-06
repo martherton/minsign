@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 			@user = policy_scope(User)
 			@user = current_user
 			@role = @user.role_ids
+			@finds = Find.where(:user_id => params[:id]).limit(5)
 		else 
 			redirect_to root_path
 		end	

@@ -1,3 +1,126 @@
 // Place all the styles related to the finds controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+	background-color: #456FED;
+}
+
+
+.searchpage {
+	background-color: #456FED;
+}
+
+
+/* ===================== MEDIA QUERIES ===================== */
+
+/* 320+ 
+------------------------------------------ */
+@media only screen and (min-width: 20em) {
+  /* Masthead specific styling for small screen*/
+  
+}
+/* 480+ 
+------------------------------------------ */
+@media only screen and (min-width: 30em) {
+  /* Masthead */
+}
+
+
+
+/* 480-767-only 
+------------------------------------------ */
+@media only screen and (min-width: 30em) and (max-width: 47.9375em) {
+  /* Sidebar */  
+  
+}
+/* 600-767-only 
+------------------------------------------ */
+@media only screen and (min-width: 37.5em) and (max-width: 47.9375em) {
+  /* Sidebar */
+  
+
+  
+
+}
+
+/* 768+ 
+------------------------------------------- */
+@media only screen and (min-width: 48em) {
+
+    /* Main Content where you can start adding columns*/
+
+    main {
+    float: left;
+    width: 62.5%;
+  } /*Only an example it can alter in terms of percentage*/
+
+    /* Sidebar */
+  .sidebar {
+    float: right;
+    margin-top: 1.875em;
+    width: 31.25%;
+  }  /* Again can alter percentages*/
+
+  .searchform {
+  	margin-left: auto;
+   	margin-right: auto;
+   	width: 70%;
+
+  }
+
+  .logo {
+  	position: relative;
+  	right: -35%;
+  	width: 30%;
+  }
+
+  .searchbutton {
+  	margin-left: auto;
+   	margin-right: auto;
+   	width: 8%;
+  }
+
+  .searchform div {
+   	display: inline-block; 
+
+ }
+
+#find_searchterm {
+	width: 30em;
+}
+.basicnav {
+	text-align: left;
+}
+.basicnav li {
+	display: inline-block;
+	text-decoration: none;
+}
+
+.basicnav a {
+	text-decoration: none;
+}
+
+
+}
+  /* --- end media queries ---- */
+
+
+/* html5boilerplate.com Clearfix
+--------------------------------- */
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.clearfix {
+  *zoom: 1;
+}

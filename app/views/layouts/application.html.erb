@@ -41,18 +41,19 @@
   </style>
 </head>
 <body>
-
+<ul class="basicnav">
 <% if user_signed_in? %>
     <p></p>
-    <h4>Logged in: <%= current_user.email %></h4>
-    <h4><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></h4>
+    <li><h4>Logged in: <%= current_user.email %></h4></li>
+    <li><h4><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></h4></li>
 
   <% if current_user.has_role? :admin %>
-    <%= link_to "Dashboard", dashboard_admin_user_path(current_user.id) %>
+    <li><%= link_to "Dashboard", dashboard_admin_user_path(current_user.id) %></li>
   <% else %>
-    <%= link_to "Dashboard", dashboard_user_path(current_user.id) %>
+    <li><%= link_to "Dashboard", dashboard_user_path(current_user.id) %></li>
   <% end %>    
 <% end %>
+</ul>
 
 <% flash.each do |key, value| %>
   <%= content_tag :div, value, class: "flash #{key}" %>

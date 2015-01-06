@@ -83,7 +83,7 @@ class Admin::WlinksController < ApplicationController
 	private
 
 	def wlink_params
-    params.require(:wlink).permit(:wlinkname, :wlinkurl, :wlinkdesc, :wlinkveri, :wlinksource, :wlinkyear, :linkcat_id, :user_id, :tag_list)
+    params.require(:wlink).permit(:wlinkname, :wlinkurl, :wlinkdesc, :wlinkveri, :wlinksource, :wlinkyear, :linkcat_id, :wlinklang, :user_id, :tag_list)
 
 	end	
 end
