@@ -1,14 +1,30 @@
-<h4>Search results</h4>
+<section class="resultspage" >
+<div class="logo" id="logosearch" >
+	<img src="/assets/logo.svg">
+</div>	
+<div id="searchreturn" >
+	<h4>Search results for <i><%= @searchterm %></i>&nbspin module&nbsp<i><%= @module.linkcatname %></i></h4>
+</div>
+
+
 <% @linkcatmax.each do |linkcatmax| %> <!--This limits the search results -->
 	<% if @wlinks.count > linkcatmax.linkcatmaxres %>
 	 <h4>Search term too generic</h4>
 	<% else %> 
+
 		<% @wlinks.each do |wlink| %>
+<div class="resultcard" >
+			<h4><%= wlink.wlinksource %></h4>
+			<h4><%= wlink.wlinklang %></h4>
+			<h4><%= wlink.wlinkyear %></h4>
+			<h2><%= link_to wlink.wlinkname, wlink.wlinkurl, target: '_blank' %></h2>
+			<h3><%= wlink.wlinkdesc %><h3>
 			
-			<%= link_to wlink.wlinkname, wlink.wlinkurl, target: '_blank' %>
-			<%= wlink.wlinkdesc %>
-			<%= wlink.wlinkveri %>
+			
+</div>	
+			
 		<% end %>
+
 	<% end %>	
 <%end %>
 

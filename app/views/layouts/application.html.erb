@@ -44,21 +44,47 @@
 <ul class="basicnav">
 <% if user_signed_in? %>
     <p></p>
-    <li><h4>Logged in: <%= current_user.email %></h4></li>
-    <li><h4><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></h4></li>
+    <li><h4>Hello <%= current_user.fname %></h4></li>
+    <li><h4><%= link_to image_tag("house150.svg", height: "23px", alt: "Sign Out", title: "Search page"), new_user_find_path(current_user.id) %></h4></li>
+    <li><h4><%= link_to image_tag("folder242.svg", height: "23px", alt: "Sign Out", title: "Sign out"), destroy_user_session_path, :method => :delete %></h4></li>
 
   <% if current_user.has_role? :admin %>
-    <li><%= link_to "Dashboard", dashboard_admin_user_path(current_user.id) %></li>
+    <li><%= link_to image_tag("user160.svg", height: "23px", alt: "Dashboard", title: "Dashboard"), dashboard_admin_user_path(current_user.id) %></li>
   <% else %>
-    <li><%= link_to "Dashboard", dashboard_user_path(current_user.id) %></li>
+    <li><%= link_to image_tag("user160.svg", height: "23px", alt: "Dashboard", title: "Dashboard"),dashboard_user_path(current_user.id) %></li>
   <% end %>    
 <% end %>
+    
 </ul>
 
 <% flash.each do |key, value| %>
   <%= content_tag :div, value, class: "flash #{key}" %>
 <% end %>
 <%= yield %>
+<div class="footer" >
+ <% if current_user %>
+ <% else %>
+  <%= render "devise/shared/links" %>
+ <% end %>
+   
 
+ <div class ="footernav" >
+   <ul>
+     <li>Legal</li>
+     <li>Help</li> 
+     <li>copyright</li>
+     <li>contact us</li>
+   </ul> 
+</div>   
+
+ <div id="sicontainer" >
+          <ul id="sinav" >
+            <li><a href="#" ><h3  >a</h3></a></li>
+            <li><a href="#" ><h3  >j</h3></a></li>
+            <li><a href="#" ><h3  >v</h3></a></li>
+            <li><a href="#" ><h3  >r</h3></a></li>
+          </ul>
+      </div>
+</div>
 </body>
 </html>

@@ -19,14 +19,3 @@ class Wlink < ActiveRecord::Base
 
 	end
 end
-t.string   "wlinkname"
-    t.string   "wlinkurl"
-    t.string   "wlinkdesc"
-    t.string   "wlinkveri"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "user_id"
-    t.integer  "linkcat_id"
-    t.string   "wlinksource"
-    t.date     "wlinkyear"
-    t.string   "wlinklang"

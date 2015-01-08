@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root 'staticpages#landing' #link to static landing page
   get 'thanks', to: 'staticpages#thanks' #link to static thankyou page
   get 'confirmed', to: 'staticpages#confirmed' #link to static confirmed page
-  devise_for :users, controllers: { sessions: "users/sessions", confirmations: "users/confirmations" }
+  devise_for :users, controllers: { sessions: "users/sessions", confirmations: "users/confirmations", registrations: "users/registrations" }
 
     
 
@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   
   resources :moreinfos
+  resources :comments
   resources :users do
     resources :linkcats
     resources :wlinks

@@ -1,14 +1,26 @@
-html, body {
-         height: 100%;
-         margin: 0;
-         padding: 0;
-     }
+html,
+body {
+  height: 100%;
+  padding: 0;
+  width: 100%;
+  margin: 0;
+  
+}
 
 /* Putting in the web fonts
 ---------------------------
------------*/
+-----------NOTE PRODUCTION NEED font-path() after url(*/  
 
-
+@font-face {
+    font-family: 'socicon';
+    src: url('socicon-webfont.eot');
+    src: url('socicon-webfont.eot?#iefix') format('embedded-opentype'),
+         url('socicon-webfont.woff') format('woff'),
+         url('fonts/socicon-webfont.ttf') format('truetype'),
+         url('fonts/socicon-webfont.svg#sociconregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
 
 /*BASIC ELEMENT STYLING
 -------------------
@@ -35,7 +47,12 @@ img {                                                                           
   border: 0;
 }
 
-
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
 
 /*Setting all pictures max width
 --------------------------------
@@ -45,10 +62,99 @@ img {                                                                           
 	max-width: 100%;
 }
 
+/*STYLING INPUT FORMS-----
+-------------------------*/
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  width: 15em;
+  background-color: #C2D1FF;
+  color: #FFFFFF;
+  border-style: solid;
+  border-width: 1px 0 0 0;
+  height: 2em;
+  text-indent: 4px;
+}
 
 
+input[type="submit"] {
+  background-color: #FFE0B2;
+  color: #000000;
+  margin-top: 1em;
+  width: 15em;
+  border-style: none;
+  height: 2em;
+}
+
+.select {
+  -webkit-appearance: none;
+  background-color: #FFE0B2;
+  color: #000000;
+  height: 2em;
+  text-indent: 4px;
+  border:0px;
+        outline:0px;
+}
+
+#moreinfo_email,
+#user_email {
+  border-width: 0 0 0 0;
+  margin-top: 4em;
 
 
+}
+
+#remlab {
+  color: #FFFFFF;
+}
+
+
+/*STYLING SOCIAL ICONS
+----------------------
+-------*/
+
+#sinav li{
+  display: inline-block;
+}
+
+ #sinav li h3 {
+  font-family: 'socicon'; 
+ }
+
+#sicontainer {
+  margin-top: 0.3em;
+  margin-left: 0.3em;
+  
+  display: inline-block;
+  
+}
+
+#sinav a h3 {
+  margin: 0.33em;
+  color: #000000;
+}
+
+.basicnav h4 {
+  font-size: 0.7em;
+  font-weight: 200;
+
+}
+
+.basicnav {
+  margin-right: 2em;
+  
+
+}
+
+.basicnav li {
+  margin-right: 0.5em;
+}
+
+.footernav,
+.footernav li {
+  display: inline-block;
+}
 
 
 
@@ -59,6 +165,8 @@ img {                                                                           
 @media only screen and (min-width: 20em) {
   /* Masthead specific styling for small screen*/
   
+
+
 }
 /* 480+ 
 ------------------------------------------ */
@@ -102,8 +210,17 @@ img {                                                                           
     width: 31.25%;
   }  /* Again can alter percentages*/
 
-  
+  .footer {
+    width:100%;
+  height:80px;
+  position:absolute;
+  bottom:0;
+  left:0;
+  }
 
+.basicnav {
+  text-align: right;
+}
 
 }
   /* --- end media queries ---- */

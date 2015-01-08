@@ -1,14 +1,95 @@
-Dashboard
-<br>
-<%= @user.fname %>
-<%= @user.lname %>
-<% @user.roles.each do |role| %>
-<p><%= role.name %></p>
-<% end %>
-<%= link_to "Back to App", new_user_find_path(current_user.id) %>
-<h4>Recent searches</h4>
-<% @finds.each do |find| %>
-	<%= link_to "Repeat Search",  user_wlinks_path(current_user.id, queryid: find.linkcat_id, query: find.searchterm)%>
-	<%= find.searchterm %>
-	<%= find.created_at %>
-<% end %>	
+<div class="logo" id="logosearch" >
+	<img src="/assets/logo.svg">
+</div>	
+
+<div class="userinfo" >
+  <div class="accounttype" >
+    <h4> Accout type:&nbsp</h4>
+    <% @user.roles.each do |role| %>
+      <h4><%= role.name %></h4>
+    <% end %>
+    <h4>Modules allowed:</h4>
+    <h4>All</h4>
+  </div>  
+
+
+
+  <table>
+    <tbody>
+      <tr>
+        <td>Name</td>
+        <td><%= @user.fname %>&nbsp<%= @user.lname %></td>
+        <td>Email</td>
+        <td><%= @user.email %></td>
+      </tr>
+      <tr>
+        <td>Company</td>  
+        <td><%= @user.company %></td>
+        <td>Position</td>
+        <td><%= @user.position %></td>
+        <td>Total Searches</td>
+        <td><%= @total %></td>
+      </tr>
+    </tbody>
+  </table>
+  <%= link_to image_tag("padlock45.svg", height: "23px", alt: "Edit Account Details", title: "Edit Account"),  edit_user_registration_path(current_user.id)%>
+</div>        
+
+
+
+<div class="toprsearch" >
+  <h4>Top Ranked Searches</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>Term</th>
+          <th>Module</th>
+          <th>Number</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @mostfindsb.each do |mostfinds, count| %>
+
+        <tr>
+          <td><%= mostfinds[1] %></td>
+          <td><%= Linkcat.find(mostfinds[0]).linkcatname  %></td>
+          <td><%= count %></td>
+          <td><%= link_to image_tag("refresh63.svg", height: "23px", alt: "Repeat", title: "Repeat"),  user_wlinks_path(current_user.id, queryid: Linkcat.find(mostfinds[0]).id, query: mostfinds[1])%></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>          
+    
+  
+
+</div>  
+<div class="latestsearch" >
+  <h4>Recent searches</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Search term</th>
+        <th>Module</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @finds.each do |find| %>
+        <tr>
+          <td><%= find.created_at.to_formatted_s(:short) %></td>
+          <td><%= find.searchterm %></td>
+          <td><%= Linkcat.find(find.linkcat_id).linkcatname %>
+          <td><%= link_to image_tag("refresh63.svg", height: "23px", alt: "Repeat", title: "Repeat"),  user_wlinks_path(current_user.id, queryid: find.linkcat_id, query: find.searchterm)%></td>
+        </tr>
+      <%- end -%>
+    </tbody>
+  </table>
+</div>
+
+<div class="commentbox" id="commentform" >
+
+  <h4>Mail us with comments or suggestions for new modules</h4>
+
+      <%= render 'comments/new' %>
+</div>

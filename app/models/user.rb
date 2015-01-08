@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable
   has_many :linkcats
   has_many :wlinks
-  has_many :finds       
+  has_many :finds 
+  has_many :comments      
 
 	#method after a registration
 	after_create do

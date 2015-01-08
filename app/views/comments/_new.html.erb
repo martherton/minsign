@@ -1,0 +1,19 @@
+<% @comment = Comment.new %>
+<Div class="moreinfos" >
+
+<%= simple_form_for @comment do |f| %>
+	
+
+	<%= f.input :contentcom, label: false, placeholder: "Feedback", id: "commentinput" %>
+	
+	<div class="hidlinkcat" >
+	
+		<%= f.input :user_id, input_html: { value: current_user.id} %>
+		
+
+	</div>
+
+	<%= f.button :submit, 'Contact us' %>
+
+<% end %>
+</Div>

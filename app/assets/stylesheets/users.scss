@@ -1,3 +1,44 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/*Dashboard specific CSS-----
+------*/
+
+.toprsearch {
+	width: 50%;
+	float: left;
+	margin-left: 3em;
+}
+
+.latestsearch {
+	margin-left: 50%;
+
+}
+
+.accounttype h4 {
+	display: inline-block;
+}
+
+#comment_contentcom {
+	width: 60%;
+}
+
+.commentbox h4 {
+	text-align: center;
+}
+
+.latestsearch table,
+.toprsearch table {
+	text-align: left;
+
+}
+
+.latestsearch table td,
+.latestsearch table th,
+.toprsearch table th,
+.toprsearch table td {
+	padding-left: 1em;
+	max-width: 20em;
+}

@@ -6,7 +6,15 @@ class UsersController < ApplicationController
 			@user = policy_scope(User)
 			@user = current_user
 			@role = @user.role_ids
-			@finds = Find.where(:user_id => params[:id]).limit(5)
+			@findsa = Find.where(:user_id => params[:id]).order(created_at: :desc)
+			@finds = @findsa.limit(5)
+			@mostfinds = Find.where(:user_id => params[:id]).group(:linkcat_id)
+			@mostfindsa = @mostfinds.all.group(:searchterm)
+			@mostfindsb = @mostfindsa.order('count_all desc').limit(5).count
+
+			@total = Find.where(:user_id => params[:id]).count
+
+			
 		else 
 			redirect_to root_path
 		end	

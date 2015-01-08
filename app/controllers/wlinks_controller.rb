@@ -10,7 +10,8 @@ class WlinksController < ApplicationController
 			@wlinksfromlinkcat = Wlink.where(:linkcat_id => params[:queryid])
 			@wlinkss = @wlinksfromlinkcat.search(params[:query]) 
 			@wlinkst = @wlinksfromlinkcat.tagged_with(params[:query])
-			
+			@searchterm = params[:query]
+			@module = Linkcat.find(params[:queryid])
 			@wlinks = @wlinkss | @wlinkst
 			@linkcatmax = Linkcat.where(:id => params[:queryid])
 

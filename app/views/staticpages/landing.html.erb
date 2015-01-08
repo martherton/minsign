@@ -1,21 +1,21 @@
 
 <section class="container1">
-	<div class="logo">
-	<img src="/assets/logo.png" />
+	<div class="logoland">
+		<img src="/assets/logoland.svg" />
 	</div>
 
 	<% if user_signed_in? %>
-
-	<% else %>
 		<div class="login">
-		<h2><a href="#loginform" class="mainlink" >Log in</a></h2>
+			<h2><%= link_to "Search", new_user_find_path(current_user.id), class: "mainlink" %> </h2>
 		</div>
+	<% else %>
+		<div class="loginform" id="loginform" %>
+			<%= render 'users/sessions/new' %>
 
-		<div class="loginbox">
 		</div>
 
 		<div class="register">
-		<h2><a href="#registerform" class="mainlink" >Register</a></h2>
+			<h2><a href="#registerform" class="mainlink" >Register</a></h2>
 		</div>
 
 		<div class="registerbox">
@@ -23,45 +23,54 @@
 
 	<% end %>
 
-<div class="about">
-<h2>Minerva: simplifying information for professional investors.</h2>
-</div>
-<div class="aboutbox">
-</div>
-<div class="animate-in ultra-slo-mo" data-anim-type="bounce-in-down" data-anim-delay="200" id="scroll">
-<h2>V</h2>
-</div>
+	<div class="about">
+		<h2>Minerva: simplifying information for professional investors.</h2>
+	</div>
 
-</div>
+	<div class="aboutbox">
+	</div>
+
+	<div class="animate-in ultra-slo-mo" data-anim-type="bounce-in-down" data-anim-delay="200" id="scroll">
+		<h2>V</h2>
+	</div>
+
+
 
 </section>
+
 <section class="container2">
-<div class="explanation1">
-Description of what the company does
-</div>
+	<div class="explanation1">
+	   Description of what the company does
+	</div>
 </section>
 
 <section class="container3">
-Strap LIne
+	<div class="strap1" >
+		Strap LIne
+	</div>	
 </section>
 
 <section class="container4">
-More Description
+	<div class="strap1" >
+		More Description
+	</div>
 </section>
 
 <section class="container5">
+	<div class="entrybox" >
+	</div>
+		<div class="moreinfo" id="moreinfoform" >
+			<%= render 'moreinfos/new' %>
+		</div>
 
-<div class="loginform" id="loginform" %>
-<%= render 'users/sessions/new' %>
+		
+		<div class="registerform" id="registerform" >
+			<%= render 'users/registrations/new' %>
 
-</div>
-<div class="registerform" id="registerform" >
-<%= render 'users/registrations/new' %>
+		</div>
+	
 
-</div>
-<div class="moreinfo" id="moreinfoform" >
-	<%= render 'moreinfos/new' %>
-</div>
+
 </section>
 
 

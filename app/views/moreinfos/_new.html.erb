@@ -1,13 +1,13 @@
 <% @moreinfo = Moreinfo.new %>
-
-<h2>Receive Updates</h2>
+<Div class="moreinfos" >
 
 <%= simple_form_for @moreinfo do |f| %>
 	
 
-	<%= f.input :email %>
+	<%= f.input :email, label: false, placeholder: "Email address", id: "firstinput" %>
 	
 
 	<%= f.button :submit, 'Receive updates' %>
 
 <% end %>
+</Div>

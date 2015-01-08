@@ -2,12 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body {
-	background-color: #456FED;
+	background-color: #FFFFEB;
 }
 
 
 .searchpage {
-	background-color: #456FED;
+	background-color: #FFFFEB;
 }
 
 
@@ -61,23 +61,42 @@ body {
     width: 31.25%;
   }  /* Again can alter percentages*/
 
-  .searchform {
+  .newsearch {
   	margin-left: auto;
    	margin-right: auto;
    	width: 70%;
 
   }
 
-  .logo {
+  .searchform {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+  }
+
+  .searchform .select {
+    width: 15em;
+    margin-right: 0.5em;
+  }
+
+  #logofinds {
   	position: relative;
   	right: -35%;
   	width: 30%;
+    margin-bottom: 1em;
+    overflow: hidden;
+    width: 20em;
   }
+
+  
+
+
 
   .searchbutton {
   	margin-left: auto;
    	margin-right: auto;
-   	width: 8%;
+   	width: 40%;
+    text-align: center;
   }
 
   .searchform div {

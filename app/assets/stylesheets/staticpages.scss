@@ -1,68 +1,10 @@
 // Place all the styles related to the staticpages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-html,
-body {
-	height: 100%;
-	padding: 0;
-}
 
 
 
-.container1 {
-	
-	
-  background-image:  url(image-path('simple2.jpg')); 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  	height: 100%;
-  	max-width: 100%;
-  	
 
-}
-
-.container2 {
-	height: 100%;
-	background-color: #FED456;
-	background-attachment: fixed;
-	background-size: cover;
-}
-
-.container3 {
-	
-	
-  background-image:  url(image-path('simple3.jpg')); 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  	height: 100%;
-  	max-width: 100%;
-  	
-}
-
-.container4 {
-	height: 100%;
-	background-color: #456FED;
-	background-attachment: fixed;
-	background-size: cover;
-}
-
-.container5 {
-	
-	
-  background-image:  url(image-path('simple4.jpg')); 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  	height: 100%;
-  	max-width: 100%;
-
-
-}
 
 
 
@@ -86,6 +28,16 @@ body {
 	color: #FFFFFF;
 }
 
+.container2 {
+	background-color: #FFE0B2;
+
+}
+
+.container4 {
+	background-color: #C2D1FF;
+
+}
+
 /*MAke scroll indicator invisible at lowest level and touch
 ------------------*/
 
@@ -101,8 +53,13 @@ body {
   /* Masthead specific styling for small screen*/
   
 .logo {
-	margin: 1em;
-	opacity: 0.5;
+	padding: 1em;
+	margin-top: 4em;
+}
+
+.logoland {
+	padding: 1em;
+	opacity: 0.7;
 }
 
 .logo img {
@@ -113,7 +70,7 @@ body {
 .loginbox,
 .registerbox,
 .aboutbox {
-	height: 5em;
+	height: 4em;
 	opacity: 0.5;
 	z-index: 1;
 }
@@ -136,6 +93,16 @@ body {
 
 .about h2 {
 	font-size: 1em;
+}
+
+.signupfor,
+.moreinfos,
+.loginb {
+	text-align: center;
+}
+
+.moreinfos:first-child {
+	border-width: 0 0 0 0;
 }
 
 }
@@ -198,6 +165,7 @@ body {
 	top: 8%;
 	width: 9em;
 	margin: 0;
+
 }
 
 .login h2 a:hover,
@@ -223,23 +191,95 @@ body {
 }
 
 
-.container1,
-.container3,
-.container5 {
+
+
+.container1 {
+	
+	
+  background-image:  url(image-path('simple2.jpg')); 
+  -webkit-background-size: cover ;
+  -moz-background-size: cover ;
+  -o-background-size: cover ;
+  background-size: cover ; 
 	background-attachment: fixed;
 	background-repeat: no-repeat;
 	background-position: center center;
+  
+  	height: 100%;
+  	max-width: 100%;
+  	
+
 }
 
-#scroll {
-	display: block;
-	position: absolute;
-	left: 50%;
-	bottom: 13%;
+.container2 {
+	height: 100%;
+	
+	background-attachment: fixed;
+	background-size: cover;
+	-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+	
 }
 
-#scroll h2 {
-	margin: 0;
+.container3 {
+	
+	
+  background-image:  url(image-path('simple3.jpg')); 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: center center;
+  	height: 100%;
+  	max-width: 100%;
+  	
+  	
+}
+
+.container4 {
+	height: 100%;
+	background-attachment: fixed;
+	background-size: cover;
+	-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+	height: 100%;
+  	max-width: 100%;
+
+
+}
+
+.container5 {
+	
+	
+  background-image:  url(image-path('simple4.jpg')); 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+	background-attachment: fixed;
+ 	background-repeat: no-repeat;
+	background-position: center center;
+  	height: 100%;
+  	max-width: 100%;
+
+
+}
+
+.entrybox {
+	
+	background-color: #456FED;
+	opacity: 0.5;
+	position: relative;
+  height: 38em;
+  width: 20em;
+  bottom: 5%;
+  display: inline;
+    
+
 }
 
 /* Transitional slides
