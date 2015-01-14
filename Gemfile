@@ -63,3 +63,5 @@ end
 
 ruby "2.1.2"
 
+gem 'seed_dump', group: [:development, :test]
+
