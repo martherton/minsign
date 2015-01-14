@@ -12,15 +12,15 @@ body {
 
 /* Putting in the web fonts
 ---------------------------
------------NOTE PRODUCTION NEED font-path() after url(*/  
+-----------NOTE PRODUCTION NEED font-path() after url( also all images need to be referenced by image_yag and remove /assets/*/  
 
 @font-face {
     font-family: 'socicon';
-    src: url('socicon-webfont.eot');
-    src: url('socicon-webfont.eot?#iefix') format('embedded-opentype'),
-         url('socicon-webfont.woff') format('woff'),
-         url('fonts/socicon-webfont.ttf') format('truetype'),
-         url('fonts/socicon-webfont.svg#sociconregular') format('svg');
+    src: url(font-path('socicon-webfont.eot'));
+    src: url(font-path('socicon-webfont.eot?#iefix')) format('embedded-opentype'),
+         url(font_path('socicon-webfont.woff')) format('woff'),
+         url(font-path('fonts/socicon-webfont.ttf')) format('truetype'),
+         url(font-path('fonts/socicon-webfont.svg#sociconregular')) format('svg');
     font-weight: normal;
     font-style: normal;
 }
