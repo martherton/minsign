@@ -1,7 +1,14 @@
+<div class="logo" id="logosearch" >
+	<img src="/assets/logo.svg">
+</div>	
+<div class ="edituser">
+<h4>Approve and set role</h4>
+
 <%= simple_form_for [@user], url: admin_user_path, method: :put do |f| %>
-<%= f.input :email %>
+<%= f.input :email, label: false %>
 <%= f.input :approved %>
 <%= f.association :roles, as: :check_boxes %>
 <%= f.button :submit, "Alter user info" %>
-  * Required field
+ 
 <% end %>
+</div>

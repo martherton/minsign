@@ -1,13 +1,11 @@
 // Place all the styles related to the finds controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-body {
-	background-color: #FFFFEB;
-}
 
+/*COLOUR SCHEME----*/
 
 .searchpage {
-	background-color: #FFFFEB;
+	background-color: #FFFFFF;
 }
 
 
@@ -17,6 +15,42 @@ body {
 ------------------------------------------ */
 @media only screen and (min-width: 20em) {
   /* Masthead specific styling for small screen*/
+  #logofinds {
+
+   width: 100%;
+   margin-left:0;
+   margin-bottom: 2.5em;
+  }
+
+  #logofinds img {
+    width: 95%;
+    margin-left: 2.5%;
+    height: 3.5em;
+  }
+
+  .newsearch {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+
+  }
+
+  .searchform .select {
+    width: 80%;
+    margin-left: 10%;
+  }
+
+  .searchform input[type="text"],
+  .serachform input[type="submit"] {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 1em;
+  }
+
+  .searchbutton {
+        text-align: center;
+  }
+
   
 }
 /* 480+ 
@@ -61,62 +95,20 @@ body {
     width: 31.25%;
   }  /* Again can alter percentages*/
 
-  .newsearch {
-  	margin-left: auto;
-   	margin-right: auto;
-   	width: 70%;
-
-  }
-
-  .searchform {
-    margin-left: auto;
-    margin-right: auto;
-    width: 90%;
-  }
-
-  .searchform .select {
-    width: 15em;
-    margin-right: 0.5em;
-  }
-
-  #logofinds {
-  	position: relative;
-  	right: -35%;
-  	width: 30%;
-    margin-bottom: 1em;
-    overflow: hidden;
-    width: 20em;
-  }
-
-  
-
-
-
-  .searchbutton {
-  	margin-left: auto;
-   	margin-right: auto;
-   	width: 40%;
-    text-align: center;
-  }
-
-  .searchform div {
-   	display: inline-block; 
-
- }
-
-#find_searchterm {
-	width: 30em;
-}
-.basicnav {
-	text-align: left;
-}
-.basicnav li {
-	display: inline-block;
-	text-decoration: none;
+.searchform input[type="text"] {
+  width: 30em;
 }
 
-.basicnav a {
-	text-decoration: none;
+.searchform .select {
+  width: 20em;
+}
+
+.searchbutton input[type="submit"] {
+  width: 10em;
+}
+
+.searchform div{
+  display: inline-block;
 }
 
 

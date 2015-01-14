@@ -1,27 +1,27 @@
-<h1>Add a new link</h1>
 <% @linkcatid = params[:query]%>
 <div class="newopen">
+<h1>Add a new link</h1>
 
 <%= simple_form_for [@user, @wlink], url: admin_wlinks_path(query: @linkcatid), method: :post do |f| %>
 
-<h4>Name</h4><%= f.input :wlinkname, label: false %>
-	<h4>url</h4><%= f.input :wlinkurl, label: false %>
-	<h4>Description</h4><%= f.input :wlinkdesc, label: false %>
-	<h4>Source</h4><%= f.input :wlinksource, label: false %>
-	<h4>Year</h4><%= f.input :wlinkyear, as: :date, start_year: Date.today.year - 50,
+<%= f.input :wlinkname, label: false, placeholder: "Name" %>
+	<%= f.input :wlinkurl, label: false, placeholder: "url" %>
+	<%= f.input :wlinkdesc, label: false, placeholder: "Description" %>
+	<%= f.input :wlinksource, label: false, placeholder: "Source" %>
+	<%= f.input :wlinkyear, as: :date, start_year: Date.today.year - 50,
                               end_year: Date.today.year, discard_day: true,
                               order: [:month, :year],label: false %>
-	<h4>Veracity(1 high, 3 low)</h4><%= f.input :wlinkveri, collection: ["1","2","3"], label: false %>
-	<h4>Language</h4><%= f.input :wlinklang, label: false %>
+	<%= f.input :wlinkveri, collection: ["1","2","3"], label: false, prompt: "Veracity(1 high)" %>
+	<%= f.input :wlinklang, label: false, placeholder: "Language" %>
 	
 
-	<h4>Tags (separate by commas)</h4><%= f.text_field :tag_list, label:false %>
+	<%= f.text_field :tag_list, label:false, placeholder: "Tags (separate by commas)" %>
 	<div class="hidlinkcat" >
 	<%= f.input :linkcat_id, input_html: { value: params[:query]} %>
 	<%= f.input :user_id, input_html: { value: current_user.id} %>
 
 	</div>
-	<h4>Will be created in the Module</h4><%= Linkcat.find(params[:query]).linkcatname %>
+	<h4>Will be created in the Module&nbsp<%= Linkcat.find(params[:query]).linkcatname %></h4>
 
 	<%= f.button :submit, 'Add new link' %>
 

@@ -1,17 +1,37 @@
+<div class="logo" id="logosearch" >
+	<img src="/assets/logo.svg">
+</div>	
+<h4>User approval (note role 1: user Role 2: admin)</h4>
 
-
-
-<% policy_scope(@users).each do |user| %>
-<%= user.email %>
-<%= user.fname %>
-<%= user.lname %>
-<%= user.company %>
-<%= user.position %>
-<%= user.confirmed_at %>
-<%= user.approved %>
-<%= user.role_ids %>
-<%= link_to "Edit", edit_admin_user_path(user.id) %>
-
-
+<div class="modadmin">
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>email</th>
+			<th>Company</th>
+			<th>Position</th>
+			<th>Confirmed at</th>
+			<th>Approved?</th>
+			<th>Role</th>
+			<th>Edit</th>
+		</tr>
+	</thead>
+	<tbody>	
+		<% policy_scope(@users).each do |user| %>
+		<tr>
+			<td><%= user.email %></td>
+			<td><%= user.fname %>&nbsp<%= user.lname %></td>
+			<td><%= user.company %></td>
+			<td><%= user.position %></td>
+			<td><%= user.confirmed_at %></td>
+			<td><%= user.approved %></td>
+			<td><%= user.role_ids %></td>
+			<td><%= link_to "Edit", edit_admin_user_path(user.id) %></td>
+		</tr>		
 <% end %>
+</tbody>
+</table>
+</div>
+
 

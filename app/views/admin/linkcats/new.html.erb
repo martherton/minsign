@@ -1,18 +1,19 @@
-<h2>New module</h2>
 
 <div class="newopen" >
+<h2>New module</h2>
+
 
 <%= simple_form_for @linkcat, url: admin_linkcats_path, method: :post do |f| %>
 
-  <h4>Name</h4><%= f.input :linkcatname, label: false %>
+  <%= f.input :linkcatname, label: false, placeholder: "name" %>
 
-  <h4>Type</h4><%= f.input :linkcattype, collection: ["Curated Weblinks","Other"], label: false %>
+  <%= f.input :linkcattype, collection: ["Curated Weblinks","Other"], label: false, prompt: "Type" %>
 
-  <h4>View Type</h4><%= f.input :linkcatview, collection: ["Normal","Other"], label: false %>
+<%= f.input :linkcatview, collection: ["Normal","Other"], label: false, prompt: "View type" %>
 
-  <h4>Maximum allowable search results</h4><%= f.input :linkcatmaxres, collection: 1..8, label: false %>
+  <%= f.input :linkcatmaxres, collection: 1..8, label: false, prompt: "max results" %>
 
-  <h4>Description</h4><%= f.input :linkcatdesc, label: false %>
+  <%= f.input :linkcatdesc, label: false, placeholder: "description" %>
 
   <%= f.button :submit, 'Add new module' %>
 

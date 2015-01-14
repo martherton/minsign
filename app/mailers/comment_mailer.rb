@@ -10,6 +10,6 @@ class CommentMailer < ApplicationMailer
     @fname = User.find(comment.user_id).fname
     @lname = User.find(comment.user_id).lname
     @url  = 'http://minervasi.co/login'
-    mail(to: ["mark@minervasi.co"], subject: 'User request')
+    mail(to: ["request@minervasi.com"], subject: 'User request')
   end
 end

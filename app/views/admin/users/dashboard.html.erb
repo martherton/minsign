@@ -1,12 +1,33 @@
-Dashboard
-<br>
-<%= @user.fname %>
-<%= @user.lname %>
-<% @user.roles.each do |role| %>
-<p><%= role.name %></p>
-<% end %>
+<div class="logo" id="logosearch" >
+	<img src="/assets/logo.svg">
+</div>	
+<div class="userinfo" >
+  <div class="accounttype" >
+    <h4> Account type:&nbsp
+    <% @user.roles.each do |role| %>
+      <%= role.name %></h4>
+    <% end %>
+   
+    <h4>Modules allowed:&nbsp
+    All</h4>
+  </div>  
+</div>  
 
-<%= link_to "Module Index", admin_linkcats_path %>
-<%= link_to "User Index", admin_users_path %>
-<%= link_to "Searches Admin", admin_finds_path %>
-<%= link_to "Back to App", new_user_find_path(current_user.id) %>
+<div class="functions" >
+<table>
+	<tbody>
+		<tr>
+			<td><b><%= link_to "Module Index", admin_linkcats_path %></b></td>
+			<td>Create and update modules</td>
+		</tr>
+		<tr>	
+			<td><b><%= link_to "User Index", admin_users_path %></b></td>
+			<td>User approvals</td>
+		</tr>
+		<tr>
+			<td><b><%= link_to "Searches Admin", admin_finds_path %></b></td>
+			<td>Analysis of searches on the site</td>
+		</tr>
+	</tbody>
+</table>		
+</div>

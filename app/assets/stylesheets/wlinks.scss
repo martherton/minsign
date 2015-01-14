@@ -1,55 +1,124 @@
 // Place all the styles related to the wlinks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#logosearch {
-  	position: relative;
-  	right: -35%;
-  	width: 30%;
-  	margin-top: -4em;
+
+/* ===================== MEDIA QUERIES ===================== */
+
+/* 320+ 
+------------------------------------------ */
+@media only screen and (min-width: 20em) {
+  /* Masthead specific styling for small screen*/
+  #logosearch {
+
+   width: 90%;
+   margin-left:5%;
+  }
+
+  #logosearch img {
+    width: 80%;
+    margin-left: 10%;
+    height: 3em;
   }
 
   #searchreturn h4 {
-  	text-align: center;
+    text-align: center;
   }
 
   .resultcard {
-  	border-style: solid;
-  	border-width: 2px;
-  	box-shadow: 10px 10px 5px #888888;
-  	width: 55%;
-  	margin-left: auto;
-  	margin-right: auto;
-  	background-color: #C2D1FF;
-  	margin-bottom: 1em;
-  	border-radius: 20px;
+    border-style: solid;
+    border-width: 2px;
+    box-shadow: 10px 10px 5px #888888;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #FFFFFF;
+    margin-bottom: 1em;
+    border-radius: 20px;
+    text-align: center;
   }
+}
+/* 480+ 
+------------------------------------------ */
+@media only screen and (min-width: 30em) {
+  /* Masthead */
+}
+
+
+
+/* 480-767-only 
+------------------------------------------ */
+@media only screen and (min-width: 30em) and (max-width: 47.9375em) {
+  /* Sidebar */  
+  
+}
+/* 600-767-only 
+------------------------------------------ */
+@media only screen and (min-width: 37.5em) and (max-width: 47.9375em) {
+  /* Sidebar */
+  
+
+  
+
+}
+
+/* 768+ 
+------------------------------------------- */
+@media only screen and (min-width: 48em) {
+
+    /* Main Content where you can start adding columns*/
+
+    main {
+    float: left;
+    width: 62.5%;
+  } /*Only an example it can alter in terms of percentage*/
+
+    /* Sidebar */
+  .sidebar {
+    float: right;
+    margin-top: 1.875em;
+    width: 31.25%;
+  }  /* Again can alter percentages*/
+
+   
+
+  
 
   .resultcard h2 a {
-  	text-decoration: none;
+    text-decoration: none;
   }
 
   .resultcard h2 {
-  	margin-top: -2.4em;
-  	text-align: left;
-  	margin-left: 1.5em;
-  	font-size: 1.2em;
+    margin-top: -2.4em;
+    text-align: left;
+    margin-left: 1.5em;
+    font-size: 1.2em;
   }
   .resultcard h4 {
-  	margin: 0.2em;
-  	padding-left: 2em;
-  	padding-right:2em;
-  	text-align: right;
-  	font-size: 0.7em;
+    margin: 0.2em;
+    padding-left: 2em;
+    padding-right:2em;
+    text-align: right;
+    font-size: 0.7em;
   }
 
   .resultcard h4:first-child {
-  	margin-top: 1em;
+    margin-top: 1em;
   }
 
   .resultcard h3 {
-  	font-size: 0.7em;
-  	margin-left: 5em;
-  	width: 70%;
-  	margin-top: -1em;
-  	padding-bottom: 0.3em;
+    font-size: 0.7em;
+    margin-left: 5em;
+    width: 70%;
+    margin-top: -1em;
+    padding-bottom: 0.3em;
+    text-align: left;
   }
+
+
+}
+  /* --- end media queries ---- */
+
+
+
+
+ 

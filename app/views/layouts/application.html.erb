@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Oxygen:400,700|Orbitron:400,500,700,900' rel='stylesheet' type='text/css'>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -39,8 +40,9 @@
           margin-left: 0px !important;
       }
   </style>
-</head>
-<body>
+</head> 
+<body class="nonland">
+<div class="navholder">
 <ul class="basicnav">
 <% if user_signed_in? %>
     <p></p>
@@ -56,11 +58,10 @@
 <% end %>
     
 </ul>
+</div>
 
-<% flash.each do |key, value| %>
-  <%= content_tag :div, value, class: "flash #{key}" %>
-<% end %>
 <%= yield %>
+<div class="foot">
 <div class="footer" >
  <% if current_user %>
  <% else %>
@@ -70,21 +71,30 @@
 
  <div class ="footernav" >
    <ul>
-     <li>Legal</li>
-     <li>Help</li> 
-     <li>copyright</li>
-     <li>contact us</li>
+     <li><%= link_to "Legal", legal_path %></li>
+     <li><%= link_to "Help", help_path %></li> 
+     <li><%= link_to "Contact us", contactus_path %></li>
+     
+
    </ul> 
 </div>   
 
- <div id="sicontainer" >
-          <ul id="sinav" >
+ <div id="sicontainer1" >
+          <ul id="sinav1" >
             <li><a href="#" ><h3  >a</h3></a></li>
             <li><a href="#" ><h3  >j</h3></a></li>
-            <li><a href="#" ><h3  >v</h3></a></li>
+            <li><a href="#" ><h3  >x</h3></a></li>
             <li><a href="#" ><h3  >r</h3></a></li>
           </ul>
       </div>
+      
+
 </div>
+<div class="footerr" >
+   <small>(c)Miverva SI Ltd 2015.  All rights reserved.</small>
+   <div>Icons made by <a href="http://royand.co" title="Roy and Co">Roy and Co</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>         is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
+   </div>
+   </div>
+
 </body>
 </html>

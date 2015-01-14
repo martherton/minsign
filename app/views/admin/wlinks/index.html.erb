@@ -1,16 +1,43 @@
-<%= link_to "Create Link", new_admin_wlink_path(query: params[:query]) %>
+<div class="logo" id="logosearch" >
+	<img src="/assets/logo.svg">
+</div>	
+
+<b><%= link_to "Create Link", new_admin_wlink_path(query: params[:query]) %></b>
 <h4>All links will open in a new tab</h4>
 	
-<h4>Links for Module -<%= Linkcat.find(params[:query]).linkcatname %></h4>
+<h4>Links for Module -&nbsp<%= Linkcat.find(params[:query]).linkcatname %></h4>
 
-<% @wlinks.each do |wlink| %>
-	<%= User.find(wlink.user_id).fname %>
-	<%= link_to wlink.wlinkname, wlink.wlinkurl, target: '_blank' %>
-	<%= wlink.wlinkdesc %>
-	<%= wlink.wlinkveri %>
 
-	<%= link_to "Edit", edit_admin_wlink_path(wlink.id, query: params[:query]) %>
-	<!--<%= link_to "More detail", admin_wlink_path(wlink.id) %> -->
+<div class="modadmin">
+<table>
+	<thead>
+		<tr>
+			<th>Link</th>
+			<th>Created by</th>
+			<th>Verification Level</th>
+			<th>Link description</th>
+			<th>Link Source</th>
+			<th>LInk Language</th>
+			<th>Link age</th>
+			<th>Edit link</th>
+		</tr>
+	</thead>
+	<tbody>	
+		<% @wlinks.each do |wlink| %>
+		<tr>
+			<td><%= link_to wlink.wlinkname, wlink.wlinkurl, target: '_blank' %></td>
+			<td><%= User.find(wlink.user_id).fname %>&nbsp<%= User.find(wlink.user_id).lname %></td>
+			<td><%= wlink.wlinkveri %></td>
+			<td><%= wlink.wlinkdesc %></td>
+			<td><%= wlink.wlinksource %></td>
+			<td><%= wlink.wlinklang %></td>
+			<td><%= wlink.wlinkyear %></td>
 
-	
+			<td><%= link_to "Edit", edit_admin_wlink_path(wlink.id, query: params[:query]) %></td>
+		</tr>		
 <% end %>
+</tbody>
+</table>
+</div>
+
+

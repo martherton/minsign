@@ -3,13 +3,139 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-/*Dashboard specific CSS-----
-------*/
+/* ===================== MEDIA QUERIES ===================== */
 
+/* 320+ 
+------------------------------------------ */
+@media only screen and (min-width: 20em) {
+  /* Masthead specific styling for small screen*/
+  
+
+
+
+
+
+
+
+#comment_contentcom {
+	width: 80%;
+}
+
+.commentbox h4 {
+	text-align: center;
+}
+
+
+
+.latestsearch table,
+.toprsearch table,
+.userdetail table {
+	text-align: left;
+
+}
+
+.latestsearch table td,
+.latestsearch table th,
+.toprsearch table th,
+.toprsearch table td,
+.userdetail table td {
+	padding-left: 1em;
+	max-width: 20em;
+}
+
+.accounttype h4 {
+	text-transform: capitalize;
+	
+}
+
+.accounttype {
+	margin-top: 1em;
+	padding-left: 1em;
+	
+}
+
+.userinfo {
+	background-color: #FFFFFF;
+	width: 90%;
+	margin-left: 5%;
+	
+
+}
+
+.userdetail {
+	width: 100%;
+	
+	
+	padding-top: 1em;
+}
+
+.userdetail {
+	width: 90%;
+	margin-left: 5%;
+	
+	
+}
+
+.updatedetails {
+	text-align: center;
+}
+
+.updatedetails form {
+	
+}
+
+
+
+
+}
+/* 480+ 
+------------------------------------------ */
+@media only screen and (min-width: 30em) {
+  /* Masthead */
+}
+
+
+
+/* 480-767-only 
+------------------------------------------ */
+@media only screen and (min-width: 30em) and (max-width: 47.9375em) {
+  /* Sidebar */  
+  
+}
+/* 600-767-only 
+------------------------------------------ */
+@media only screen and (min-width: 37.5em) and (max-width: 47.9375em) {
+  /* Sidebar */
+  
+
+  
+
+}
+
+/* 768+ 
+------------------------------------------- */
+@media only screen and (min-width: 48em) {
+
+    /* Main Content where you can start adding columns*/
+
+    main {
+    float: left;
+    width: 62.5%;
+  } /*Only an example it can alter in terms of percentage*/
+
+    /* Sidebar */
+  .sidebar {
+    float: right;
+    margin-top: 1.875em;
+    width: 31.25%;
+  }  /* Again can alter percentages*/
+
+  
 .toprsearch {
+
 	width: 50%;
 	float: left;
-	margin-left: 3em;
+	margin-left: 5%;
 }
 
 .latestsearch {
@@ -17,9 +143,7 @@
 
 }
 
-.accounttype h4 {
-	display: inline-block;
-}
+
 
 #comment_contentcom {
 	width: 60%;
@@ -30,7 +154,8 @@
 }
 
 .latestsearch table,
-.toprsearch table {
+.toprsearch table,
+.userdetail table {
 	text-align: left;
 
 }
@@ -38,7 +163,55 @@
 .latestsearch table td,
 .latestsearch table th,
 .toprsearch table th,
-.toprsearch table td {
+.toprsearch table td,
+.userdetail table td {
 	padding-left: 1em;
 	max-width: 20em;
 }
+
+.accounttype h4 {
+	text-transform: capitalize;
+	
+}
+
+.accounttype {
+	margin-top: 1em;
+	padding-left: 1em;
+	width: 40%;
+}
+
+.userinfo {
+	background-color: #FFFFFF;
+	width: 90%;
+	margin-left: 5%;
+	height: 5em;
+}
+
+.userdetail {
+	position: relative;
+	bottom: 5em;
+	margin-left: 40%;
+	margin-bottom: -5em;
+	padding-top: 1em;
+}
+
+.userdetail a {
+	position: relative;
+	left: 30em;
+	bottom: 3em;
+}
+
+.updatedetails {
+	text-align: center;
+}
+
+.updatedetails form {
+	margin-top: -3em;
+}
+
+}
+  /* --- end media queries ---- */
+
+/*Dashboard specific CSS-----
+------*/
+

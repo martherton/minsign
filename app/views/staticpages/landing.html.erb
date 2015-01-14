@@ -1,63 +1,111 @@
 
 <section class="container1">
-	<div class="logoland">
-		<img src="/assets/logoland.svg" />
+	<div class="fixedhead" >
+		<ul >
+				<li><a href="http://www.minervasi.com" id="logotopleft" >Minerva SI logo</a></li>
+		      
+   </ul> 
+   <div id="sicontainer"  >
+          <ul class="sinav", id="hidlink"  >
+          	<li  ><%= link_to "How it works", howitworks_path, id: "hidlinkf" %></li>
+		     		<li  ><%= link_to "About us", aboutus_path, id: "hidlinkg" %></li>
+		     		<li  id="regout" ><a href="#registerform" id="hidlinkh">Register</li>
+
+            <li><a href="#" >a</a></li>
+            <li><a href="#" >j</a></li>
+            <li><a href="#" >x</a></li>
+            <li><a href="#" >r</a></li>
+          </ul>
+      </div>
 	</div>
+	
+	</div>
+
+	<div class = "simplelogo" >
+		<img src="/assets/logosvg.svg" >
+	
+	</div>	
 
 	<% if user_signed_in? %>
 		<div class="login">
-			<h2><%= link_to "Search", new_user_find_path(current_user.id), class: "mainlink" %> </h2>
+			<h2><%= link_to "Enter Site", new_user_find_path(current_user.id), class: "mainlink" %> </h2>
 		</div>
 	<% else %>
 		<div class="loginform" id="loginform" %>
 			<%= render 'users/sessions/new' %>
 
-		</div>
-
-		<div class="register">
-			<h2><a href="#registerform" class="mainlink" >Register</a></h2>
-		</div>
-
-		<div class="registerbox">
-		</div>
+		
 
 	<% end %>
+	
 
-	<div class="about">
-		<h2>Minerva: simplifying information for professional investors.</h2>
-	</div>
+<div class="strapline" >
 
-	<div class="aboutbox">
-	</div>
-
-	<div class="animate-in ultra-slo-mo" data-anim-type="bounce-in-down" data-anim-delay="200" id="scroll">
-		<h2>V</h2>
-	</div>
+  <h1>Simplifying information to save professional investors time.</h1>
+</div>
 
 
 
 </section>
 
 <section class="container2">
-	<div class="explanation1">
-	   Description of what the company does
+	<div class="explanation1" id="hiw">
+			<h1>How it works</h1>
+			<div class="quarter">
+			<ul  >
+	   		<li><img src="/assets/eye107.svg"></li>
+	   		<li><h4>We collate information in areas of specific interest for professional investors by undertaking the difficult and time consuming ground work.</h4></li>
+	   	</ul>	
+	   	<ul >
+	   		<li><img src="/assets/key174.svg", class="hiwimres"></li>
+	   		<li><h4>As a professional investor you register for free with Minerva and we create a secure account after verifying your details.</h4></li>
+	   	</ul>	
+	   	</div>
+	   	<div class="quarter2">
+	   	<ul >
+
+	   		<li><img src="/assets/magnifying glass.svg", class="hiwimres"></li>
+	   		<li><h4>You search the platform within your specified area of interest.</h4></li>
+	   	</ul>
+	   	<ul >	
+	   		<li><img src="/assets/clock101.svg", class="hiwimres"></li>
+	   		<li><h4>You receive the results that you need and save time for decision making.</h4></li>
+	   	</ul>	
+	   	</div>
+
 	</div>
+
 </section>
 
 <section class="container3">
 	<div class="strap1" >
-		Strap LIne
+		<h1>Giving you the information you need to save you time for decsion making.</h1>
 	</div>	
 </section>
 
 <section class="container4">
-	<div class="strap1" >
-		More Description
+	<div class="explanation2" id="About">
+		<h1>About us</h1>
+			<ul>
+				<div class="col1" >
+	   		<li><img src="/assets/speed4.svg" class=" hiwimres", id="hiwimres1"></li>
+	   		<li><h4>We have built a web based platform to significantly reduce your time to find the reults you need.</h4></li>
+	   		</div>
+	   		<div class="col2" >
+	   		<li><img src="/assets/connected4.svg", class=" hiwimres", id="hiwimres2"></li>
+	   		<li><h4>We have already put in place several ways for professional investors to save time.  Link to current modules.</h4></li>
+	   		</div>
+	   		<div class="col3">
+	   		<li><img src="/assets/centralized.svg", class=" hiwimres", id="hiwimres3"></li>
+	   		<li><h4>We will be adding content at an ever growing pace, exponentially growing the usefullness to investors.  Link to future modules.</h4></li>
+	   		</div>
+	   	</ul>	
 	</div>
 </section>
 
 <section class="container5">
 	<div class="entrybox" >
+		<h1>Receive updates or sign up</h1>
 	</div>
 		<div class="moreinfo" id="moreinfoform" >
 			<%= render 'moreinfos/new' %>
@@ -72,7 +120,21 @@
 
 
 </section>
+<div class="footerl" >
+<div class ="footernavl" >
+   <ul>
+     <li><%= link_to "Home", root_path %></li>
 
+     <li><%= link_to "Legal", legal_path %></li>
+     <li><%= link_to "Content", content_path %></li> 
+     <li><%= link_to "Contact us", contactus_path %></li>
+     <li><small>Please email us at info@minervasi.com</small></li>
+   
+     <li><small>(c)Miverva SI Ltd 2015.  All rights reserved.</small></li>
+
+   </ul> 
+</div>  
+</div>
 
 
 

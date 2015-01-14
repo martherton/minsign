@@ -1,11 +1,31 @@
-<%= link_to "Create Module", new_admin_linkcat_path %>
+<div class="logo" id="logosearch" >
+	<img src="/assets/logo.svg">
+</div>	
 
-
-<% policy_scope(@linkcats).each do |linkcat| %>
-	<%= link_to linkcat.linkcatname, admin_linkcat_path(linkcat.id) %>
-	<%= User.find(linkcat.user_id).fname %>
-	<%= linkcat.linkcattype %>
-	<%= linkcat.linkcatdesc %>
-	<%= link_to "Edit", edit_admin_linkcat_path(linkcat.id) %>
-	<%= link_to "View all links for this module", admin_wlinks_path(query: linkcat.id) %>
+<b><%= link_to "Create Module", new_admin_linkcat_path %></b>
+<div class="modadmin">
+<table>
+	<thead>
+		<tr>
+			<th>Module name</th>
+			<th>Created by</th>
+			<th>Module Type</th>
+			<th>Module description</th>
+			<th>Edit module</th>
+			<th>View all module links</th>
+		</tr>
+	</thead>
+	<tbody>	
+		<% policy_scope(@linkcats).each do |linkcat| %>
+		<tr>
+			<td><%= linkcat.linkcatname %></td>
+			<td><%= User.find(linkcat.user_id).fname %>&nbsp<%=	User.find(linkcat.user_id).lname %></td>
+			<td><%= linkcat.linkcattype %></td>
+			<td><%= linkcat.linkcatdesc %></td>
+			<td><%= link_to "Edit", edit_admin_linkcat_path(linkcat.id) %></td>
+			<td><%= link_to "View all links for this module", admin_wlinks_path(query: linkcat.id) %></td>
+		</tr>		
 <% end %>
+</tbody>
+</table>
+</div>

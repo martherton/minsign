@@ -1,20 +1,21 @@
-<h2>Edit module</h2>
 
 <div class="newopen" >
+<h2>Edit module</h2>
+
 
 <%= simple_form_for @linkcat, url: admin_linkcat_path(params[:id]), method: :put do |f| %>
 
-  <h4>Name</h4><%= f.input :linkcatname, label: false %>
+  <%= f.input :linkcatname, label: false, placeholder: "name" %>
 
-  <h4>Type</h4><%= f.input :linkcattype, collection: ["Curated Weblinks","Other"], label: false %>
+  <b>Type<%= f.input :linkcattype, collection: ["Curated Weblinks","Other"], label: false, prompt: "Type" %></b>
 
-   <h4>View Type</h4><%= f.input :linkcatview, collection: ["Normal","Other"], label: false %>
+<b>View<%= f.input :linkcatview, collection: ["Normal","Other"], label: false, prompt: "View type" %></b>
 
-   <h4>Maximum allowable search results</h4><%= f.input :linkcatmaxres, collection: 1..8, label: false %>
+  <b>Max<%= f.input :linkcatmaxres, collection: 1..8, label: false, prompt: "max results" %></b>
 
-  <h4>Description</h4><%= f.input :linkcatdesc, label: false %>
+  <%= f.input :linkcatdesc, label: false, placeholder: "description" %>
 
-  <%= f.button :submit, 'Edit module' %>
+  <%= f.button :submit, 'Add new module' %>
 
 <% end %>
 </div>

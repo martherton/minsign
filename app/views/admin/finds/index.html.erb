@@ -1,18 +1,21 @@
-
-
+<div class="logo" id="logosearch" >
+	<img src="/assets/logo.svg">
+</div>	
+<div class="newopen">
 <h4>Filters</h4>
 <%= simple_form_for :search, url: admin_finds_path, method: :get do |f| %>
 	<h4>search for specific term</h4><%= f.input :q, label: false %>
 	<%= f.button :submit, "Search" %> 
 <% end %>	
 <%= simple_form_for :search, url: admin_finds_path, method: :get do |f| %>
-	<h4>search for a specific users searches</h4><%= f.input :q1, collection: @users,  label_method: :email, label: false %>
+	<h4>search for a specific users searches</h4><%= f.input :q1, collection: @users,  label_method: :email, label: false, prompt: "email" %>
 	<%= f.button :submit, "Find" %> 
 <% end %>	
 <%= simple_form_for :search, url: admin_finds_path, method: :get do |f| %>
-	<h4>search for a specific module searches</h4><%= f.input :q2, collection: @linkcats,  label_method: :linkcatname, label: false %>
+	<h4>search for a specific module searches</h4><%= f.input :q2, collection: @linkcats,  label_method: :linkcatname, label: false, prompt: "Module" %>
 	<%= f.button :submit, "Find" %> 
 <% end %>	
+</div>
 <h4>Total number of searches:<%= @findscount %></h4>
 
 <% @findslinkcat.each do |findslinkcat, count| %>

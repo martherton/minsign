@@ -4,35 +4,39 @@
 
 <div class="userinfo" >
   <div class="accounttype" >
-    <h4> Accout type:&nbsp</h4>
+    <h4> Account type:&nbsp
     <% @user.roles.each do |role| %>
-      <h4><%= role.name %></h4>
+      <%= role.name %></h4>
     <% end %>
-    <h4>Modules allowed:</h4>
-    <h4>All</h4>
+   
+    <h4>Modules allowed:&nbsp
+    All</h4>
   </div>  
 
 
-
+<div class="userdetail">
   <table>
     <tbody>
       <tr>
-        <td>Name</td>
+        <td><b>Name</b></td>
         <td><%= @user.fname %>&nbsp<%= @user.lname %></td>
-        <td>Email</td>
+        <td><b>Email</b></td>
         <td><%= @user.email %></td>
       </tr>
       <tr>
-        <td>Company</td>  
+        <td><b>Company</b></td>  
         <td><%= @user.company %></td>
-        <td>Position</td>
+        <td><b>Position</b></td>
         <td><%= @user.position %></td>
-        <td>Total Searches</td>
+      </tr>
+      <tr>  
+        <td><b>Total Searches</b></td>
         <td><%= @total %></td>
       </tr>
     </tbody>
   </table>
   <%= link_to image_tag("padlock45.svg", height: "23px", alt: "Edit Account Details", title: "Edit Account"),  edit_user_registration_path(current_user.id)%>
+</div>
 </div>        
 
 

@@ -11,5 +11,28 @@ class StaticpagesController < ApplicationController
 
 	end
 
+	def content
+
+	end
+	
+	def contactus
+
+	end	
+
+	def legal
+
+	end
+	
+	def howitworks
+
+	end
+
+	def aboutus
+
+	end	
+
+	def reset
+
+	end	
 	
 end

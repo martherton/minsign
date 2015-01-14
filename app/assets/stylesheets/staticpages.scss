@@ -2,48 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-
-
-
-
-
-
-
-
-/*colour scheme-----
-------------------*/
-
-.aboutbox,
-.loginbox,
-.registerbox,
-.logo img {
-	background-color: #456789;
-}
-
-.about h2,
-.login h2,
-.register h2,
-#scroll h2 {
-	color: #FFFFFF;
-}
-
-.container2 {
-	background-color: #FFE0B2;
-
-}
-
+/*COLOUR SCHEME-------
+-----------*/
+.container2,
 .container4 {
-	background-color: #C2D1FF;
+  background-color: #FFFFFF;
 
 }
 
-/*MAke scroll indicator invisible at lowest level and touch
-------------------*/
+.container3,
+.container5 {
+  background-color: #0085CD;
 
-#scroll {
-	display: none;
 }
+
+
+
+
 
 /* ===================== MEDIA QUERIES ===================== */
 
@@ -51,49 +26,227 @@
 ------------------------------------------ */
 @media only screen and (min-width: 20em) {
   /* Masthead specific styling for small screen*/
+
+  /*LANDING PAGE SMALL CSS----*/
+
+  .container1 { /*First page*/
+	
+	
+  background-image:  url(image-path('simple2small.jpg')); 
+  background-position: center center;
+
+  -webkit-background-size: cover ;
+  -moz-background-size: cover ;
+  -o-background-size: cover ;
+  background-size: cover ; 
+	
+	
   
-.logo {
-	padding: 1em;
-	margin-top: 4em;
-}
-
-.logoland {
-	padding: 1em;
-	opacity: 0.7;
-}
-
-.logo img {
-	max-width: 100%;
+  	height: 100%;
+  	max-width: 100%;
+  	
 
 }
 
-.loginbox,
-.registerbox,
-.aboutbox {
-	height: 4em;
-	opacity: 0.5;
-	z-index: 1;
+.fixedhead { /*THE FIXED HEADER - Different shape for phones over larger screens*/
+  position:fixed;
+  top: 0;
+  left: 0;
+  height: 3.5em;
+  width: 100%;
+  background-color: #FFFFFF;
+
 }
 
-.login h2,
-.about h2,
-.register h2 {
-	height: 0;
-	position: relative;
-	top: 1.5em;
-	z-index: 2;
-	text-align: center;
+.fixedhead li:first-child {
+	display: block;
 }
 
-.login h2 a,
-.register h2 a {
-	text-decoration: none;
-	color: #FFFFFF;
+.fixedhead li {
+	display: inline-block;
 }
 
-.about h2 {
-	font-size: 1em;
+.fixedhead a {
+  color: #0085CD;
+  font-size: 1.3em;
+  margin-right: 1em;
+  
 }
+
+.fixedhead img {
+  height: 3em;
+  padding-top: 0.2em;
+  padding-left: 0.3em;
+  width: 80%;
+  margin-left: 10%;
+}
+
+#logotopleft {
+  background-image: url(image-path('logoland.svg'));
+  height: 2.75em;
+  overflow:hidden;
+    text-indent:100%;
+    white-space:nowrap;
+    
+  margin-left: 17%;
+  background-size: 100%;
+  width: 66%;
+  display: block;
+}
+#hidlink {
+  display: none;
+}
+
+#hidlinkf,
+#hidlinkg,
+#hidlinkh  {
+  font-family: 'Oxygen, sans-serif';
+  font-size: 1em;
+}
+
+#regout a{
+  border: 1px solid #0085CD;
+  height: 1.7em;
+  padding: 0.2em;
+
+}
+
+.sinav {
+	margin-top: 0.5em;
+  height: 2.5em;
+}
+
+.sinav li{
+  display: inline-block;
+  height: 2.5em;  
+
+}
+
+ .sinav li a {
+  font-family: 'socicon'; 
+  margin-right: 0.3em;
+
+
+ }
+
+
+
+#sicontainer {
+    position: fixed;
+  top: 0em;
+  right: 0em;
+
+  height: 3em;
+}
+  
+  .simplelogo {
+    width: 100%;
+    height: 8em;
+    display: none;
+  }
+
+.simplelogo img {
+
+  width: 50%;
+  margin-left: 25%;
+  margin-top: -2em;
+  
+}
+
+.normalfont {
+  font-family: 'Oxygen', sans-serif;
+  color: #000000;
+  text-align: center;
+  margin-top: -2.5em;
+  font-weight: 400;
+
+}
+
+
+.loginform {
+	padding-top: 3em;
+}
+
+.strapline,
+.strap1 {
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.strapline h1,
+.strap1 h1 {
+  font-size: 1em;
+}
+
+
+.container2 {
+	
+	
+}
+
+.explanation1 h1,
+.explanation2 h1,
+.entrybox h1 {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+
+
+.explanation1 img,
+.explanation2 img {
+  width: 12.5%;
+  margin-left: 43.75%;
+
+}
+
+.explanation1 h4,
+.explanation2 h4{
+  width: 90%;
+  text-align: justify;
+  font-size: 0.8em;
+  margin-left: 5%;
+  margin-bottom: 0;
+  margin-top: 0;
+
+}
+
+
+
+.container3 {
+	
+  height: 20em;
+	
+  
+  	
+  	
+}
+
+.strap1 {
+  position: relative;
+  top: 50%;
+}
+
+.container4 {
+	
+
+
+}
+
+.container5 {
+	
+	
+  
+
+
+}
+
+.entrybox h1 {
+  color: #FFFFFF;
+
+}
+
+
 
 .signupfor,
 .moreinfos,
@@ -103,6 +256,36 @@
 
 .moreinfos:first-child {
 	border-width: 0 0 0 0;
+}
+
+.moreinfos input[type="email"] {
+  margin-top: 0;
+}
+
+.footerl li {
+  display: inline-block;
+}
+ .footerl a,
+ .footerl small {
+  color: #FFFFFF;
+
+ }
+/*STYLING MESSAGE PAGES---
+---------*/
+
+#logostatexland {
+  width: 75%;
+  margin-left: 12.5%;
+}
+
+#logostatexland img {
+  height: 3em;
+  width: 90%;
+  margin-left:5%;
+}
+
+.message {
+  text-align: center;
 }
 
 }
@@ -156,160 +339,212 @@
 	font-size: 2em;
 }
 
- .loginbox,
-.login,
-.registerbox,
-.register
- {
-	position: absolute;
-	top: 8%;
-	width: 9em;
-	margin: 0;
-
-}
-
-.login h2 a:hover,
-.register h2 a:hover {
-	color: #DBDBDB;
-}
-
-.loginbox,
-.login {
-	left: 58%;
-
-}
-
-.registerbox,
-.register {
-	left: 78%;
-}
-
-.login h2,
-.register h2 {
-	margin: 0;
-	margin-top: -0.8em;
-}
-
-
-
-
 .container1 {
-	
-	
   background-image:  url(image-path('simple2.jpg')); 
-  -webkit-background-size: cover ;
-  -moz-background-size: cover ;
-  -o-background-size: cover ;
-  background-size: cover ; 
-	background-attachment: fixed;
-	background-repeat: no-repeat;
-	background-position: center center;
-  
-  	height: 100%;
-  	max-width: 100%;
-  	
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+
+}
+.strapline h1 {
+  margin-top: 3em;
+}
+.fixedhead {
+  position:fixed;
+  height: 4em;
+  width: 100%;
+  background-color: #FFFFFF;
+
+}
+
+.fixedhead li:first-child {
+	display: inline-block;
+}
+
+.fixedhead li {
+  display: inline-block;
+}
+
+.fixedhead a {
+  color: #0085CD;
+  font-size: 1.3em;
+  margin-right: 3em;
+  position: relative;
+  bottom: 0.7em;
+}
+
+.fixedhead img {
+  height: 4em;
+  padding-top: 0.5em;
+  padding-left: 1em;
+  margin-right: 10em;
+  width: auto;
+  margin-left: auto;
+
+}
+
+#logotopleft {
+  margin-left: 2em;
+    margin-top: 1em;
+    width: 11em;
+}
+#hidlink {
+  display: block;
+}
+
+.sinav li a {
+  position: relative;
+  top: 0.5em;
+  margin-right: 1em;
+}  
+
+ .simplelogo {
+  display: block;
+ }
+
+
+.strapline h1,
+.strap1 h1 {
+  font-size: 2em;
 
 }
 
 .container2 {
-	height: 100%;
-	
-	background-attachment: fixed;
-	background-size: cover;
-	-webkit-background-size: cover;
+  height: 100%;
+    max-width: 100%;
+  
+  
+  background-attachment: fixed;
+  background-size: cover;
+  -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-	
+}
+
+.quarter {
+  float: left;
+  width: 49%;
+}
+
+.quarter2 {
+
+  width: 49%;
+  float: right;
+}
+
+.explanation1 h4,
+.explanation1 img {
+  margin-top: 2em;
+}
+
+.explanation1 img {
+  width: 20%;
 }
 
 .container3 {
-	
-	
-  background-image:  url(image-path('simple3.jpg')); 
+
+background-image:  url(image-path('simple3.jpg')); 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-	background-attachment: fixed;
-	background-repeat: no-repeat;
-	background-position: center center;
-  	height: 100%;
-  	max-width: 100%;
-  	
-  	
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center center;
+    height: 100%;
+    max-width: 100%;
 }
 
 .container4 {
-	height: 100%;
-	background-attachment: fixed;
-	background-size: cover;
-	-webkit-background-size: cover;
+  height: 100%;
+  background-attachment: fixed;
+  background-size: cover;
+  -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-	height: 100%;
-  	max-width: 100%;
+  height: 100%;
+    max-width: 100%;
+}
 
+.col2 img{
+  width:20%;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.col3 img {
+  
+  margin-bottom: 4em;
+  width:20%;
 
 }
 
+.col1 img {
+  margin-bottom: 5em;
+  width:20%;
+  margin-top: 2em;
+}
+
+.col1 {
+  float: left;
+  width: 33%;
+  margin-top: 2em;
+}
+
+.col2 {
+  float: left;
+  width: 66%;
+}
+
+.col2 h4{
+  width: 45%;
+}
+
+.col2 img {
+  margin-left: 20%;
+}
+
+.col3 {
+  float: right;
+  width: 33%;
+  margin-top: -12em;
+}
+
+
+
+
 .container5 {
-	
-	
-  background-image:  url(image-path('simple4.jpg')); 
+background-image:  url(image-path('simple4.jpg')); 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-	background-attachment: fixed;
- 	background-repeat: no-repeat;
-	background-position: center center;
-  	height: 100%;
-  	max-width: 100%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center center;
+    height: 100%;
+    max-width: 100%;
 
-
-}
+}    
 
 .entrybox {
-	
-	background-color: #456FED;
-	opacity: 0.5;
-	position: relative;
-  height: 38em;
-  width: 20em;
-  bottom: 5%;
-  display: inline;
-    
-
+  padding-top: 5em;
 }
 
-/* Transitional slides
--------------*/
+.footerl {
+  margin-top: -2em;
+  margin-left: 10%;
+  width: 80%;
+}
 
-
+.footerl li {
+  margin-right: 2em;
+}
 
 }
   /* --- end media queries ---- */
 
 
-/* html5boilerplate.com Clearfix
---------------------------------- */
-.clearfix:before,
-.clearfix:after {
-  content: " ";
-  display: table;
-}
 
-.clearfix:after {
-  clear: both;
-}
-
-/*
- * For IE 6/7 only
- * Include this rule to trigger hasLayout and contain floats.
- */
-.clearfix {
-  *zoom: 1;
-}
 
 
 

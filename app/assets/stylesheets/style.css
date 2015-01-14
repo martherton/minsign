@@ -1,11 +1,14 @@
 html,
 body {
-  height: 100%;
+  
   padding: 0;
-  width: 100%;
+  height: 100%;
   margin: 0;
+
   
 }
+
+
 
 /* Putting in the web fonts
 ---------------------------
@@ -27,7 +30,7 @@ body {
 ----------*/
 
 body {                                                                             /*Sets the basic font sizing which all others refer to*/
-  font: 100%/1.2 Georgia, "Times New Roman", serif;
+  font: 100%/1.2 'Oxygen', "Times New Roman", serif;
   
 }
 
@@ -54,12 +57,30 @@ ul {
   border: 0;
 }
 
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
 /*Setting all pictures max width
 --------------------------------
 -------*/
 
 .examplephoto {
 	max-width: 100%;
+}
+
+/*COLOUR SCHEME----------
+--------------*/
+
+.nonland {
+  background-color: #FFFFFF;
+}
+
+
+
+.loginb a {
+  color: #FFFFFF;
 }
 
 /*STYLING INPUT FORMS-----
@@ -69,27 +90,33 @@ input[type="text"],
 input[type="password"],
 input[type="email"] {
   width: 15em;
-  background-color: #C2D1FF;
-  color: #FFFFFF;
+  background-color: #FFFFFF;
+  color: #0085CD;
   border-style: solid;
   border-width: 1px 0 0 0;
+  border-color: #0085CD;
+
   height: 2em;
   text-indent: 4px;
 }
 
+.searchform input[type="text"] {
+  border-width: 1px 1px 1px 1px;
+}
+
 
 input[type="submit"] {
-  background-color: #FFE0B2;
-  color: #000000;
+  background-color: #0085CD;
+  color: #FFFFFF;
   margin-top: 1em;
   width: 15em;
-  border-style: none;
+  
   height: 2em;
 }
 
 .select {
   -webkit-appearance: none;
-  background-color: #FFE0B2;
+  background-color: #0085CD;
   color: #000000;
   height: 2em;
   text-indent: 4px;
@@ -97,12 +124,16 @@ input[type="submit"] {
         outline:0px;
 }
 
-#moreinfo_email,
+#moreinfo_email {
+  border-width: 0 0 0 0;
+  margin-top: 1em;
+
+
+}
+
 #user_email {
   border-width: 0 0 0 0;
   margin-top: 4em;
-
-
 }
 
 #remlab {
@@ -110,51 +141,15 @@ input[type="submit"] {
 }
 
 
+
 /*STYLING SOCIAL ICONS
 ----------------------
 -------*/
 
-#sinav li{
-  display: inline-block;
-}
 
- #sinav li h3 {
-  font-family: 'socicon'; 
- }
 
-#sicontainer {
-  margin-top: 0.3em;
-  margin-left: 0.3em;
-  
-  display: inline-block;
-  
-}
 
-#sinav a h3 {
-  margin: 0.33em;
-  color: #000000;
-}
 
-.basicnav h4 {
-  font-size: 0.7em;
-  font-weight: 200;
-
-}
-
-.basicnav {
-  margin-right: 2em;
-  
-
-}
-
-.basicnav li {
-  margin-right: 0.5em;
-}
-
-.footernav,
-.footernav li {
-  display: inline-block;
-}
 
 
 
@@ -165,13 +160,91 @@ input[type="submit"] {
 @media only screen and (min-width: 20em) {
   /* Masthead specific styling for small screen*/
   
+.navholder {
+  margin-top:-1em;
+  margin-bottom: 0.5em;
+}
 
+  .basicnav h4 {
+  font-size: 0.7em;
+  font-weight: 600;
+
+}
+
+
+
+.basicnav li {
+  margin-right: 0.5em;
+}
+
+.basicnav li {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.basicnav {
+  width: 70%;
+  margin-left: 25%;
+}
+
+.basicnav a {
+  text-decoration: none;
+}
+
+
+
+.footer {
+    width:100%;
+  height:80px;
+  
+    margin-left: 2em;
+  
+  }
+  
+
+  .footer a {
+    text-decoration: none;
+    
+  }
+ 
+  .footernav {
+    width: 75%;
+    margin-left: 12.5%;
+  }
+  
+  .footernav li {
+    display: inline-block;
+  }
+
+  #sicontainer1 {
+    width: 75%;
+    margin-left: 12.5%;
+  }
+
+   #sinav1 li h3 {
+  
+  font-family: 'socicon'; 
+  }
+
+  #sicontainer1 li {
+      
+    display: inline-block;
+    
+  }
+
+  #sinav1 a {
+    color: #0085CD;
+    margin-left: 1em;
+    margin-right: 1em;
+  }
 
 }
 /* 480+ 
 ------------------------------------------ */
 @media only screen and (min-width: 30em) {
   /* Masthead */
+
+
 }
 
 
@@ -180,6 +253,7 @@ input[type="submit"] {
 ------------------------------------------ */
 @media only screen and (min-width: 30em) and (max-width: 47.9375em) {
   /* Sidebar */  
+
   
 }
 /* 600-767-only 
@@ -188,7 +262,7 @@ input[type="submit"] {
   /* Sidebar */
   
 
-  
+
 
 }
 
@@ -210,15 +284,58 @@ input[type="submit"] {
     width: 31.25%;
   }  /* Again can alter percentages*/
 
-  .footer {
-    width:100%;
-  height:80px;
-  position:absolute;
-  bottom:0;
-  left:0;
-  }
+  
 
-.basicnav {
+
+.footer {
+ 
+  
+}
+
+#sicontainer1 {
+  width: 20em;
+}
+
+.footer div {
+  display: inline-block;
+}
+}
+
+#sicontainer1 {
+  width: 20%;
+  height: 2em;
+}
+
+.footernav {
+  width: 50%;
+  height: 2em;
+  margin-left: 10%;
+  position: relative;
+  bottom: 2em;
+ 
+}
+
+.foot {
+  position:fixed;
+   left:0px;
+   bottom:0px;
+   height:7em;
+   width:90%;
+}
+
+.footerr small {
+  width: 90%;
+  margin-left:5%;
+}
+
+
+.container {
+  position: relative;
+  bottom: 8em;
+  left: 4em;
+}
+
+.navholder {
   text-align: right;
 }
 

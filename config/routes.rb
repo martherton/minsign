@@ -5,6 +5,15 @@ Rails.application.routes.draw do
   root 'staticpages#landing' #link to static landing page
   get 'thanks', to: 'staticpages#thanks' #link to static thankyou page
   get 'confirmed', to: 'staticpages#confirmed' #link to static confirmed page
+  get 'legal', to: 'staticpages#legal' #link to static confirmed page
+  get 'content', to: 'staticpages#content' #link to static confirmed page
+  get 'contactus', to: 'staticpages#contactus' #link to static confirmed page
+  get 'howitworks', to: 'staticpages#howitworks' #link to static confirmed page
+  get 'aboutus', to: 'staticpages#aboutus' #link to static confirmed page
+
+  get 'reset', to: 'staticpages#reset' #link to static confirmed page
+
+
   devise_for :users, controllers: { sessions: "users/sessions", confirmations: "users/confirmations", registrations: "users/registrations" }
 
     

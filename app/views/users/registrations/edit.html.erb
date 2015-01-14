@@ -1,27 +1,36 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="logo" id="logosearch" >
+  <img src="/assets/logo.svg">
+</div>  
+<div class="updatedetails" >
+<h2>Edit Your details</h2>
+<h5>Please leave the password boxes blank if you do not want to change it</h5>
+
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+  
+    <%= f.input :email, required: true, label: false, placeholder: "Email address" %>
+    
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
-    <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
-    <%= f.input :password_confirmation, required: false %>
-    <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
-  </div>
+    <%= f.input :password, autocomplete: "off", label:false, placeholder: "New password", required: false %>
+    <%= f.input :password_confirmation, required: false,label:false, placeholder: "Confirm new password"  %>
 
-  <div class="form-actions">
+    <%= f.input :fname, required: true, label: false, placeholder: "First name" %>
+    <%= f.input :lname, required: true, label: false, placeholder: "Last name" %>
+    <%= f.input :company, required: true, label: false, placeholder: "Company" %>
+    <%= f.input :position, required: true, label: false, placeholder: "Position" %>
+    <%= f.input :current_password, label: false, placeholder: "Confirm changes with password", required: true %>
+  
+
+  
     <%= f.button :submit, "Update" %>
-  </div>
+  
 <% end %>
+</div>
 
-<h3>Cancel my account</h3>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>

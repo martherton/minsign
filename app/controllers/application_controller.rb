@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
 
   def configure_devise_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << [:fname, :lname, :company, :position]
+    devise_parameter_sanitizer.for(:account_update) << [:fname, :lname, :company, :position]
+
   end
 
   # path after sign in
@@ -21,4 +23,12 @@ class ApplicationController < ActionController::Base
 	def after_sign_out_path_for(resource_or_scope)
     root_path
 	end
+
+  def signed_in_root_path(resource)
+      dashboard_user_path(resource)
+    end
+
+    def after_sending_reset_password_instructions_path_for(resource_name)
+      reset_path
+    end
 end
