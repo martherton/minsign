@@ -42,6 +42,41 @@
   </style>
 </head>
 <body>
+<div class="fixedhead" >
+    <ul >
+        <li><a href="http://www.minervasi.com" id="logotopleft" >Minerva SI logo</a></li>
+          
+   </ul> 
+   <div id="sicontainer"  >
+          <ul class="sinav", id="hidlink"  >
+            <li  ><%= link_to "How it works", howitworks_path, id: "hidlinkf" %></li>
+            <li  ><%= link_to "About us", aboutus_path, id: "hidlinkg" %></li>
+            <li  id="regout" ><a href="#registerform" id="hidlinkh">Register</li>
+
+            <li><a href="https://twitter.com/minerva_si" title="Twitter" target="_blank">a</a></li>
+            <li><a href="https://www.linkedin.com/company/minerva-si?trk=biz-companies-cym" title="LinkedIn" target="_blank">j</a></li>
+            <li><a href="http://www.pinterest.com/minervasi/" title="Pinterest" target="_blank">d</a></li>
+            <li><a href="https://vimeo.com/minervasi" title="Vimeo" target="_blank">s</a></li>
+          </ul>
+      </div>
+  </div>
+  
+  </div>
 <%= yield %>
+<div class="footerl" >
+<div class ="footernavl" >
+   <ul>
+     <li><%= link_to "Home", root_path %></li>
+
+     <li><%= link_to "Legal", legal_path %></li>
+     <li><%= link_to "Content", content_path %></li> 
+     <li><%= link_to "Contact us", contactus_path %></li>
+     <li><small>Please email us at info@minervasi.com</small></li>
+   
+     <li><small>(c)Miverva SI Ltd 2015.  All rights reserved.</small></li>
+
+   </ul> 
+</div>  
+</div>
 </body>
 </html>

@@ -27,7 +27,8 @@
   .resultcard {
     border-style: solid;
     border-width: 2px;
-    box-shadow: 10px 10px 5px #888888;
+    box-shadow: 5px 5px 2px #0085CD;
+    border-color: #0085CD;
     width: 80%;
     margin-left: auto;
     margin-right: auto;
@@ -35,6 +36,10 @@
     margin-bottom: 1em;
     border-radius: 20px;
     text-align: center;
+  }
+
+  .resultcard a {
+    color: #0085CD;
   }
 }
 /* 480+ 

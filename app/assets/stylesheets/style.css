@@ -117,7 +117,7 @@ input[type="submit"] {
 .select {
   -webkit-appearance: none;
   background-color: #0085CD;
-  color: #000000;
+  color: #FFFFFF;
   height: 2em;
   text-indent: 4px;
   border:0px;
@@ -293,33 +293,45 @@ input[type="submit"] {
 }
 
 #sicontainer1 {
-  width: 20em;
+  float: right;
+  width: 18em;
 }
 
 .footer div {
   display: inline-block;
 }
-}
+
 
 #sicontainer1 {
   width: 20%;
   height: 2em;
+  margin-top: -4.5em;
 }
 
 .footernav {
-  width: 50%;
+  width: 70%;
   height: 2em;
   margin-left: 10%;
   position: relative;
-  bottom: 2em;
+  bottom: 0em;
  
+}
+
+.footernav li {
+  margin-right: 1em;
+}
+
+.footernav a,
+.footernav small {
+  color: #0085CD;
+
 }
 
 .foot {
   position:fixed;
    left:0px;
    bottom:0px;
-   height:7em;
+   height:2em;
    width:90%;
 }
 
