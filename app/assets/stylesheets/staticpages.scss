@@ -448,6 +448,11 @@
   margin-top: 2em;
 }
 
+.explanation1 h4 {
+  font-size: 1em;
+  font-weight: 400;
+}
+
 .explanation1 img {
   width: 20%;
 }
@@ -499,7 +504,7 @@ background-image:  url(image-path('simple3.jpg'));
 .col1 {
   float: left;
   width: 33%;
-  margin-top: 2em;
+  margin-top: 2.5em;
 }
 
 .col2 {
@@ -518,10 +523,13 @@ background-image:  url(image-path('simple3.jpg'));
 .col3 {
   float: right;
   width: 33%;
-  margin-top: -12em;
+  margin-top: -18em;
 }
 
-
+.explanation2 h4 {
+  font-weight: 400;
+  font-size: 1.2em
+}
 
 
 .container5 {
