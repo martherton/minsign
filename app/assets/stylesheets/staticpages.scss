@@ -55,7 +55,7 @@
   height: 3.5em;
   width: 100%;
   background-color: #FFFFFF;
-
+  z-index: 2;
 }
 
 .fixedhead li:first-child {
@@ -446,6 +446,7 @@
 .explanation1 h1 {
   position: relative;
   top: 2em;
+  z-index: 1;
 }
 
 .explanation1 h4 {
