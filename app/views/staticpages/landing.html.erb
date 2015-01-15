@@ -9,7 +9,7 @@
 
 	<% if user_signed_in? %>
 		<div class="login">
-			<h2><%= link_to "Enter Site", new_user_find_path(current_user.id), class: "mainlink" %> </h2>
+			<h2><%= link_to "You are logged in enter site", new_user_find_path(current_user.id), class: "mainlink" %> </h2>
 		</div>
 	<% else %>
 		<div class="loginform" id="loginform" %>
