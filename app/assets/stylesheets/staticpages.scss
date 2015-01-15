@@ -443,9 +443,24 @@
   float: right;
 }
 
+.explanation1 h1 {
+  position: relative;
+  top: 2em;
+}
+
+.explanation1 h4 {
+  width: 80%;
+  margin-left: 10%;
+}
+
+.explanation1 h1,
+.explanation1 h3 {
+  color: #0085CD
+}
+
 .explanation1 h4,
 .explanation1 img {
-  margin-top: 2em;
+  margin-top: 1em;
 }
 
 .explanation1 h4 {
@@ -454,7 +469,19 @@
 }
 
 .explanation1 img {
-  width: 20%;
+  width: 18%;
+  margin-left: 41%;
+}
+
+.explanation1 h3 {
+  text-align: center;
+  width: 80%;
+  margin-left: 10%;
+  margin-bottom: 0;
+}
+
+#lesstext {
+  margin-bottom: 1em;
 }
 
 .container3 {
@@ -486,12 +513,14 @@ background-image:  url(image-path('simple3.jpg'));
   width:20%;
   margin-top: 2em;
   margin-bottom: 2em;
+
 }
 
 .col3 img {
   
   margin-bottom: 4em;
-  width:20%;
+  width:30%;
+  margin-left: 35%;
 
 }
 
@@ -499,6 +528,7 @@ background-image:  url(image-path('simple3.jpg'));
   margin-bottom: 5em;
   width:20%;
   margin-top: 2em;
+  margin-left: 40%;
 }
 
 .col1 {
@@ -513,22 +543,41 @@ background-image:  url(image-path('simple3.jpg'));
 }
 
 .col2 h4{
-  width: 45%;
+  width: 42%;
 }
 
 .col2 img {
-  margin-left: 20%;
+  margin-left: 15%;
 }
 
 .col3 {
   float: right;
   width: 33%;
-  margin-top: -18em;
+  margin-top: -24.3em;
+}
+
+.col3 h4 {
+  width: 85%;
+}
+
+.col1 h3,
+.col3 h3 {
+  text-align: center;
+}
+
+.col2 h3 {
+  width: 50%;
+  text-align: center;
 }
 
 .explanation2 h4 {
   font-weight: 400;
   font-size: 1.2em
+}
+
+.explanation2 h1,
+.explanation2 h3 {
+  color: #0085CD;
 }
 
 
