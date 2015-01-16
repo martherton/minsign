@@ -198,7 +198,8 @@
 
 .explanation1 h1,
 .explanation2 h1,
-.entrybox h1 {
+.entrybox h1,
+.entrybox2 h1 {
   text-align: center;
   margin-bottom: 0;
 }
@@ -253,7 +254,8 @@
 
 }
 
-.entrybox h1 {
+.entrybox h1,
+.entrybox2 h1 {
   color: #FFFFFF;
 
 }
@@ -273,6 +275,8 @@
 .moreinfos input[type="email"] {
   margin-top: 0;
 }
+
+
 
 .footerl li {
   display: inline-block;
@@ -422,16 +426,8 @@
 }
 
 .container2 {
-  height: 100%;
-    max-width: 100%;
   
   
-  background-attachment: fixed;
- 
-  background-size: cover;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
   
   
 
@@ -519,14 +515,7 @@ background-image:  url(image-path('simple3.jpg'));
 }
 
 .container4 {
-  height: 100%;
-  background-attachment: fixed;
-  background-size: cover;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  height: 100%;
-    max-width: 100%;
+
 }
 
 .col2 img{
