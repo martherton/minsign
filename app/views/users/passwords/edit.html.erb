@@ -1,6 +1,6 @@
 <% if resource.password.nil?%>
 <div class="logo" id="logostatexland" >
-  <img src="/assets/logo.svg">
+  <%= image_tag 'logo.svg' %>
 </div>  
 <div class="message">
 <h2>Set your password</h2>
@@ -24,8 +24,12 @@
     <%= f.input :password_confirmation, label: false, placeholder: "Confirm your new password", required: true %>
   
 
-  
-    <%= f.button :submit, "Change my password" %>
+		<% if resource.password.nil?%>
+	    <%= f.button :submit, "Set my password" %>
+	    <% else %>
+
+	    <%= f.button :submit, "Change my password" %>
+    <% end %>
   
 <% end %>
 

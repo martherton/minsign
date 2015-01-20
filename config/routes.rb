@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   root 'staticpages#landing' #link to static landing page
   get 'thanks', to: 'staticpages#thanks' #link to static thankyou page
+  get 'registerthanks', to: 'staticpages#thanks2'
   get 'confirmed', to: 'staticpages#confirmed' #link to static confirmed page
   get 'legal', to: 'staticpages#legal' #link to static confirmed page
   get 'content', to: 'staticpages#content' #link to static confirmed page

@@ -51,6 +51,7 @@
    </ul> 
    <div id="sicontainer"  >
           <ul class="sinav", id="hidlink"  >
+            
             <li  ><%= link_to "How it works", howitworks_path, id: "hidlinkf" %></li>
             <li  ><%= link_to "About us", aboutus_path, id: "hidlinkg" %></li>
             <li  id="regout" ><a href="#registerform" id="hidlinkh">Register</li>
@@ -64,6 +65,11 @@
   </div>
   
   </div>
+  
+  <% flash.each do |key, value| %>
+    <div class="flash <%= key %>"><%= value %></div>
+  <% end %>
+
 <%= yield %>
 <div class="footerl" >
 <div class ="footernavl" >

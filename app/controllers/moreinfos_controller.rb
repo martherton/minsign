@@ -12,7 +12,7 @@ class MoreinfosController < ApplicationController
 
 		else
 			flash[:failure] = "There appears to be a problem, please try again"
-			redirect_to_root
+			redirect_to root_path
 		end		
 	end
 

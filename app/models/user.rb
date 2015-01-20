@@ -8,7 +8,12 @@ class User < ActiveRecord::Base
   has_many :linkcats
   has_many :wlinks
   has_many :finds 
-  has_many :comments      
+  has_many :comments 
+  validates :email, presence: true, uniqueness: true
+  validates :fname, presence: true
+  validates :lname, presence: true
+  validates :company, presence: true
+  validates :position, presence: true     
 
 	#method after a registration
 	after_create do

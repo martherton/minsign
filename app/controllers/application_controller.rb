@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 
   # path after sign in
 
-  def after_sign_in_path_for(resource)
+  def aftersign_in_path_for(resource)
   	new_user_find_path(current_user.id)
 	end
   # Send back to root after sign out
@@ -23,6 +23,8 @@ class ApplicationController < ActionController::Base
 	def after_sign_out_path_for(resource_or_scope)
     root_path
 	end
+
+  
 
   def signed_in_root_path(resource)
       dashboard_user_path(resource)

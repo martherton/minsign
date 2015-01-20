@@ -11,6 +11,10 @@ class StaticpagesController < ApplicationController
 
 	end
 
+	def thanks2
+
+	end	
+
 	def content
 
 	end
