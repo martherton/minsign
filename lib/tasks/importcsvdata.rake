@@ -5,7 +5,7 @@ namespace :csvimport do
 
     require 'csv'
 
-    csv_file_path = 'http://www.marksresources.org/Startup/uploadmodule.csv'
+    csv_file_path = 'uploadmodule.csv'
 
     CSV.foreach(csv_file_path) do |row|
 
