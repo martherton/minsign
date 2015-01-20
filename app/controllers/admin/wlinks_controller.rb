@@ -32,7 +32,7 @@ class Admin::WlinksController < ApplicationController
   
   end
 
-	def create
+	def create 
 		if current_user.has_role? :admin
 				
 		    @user = current_user
@@ -42,6 +42,7 @@ class Admin::WlinksController < ApplicationController
 		    	redirect_to admin_wlinks_path(query: @wlink.linkcat_id)
 		  	else
 		    	render :new
+		    	flash[:error] = "Check the input"
 		   	end 
 		else
 			redirect_to	new_user_find_path(current_user.id)
@@ -79,6 +80,12 @@ class Admin::WlinksController < ApplicationController
 	  end	  
 	    
 	end
+
+	def brokenlinks
+
+		@wlinks = Wlink.all
+
+	end	
 
 	private
 

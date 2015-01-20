@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'aboutus', to: 'staticpages#aboutus' #link to static confirmed page
 
   get 'reset', to: 'staticpages#reset' #link to static confirmed page
+  get 'broken', to: 'admin/wlinks#brokenlinks'
 
 
   devise_for :users, controllers: { sessions: "users/sessions", confirmations: "users/confirmations", registrations: "users/registrations" }
@@ -43,10 +44,13 @@ Rails.application.routes.draw do
     resources :users do
       member do
         get 'dashboard'
+
       end
     end    
     resources :linkcats
-    resources :wlinks
+    resources :wlinks 
+      
+          
     resources :finds
   end  
   

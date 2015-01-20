@@ -6,19 +6,26 @@
 	<h4>Search results for <i><%= @searchterm %></i>&nbspin module&nbsp<i><%= @module.linkcatname %></i></h4>
 </div>
 
-<h4>There are no search results for this query.  This may mean that the information is not available, the link is currently broken and we are repairing or that we have not logged the information.  Please send us a comment from your dashboard if you beleive this information does exist.</h4>
+
 
 <% @linkcatmax.each do |linkcatmax| %> <!--This limits the search results -->
 	<% if @wlinks.count > linkcatmax.linkcatmaxres %>
 	 <h4>Too Many search results</h4>
-	<% else %> 
+	<% elsif @wlinks.count == 0 %>
+		<h4>There are no search results for this query.  This may mean that the information is not available, the link is currently broken and we are repairing or that we have not logged the information.  Please send us a comment from your dashboard if you believe this information does exist.</h4>
+	<% else %>	
+
 
 		<% @wlinks.each do |wlink| %>
 <div class="resultcard" >
 			<h4><%= wlink.wlinksource %></h4>
 			<h4><%= wlink.wlinklang %></h4>
 			<h4><%= wlink.wlinkyear %></h4>
-			<h2><%= link_to wlink.wlinkname, wlink.wlinkurl, target: '_blank' %></h2>
+			<% if wlink.url_exist?(wlink.wlinkurl) %>
+				<h2><%= link_to wlink.wlinkname, wlink.wlinkurl, target: '_blank' %></h2>
+			<% else %>
+				<h2>The link appears to be broken, we are working to fix this</h2>
+			<% end %>		
 			<h3><%= wlink.wlinkdesc %><h3>
 			
 			

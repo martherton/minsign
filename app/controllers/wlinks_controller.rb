@@ -15,6 +15,7 @@ class WlinksController < ApplicationController
 			@wlinks = @wlinkss | @wlinkst
 			@linkcatmax = Linkcat.where(:id => params[:queryid])
 
+			
 		else
 			redirect to root_path
 		end		

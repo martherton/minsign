@@ -1,0 +1,10 @@
+<H2> Broken link check </H2>
+<div class='broken' >
+<% @wlinks.each do |wlink| %>
+	<% if wlink.url_exist?(wlink.wlinkurl) %>
+		<%= wlink.wlinkname %>&nbsp is Good</br>
+	<% else %>
+		<%= wlink.wlinkname %>&nbsp is <span id="broke">broken</span></br>
+	<% end %>
+<% end %>
+</div>		
