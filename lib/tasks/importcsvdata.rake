@@ -5,7 +5,7 @@ namespace :csvimport do
 
     require 'csv'
 
-    csv_file_path = 'db/Module.csv'
+    csv_file_path = '/db/Module.csv'
 
     CSV.foreach(csv_file_path) do |row|
 
