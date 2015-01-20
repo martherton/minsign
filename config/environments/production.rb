@@ -76,4 +76,19 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+
+  # Tells the mailer which url to use for links within the email
+  config.action_mailer.default_url_options = { host: 'https://sheltered-headland-3730.herokuapp.com' }
+  # Sets up the configuration for Mailgun to send the email on the bhalf of the app
+  config.action_mailer.default_options = {from: 'postmaster@m.minervasi.com'}
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :authentication => :plain,
+    :address => ENV['MAILGUN_SMTP_SERVER'],
+    :port => ENV['MAILGUN_SMTP_PORT'],
+    :domain => "m.minervasi.com",
+    :user_name => ENV['MAILGUN_SMTP_LOGIN'],
+    :password => ENV['MAILGUN_SMTP_PASSWORD']
+  }
 end
