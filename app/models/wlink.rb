@@ -15,7 +15,7 @@ class Wlink < ActiveRecord::Base
 
 	def self.search(query)
   	
-  	where("wlinkname like ? or wlinkdesc like ?", "%#{query}%", "%#{query}") 
+  	joins(:tags).where("wlinkname ilike ? or wlinkdesc ilike ? or name like?", "%#{query}%", "%#{query}", "%#{query}") 
 
 	end
 

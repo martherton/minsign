@@ -33,7 +33,8 @@ class FindsController < ApplicationController
 		    if @find.save
 		    	redirect_to user_wlinks_path(current_user.id, queryid: @find.linkcat_id, query: @find.searchterm)
 		  	else
-		    	render :new
+		  		flash[:failure] = "Select a module an enter a search term"
+		    	redirect_to new_user_find_path(current_user.id)
 		   	end 
 		else
 			redirect_to	new_user_find_path(current_user.id)
