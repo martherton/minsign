@@ -1,7 +1,7 @@
 // Place all the styles related to the staticpages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+//= depend_on_asset "logo.svg"
 /*COLOUR SCHEME-------
 -----------*/
 .container2,
@@ -52,7 +52,7 @@
   position:fixed;
   top: 0;
   left: 0;
-  height: 4.5em;
+  height: 12%;
   width: 100%;
   background-color: #FFFFFF;
   z-index: 2;
@@ -61,6 +61,7 @@
 
 .fixedhead li:first-child {
 	display: block;
+
 }
 
 .fixedhead li {
@@ -71,6 +72,8 @@
   color: #0085CD;
   font-size: 1.3em;
   margin-right: 1em;
+
+
   
 }
 
@@ -78,7 +81,7 @@
   height: 3em;
   padding-top: 0.2em;
   padding-left: 0.3em;
-  width: 80%;
+  width: 70%;
   margin-left: 10%;
 }
 
@@ -95,14 +98,15 @@
 
 #logotopleft {
   background-image: url(image-path('logoland.svg'));
-  height: 2.75em;
+  
+  height: 3.5em;
   overflow:hidden;
     text-indent:100%;
     white-space:nowrap;
     
   margin-left: 17%;
   background-size: 100%;
-  width: 66%;
+  width: 14em;
   display: block;
 }
 #hidlink {
@@ -208,7 +212,9 @@
 .explanation1 h1,
 .explanation2 h1,
 .entrybox h1,
-.entrybox2 h1 {
+.entrybox2 h1,
+.explanation1 h3,
+.explanation2 h3 {
   text-align: center;
   margin-bottom: 0;
 }
@@ -325,7 +331,7 @@
 }
 
 .legal {
-  margin-top: 5%;
+  margin-top: 20%;
   margin-bottom: 20%;
 
 }
@@ -340,6 +346,7 @@
   text-align: justify;
   margin-left: 10%;
   padding: 0.5em;
+
 }
 
 .icons {
@@ -356,7 +363,7 @@
 
 .contentmod {
   text-align: center;
-  margin-top: 10%;
+  margin-top: 20%;
   margin-bottom: 10%;
 }
 
@@ -467,6 +474,7 @@
   margin-left: 2em;
     margin-top: 1em;
     width: 11em;
+    height: 2.75em;
 }
 #hidlink {
   display: block;
@@ -693,6 +701,14 @@ background-image:  url(image-path('simple4.jpg'));
 
 .footerl li {
   margin-right: 2em;
+}
+
+.legal {
+  margin-top: 5%;
+}
+
+.contentmod {
+  margin-top: 10%;
 }
 
 }

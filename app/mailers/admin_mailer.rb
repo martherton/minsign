@@ -31,7 +31,9 @@ class AdminMailer < Devise::Mailer
   end
 private
   def add_inline_attachments!
-    attachments.inline['logo.svg'] =  File.read("#{Rails.root}/app/assets/images/logo.svg")
+    attachments.inline['logo.svg'] = {mime_type: 'image/png',
+       content: File.read("#{Rails.root}/app/assets/images/logo.png")
+      }
       
   end
   
