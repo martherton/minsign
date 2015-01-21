@@ -21,7 +21,7 @@
 <div class="resultcard" >
 			<h4><%= wlink.wlinksource %></h4>
 			<h4><%= wlink.wlinklang %></h4>
-			<h4><%= wlink.wlinkyear %></h4>
+			<h4><%= wlink.wlinkyear.strftime("%Y") %></h4>
 			<% if wlink.url_exist?(wlink.wlinkurl) %>
 				<h2><%= link_to wlink.wlinkname, wlink.wlinkurl, target: '_blank' %></h2>
 			<% else %>
