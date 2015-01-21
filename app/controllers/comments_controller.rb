@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
 		   
 		    @comment = Comment.new(comment_params)
 		    if @comment.save
-
+		    	flash[:success] = "Thankyou for your feedback, we will respond shortly"
 		    	redirect_to	dashboard_user_path(current_user.id)
 		  	else
 		    	render :new

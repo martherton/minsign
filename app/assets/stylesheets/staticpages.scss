@@ -276,7 +276,11 @@
 .loginb {
 	text-align: center;
 }
-
+.signupfor h6 {
+  margin: 0;
+  margin-top: 0.2em;
+  color: #FFFFFF;
+}
 .moreinfos:first-child {
 	border-width: 0 0 0 0;
 }
@@ -285,7 +289,13 @@
   margin-top: 0;
 }
 
+.updateinfo {
+  margin-top: 5%;
+}
 
+.updateinfo input[type="password"] {
+  border: solid 1px;
+}
 
 .footerl li {
   display: inline-block;

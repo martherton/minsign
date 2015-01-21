@@ -3,9 +3,9 @@
 </div>  
 <div class="updatedetails" >
 <h2>Edit Your details</h2>
-<h5>Please leave the password boxes blank if you do not want to change it</h5>
+<h5>Please leave the password boxes blank if you do not want to change your password</h5>
 
-
+<div class="updateinfo" >
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
 
@@ -24,13 +24,14 @@
     <%= f.input :lname, required: true, label: false, placeholder: "Last name" %>
     <%= f.input :company, required: true, label: false, placeholder: "Company" %>
     <%= f.input :position, required: true, label: false, placeholder: "Position" %>
-    <%= f.input :current_password, label: false, placeholder: "Confirm changes with password", required: true %>
+    <%= f.input :current_password, label: false, placeholder: "Confirm changes with password", required: true, focus: true %>
   
 
   
     <%= f.button :submit, "Update" %>
   
 <% end %>
+</div>
 </div>
 
 
