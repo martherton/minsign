@@ -8,7 +8,7 @@
 <%= simple_form_for [@user, @find], url: user_finds_path, method: :post do |f| %>
 	<div class="searchform" >
 		<%= f.input :linkcat_id, collection: Linkcat.all, label_method: :linkcatname, value_method: :id, label: false, prompt: "Module to search" %>
-		<%= f.input :searchterm, label: false, placeholder: "ie Malaysia Takeover Code" %>
+		<%= f.input :searchterm, label: false, placeholder: "Search term" %>
 		</div>
 	<div class="hidlinkcat" >
 	
