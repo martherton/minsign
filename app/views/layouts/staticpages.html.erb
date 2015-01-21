@@ -74,7 +74,7 @@
 <div class="footerl" >
 <div class ="footernavl" >
    <ul>
-     <li><%= link_to "Home", root_path %></li>
+     <li><% if user_signed_in? %><%= link_to "Search", new_user_find_path(current_user.id) %><% else %><%= link_to "Home", root_path %><% end %></li>
 
      <li><%= link_to "Legal", legal_path %></li>
      <li><%= link_to "Content", content_path %></li> 
