@@ -18,7 +18,7 @@ en:
       unconfirmed: "You have to confirm your email address before continuing."
     mailer:
       confirmation_instructions:
-        subject: "Confirmation instructions"
+        subject: "Minerva Please Confirm your email address"
       reset_password_instructions:
         subject: "Minerva SI set password instructions"
       unlock_instructions:
@@ -52,7 +52,7 @@ en:
       send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."
       unlocked: "Your account has been unlocked successfully. Please sign in to continue."
-    registrations:
+    
     
   errors:
     messages:

@@ -1,5 +1,17 @@
+<!DOCTYPE html>
 <html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style>
+    
+    </style>
+  </head>
   <body>
+  <div > 
+  <%= image_tag attachments['logo.svg'].url, :width => "90%", :margin_left => "5%" %> 
+</div>  
     <%= yield %>
+
+    <p><small>This email address is not monitored please do not reply.</small></p>
   </body>
 </html>

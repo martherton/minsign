@@ -153,9 +153,9 @@
 
 .flash {
   position: fixed;
-  top: 20%;
+  top: 10%;
   color: #FFFFFF;
-  background-color: #FF0000;
+  background-color: #0085CD;
   margin: 0.3em;
   padding: 0.3em;
 }
@@ -292,7 +292,7 @@
 }
  .footerl a,
  .footerl small {
-  color: #FFFFFF;
+  color: #0085CD;
 
  }
 /*STYLING MESSAGE PAGES---
@@ -312,6 +312,42 @@
 
 .message {
   text-align: center;
+}
+
+.legal {
+  margin-top: 5%;
+  margin-bottom: 20%;
+
+}
+
+.legal h4 {
+  text-align: center;
+}
+
+.legal h5 {
+  width: 80%;
+  background-color: #DBDBDB;
+  text-align: justify;
+  margin-left: 10%;
+  padding: 0.5em;
+}
+
+.icons {
+  text-align: center;
+  font-size: 0.2em;
+  margin-bottom: 5%;
+}
+
+.contact {
+  text-align: center;
+  margin-top: 10%;
+  margin-bottom: 20%;
+}
+
+.contentmod {
+  text-align: center;
+  margin-top: 10%;
+  margin-bottom: 10%;
 }
 
 }
@@ -363,6 +399,14 @@
 
   .about h2 {
 	font-size: 2em;
+}
+
+.message {
+  margin-top: 20%;
+}
+
+#message1 {
+  margin-top: 5%;
 }
 
 .container1 {
@@ -581,6 +625,10 @@ background-image:  url(image-path('simple3.jpg'));
   width: 85%;
 }
 
+#col3stat {
+  margin-top: -29%;
+}
+
 .col1 h3,
 .col3 h3 {
   text-align: center;
@@ -629,6 +677,8 @@ background-image:  url(image-path('simple4.jpg'));
   margin-top: -2em;
   margin-left: 10%;
   width: 80%;
+  background-color: #FFFFFF;
+  padding: 0.3em;
 }
 
 .footerl li {

@@ -8,10 +8,10 @@ class MoreinfosController < ApplicationController
 		@moreinfo = Moreinfo.new(moreinfo_params)
 		if @moreinfo.save
 			flash[:success] = "Thankyou for expressing an interest in MinervaSI"
-			redirect_to '/thanks'
+			redirect_to root_path
 
 		else
-			flash[:failure] = "There appears to be a problem, please try again"
+			flash[:failure] = "You have already signed up for updates"
 			redirect_to root_path
 		end		
 	end

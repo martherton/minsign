@@ -1,34 +1,25 @@
-<div class="fixedhead" >
-		<ul >
-				<li><img src="/assets/logoland.svg"></li>
-		      
-   </ul> 
-   <div id="sicontainer"  >
-          <ul class="sinav", id="hidlink"  >
-          	<li  ><%= link_to "Home", root_path, id: "hidlinkf" %></li>
-		     		<li  ><%= link_to "About us", aboutus_path, id: "hidlinkg" %></li>
-		     		<li  id="regout" ><a href="#registerform" id="hidlinkh">Register</li>
+<section class="container4">
+  <div class="explanation2" id="About">
+    <h1>About us</h1>
+      <ul>
+        <div class="col1" >
+        <li class="imgcont" ><%= image_tag 'speed4.svg', class: "hiwimres", id: "hiwimres1" %></li>
+        <li><h3>The Platform</h3></li>
+        <li><h4>We have built a web-based platform to significantly reduce the time required to find the information and data you need.  The web platform is secure and aims to meet professional investors requirements.</h4></li>
+        </div>
+        <div class="col2" >
+        <li class="imgcont" ><%= image_tag 'connected4.svg', class: "hiwimres", id: "hiwimres2" %></li>
+        <li><h3>Today</h3></li>
+        <li><h4>We already have put in place several ways for professional investors to save time, in the form of searchable modules.  At the start of the service these will take the form of curated links but future development will move significantly beyond this. A list of current modules is available <%= link_to "here.", content_path %></h4></li>
+        </div>
+        <div class="col3" id="col3stat" >
+        <li class="imgcont" ><%= image_tag 'centralized.svg', class: "hiwimres", id: "hiwimres3" %></li>
+        <li><h3>Tomorrow</h3></li>
+        <li><h4>We aim to add new content at a rapid pace, exponentially growing the use of the platform to professional investors, and the amount of time  that the investing community can save.  The site will grow to be the go-to briefing source for any investment.  A list of some of the future modules can be found <%= link_to "here.", content_path %></h4></li>
+        </div>
+      </ul> 
+  </div>
+      <div style="clear: both; height: 4em;"></div>
 
-            <li><a href="#" >a</a></li>
-            <li><a href="#" >j</a></li>
-            <li><a href="#" >x</a></li>
-            <li><a href="#" >r</a></li>
-          </ul>
-      </div>
-	</div>
-
-	<div class="footerl" >
-<div class ="footernavl" >
-   <ul>
-     <li><%= link_to "Home", root_path %></li>
-
-     <li><%= link_to "Legal", legal_path %></li>
-     <li><%= link_to "Content", content_path %></li> 
-     <li><%= link_to "Contact us", contactus_path %></li>
-     <li><small>Please email us at info@minervasi.com</small></li>
-   
-     <li><small>(c)Miverva SI Ltd 2015.  All rights reserved.</small></li>
-
-   </ul> 
-</div>  
-</div>
+</section>
+  

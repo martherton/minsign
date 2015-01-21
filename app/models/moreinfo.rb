@@ -13,15 +13,18 @@ class Moreinfo < ActiveRecord::Base
   end 
 
   def subscribe_to_mailchimp_update testing=false
-	  return true if (Rails.env.test? && !testing)
-	  list_id = ENV['MAILCHIMP_LIST_ID2']
+	  
+  	
+		  return true if (Rails.env.test? && !testing)
+		  
+			  list_id = ENV['MAILCHIMP_LIST_ID2']
 
-	  response = Rails.configuration.mailchimp.lists.subscribe({
-	    id: list_id,
-	    email: {email: email},
-	    double_optin: false,
-	    
-	  })
-	  response
+			  response = Rails.configuration.mailchimp.lists.subscribe({
+			    id: list_id,
+			    email: {email: email},
+			    double_optin: false,
+			    
+			  })
+		 	response
 	end
 end

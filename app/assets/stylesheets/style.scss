@@ -83,6 +83,10 @@ a {
   color: #FFFFFF;
 }
 
+
+
+
+
 /*STYLING INPUT FORMS-----
 -------------------------*/
 
@@ -99,7 +103,9 @@ input[type="email"] {
   height: 2em;
   text-indent: 4px;
 }
-
+#message1 input[type="password"] {
+  border-width: 1px;
+}
 .searchform input[type="text"] {
   border-width: 1px 1px 1px 1px;
 }
