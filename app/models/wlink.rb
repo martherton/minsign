@@ -1,7 +1,7 @@
 class Wlink < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :linkcat
-	validates :wlinkurl, presence: true
+	validates :wlinkurl, 
 	validates :wlinkname, presence: true
 	validates :wlinkdesc, presence: true
 	validates :wlinkveri, presence: true
