@@ -15,7 +15,7 @@
 	<% elsif @count == 0 %>
 		<h4>There are no search results for this query.  This may mean that the information is not available, the link is currently broken and we are repairing or that we have not logged the information.  Please send us a comment from your dashboard if you believe this information does exist.</h4>
 	<% else %>	
-	<%= @count %>
+	
 
 		<% @wlinks.each do |wlink| %>
 <div class="resultcard" >
@@ -36,4 +36,6 @@
 
 	<% end %>	
 <%end %>
-
+<div class="searchag" >
+ <h4><%= link_to "Search again", new_user_find_path(current_user.id) %></h4>
+</div>
