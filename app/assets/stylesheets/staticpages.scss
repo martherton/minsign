@@ -369,6 +369,28 @@
   text-align: center;
   margin-top: 20%;
   margin-bottom: 10%;
+  width: 90%;
+  margin-left: 5%;
+}
+
+.contentmod span {
+  font-size: 1.2em;
+  color: #0085CD;
+}
+
+.contentmod h3{
+  color: #0085CD;
+}
+
+.general {
+  width: 80%;
+  text-align: justify;
+  margin-left: 10%;
+}
+
+.general h2 {
+  font-size: 1em;
+  font-weight: 400;
 }
 
 }
@@ -725,6 +747,12 @@ background-image:  url(image-path('simple4.jpg'));
 
 .contentmod {
   margin-top: 10%;
+  width: 80%;
+  margin-left: 10%;
+}
+
+.contentmod h5 {
+  text-align: left;
 }
 
 }
