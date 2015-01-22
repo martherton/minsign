@@ -2,7 +2,7 @@
 		<%= image_tag 'logo.svg' %>
 	
 </div>	
-<h4>User approval (note role 1: user Role 2: admin)</h4>
+<h4>User approval only approve if confirmed email!</h4>
 
 <div class="modadmin">
 <table>
@@ -27,7 +27,7 @@
 			<td><%= user.position %></td>
 			<td><%= user.confirmed_at %></td>
 			<td><%= user.approved %></td>
-			<td><%= user.role_ids %></td>
+			<td><%= user.roles(:select => :name).collect(&:name) %></td>
 			<td><%= link_to "Edit", edit_admin_user_path(user.id) %></td>
 		</tr>		
 <% end %>
