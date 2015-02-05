@@ -12,6 +12,7 @@
 			<th>Created by</th>
 			<th>Module Type</th>
 			<th>Module description</th>
+			<th>Released to public?</th>
 			<th>Edit module</th>
 			<th>View all module links</th>
 		</tr>
@@ -23,8 +24,14 @@
 			<td><%= User.find(linkcat.user_id).fname %>&nbsp<%=	User.find(linkcat.user_id).lname %></td>
 			<td><%= linkcat.linkcattype %></td>
 			<td><%= linkcat.linkcatdesc %></td>
+			<td><%= linkcat.released %></td>
 			<td><%= link_to "Edit", edit_admin_linkcat_path(linkcat.id) %></td>
-			<td><%= link_to "View all links for this module", admin_wlinks_path(query: linkcat.id) %></td>
+			<% if linkcat.linkcattype == "Curated Weblinks" %>
+				<td><%= link_to "View all links for this module", admin_wlinks_path(query: linkcat.id) %></td>
+			<% else %>
+				<td><%= link_to "View all data for this module", admin_declaratives_path(query: linkcat.id) %></td>
+			<% end %>	
+				
 		</tr>		
 <% end %>
 </tbody>

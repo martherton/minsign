@@ -11,22 +11,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150108114953) do
+ActiveRecord::Schema.define(version: 20150204224452) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "contentcom"
     t.integer  "user_id"
-    t.string   "email" 
+    t.string   "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "finds", force: :cascade do |t|
-    t.string   "searchterm"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "declaratives", force: :cascade do |t|
+    t.string   "urlsource"
+    t.text     "declarativetext"
+    t.text     "declarativejusttext"
+    t.integer  "datapoint"
+    t.string   "units"
+    t.text     "entryhierarchy"
+    t.string   "texttype"
+    t.boolean  "entryend"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "declarativeimage_file_name"
+    t.string   "declarativeimage_content_type"
+    t.integer  "declarativeimage_file_size"
+    t.datetime "declarativeimage_updated_at"
     t.integer  "user_id"
     t.integer  "linkcat_id"
+    t.integer  "docstructure_id"
+    t.boolean  "endsection"
+    t.string   "urlextra"
+    t.boolean  "sandbox"
+  end
+
+  create_table "docstructures", force: :cascade do |t|
+    t.string   "headingname"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+    t.boolean  "released"
+  end
+
+  create_table "finds", force: :cascade do |t|
+    t.string   "searchterm"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "user_id"
+    t.integer  "linkcat_id"
+    t.integer  "docstructure_id"
   end
 
   create_table "linkcats", force: :cascade do |t|
@@ -38,6 +70,7 @@ ActiveRecord::Schema.define(version: 20150108114953) do
     t.datetime "updated_at",    null: false
     t.string   "linkcatview"
     t.integer  "linkcatmaxres"
+    t.boolean  "released"
   end
 
   create_table "moreinfos", force: :cascade do |t|

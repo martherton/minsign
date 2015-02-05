@@ -25,9 +25,6 @@ class WlinksController < ApplicationController
 	
 	
 
-	private 
 
-	def wlink_params
-
-	end
 end
+

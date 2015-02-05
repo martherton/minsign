@@ -65,3 +65,10 @@ ruby "2.1.2"
 
 gem 'seed_dump', group: [:development, :test]
 
+gem 'aws-sdk-v1'
+
+gem 'aws-s3'
+
+gem 'paperclip'
+
+

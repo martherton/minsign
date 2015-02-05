@@ -7,8 +7,9 @@
   <div class="accounttype" >
     <h4> Account type:&nbsp
     <% @user.roles.each do |role| %>
-      <%= role.name %></h4>
+      <%= role.name %>,
     <% end %>
+    </h4>
    
     <h4>Modules allowed:&nbsp
     All</h4>

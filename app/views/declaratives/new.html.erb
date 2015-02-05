@@ -1,0 +1,60 @@
+<div class="logo" id="logosearch" >
+    <%= image_tag 'logo.svg' %>
+  
+</div>  
+
+<div class="newdeclarative" >
+<h2>New Sandbox Note</h2>
+
+
+
+<%= simple_form_for @declarative, url: user_declaratives_path, method: :post do |f| %>
+  <div class="navig">
+	<h4>Area</h4><%= f.input :linkcat_id, collection: @linkcat, value_method: :id, label_method: :linkcatname, label: false, prompt: "Area", selected: @area %>
+
+	<h4>Heading</h4><%= f.input :docstructure_id, collection: @headings, value_method: :id, label_method: :headingname, label: false, prompt: "Heading", selected: @headinglast %>
+  </div>
+  <div class="declarativeentry">
+
+  <%= f.input :urlsource, label: false, placeholder: "url of source", input_html: {value: @urllast} %>
+
+
+  <%= f.input :declarativejusttext, label: false, placeholder: "Note or description of image" %>
+
+ 
+  
+
+
+  
+
+ <%= f.input :entryhierarchy, as: :radio_buttons, collection: ["Claim","Evidence"], label: false, label: false %>
+   <%= f.input :texttype, as: :radio_buttons, label: false, collection: ["Text","List Item","Image"] %>
+
+
+
+
+   <%= f.input :entryend, label: 'Completed notes from source' %>
+   <%= f.input :endsection, label: 'Finished Entry for this Section' %>
+
+
+
+
+
+   <% f.input :sandbox, :input_html => { :checked => true }  %>
+
+  <%= f.button :submit, 'Add' %>
+  </div>
+
+<% end %>
+<div class="instructions" id="sandy">
+<ul>
+<li><h4>Use a # before extra hashtags - you do not need to hastag the area name and heading that is done automatically.</h4></li>
+<li><h4>  Use a ~ before a data item, followed by its unit, please write the number in full.</h4></li>
+<li><h4>Please select the type of statement, is it a claim statement or evidence for a claim statement?</h4></li>
+<li><h4>Please select if the item is a list item or a text item</h4></li>
+<li><h4>Check the boxes if you have finished with the source and the section.</h4></li>
+<li><h4>Sandbox mode does not allow for the upload of images</h4></li>
+</ul>
+</div>
+</div>
+

@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   has_many :wlinks
   has_many :finds 
   has_many :comments 
+  has_many :docstructures
+  has_many :declaratives
   validates :email, presence: true, uniqueness: true
   validates :fname, presence: true
   validates :lname, presence: true

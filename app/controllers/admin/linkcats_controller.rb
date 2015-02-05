@@ -68,7 +68,7 @@ class Admin::LinkcatsController < ApplicationController
 	private
 
 	def linkcat_params
-    params.require(:linkcat).permit(:linkcatname, :linkcatdesc, :linkcattype, :linkcatview, :linkcatmaxres, :user_id)
+    params.require(:linkcat).permit(:linkcatname, :linkcatdesc, :linkcattype, :linkcatview, :linkcatmaxres, :user_id, :released)
 
 	end	
 

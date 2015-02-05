@@ -1,4 +1,7 @@
-
+<div class="logo" id="logosearch" >
+		<%= image_tag 'logo.svg' %>
+	
+</div>	
 <div class="newopen" >
 <h2>Edit module</h2>
 
@@ -7,13 +10,16 @@
 
   <%= f.input :linkcatname, label: false, placeholder: "name" %>
 
-  <b>Type<%= f.input :linkcattype, collection: ["Curated Weblinks","Other"], label: false, prompt: "Type" %></b>
+  <b>Type<%= f.input :linkcattype, collection: ["Curated Weblinks","Information"], label: false, prompt: "Type" %></b>
 
-<b>View<%= f.input :linkcatview, collection: ["Normal","Other"], label: false, prompt: "View type" %></b>
+<b>View<%= f.input :linkcatview, collection: ["Normal","Report"], label: false, prompt: "View type" %></b>
 
   <b>Max<%= f.input :linkcatmaxres, collection: 1..8, label: false, prompt: "max results" %></b>
 
   <%= f.input :linkcatdesc, label: false, placeholder: "description" %>
+
+  <b>Public release<%= f.input :released, label: false %></b>
+
 
   <%= f.button :submit, 'Edit module' %>
 

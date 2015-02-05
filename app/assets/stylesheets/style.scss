@@ -362,9 +362,150 @@ input[type="submit"] {
   text-align: right;
 }
 
-#searchreturn h4 {
+#searchreturn h4,
+#searchreturn h2 {
   width: 90%;
   margin-left: 5%;
+}
+
+/*DECLARATIVES INPUT STYLE
+--------------------------
+----------------*/
+
+
+
+.newdeclarative h2 {
+  text-align: center;
+}
+
+.declarativeentry {
+  width: 65%;
+  float: right;
+  margin-top: 3em;
+
+}
+
+.declarativeentry input[type="url"] {
+  margin-bottom: 0.5em;
+  width: 80%;
+  border: solid 1px;
+}
+
+.declarativeentry input[type="text"],
+.declarativeentry textarea {
+  width: 80%;
+  height: 20%;
+  border: solid 1px;
+}
+
+.declarativeentry textarea {
+  margin-bottom: 0.5em;
+}
+
+.declarativeentry .radio_buttons {
+  display: inline-block;
+  border: solid 1px;
+  padding: 0.3em;
+  background-color: #0085CD;
+  color: #FFFFFF;
+  font-size: 0.7em;
+
+}
+
+.declarativeentry .control-label {
+  padding: 0.1em;
+  border: 0;
+}
+
+.declarativeentry .radio {
+  margin: 0.3em;
+  
+
+}
+
+.declarativeentry .file {
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
+}
+
+.declarativeentry .boolean {
+  display: inline-block;
+  background-color: #0085CD;
+  color: #FFFFFF;
+  padding: 0.15em;
+  font-size: 0.8em;
+
+ 
+}
+
+.declarativeentry input[type="Submit"] {
+  width: 10%;
+  display: inline-block;
+  font-size: 0.7em
+}
+
+.navig {
+  width: 30%;
+  float: left;
+}
+
+.navig .select{
+  width: 100%;
+}
+
+.navig h4 {
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+.instructions {
+  width: 25%;
+  margin-left: 3%;
+  clear: both;
+  position: relative;
+  top: -2em;
+
+}
+
+#sandy {
+  top: 0em;
+}
+
+.instructions h4 {
+  font-size: 0.5em;
+  text-align: justify;
+}
+
+/* --- STYLE DECLARATIVES REPORT ----
+-----------------*/
+
+.reportcard {
+  width: 80%;
+  margin-left: 10%;
+}
+
+.reportcard a,
+.searchag a {
+  color: #0085CD;
+  font-size: 0.7em;
+  
+}
+
+.reportcard h4 {
+  margin-left: 5%;
+}
+
+.reportcard h2,
+.reportcard h3 {
+  color: #0085cd;
+}
+
+.reportcard h3 {
+  margin-left: 2%;
+}
+
+#searchreturn i {
+  color: #0085CD;
 }
 
 }

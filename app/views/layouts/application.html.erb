@@ -59,6 +59,7 @@
 <% if user_signed_in? %>
     <p></p>
     <li><h4>Hello <%= current_user.fname %></h4></li>
+    <li><h4><% if current_user.has_role? :sandbox %><%= link_to "Sandbox", new_user_declarative_path(current_user.id) %><% else %><% end %></h4></li>
     <li><h4><%= link_to image_tag("house150.svg", height: "23px", alt: "Sign Out", title: "Search page"), new_user_find_path(current_user.id) %></h4></li>
     <li><h4><%= link_to image_tag("folder242.svg", height: "23px", alt: "Sign Out", title: "Sign out"), destroy_user_session_path, :method => :delete %></h4></li>
 

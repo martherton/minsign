@@ -1,3 +1,8 @@
+<div class="logo" id="logosearch" >
+		<%= image_tag 'logo.svg' %>
+	
+</div>	
+
 <% @linkcatid = params[:query]%>
 <b><%= link_to "Delete link", admin_wlink_path(params[:id]), method: :delete %></b>
 

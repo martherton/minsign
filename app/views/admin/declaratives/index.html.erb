@@ -1,0 +1,58 @@
+<div class="logo" id="logosearch" >
+		<%= image_tag 'logo.svg' %>
+	
+</div>	
+
+<b><%= link_to "Create Data Item", new_admin_declarative_path(query: params[:query]) %></b>
+
+	
+<h4>Information for Request -&nbsp<%= @request %></h4>
+
+
+<div class="modadmin">
+<table>
+	<thead>
+		<tr>
+			<th>Source</th>
+			<th>Created by</th>
+			<th>Sandbox</th>
+			<th>Original text entry</th>
+			<th>Text to appear in report</th>
+			<th>Datapoint</th>
+			<th>Units</th>
+			<th>Type of statement</th>
+			<th>Text Type</th>
+			<th>Extra url</th>
+			<th>Tags</th>
+			<th>Image</th>
+
+
+			<th>Edit data</th>
+		</tr>
+	</thead>
+	<tbody>	
+		<% @decs.each do |dec| %>
+		<tr>
+			<td><%=  dec.urlsource %></td>
+			<td><%= User.find(dec.user_id).fname %>&nbsp<%= User.find(dec.user_id).lname %></td>
+			<td><%= dec.sandbox %></td>
+			<td><%= dec.declarativejusttext %></td>
+			<td><%= dec.declarativetext %></td>
+			<td><%= dec.datapoint %></td>
+			<td><%= dec.units %></td>
+			<td><%= dec.entryhierarchy %></td>
+			<td><%= dec.texttype %></td>
+			<td><%= dec.urlextra %></td>
+			<td><%= dec.tag_list %></td>
+			<td><%= dec.declarativeimage_file_name %></td>
+
+
+
+			<td><%= link_to "Edit", edit_admin_declarative_path(dec.id, query: params[:query]) %></td>
+		</tr>		
+<% end %>
+</tbody>
+</table>
+</div>
+ 
+

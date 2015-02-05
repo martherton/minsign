@@ -31,11 +31,20 @@ class FindsController < ApplicationController
 		    @user = current_user
 		    @find = @user.finds.new(find_params)
 		    if @find.save
-		    	redirect_to user_wlinks_path(current_user.id, queryid: @find.linkcat_id, query: @find.searchterm)
-		  	else
-		  		flash[:failure] = "Select a module an enter a search term"
-		    	redirect_to new_user_find_path(current_user.id)
-		   	end 
+		    	if @find.linkcat_id.nil?
+		    		redirect_to user_declaratives_path(current_user.id, queryid: @find.docstructure_id, query: @find.searchterm, q: 'h')
+		    	else	
+			    	if Linkcat.find(@find.linkcat_id).linkcattype == 'Curated Weblinks'
+			    		redirect_to user_wlinks_path(current_user.id, queryid: @find.linkcat_id, query: @find.searchterm)
+			    	elsif 	Linkcat.find(@find.linkcat_id).linkcattype == 'Information'
+			    		redirect_to user_declaratives_path(current_user.id, queryid: @find.linkcat_id, query: @find.searchterm, q: @find.docstructure_id)
+			    	end	
+			    end	
+			  else
+			  			flash[:failure] = "Select a module and enter a search term"
+			    		redirect_to new_user_find_path(current_user.id)
+			  end 
+			   	
 		else
 			redirect_to	new_user_find_path(current_user.id)
 		end	   
@@ -46,6 +55,6 @@ class FindsController < ApplicationController
 	private
 
 	def find_params
-		params.require(:find).permit(:searchterm, :linkcat_id, :user_id)
+		params.require(:find).permit(:searchterm, :linkcat_id, :user_id, :docstructure_id)
 	end	
 end

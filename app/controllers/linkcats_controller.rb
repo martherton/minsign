@@ -12,9 +12,5 @@ class LinkcatsController < ApplicationController
 	
 	
 
-	private 
-
-	def linkcat_params
-
-	end	
+	
 end

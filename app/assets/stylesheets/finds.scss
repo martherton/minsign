@@ -99,20 +99,32 @@
   }  /* Again can alter percentages*/
 
 .searchform input[type="text"] {
-  width: 30em;
+  width: 74%;
+  margin-left: 13%;
+}
+
+.searchform div {
+  display: block;
+
 }
 
 .searchform .select {
-  width: 20em;
+  display: inline-block;
+  width: 30%;
+  margin-left: 13%;
+}
+
+#find_linkcat_id,
+#find_docstructure_id {
+  width:90%;
+  margin-left: 5%;
 }
 
 .searchbutton input[type="submit"] {
   width: 10em;
 }
 
-.searchform div{
-  display: inline-block;
-}
+
 
 
 }

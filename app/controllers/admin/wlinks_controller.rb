@@ -27,7 +27,7 @@ class Admin::WlinksController < ApplicationController
 	    @wlink = @user.wlinks.find(params[:id])
 
 	  else
-	  	 redirect_to admin_wlinks_path(query: @wlink.linkcat-id)
+	  	 redirect_to admin_wlinks_path(query: @wlink.linkcat_id)
 	  end	 
   
   end

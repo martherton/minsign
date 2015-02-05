@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   get 'reset', to: 'staticpages#reset' #link to static confirmed page
   get 'broken', to: 'admin/wlinks#brokenlinks'
+  
 
 
   devise_for :users, controllers: { sessions: "users/sessions", confirmations: "users/confirmations", registrations: "users/registrations" }
@@ -30,6 +31,8 @@ Rails.application.routes.draw do
   resources :users do
     resources :linkcats
     resources :wlinks
+    resources :docstructures
+    resources :declaratives
     resources :finds, :path_names => { :new => 'search'}
     member do
       get 'dashboard'
@@ -50,6 +53,8 @@ Rails.application.routes.draw do
     end    
     resources :linkcats
     resources :wlinks 
+    resources :declaratives
+    resources :docstructures
       
           
     resources :finds

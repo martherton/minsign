@@ -1,0 +1,56 @@
+<section class="resultspage" >
+<div class="logo" id="logosearch" >
+    <%= image_tag 'logo.svg' %>
+	
+</div>	
+<div id="searchreturn" >
+	
+	<h2>Report for <i><%= @user.fname %></i>&nbspon&nbsp<i><%= @request %></i><% if @searchterm.blank? %><% else %>&nbspfiltered for the search term <i><%= @searchterm %><% end %></i>.</h2>
+	
+</div>
+ 
+<% if @linkcatmax == 0 %>
+	<% @declaratives.each do |declarative| %>
+<div class="reportcard" >
+			<h2><% if @b == declarative.linkcat_id %><% else %><%= Linkcat.find(declarative.linkcat_id).linkcatname %><% @b = declarative.linkcat_id %><%end%></h2>
+			<h3><% if @c == declarative.docstructure_id %><% else %><%= Docstructure.find(declarative.docstructure_id).headingname %><% @c = declarative.docstructure_id %><%end%></h3>
+			<h4><%= declarative.declarativetext %>
+			<% if declarative.urlextra.blank? %>
+			<% else %>
+				<%= link_to "Extra Sources", declarative.urlextra[0] %></h4>
+			<% end%>
+			<% if declarative.declarativeimage.blank? %><% else %><%= image_tag declarative.declarativeimage.url %><% end %>
+</div>	
+<%end%>
+<%else%>
+<% @linkcatmax.each do |linkcatmax| %> <!--This limits the search results -->
+	<% if @declaratives.count > 200 %>
+	 <h4>Too Many search results</h4>
+	<% elsif @count == 0 %>
+		<h4>There are no search results for this query.  This may mean that the information is not available, the link is currently broken and we are repairing or that we have not logged the information.  Please send us a comment from your dashboard if you believe this information does exist.</h4>
+	<% else %>	
+	
+				<% @b=0 %>
+
+		<% @declaratives.each do |declarative| %>
+<div class="reportcard" >
+			<h2><% if @b == declarative.linkcat_id %><% else %><%= Linkcat.find(declarative.linkcat_id).linkcatname %><% @b = declarative.linkcat_id %><%end%></h2>
+			<h3><% if @request == Docstructure.find(declarative.docstructure_id).headingname %><% else %><% if @c == declarative.docstructure_id %><% else %><%= Docstructure.find(declarative.docstructure_id).headingname %><% @c = declarative.docstructure_id %><% end %><% end %></h3>
+			<h4><% if declarative.sandbox == true %><% if current_user.id = declarative.user_id %><%= declarative.declarativetext %>&nbspThis is a your sandbox entry<%else %><% end %><% else %><%= declarative.declarativetext %><% end %>
+			<% if declarative.urlextra.blank? %>
+			<% else %>
+				<%= link_to "Extra Sources", declarative.urlextra[0], target: '_blank' %></h4>
+			<% end%>
+			<% if declarative.declarativeimage.blank? %><% else %><%= image_tag declarative.declarativeimage.url %><% end %>
+
+</div>	
+			
+		<% end %>
+
+	<% end %>	
+<%end %>
+<% end %>
+<div class="searchag" >
+ <h4><%= link_to "Search again", new_user_find_path(current_user.id) %></h4>
+</div>
+</section>

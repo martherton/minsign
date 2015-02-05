@@ -25,6 +25,10 @@
 			<td><b><%= link_to "User Index", admin_users_path %></b></td>
 			<td>User approvals</td>
 		</tr>
+		<tr>	
+			<td><b><%= link_to "Heading Index", admin_docstructures_path %></b></td>
+			<td>Create and edit headings</td>
+		</tr>
 		<tr>
 			<td><b><%= link_to "Searches Admin", admin_finds_path %></b></td>
 			<td>Analysis of searches on the site</td>
@@ -32,6 +36,14 @@
 		<tr>
 			<td><b><%= link_to "Check for broken links", broken_path %></b></td>
 			<td>Broken link review</td>
+		</tr>	
+		<tr>
+			<td><b><%= link_to "Enter new heading", new_admin_docstructure_path %></b></td>
+			<td>Entry of new Document Structure</td>
+		</tr>	
+		<tr>
+			<td><b><%= link_to "Enter research", new_admin_declarative_path %></b></td>
+			<td>Entry of new Declarative</td>
 		</tr>	
 	</tbody>
 </table>		

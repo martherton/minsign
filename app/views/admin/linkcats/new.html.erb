@@ -1,4 +1,7 @@
-
+<div class="logo" id="logosearch" >
+		<%= image_tag 'logo.svg' %>
+	
+</div>	s
 <div class="newopen" >
 <h2>New module</h2>
 
@@ -7,13 +10,16 @@
 
   <%= f.input :linkcatname, label: false, placeholder: "name" %>
 
-  <%= f.input :linkcattype, collection: ["Curated Weblinks","Other"], label: false, prompt: "Type" %>
+  <%= f.input :linkcattype, collection: ["Curated Weblinks","Information"], label: false, prompt: "Type" %>
 
-<%= f.input :linkcatview, collection: ["Normal","Other"], label: false, prompt: "View type" %>
+<%= f.input :linkcatview, collection: ["Normal","Report"], label: false, prompt: "View type" %>
 
   <%= f.input :linkcatmaxres, collection: 1..8, label: false, prompt: "max results" %>
 
   <%= f.input :linkcatdesc, label: false, placeholder: "description" %>
+
+  <b>Public release<%= f.input :released, label: false %></b>
+  
 
   <%= f.button :submit, 'Add new module' %>
 
