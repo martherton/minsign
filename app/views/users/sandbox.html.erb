@@ -1,0 +1,40 @@
+<div class="logo" id="logosearch" >
+    <%= image_tag 'logo.svg' %>
+  
+</div>  
+
+<div class="sandbox" >
+<div class="sandboxlinks">
+	<h2>Create your structure</h2>
+	<%= link_to "Enter new topic", new_user_linkcat_path(current_user.id) %>
+	<%= link_to "Enter new heading", new_user_docstructure_path(current_user.id) %>
+
+	<h2>Enter your information</h2>
+	<%= link_to "Enter Information", new_user_declarative_path(current_user.id) %>
+
+	<h2>Review Your structure</h2>
+	<%= link_to "List of created topics", user_linkcats_path(current_user.id) %>
+	<%= link_to "List of created headings", user_docstructures_path(current_user.id) %>
+	<h2>Delete your entire structure</h2>
+	<%= link_to "Delete Sandbox", deletesandbox_user_path %>
+
+</div>
+<div class="sandexplain" >
+<h2>Welcome to your sandbox</h2>
+<h3>This area allows you to experiment with the service.  In addition to recieving research we have uploaded you can use this area for your own private sandbox.  Only you will be able to see the results in this area.  You can delete all your sandbox entries at any point.  However, if you take up a corporate or academic account all data can be transitioned.  Please use the comments section in your dashboard to feedback.</h3>
+<ul class="sandinstr">
+<li><h3>Instructions</h3></li>
+<li><h4>1.  You can get going straight away.  The link to information entry will allow you to use the systems existing structures to enter information.</h4></li>
+<li><h4>2.  To enter data in your own structures:</h4></li>
+<li><ul id="smallinstr">
+<li><h4>a)  Create a topic of interest using the link above - broad but fairly self contained</h4></li>
+<li><h4>b)  Create a heading.  The general rule is to reuse existing headings.  Sub headings should include a trail from senior headings.  For example History could have  History of Production as a sub heading rather than production.</h4></li>
+</ul></li>
+<li><h4>You will be able to view your sandbox entries with our entries in a normal search.  You will also be able to seach your own topic data from the normal screen.</h4></li>
+</ul>
+</div>
+<div class="clearer">
+	<%= image_tag 'descrip.jpg' %>
+</div>
+</div>
+

@@ -17,6 +17,8 @@ class DeclarativePolicy < ApplicationPolicy
     def resolve
       if user.has_role? :admin
         scope.all
+      elsif user.has_role? :sandbox
+        scope.where(user_id: @user.id)    
       else
         scope.none
       end
@@ -25,5 +27,7 @@ class DeclarativePolicy < ApplicationPolicy
     def index?
       @current_user.has_role? :admin
     end
+
+    
   end
 end 

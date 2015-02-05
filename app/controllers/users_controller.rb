@@ -22,5 +22,32 @@ class UsersController < ApplicationController
 		
 	end	
 
+	def dataentered
+		if current_user.has_role? :sandbox
+			@declarative = policy_scope(Declarative)
+			@decs = @declarative.where(linkcat_id: params[:query]).find_each
+		else
+			redirect_to	new_user_find_path(current_user.id)
+		end		
+	end
+
+	def sandbox
+		if current_user.has_role? :sandbox
+
+		else
+			redirect_to new_user_find_path(current_iser.id)
+		end		
+
+	end	
+
+	def deletesandbox
+		if current_user.has_role? :sandbox
+
+		else
+			redirect_to new_user_find_path(current_iser.id)
+		end		
+
+	end	
+
 
 end

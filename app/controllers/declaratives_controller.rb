@@ -5,9 +5,9 @@ class DeclarativesController < ApplicationController
 		if current_user.has_role? :sandbox or :admin
 			@user = current_user
     	@declarative = @user.declaratives.new
-    	@linkcat = Linkcat.where(:released => true)
+    	@linkcat = Linkcat.where("released = ? OR user_id = ?", true, current_user.id)
 
-    	@headings = Docstructure.where(:released => true)
+    	@headings = Docstructure.where("released = ? OR user_id = ?", true, current_user.id)
     	@declarativelast = Declarative.where(user_id: @user.id).order("created_at").last
     	if @declarativelast.nil?
 
@@ -28,7 +28,7 @@ class DeclarativesController < ApplicationController
 	end
 	
 	def create
-		if current_user.has_role? :admin
+		if current_user.has_role? :admin or :sandbox
 				
 		    @user = current_user
 		    @declarative = @user.declaratives.new(declarative_params)
@@ -106,10 +106,57 @@ class DeclarativesController < ApplicationController
 			redirect to root_path
 		end		
 	end	
+
+	def edit
+		if current_user.has_role? :sandbox
+
+	    @user = current_user
+	    @linkcat = Linkcat.all
+
+    	@headings = Docstructure.all
+	    @declarative = @user.declaratives.find(params[:id])
+
+	  else
+			redirect_to	new_user_find_path(current_user.id)
+	  end  
+	end	
+
+	def update
+		if current_user.has_role? :sandbox
+		
+	    @user = current_user
+	    @declarative = @user.declaratives.find(params[:id])
+
+	    if @declarative.update(declarative_params)
+	        flash[:success] = "Your heading was updated"
+	        redirect_to admin_declaratives_path(query: @declarative.linkcat_id)
+	    else
+	      flash[:error] = "Oops. There has been a problem, please retry."
+	        redirect_to admin_declaratives_path
+	      
+	    end
+	  else
+			redirect_to	new_user_find_path(current_user.id)
+		end	   
+	end
+
+	def destroy
+		if current_user.has_role? :sandbox
+
+	    @user = current_user
+	    @declarative = @user.declaratives.find(params[:id])
+	    @declarative.destroy
+	    flash[:success] = "This data was deleted succesfully"
+	    redirect_to user_declaratives_path(current_user.id, query: @declarative.linkcat_id)
+	  else
+	        redirect_to user_declaratives_path(current_user.id, query: @declarative.linkcat_id)
+	  end	 
+	end
+	
 	private
 
 	def declarative_params
-		params.require(:declarative).permit(:urlsource, :declarativetext, :declarativejusttext, :user_id, :docstructure_id, :datapoint, :units, :entryhierarchy, :texttype, :entryend, :endsection, :linkcat_id, :user_id, :declarativeimage, :sandbox, :urlextra)
+		params.require(:declarative).permit(:urlsource, :declarativetext, :declarativejusttext, :user_id, :docstructure_id, :datapoint, :units, :entryhierarchy, :texttype, :entryend, :endsection, :linkcat_id, :user_id, :sandbox, :urlextra)
 	end	
 end
 

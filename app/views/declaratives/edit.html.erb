@@ -3,32 +3,29 @@
   
 </div>  
 
-
 <div class="newdeclarative" >
-<h2>New Note</h2>
+<h2>Edit Sandbox Note</h2>
 
 
 
-<%= simple_form_for @declarative, url: admin_declaratives_path, method: :post do |f| %>
+<%= simple_form_for @declarative, url: user_declarative_path, method: :put do |f| %>
   <div class="navig">
-	<h4>Area</h4><%= f.input :linkcat_id, collection: @linkcat, value_method: :id, label_method: :linkcatname, label: false, prompt: "Area", selected: @area %>
+	<h4>Area</h4><%= f.input :linkcat_id, collection: @linkcat, value_method: :id, label_method: :linkcatname, label: false, prompt: "Area" %>
 
-	<h4>Heading</h4><%= f.input :docstructure_id, collection: @headings, value_method: :id, label_method: :headingname, label: false, prompt: "Heading", selected: @headinglast %>
+	<h4>Heading</h4><%= f.input :docstructure_id, collection: @headings, value_method: :id, label_method: :headingname, label: false, prompt: "Heading" %>
   </div>
   <div class="declarativeentry">
 
-  <%= f.input :urlsource, label: false, placeholder: "url of source", input_html: {value: @urllast} %>
+  <%= f.input :urlsource, label: false, placeholder: "url of source" %>
 
 
   <%= f.input :declarativejusttext, label: false, placeholder: "Note or description of image" %>
 
- 
-  
 
 
-  <%= f.input :declarativeimage, label: false %>
 
- <%= f.input :entryhierarchy, as: :radio_buttons, collection: ["Claim","Evidence","Fact"], label: false, label: false %>
+
+ <%= f.input :entryhierarchy, as: :radio_buttons, collection: ["Claim","Evidence"], label: false, label: false %>
    <%= f.input :texttype, as: :radio_buttons, label: false, collection: ["Text","List Item","Image"] %>
 
 
@@ -38,16 +35,19 @@
    <%= f.input :endsection, label: 'Finished Entry for this Section' %>
 
 
+<div class="hid">
+   <b>Sandbox entry<%= f.input :sandbox, label: false %></b>
+</div>
 
 
 
 
-
-  <%= f.button :submit, 'Add' %>
+  <%= f.button :submit, 'Edit' %>
   </div>
-
 <% end %>
-<div class="instructions">
+<div class="instructions" id="sandedit">
+  <%= link_to "Delete Data", user_declarative_path(current_user.id, params[:id]), method: :delete %>
+
 <ul>
 <li><h4>Use a # before extra hashtags - you do not need to hastag the area name and heading that is done automatically.</h4></li>
 <li><h4>  Use a ~ before a data item, followed by its unit, please write the number in full.</h4></li>

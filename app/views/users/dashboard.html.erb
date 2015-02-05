@@ -3,6 +3,8 @@
 	
 </div>	
 
+
+
 <div class="userinfo" >
   <div class="accounttype" >
     <h4> Account type:&nbsp
@@ -54,14 +56,16 @@
         </tr>
       </thead>
       <tbody>
+     
       <% @mostfindsb.each do |mostfinds, count| %>
 
         <tr>
           <td><%= mostfinds[1] %></td>
-          <td><%= Linkcat.find(mostfinds[0]).linkcatname  %></td>
+          <td><% if mostfinds[0].nil? %><% else %><%= Linkcat.find(mostfinds[0]).linkcatname  %></td>
           <td><%= count %></td>
-          <td><%= link_to image_tag("refresh63.svg", height: "23px", alt: "Repeat", title: "Repeat"),  user_wlinks_path(current_user.id, queryid: Linkcat.find(mostfinds[0]).id, query: mostfinds[1])%></td>
+          <td><%= link_to image_tag("refresh63.svg", height: "23px", alt: "Repeat", title: "Repeat"),  user_wlinks_path(current_user.id, queryid: Linkcat.find(mostfinds[0]).id, query: mostfinds[1])%></td><% end %>
         </tr>
+        
         <% end %>
       </tbody>
     </table>          
@@ -81,14 +85,16 @@
       </tr>
     </thead>
     <tbody>
+      
       <% @finds.each do |find| %>
         <tr>
           <td><%= find.created_at.to_formatted_s(:short) %></td>
           <td><%= find.searchterm %></td>
-          <td><%= Linkcat.find(find.linkcat_id).linkcatname %>
+          <td><% if find.linkcat_id.nil? %><% else %><%= Linkcat.find(find.linkcat_id).linkcatname %><% end %></td>
           <td><%= link_to image_tag("refresh63.svg", height: "23px", alt: "Repeat", title: "Repeat"),  user_wlinks_path(current_user.id, queryid: find.linkcat_id, query: find.searchterm)%></td>
         </tr>
-      <%- end -%>
+      <% end %>
+      
     </tbody>
   </table>
 </div>

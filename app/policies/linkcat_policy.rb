@@ -19,13 +19,17 @@ class LinkcatPolicy < ApplicationPolicy
     def resolve
       if user.has_role? :admin
         scope.all
+      elsif user.has_role? :sandbox
+        scope.where(user_id: @user.id)
       else
-        scope.none
+        scope.none  
       end
     end
 
+        
+
     def index?
-      @current_user.has_role? :admin
+      @current_user.has_role? :admin or :sandbox
     end
   end
 end 

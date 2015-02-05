@@ -1,0 +1,30 @@
+<div class="logo" id="logosearch" >
+		<%= image_tag 'logo.svg' %>
+	
+</div>	
+<div class="newopen" >
+<h2>Edit topic</h2>
+
+<%= simple_form_for @linkcat, url: user_linkcat_path, method: :put do |f| %>
+
+  <%= f.input :linkcatname, label: false, placeholder: "name" %>
+
+  
+
+  <%= f.input :linkcatdesc, label: false, placeholder: "description" %>
+
+ <div class="hid" >
+ 		<%= f.input :linkcattype, input_html: { value: "Information"}  %>
+
+<%= f.input :linkcatview, input_html: { value: "Report"} %>
+
+  <%= f.input :linkcatmaxres, input_html: { value: '8'} %>
+   <%= f.input :sandbox, :input_html => { :checked => true }  %>
+   </div>
+
+  
+
+  <%= f.button :submit, 'Edit topic' %>
+
+<% end %>
+</div>

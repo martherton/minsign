@@ -1,0 +1,27 @@
+<div class="logo" id="logosearch" >
+		<%= image_tag 'logo.svg' %>
+	
+</div>	
+
+<div class="newopen" >
+<h2>Edit heading</h2>
+
+
+<%= simple_form_for @docstructure, url: user_docstructure_path, method: :put do |f| %>
+
+  <%= f.input :headingname, label: false, placeholder: "name" %>
+
+  <div class="hid">
+  <b>Release to public?<%= f.input :released, label: false %></b>
+   <%= f.input :sandbox, :input_html => { :checked => true }  %>
+  
+  </div>
+
+
+
+  <%= f.button :submit, 'Edit heading' %>
+
+  <h4>Check the list of existing headings before adding another.  Make sure that the headings are set as 'breadcrumb' ie they refer the heading above directly.</h4>
+
+<% end %>
+</div>

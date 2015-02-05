@@ -1,0 +1,31 @@
+<div class="logo" id="logosearch" >
+		<%= image_tag 'logo.svg' %>
+	
+</div>	
+
+<b><%= link_to "Create Heading", new_user_docstructure_path(current_user.id) %></b>
+<div class="modadmin">
+<table>
+	<thead>
+		<tr>
+			<th>heading</th>
+			<th>Created by</th>
+			<th>Edit heading</th>
+			
+		</tr>
+	</thead>
+	<tbody>	
+		<% policy_scope(@docstructures).each do |docstructure| %>
+		<tr>
+			<td><%= docstructure.headingname %></td>
+			<td><%= User.find(docstructure.user_id).fname %>&nbsp<%=	User.find(docstructure.user_id).lname %></td>
+			
+			<td><%= link_to "Edit", edit_user_docstructure_path(current_user.id, docstructure.id) %></td>
+			
+			
+				
+		</tr>		
+<% end %>
+</tbody>
+</table>
+</div>

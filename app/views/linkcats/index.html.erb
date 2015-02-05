@@ -3,7 +3,7 @@
 	
 </div>	
 
-<b><%= link_to "Create Module", new_admin_linkcat_path %></b>
+<b><%= link_to "Create Topic", new_user_linkcat_path(current_user.id) %></b>
 <div class="modadmin">
 <table>
 	<thead>
@@ -12,8 +12,7 @@
 			<th>Created by</th>
 			<th>Module Type</th>
 			<th>Module description</th>
-			<th>Released to public?</th>
-			<th>Sandbox</th>
+			
 			<th>Edit module</th>
 			<th>View all module links</th>
 		</tr>
@@ -25,13 +24,12 @@
 			<td><%= User.find(linkcat.user_id).fname %>&nbsp<%=	User.find(linkcat.user_id).lname %></td>
 			<td><%= linkcat.linkcattype %></td>
 			<td><%= linkcat.linkcatdesc %></td>
-			<td><%= linkcat.released %></td>
-			<td><%= linkcat.sandbox %></td>
-			<td><%= link_to "Edit", edit_admin_linkcat_path(linkcat.id) %></td>
+			
+			<td><%= link_to "Edit", edit_user_linkcat_path(current_user.id, linkcat.id) %></td>
 			<% if linkcat.linkcattype == "Curated Weblinks" %>
-				<td><%= link_to "View all links for this module", admin_wlinks_path(query: linkcat.id) %></td>
+				<td><%= link_to "View all links for this module", user_wlinks_path(query: linkcat.id) %></td>
 			<% else %>
-				<td><%= link_to "View all data for this module", admin_declaratives_path(query: linkcat.id) %></td>
+				<td><%= link_to "View all data for this module", dataentered_user_path(current_user.id, query: linkcat.id) %></td>
 			<% end %>	
 				
 		</tr>		

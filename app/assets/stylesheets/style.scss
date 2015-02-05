@@ -507,6 +507,67 @@ input[type="submit"] {
   color: #0085CD;
 }
 
+/* SANDBOX STYLING ------
+-------------*/
+
+.sandbox {
+  width: 90%;
+  margin-left: 5%;
+}
+
+.sandbox h2 {
+  text-align: center;
+}
+
+.sandboxlinks a {
+  color: #0085CD;
+  margin-right: 2%;
+  display: block;
+}
+
+.sandboxlinks {
+  margin-top: 2%;
+  width: 30%;
+  float: left;
+}
+
+.sandinstr h3 {
+  text-align: center;
+}
+
+.sandinstr {
+  width: 80%;
+  margin-left: 10%;
+}
+
+#smallinstr {
+  width: 70%;
+  margin-left: 15%;
+}
+
+.sandexplain {
+  float: right;
+  width: 70%;
+}
+
+.clearer {
+  clear: both;
+  width: 40%;
+  margin-left: 30%;
+}
+
+.deletesand h2 {
+  text-align: center;
+}
+
+.hid {
+  display: none;
+}
+
+#sandedit {
+  margin-top: 20%;
+}
+
 }
   /* --- end media queries ---- */
 

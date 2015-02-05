@@ -33,6 +33,11 @@ Rails.application.routes.draw do
     resources :wlinks
     resources :docstructures
     resources :declaratives
+    member do
+      get 'sandbox'
+      get 'deletesandbox'
+      get 'dataentered'
+    end  
     resources :finds, :path_names => { :new => 'search'}
     member do
       get 'dashboard'
