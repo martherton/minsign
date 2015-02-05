@@ -14,7 +14,7 @@
 <div class="reportcard" >
 			<h2><% if @b == declarative.linkcat_id %><% else %><%= Linkcat.find(declarative.linkcat_id).linkcatname %><% @b = declarative.linkcat_id %><%end%></h2>
 			<h3><% if @c == declarative.docstructure_id %><% else %><%= Docstructure.find(declarative.docstructure_id).headingname %><% @c = declarative.docstructure_id %><%end%></h3>
-			<h4><%= declarative.declarativetext %>
+			<h4><% if declarative.sandbox == true %><% if current_user.id == declarative.user_id %><%= declarative.declarativetext %>&nbspThis is a your sandbox entry<%else %><% end %><% else %><%= declarative.declarativetext %><% end %>
 			<% if declarative.urlextra.blank? %>
 			<% else %>
 				<%= link_to "Extra Sources", declarative.urlextra[0] %></h4>
@@ -36,7 +36,7 @@
 <div class="reportcard" >
 			<h2><% if @b == declarative.linkcat_id %><% else %><%= Linkcat.find(declarative.linkcat_id).linkcatname %><% @b = declarative.linkcat_id %><%end%></h2>
 			<h3><% if @request == Docstructure.find(declarative.docstructure_id).headingname %><% else %><% if @c == declarative.docstructure_id %><% else %><%= Docstructure.find(declarative.docstructure_id).headingname %><% @c = declarative.docstructure_id %><% end %><% end %></h3>
-			<h4><% if declarative.sandbox == true %><% if current_user.id = declarative.user_id %><%= declarative.declarativetext %>&nbspThis is a your sandbox entry<%else %><% end %><% else %><%= declarative.declarativetext %><% end %>
+			<h4><% if declarative.sandbox == true %><% if current_user.id == declarative.user_id %><%= declarative.declarativetext %>&nbspThis is a your sandbox entry<%else %><% end %><% else %><%= declarative.declarativetext %><% end %>
 			<% if declarative.urlextra.blank? %>
 			<% else %>
 				<%= link_to "Extra Sources", declarative.urlextra[0], target: '_blank' %></h4>
