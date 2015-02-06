@@ -34,6 +34,10 @@
    <%= f.input :entryend, label: 'Completed notes from source' %>
    <%= f.input :endsection, label: 'Finished Entry for this Section' %>
 
+   <p></p>Date for review (sets a reminder to update - leave today's date if no review required)<%= f.input :reviewdate, as: :date, start_year: Date.today.year - 50,
+                              end_year: Date.today.year,
+                              order: [:day, :month, :year],label: false %>
+
 
 <div class="hid">
    <b>Sandbox entry<%= f.input :sandbox, label: false %></b>

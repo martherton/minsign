@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150205122950) do
+ActiveRecord::Schema.define(version: 20150206094255) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "contentcom"
@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 20150205122950) do
     t.boolean  "endsection"
     t.string   "urlextra"
     t.boolean  "sandbox"
+    t.string   "listtitle"
+    t.date     "reviewdate"
   end
 
   create_table "docstructures", force: :cascade do |t|

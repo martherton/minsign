@@ -24,6 +24,7 @@
 			<th>Text Type</th>
 			<th>Extra url</th>
 			<th>Tags</th>
+			<th>Date for review</th>
 	
 
 
@@ -44,6 +45,7 @@
 			<td><%= dec.texttype %></td>
 			<td><%= dec.urlextra %></td>
 			<td><%= dec.tag_list %></td>
+			<td><% if dec.reviewdate == dec.created_at.to_date %>No review<% else %><%= dec.reviewdate %><% end %></td>
 			
 
 

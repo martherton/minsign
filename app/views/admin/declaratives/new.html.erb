@@ -29,7 +29,7 @@
   <%= f.input :declarativeimage, label: false %>
 
  <%= f.input :entryhierarchy, as: :radio_buttons, collection: ["Claim","Evidence","Fact"], label: false, label: false %>
-   <%= f.input :texttype, as: :radio_buttons, label: false, collection: ["Text","List Item","Image"] %>
+   <%= f.input :texttype, as: :radio_buttons, label: false, collection: ["Text","List title","List Item","Image"] %>
 
 
 
@@ -37,7 +37,9 @@
    <%= f.input :entryend, label: 'Completed notes from source' %>
    <%= f.input :endsection, label: 'Finished Entry for this Section' %>
 
-
+   <p></p>Date for review (sets a reminder to update - leave today's date if no review required)<%= f.input :reviewdate, as: :date, start_year: Date.today.year - 50,
+                              end_year: Date.today.year,
+                              order: [:day, :month, :year],label: false %>
 
 
 

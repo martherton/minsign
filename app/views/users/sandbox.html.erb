@@ -15,6 +15,7 @@
 	<h2>Review Your structure</h2>
 	<%= link_to "List of created topics", user_linkcats_path(current_user.id) %>
 	<%= link_to "List of created headings", user_docstructures_path(current_user.id) %>
+	<%= link_to "List of all data entered", dataentered_user_path(current_user.id) %>
 	<h2>Delete your entire structure</h2>
 	<%= link_to "Delete Sandbox", deletesandbox_user_path %>
 

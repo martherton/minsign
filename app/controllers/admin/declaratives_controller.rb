@@ -102,7 +102,7 @@ class Admin::DeclarativesController < ApplicationController
 	private
 
 	def declarative_params
-		params.require(:declarative).permit(:urlsource, :declarativetext, :declarativejusttext, :user_id, :docstructure_id, :datapoint, :units, :entryhierarchy, :texttype, :entryend, :endsection, :linkcat_id, :user_id, :urlextra, :declarativeimage, :sandbox)
+		params.require(:declarative).permit(:urlsource, :declarativetext, :declarativejusttext, :user_id, :docstructure_id, :datapoint, :units, :entryhierarchy, :texttype, :entryend, :endsection, :linkcat_id, :user_id, :urlextra, :declarativeimage, :sandbox, :reviewdate)
 	end	
 
 end

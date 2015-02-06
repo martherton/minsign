@@ -25,6 +25,7 @@
 			<th>Extra url</th>
 			<th>Tags</th>
 			<th>Image</th>
+			<th>Date for review</th>
 
 
 			<th>Edit data</th>
@@ -45,6 +46,7 @@
 			<td><%= dec.urlextra %></td>
 			<td><%= dec.tag_list %></td>
 			<td><%= dec.declarativeimage_file_name %></td>
+			<td><% if dec.reviewdate == dec.created_at.to_date %>No review<% else %><%= dec.reviewdate %><% end %></td>
 
 
 
