@@ -11,6 +11,7 @@
 			<th>heading</th>
 			<th>Created by</th>
 			<th>Edit heading</th>
+			<th>Live Issu?</th>
 			<th>Released?</th>
 		</tr>
 	</thead>
@@ -21,6 +22,7 @@
 			<td><%= User.find(docstructure.user_id).fname %>&nbsp<%=	User.find(docstructure.user_id).lname %></td>
 			
 			<td><%= link_to "Edit", edit_admin_docstructure_path(docstructure.id) %></td>
+			<td><% if docstructure.liveissue == true %>Yes<% else %>Historic<% end %>
 			<td><%= docstructure.released %></td>
 			
 				

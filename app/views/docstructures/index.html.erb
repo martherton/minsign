@@ -10,17 +10,19 @@
 		<tr>
 			<th>heading</th>
 			<th>Created by</th>
-			<th>Edit heading</th>
+			<th>Live issue?</th>
+			<th>Edit heading</th> 
 			
 		</tr>
 	</thead>
 	<tbody>	
 		<% policy_scope(@docstructures).each do |docstructure| %>
 		<tr>
-			<td><%= docstructure.headingname %></td>
-			<td><%= User.find(docstructure.user_id).fname %>&nbsp<%=	User.find(docstructure.user_id).lname %></td>
+			<td id="tablongtxt"><%= docstructure.headingname %></td>
+			<td id="tabname"><%= User.find(docstructure.user_id).fname %>&nbsp<%=	User.find(docstructure.user_id).lname %></td>
+			<td id="tabbool"><% if docstructure.liveissue == true %>Yes<% else %>Historic<% end %>
 			
-			<td><%= link_to "Edit", edit_user_docstructure_path(current_user.id, docstructure.id) %></td>
+			<td id="tablink"><%= link_to "Edit", edit_user_docstructure_path(current_user.id, docstructure.id) %></td>
 			
 			
 				

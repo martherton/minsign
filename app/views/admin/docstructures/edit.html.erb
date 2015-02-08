@@ -10,6 +10,7 @@
 <%= simple_form_for @docstructure, url: admin_docstructure_path(params[:id]), method: :put do |f| %>
 
   <%= f.input :headingname, label: false, placeholder: "name" %>
+  Is this a live issue<%= f.input :liveissue, label: false %>
 
   <b>Release to public?<%= f.input :released, label: false %></b>
 

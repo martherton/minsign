@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150206094255) do
+ActiveRecord::Schema.define(version: 20150208191703) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "contentcom"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20150206094255) do
     t.integer  "user_id"
     t.boolean  "released"
     t.boolean  "sandbox"
+    t.boolean  "liveissue"
   end
 
   create_table "finds", force: :cascade do |t|

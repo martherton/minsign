@@ -20,7 +20,7 @@
 <h4>Total number of searches:<%= @findscount %></h4>
 
 <% @findslinkcat.each do |findslinkcat, count| %>
-	<%= Linkcat.find(findslinkcat).linkcatname %>
+	<% if findslinkcat.nil?%><% elsif findslinkcat ==0 %><% else %><%= Linkcat.find(findslinkcat).linkcatname %><% end %>
 	<%= "#{count}" %>
 	</br>
 <% end %>	

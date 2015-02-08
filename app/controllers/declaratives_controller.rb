@@ -58,7 +58,8 @@ class DeclarativesController < ApplicationController
 						@declarativest = @declarativesfromlinkcat.tagged_with(params[:query])
 						@searchterm = params[:query]
 						@module = Docstructure.find(params[:queryid])
-						@declaratives = @declarativess | @declarativest
+						@declarativespreorder = @declarativess | @declarativest
+						@dec = @declarativespreorder.order_for_document(@declarativespreorder)
 						@linkcatmax = Docstructure.where(:id => params[:queryid])
 						@count = @declaratives.count
 						@request = Docstructure.find(params[:queryid]).headingname

@@ -568,6 +568,35 @@ input[type="submit"] {
   margin-top: 20%;
 }
 
+/*----TABLE STYLING------
+-----*/
+
+.modadmin th, {
+  text-align: center;
+  width: 10%;
+  padding-bottom: 2%;
+}
+
+#tablink a{
+  color: #0085CD;
+}
+
+#tablink,
+#tabname,
+#tabbool {
+  text-align: center;
+
+}
+
+#tablongtxt {
+  width: 30%;
+}
+
+.modadmin td {
+  border: solid 1px;
+}
+
+
 }
   /* --- end media queries ---- */
 

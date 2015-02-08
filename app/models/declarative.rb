@@ -95,7 +95,9 @@ class Declarative < ActiveRecord::Base
 
 	end
 
-	
+	def order_for_document(declarative)
+
+	end	
 
 
 

@@ -34,23 +34,23 @@
 	<tbody>	
 		<% @decs.each do |dec| %>
 		<tr>
-			<td><%=  dec.urlsource %></td>
-			<td><%= User.find(dec.user_id).fname %>&nbsp<%= User.find(dec.user_id).lname %></td>
-			<td><%= dec.sandbox %></td>
+			<td id="tablink"><%=  link_to dec.urlsource, dec.urlsource %></td>
+			<td id="tabname" ><%= User.find(dec.user_id).fname %>&nbsp<%= User.find(dec.user_id).lname %></td>
+			<td id="tabbool"><%= dec.sandbox %></td>
 			<td><%= dec.declarativejusttext %></td>
 			<td><%= dec.declarativetext %></td>
 			<td><%= dec.datapoint %></td>
 			<td><%= dec.units %></td>
 			<td><%= dec.entryhierarchy %></td>
 			<td><%= dec.texttype %></td>
-			<td><%= dec.urlextra %></td>
+			<td id="tablink"><% if dec.urlextra.blank? %><% else %><%= link_to dec.urlextra, dec.urlextra %><% end %></td>
 			<td><%= dec.tag_list %></td>
 			<td><% if dec.reviewdate == dec.created_at.to_date %>No review<% else %><%= dec.reviewdate %><% end %></td>
 			
 
 
 
-			<td><%= link_to "Edit", edit_user_declarative_path(current_user.id, dec.id, query: params[:query]) %></td>
+			<td id="tablink"><%= link_to "Edit", edit_user_declarative_path(current_user.id, dec.id, query: params[:query]) %></td>
 		</tr>		
 <% end %>
 </tbody>
