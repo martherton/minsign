@@ -21,17 +21,17 @@
 	<tbody>	
 		<% policy_scope(@linkcats).each do |linkcat| %>
 		<tr>
-			<td><%= linkcat.linkcatname %></td>
-			<td><%= User.find(linkcat.user_id).fname %>&nbsp<%=	User.find(linkcat.user_id).lname %></td>
+			<td id="tabname"><%= linkcat.linkcatname %></td>
+			<td id="tabname"><%= User.find(linkcat.user_id).fname %>&nbsp<%=	User.find(linkcat.user_id).lname %></td>
 			<td><%= linkcat.linkcattype %></td>
 			<td><%= linkcat.linkcatdesc %></td>
 			<td><%= linkcat.released %></td>
 			<td><%= linkcat.sandbox %></td>
-			<td><%= link_to "Edit", edit_admin_linkcat_path(linkcat.id) %></td>
+			<td id="tablink"><%= link_to "Edit", edit_admin_linkcat_path(linkcat.id) %></td>
 			<% if linkcat.linkcattype == "Curated Weblinks" %>
-				<td><%= link_to "View all links for this module", admin_wlinks_path(query: linkcat.id) %></td>
+				<tdid="tablink"><%= link_to "View all links for this module", admin_wlinks_path(query: linkcat.id) %></td>
 			<% else %>
-				<td><%= link_to "View all data for this module", admin_declaratives_path(query: linkcat.id) %></td>
+				<td id="tablink" ><%= link_to "View all data for this module", admin_declaratives_path(query: linkcat.id) %></td>
 			<% end %>	
 				
 		</tr>		
