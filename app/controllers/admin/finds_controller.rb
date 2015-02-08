@@ -32,7 +32,7 @@ class Admin::FindsController < ApplicationController
 					@findsuser = Find.group("user_id").count
 				else	
 					@users = User.select("email, id").group("email")
-					@linkcats = Linkcat.select("linkcatname").group("linkcatname") 
+					@linkcats = Linkcat.select("linkcatname,id").group("linkcatname") 
 					@finds = Find.all
 					@findscount = Find.count
 					@findslinkcat = Find.group("linkcat_id").count
