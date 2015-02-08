@@ -8,33 +8,33 @@ class Admin::FindsController < ApplicationController
 			if params[:search].present? and params[:search][:q].present?
 				
 				  @finds = Find.search(params[:search][:q])
-				  @users = User.all.group("email")
-					@linkcats = Linkcat.all.group("linkcatname") 
+				  @users = User.group("email")
+					@linkcats = Linkcat.group("linkcatname") 
 					
-					@findscount = Find.all.count
-					@findslinkcat = Find.all.group("linkcat_id").count
-					@findsuser = Find.all.group("user_id").count
+					@findscount = Find.count
+					@findslinkcat = Find.group("linkcat_id").count
+					@findsuser = Find.group("user_id").count
 				elsif   params[:search].present? and params[:search][:q1].present?
 				  @finds = Find.where(:user_id => params[:search][:q1])
-				  @users = User.all.group("email")
-					@linkcats = Linkcat.all.group("linkcatname") 
+				  @users = User.group("email")
+					@linkcats = Linkcat.group("linkcatname") 
 						
-					@findscount = Find.all.count
-					@findslinkcat = Find.all.group("linkcat_id").count
-					@findsuser = Find.all.group("user_id").count
+					@findscount = Find.count
+					@findslinkcat = Find.group("linkcat_id").count
+					@findsuser = Find.group("user_id").count
 				elsif   params[:search].present? and params[:search][:q2].present? 
 				  @finds = Find.where(:linkcat_id => params[:search][:q2])
-					@users = User.all.group("email") 
-					@linkcats = Linkcat.all.group("linkcatname") 
+					@users = User.group("email") 
+					@linkcats = Linkcat.group("linkcatname") 
 					
-					@findscount = Find.all.count
-					@findslinkcat = Find.all.group("linkcat_id").count
-					@findsuser = Find.all.group("user_id").count
+					@findscount = Find.count
+					@findslinkcat = Find.group("linkcat_id").count
+					@findsuser = Find.group("user_id").count
 				else	
-					@users = User.all.group("email")
-					@linkcats = Linkcat.all.group("linkcatname") 
+					@users = User.group("email")
+					@linkcats = Linkcat.group("linkcatname") 
 					@finds = Find.all
-					@findscount = Find.all.count
+					@findscount = Find.count
 					@findslinkcat = Find.group("linkcat_id").count
 					@findsuser = Find.group("user_id").count
 				end	
