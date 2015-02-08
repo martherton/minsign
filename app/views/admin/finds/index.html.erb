@@ -30,17 +30,34 @@
 	<%= "#{count}" %>
 	</br>
 <% end %>	
-
+<div class="modadmin">
+<table>
+	<thead>
+		<tr>
+			<th>id number</th>
+			<th>term searched</th>
+			<th>name</th>
+			<th>Module</th>
+		</tr>
+	</thead>		
+	<tbody>
 <% @finds.each do |finds| %>
-	<%= finds.id %>
-	<%= finds.searchterm %>
+	<tr>
+		<td><%= finds.id %></td>
+		<td><%= finds.searchterm %></td>
 	<% @user = User.where(:id => finds.user_id) %>
 	<% @linkcat = Linkcat.where(:id => finds.linkcat_id) %>
 	<% @user.each do |user| %>
-		<%= user.fname %>
+		<td><%= user.fname %>
+		<%= user.lname %></td>
 	<% end %>
 	<% @linkcat.each do |linkcat| %>
-	  <%= linkcat.linkcatname %>
+	  <td><%= linkcat.linkcatname %></td>
+
 	<% end %>  
-<% end %>	
+	</tr>
+<% end %>
+</tbody>
+</table>	
+</div>
 
