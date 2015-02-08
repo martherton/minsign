@@ -31,8 +31,8 @@ class Admin::FindsController < ApplicationController
 					@findslinkcat = Find.group("linkcat_id").count
 					@findsuser = Find.group("user_id").count
 				else	
-					@users = User.select("email, id").group("email")
-					@linkcats = Linkcat.select("linkcatname,id").group("linkcatname") 
+					@users = User.select("email, id").group("id")
+					@linkcats = Linkcat.select("linkcatname,id").group("id") 
 					@finds = Find.all
 					@findscount = Find.count
 					@findslinkcat = Find.group("linkcat_id").count
