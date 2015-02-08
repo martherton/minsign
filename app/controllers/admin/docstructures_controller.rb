@@ -68,7 +68,7 @@ class Admin::DocstructuresController < ApplicationController
 	private
 
 	def docstructure_params
-		params.require(:docstructure).permit(:headingname, :user_id, :released, :sandbox)
+		params.require(:docstructure).permit(:headingname, :user_id, :released, :sandbox, :liveissue)
 	end	
 
 end

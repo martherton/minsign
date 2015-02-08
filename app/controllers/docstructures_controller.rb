@@ -70,7 +70,7 @@ def index
 	private
 
 	def docstructure_params
-		params.require(:docstructure).permit(:headingname, :user_id, :sandbox)
+		params.require(:docstructure).permit(:headingname, :user_id, :sandbox, :liveissue)
 	end	
 
 
