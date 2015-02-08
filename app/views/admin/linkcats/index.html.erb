@@ -29,7 +29,7 @@
 			<td><%= linkcat.sandbox %></td>
 			<td id="tablink"><%= link_to "Edit", edit_admin_linkcat_path(linkcat.id) %></td>
 			<% if linkcat.linkcattype == "Curated Weblinks" %>
-				<tdid="tablink"><%= link_to "View all links for this module", admin_wlinks_path(query: linkcat.id) %></td>
+				<td id="tablink"><%= link_to "View all links for this module", admin_wlinks_path(query: linkcat.id) %></td>
 			<% else %>
 				<td id="tablink" ><%= link_to "View all data for this module", admin_declaratives_path(query: linkcat.id) %></td>
 			<% end %>	
