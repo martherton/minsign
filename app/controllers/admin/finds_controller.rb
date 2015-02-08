@@ -16,8 +16,8 @@ class Admin::FindsController < ApplicationController
 					@findsuser = Find.group("user_id").count
 				elsif   params[:search].present? and params[:search][:q1].present?
 				  @finds = Find.where(:user_id => params[:search][:q1])
-				  @users = User.select("email. id").group("id")
-					@linkcats = Linkcat.select("email. id").group("id") 
+				  @users = User.select("email, id").group("id")
+					@linkcats = Linkcat.select("linkcatname, id").group("id") 
 						
 					@findscount = Find.count
 					@findslinkcat = Find.group("linkcat_id").count
@@ -32,7 +32,7 @@ class Admin::FindsController < ApplicationController
 					@findsuser = Find.group("user_id").count
 				else	
 					@users = User.select("email, id").group("id")
-					@linkcats = Linkcat.select("linkcatname,id").group("id") 
+					@linkcats = Linkcat.select("linkcatname, id").group("id") 
 					@finds = Find.all
 					@findscount = Find.count
 					@findslinkcat = Find.group("linkcat_id").count
