@@ -11,6 +11,12 @@ class FindsController < ApplicationController
 		if current_user.has_role? :user or :user
 			@user = current_user
 			
+			@linkcat1 = Linkcat.joins(:declaratives).where(declaratives: {user_id: current_user.id})
+			@linkcat2 = Linkcat.where("released = ?", true)
+			@linkcat = @linkcat1 | @linkcat2
+			@heading1 = Docstructure.joins(:declaratives).where(declaratives: {user_id: current_user.id})
+			@heading2 = Docstructure.where("released = ?", true)
+			@heading = @heading1 | @heading2
 			@find = @user.finds.new
 		else
 			redirect_to root_path
