@@ -39,6 +39,7 @@ Rails.application.routes.draw do
       get 'dataentered'
     end  
     resources :finds, :path_names => { :new => 'search'}
+      
     member do
       get 'dashboard'
     end  
@@ -47,7 +48,11 @@ Rails.application.routes.draw do
   resources :linkcats do
     resources :finds
   end  
-  resources :finds
+  resources :finds do
+    collection do
+        get :tags, as: :tags
+      end
+  end    
 
   namespace :admin do
     resources :users do
@@ -64,5 +69,7 @@ Rails.application.routes.draw do
           
     resources :finds
   end  
+
+   
   
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150208191703) do
+ActiveRecord::Schema.define(version: 20150209230701) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "contentcom"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20150208191703) do
     t.integer  "user_id"
     t.integer  "linkcat_id"
     t.integer  "docstructure_id"
+    t.string   "tag_list_tokens"
   end
 
   create_table "linkcats", force: :cascade do |t|

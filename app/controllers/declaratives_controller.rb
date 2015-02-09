@@ -1,5 +1,8 @@
 class DeclarativesController < ApplicationController
 
+
+
+
 	def new
 
 		if current_user.has_role? :sandbox or :admin
@@ -176,12 +179,18 @@ class DeclarativesController < ApplicationController
 	        redirect_to user_declaratives_path(current_user.id, query: @declarative.linkcat_id)
 	  end	 
 	end
+
+	
+end
 	
 	private
 
 	def declarative_params
 		params.require(:declarative).permit(:urlsource, :declarativetext, :declarativejusttext, :user_id, :docstructure_id, :datapoint, :units, :entryhierarchy, :texttype, :entryend, :endsection, :linkcat_id, :user_id, :sandbox, :urlextra, :reviewdate)
 	end	
-end
+
+	
+
+
 
 

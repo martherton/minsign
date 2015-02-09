@@ -1,6 +1,6 @@
 class FindsController < ApplicationController
 	before_filter :authenticate_user!
-	
+	before_filter :find_tags, only: [:new, :create, :edit, :update]
 
 	def index
 
@@ -37,8 +37,9 @@ class FindsController < ApplicationController
 		    @user = current_user
 		    @find = @user.finds.new(find_params)
 		    if @find.save
+		    	@searchterm = @find.tag_list.join(",")
 		    	if @find.linkcat_id.nil?
-		    		redirect_to user_declaratives_path(current_user.id, queryid: @find.docstructure_id, query: @find.searchterm, q: 'h')
+		    		redirect_to user_declaratives_path(current_user.id, queryid: @find.docstructure_id, query: @searchterm, q: 'h')
 		    	else	
 			    	if Linkcat.find(@find.linkcat_id).linkcattype == 'Curated Weblinks'
 			    		redirect_to user_wlinks_path(current_user.id, queryid: @find.linkcat_id, query: @find.searchterm)
@@ -56,11 +57,26 @@ class FindsController < ApplicationController
 		end	   
 	end
 
+	def tags
+	  tags = Declarative.all_tag_counts.by_tag_name(params[:q]).token_input_tags
+
+	  respond_to do |format|
+    	format.json { render json: tags }
+  	end
+	end
 	
 
 	private
 
 	def find_params
-		params.require(:find).permit(:searchterm, :linkcat_id, :user_id, :docstructure_id)
+		params.require(:find).permit(:searchterm, :linkcat_id, :user_id, :docstructure_id, :tag_list_tokens)
 	end	
+
+
+	def find_tags
+  	@declarative_tags = params[:id].present? ? Declarative.find(params[:id]).tags.token_input_tags : []
+	end
+
+
+	
 end
