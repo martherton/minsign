@@ -84,15 +84,15 @@ class DeclarativesController < ApplicationController
 					@user = current_user
 					@linkrel = Linkcat.where(released: true)
 						@decallowed = Declarative.where("linkcat_id = ? or user_id = ?", @linkrel[0], current_user.id)
-					@declarativesfromlinkcat = @decallowed.where(:linkcat_id => params[:queryid])
+					@declarativesfromlinkcat = @decallowed.where(:linkcat_id => params[:q])
 					@declarativess = @declarativesfromlinkcat.search(params[:query]) 
 					@declarativest = @declarativesfromlinkcat.tagged_with(params[:query])
-					@declarativesu = @declarativesfromlinkcat.where(:docstructure_id => params[:q])
+					@declarativesu = @declarativesfromlinkcat.where(:docstructure_id => params[:qeuryid])
 					@searchterm = params[:query]
-					@module = Linkcat.find(params[:queryid])
+					@module = Linkcat.find(params[:q])
 					@declarativesv = @declarativess | @declarativest
 					@declaratives = @declarativesv & @declarativesu
-					@linkcatmax = Linkcat.where(:id => params[:queryid])
+					@linkcatmax = Linkcat.where(:id => params[:q])
 					@count = @declaratives.count
 					@request = Linkcat.find(params[:queryid]).linkcatname
 				else	
