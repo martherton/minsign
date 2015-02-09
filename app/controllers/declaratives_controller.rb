@@ -60,7 +60,7 @@ class DeclarativesController < ApplicationController
 						@searchterm = params[:query]
 						@module = Docstructure.find(params[:queryid])
 						@declarativespreorder = @declarativess | @declarativest
-						@dec = @declarativespreorder.order_for_document(@declarativespreorder)
+						
 						@linkcatmax = Docstructure.where(:id => params[:queryid])
 						@count = @declaratives.count
 						@request = Docstructure.find(params[:queryid]).headingname
@@ -69,7 +69,7 @@ class DeclarativesController < ApplicationController
 						@user = current_user
 						@linkrel = Linkcat.where(released: true)
 						@decallowed = Declarative.where("linkcat_id = ? or user_id = ?", @linkrel[0], current_user.id)
-						@declarativesfromlinkcat = @decallowed.where(:docstructure_id => params[:queryid]).order(:linkcat_id)
+						@declarativesfromlinkcat = @decallowed.order(:linkcat_id)
 						@declarativess = @declarativesfromlinkcat.order(:docstructure_id).search(params[:query])
 						@declarativest = @declarativesfromlinkcat.order(:docstructure_id).tagged_with(params[:query])
 						@searchterm = params[:query]
@@ -100,7 +100,7 @@ class DeclarativesController < ApplicationController
 					@user = current_user
 					@linkrel = Linkcat.where(released: true)
 						@decallowed = Declarative.where("linkcat_id = ? or user_id = ?", @linkrel[0], current_user.id)
-					@declarativesfromlinkcat = @decallowed.where(:linkcat_id => params[:queryid]).order(:docstructure_id)
+					@declarativesfromlinkcat = @decallowed.order(:docstructure_id)
 					@declarativess = @declarativesfromlinkcat.search(params[:query]) 
 					@declarativest = @declarativesfromlinkcat.tagged_with(params[:query])
 					@searchterm = params[:query]
