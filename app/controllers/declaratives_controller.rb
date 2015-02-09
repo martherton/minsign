@@ -80,21 +80,35 @@ class DeclarativesController < ApplicationController
 						@request = "All"
 					end	
 				elsif params[:q].present?
-					@a = @a +1
-					@user = current_user
-					@linkrel = Linkcat.where(released: true)
-						@decallowed = Declarative.where("linkcat_id = ? or user_id = ?", @linkrel[0], current_user.id)
-					@declarativesfromlinkcat = @decallowed.where(:linkcat_id => params[:q])
-					@declarativess = @declarativesfromlinkcat.search(params[:query]) 
-					@declarativest = @declarativesfromlinkcat.tagged_with(params[:query])
-					@declarativesu = @declarativesfromlinkcat.where(:docstructure_id => params[:qeuryid])
-					@searchterm = params[:query]
-					@module = Linkcat.find(params[:q])
-					@declarativesv = @declarativess | @declarativest
-					@declaratives = @declarativesv & @declarativesu
-					@linkcatmax = Linkcat.where(:id => params[:q])
-					@count = @declaratives.count
-					@request = Linkcat.find(params[:q]).linkcatname
+					if params[:query].present?
+						@a = @a +1
+						@user = current_user
+						@linkrel = Linkcat.where(released: true)
+							@decallowed = Declarative.where("linkcat_id = ? or user_id = ?", @linkrel[0], current_user.id)
+						@declarativesfromlinkcat = @decallowed.where(:linkcat_id => params[:q])
+						@declarativess = @declarativesfromlinkcat.search(params[:query]) 
+						@declarativest = @declarativesfromlinkcat.tagged_with(params[:query])
+						@declarativesu = @declarativesfromlinkcat.where(:docstructure_id => params[:qeuryid])
+						@searchterm = params[:query]
+						@module = Linkcat.find(params[:q])
+						@declarativesv = @declarativess | @declarativest
+						@declaratives = @declarativesv & @declarativesu
+						@linkcatmax = Linkcat.where(:id => params[:q])
+						@count = @declaratives.count
+						@request = Linkcat.find(params[:q]).linkcatname
+					else
+						@user = current_user
+						@linkrel = Linkcat.where(released: true)
+							@decallowed = Declarative.where("linkcat_id = ? or user_id = ?", @linkrel[0], current_user.id)
+						@declarativesfromlinkcat = @decallowed.where(:linkcat_id => params[:q])
+						
+						@searchterm = params[:query]
+						@module = Linkcat.find(params[:q])
+						
+						@declaratives = @declarativesfromlinkcat
+						@linkcatmax = Linkcat.where(:id => params[:q])
+						@count = @declaratives.count
+						@request = Linkcat.find(params[:q]).linkcatname	
 				else	
 					@a = @a +1
 					@user = current_user
