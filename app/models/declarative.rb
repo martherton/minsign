@@ -93,7 +93,7 @@ class Declarative < ActiveRecord::Base
 
 	def self.search(query)
   	
-  	joins(:tags).where("declarativetext liike ? or name ilike ?","%#{query}%","%#{query}%") 
+  	joins(:tags).where("declarativetext ilike ? or name ilike ?","%#{query}%","%#{query}%") 
 
 	end
 
