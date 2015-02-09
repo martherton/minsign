@@ -73,3 +73,5 @@ gem 'paperclip'
 
 gem 'chosen-rails'
 
+gem 'jquery-turbolinks'
+

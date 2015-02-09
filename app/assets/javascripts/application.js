@@ -11,9 +11,11 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require turbolinks
 //= require chosen-jquery
+//= require chromemac
 //= require jquery.tokeninput
 //= require global
 //= require_tree .

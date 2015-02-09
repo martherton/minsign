@@ -7,6 +7,8 @@
  * choose which one suits your project best!
  *
  */
+
+ 
 ;(function ($) {
   var DEFAULT_SETTINGS = {
     // Search settings
