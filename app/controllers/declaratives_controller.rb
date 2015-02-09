@@ -5,9 +5,8 @@ class DeclarativesController < ApplicationController
 		if current_user.has_role? :sandbox or :admin
 			@user = current_user
     	@declarative = @user.declaratives.new
-    	@linkcat = Linkcat.where("released = ? OR user_id = ?", true, current_user.id)
-
-    	@headings = Docstructure.where("released = ? OR user_id = ?", true, current_user.id)
+    	@linkcat = Linkcat.all
+    	@headings = Docstructure.all
     	@declarativelast = Declarative.where(user_id: @user.id).order("created_at").last
     	if @declarativelast.nil?
 
