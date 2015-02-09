@@ -28,7 +28,7 @@
 			<td><%= user.confirmed_at %></td>
 			<td><%= user.approved %></td>
 			<td><%= user.roles(:select => :name).collect(&:name) %></td>
-			<td><%= link_to "Edit", edit_admin_user_path(user.id) %></td>
+			<td id="tablink"><%= link_to "Edit", edit_admin_user_path(user.id) %></td>
 		</tr>		
 <% end %>
 </tbody>

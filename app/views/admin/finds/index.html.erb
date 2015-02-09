@@ -6,19 +6,19 @@
 <h4>Filters</h4>
 <div class="filter" id="fil1">
 <%= simple_form_for :search, url: admin_finds_path, method: :get do |f| %>
-	<h4>search for specific term</h4><%= f.input :q, label: false %>
+	<h4>Search for specific term</h4><%= f.input :q, label: false %>
 	<%= f.button :submit, "Search" %> 
 <% end %>	
 </div>
 <div class="filter" id="fil2">
 <%= simple_form_for :search, url: admin_finds_path, method: :get do |f| %>
-	<h4>search for a specific users searches</h4><%= f.input :q1, collection: @users,  label_method: :email, value_method: :id, label: false, prompt: "email" %>
+	<h4>Search for a specific user's searches</h4><%= f.input :q1, collection: @users,  label_method: :email, value_method: :id, label: false, prompt: "email" %>
 	<%= f.button :submit, "Find" %> 
 <% end %>	
 </div>
 <div class="filter" id="fil3">
 <%= simple_form_for :search, url: admin_finds_path, method: :get do |f| %>
-	<h4>search for a specific module searches</h4><%= f.input :q2, collection: @linkcats,  label_method: :linkcatname, value_method: :id, label: false, prompt: "Module" %>
+	<h4>Search for a specific module's searches</h4><%= f.input :q2, collection: @linkcats,  label_method: :linkcatname, value_method: :id, label: false, prompt: "Module" %>
 	<%= f.button :submit, "Find" %> 
 <% end %>	
 </div>
