@@ -104,11 +104,11 @@ class DeclarativesController < ApplicationController
 					@declarativess = @declarativesfromlinkcat.search(params[:query]) 
 					@declarativest = @declarativesfromlinkcat.tagged_with(params[:query])
 					@searchterm = params[:query]
-					@module = Linkcat.find(params[:queryid])
+					@module = Linkcat.find(params[:q])
 					@declaratives = @declarativess | @declarativest
-					@linkcatmax = Linkcat.where(:id => params[:queryid])
+					@linkcatmax = Linkcat.where(:id => params[:q])
 					@count = @declaratives.count
-					@request = Linkcat.find(params[:queryid]).linkcatname
+					@request = Linkcat.find(params[:q]).linkcatname
 				end	
 				
 		else
