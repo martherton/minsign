@@ -66,8 +66,9 @@ class DeclarativesController < ApplicationController
 					else
 						@a = @a +1
 						@user = current_user
-						@declarativess = Declarative.search(params[:query]) 
-						@declarativest = Declarative.tagged_with(params[:query])
+
+						@declarativess = Declarative.order(:docstructure_id).search(params[:query])
+						@declarativest = Declarative.order(:docstructure_id).tagged_with(params[:query])
 						@searchterm = params[:query]
 						@module = "All"
 						@declaratives = @declarativess | @declarativest
