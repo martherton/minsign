@@ -25,7 +25,7 @@ class LinkcatsController < ApplicationController
 		    @user = current_user
 		    @linkcat = @user.linkcats.new(linkcat_params)
 		    if @linkcat.save
-		    	redirect_to sandbox_user_path
+		    	redirect_to sandbox_user_path(current_user.id)
 		    	flash[:success] = "Your topic was created" 
 		  	else
 		  		flash[:failure] = "Check the input"
