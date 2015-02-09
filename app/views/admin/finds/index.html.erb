@@ -12,7 +12,7 @@
 </div>
 <div class="filter" id="fil2">
 <%= simple_form_for :search, url: admin_finds_path, method: :get do |f| %>
-	<h4>Search for a specific user's searches</h4><%= f.input :q1, collection: @users,  label_method: :email, value_method: :id, label: false, prompt: "email" %>
+	<h4>Search for a specific user's searches</h4><%= f.input :q1, collection: @users,  label_method: :email, value_method: :id, label: false, prompt: "email", class: "chosen" %>
 	<%= f.button :submit, "Find" %> 
 <% end %>	
 </div>

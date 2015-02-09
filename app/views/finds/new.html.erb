@@ -7,7 +7,7 @@
 
 <%= simple_form_for [@user, @find], url: user_finds_path, method: :post do |f| %>
 	<div class="searchform" >
-		<%= f.input :linkcat_id, collection: Linkcat.where("released = ? OR user_id = ?", true, current_user.id), label_method: :linkcatname, value_method: :id, label: false, prompt: "Select a topic to search" %>
+		<%= f.input :linkcat_id, collection: Linkcat.where("released = ? OR user_id = ?", true, current_user.id), label_method: :linkcatname, value_method: :id, label: false, prompt: "Select a topic to search", class: "chosen" %>
 		<%= f.input :docstructure_id, collection: Docstructure.where("released = ? OR user_id = ?", true, current_user.id), label_method: :headingname, value_method: :id, label: false, prompt: "Select a heading to search" %>
 
 		<%= f.input :searchterm, label: false, placeholder: "Enter search term" %>
