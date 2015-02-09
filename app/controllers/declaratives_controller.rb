@@ -94,7 +94,7 @@ class DeclarativesController < ApplicationController
 					@declaratives = @declarativesv & @declarativesu
 					@linkcatmax = Linkcat.where(:id => params[:q])
 					@count = @declaratives.count
-					@request = Linkcat.find(params[:queryid]).linkcatname
+					@request = Linkcat.find(params[:q]).linkcatname
 				else	
 					@a = @a +1
 					@user = current_user
