@@ -53,7 +53,9 @@ class DeclarativesController < ApplicationController
 					if params[:queryid].present?
 						@a = @a +1
 						@user = current_user
-						@declarativesfromlinkcat = Declarative.where(:docstructure_id => params[:queryid]).order(:linkcat_id)
+						@linkrel = Linkcat.where(released: true)
+						@decallowed = Declarative.where("linkcat_id = ? or user_id = ?", @linkrel[0], current_user.id)
+						@declarativesfromlinkcat = @decallowed.where(:docstructure_id => params[:queryid]).order(:linkcat_id)
 						@declarativess = @declarativesfromlinkcat.search(params[:query]) 
 						@declarativest = @declarativesfromlinkcat.tagged_with(params[:query])
 						@searchterm = params[:query]
@@ -66,9 +68,11 @@ class DeclarativesController < ApplicationController
 					else
 						@a = @a +1
 						@user = current_user
+						@linkrel = Linkcat.where(released: true)
+						@decallowed = Declarative.where("linkcat_id = ? or user_id = ?", @linkrel[0], current_user.id)
 
-						@declarativess = Declarative.order(:docstructure_id).search(params[:query])
-						@declarativest = Declarative.order(:docstructure_id).tagged_with(params[:query])
+						@declarativess = @decallowed.order(:docstructure_id).search(params[:query])
+						@declarativest = @decallowed.order(:docstructure_id).tagged_with(params[:query])
 						@searchterm = params[:query]
 						@module = "All"
 						@declaratives = @declarativess | @declarativest
@@ -79,7 +83,9 @@ class DeclarativesController < ApplicationController
 				elsif params[:q].present?
 					@a = @a +1
 					@user = current_user
-					@declarativesfromlinkcat = Declarative.where(:linkcat_id => params[:queryid])
+					@linkrel = Linkcat.where(released: true)
+						@decallowed = Declarative.where("linkcat_id = ? or user_id = ?", @linkrel[0], current_user.id)
+					@declarativesfromlinkcat = @decallowed.where(:linkcat_id => params[:queryid])
 					@declarativess = @declarativesfromlinkcat.search(params[:query]) 
 					@declarativest = @declarativesfromlinkcat.tagged_with(params[:query])
 					@declarativesu = @declarativesfromlinkcat.where(:docstructure_id => params[:q])
@@ -93,7 +99,9 @@ class DeclarativesController < ApplicationController
 				else	
 					@a = @a +1
 					@user = current_user
-					@declarativesfromlinkcat = Declarative.where(:linkcat_id => params[:queryid]).order(:docstructure_id)
+					@linkrel = Linkcat.where(released: true)
+						@decallowed = Declarative.where("linkcat_id = ? or user_id = ?", @linkrel[0], current_user.id)
+					@declarativesfromlinkcat = @decallowed.where(:linkcat_id => params[:queryid]).order(:docstructure_id)
 					@declarativess = @declarativesfromlinkcat.search(params[:query]) 
 					@declarativest = @declarativesfromlinkcat.tagged_with(params[:query])
 					@searchterm = params[:query]
