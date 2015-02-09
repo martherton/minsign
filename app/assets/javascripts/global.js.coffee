@@ -13,3 +13,4 @@ $(document).on "ready page:load", ->
     $('#job_company_logo').click()
 
   $('select').chosen({disable_search_threshold: 2})
+

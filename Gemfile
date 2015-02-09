@@ -71,4 +71,5 @@ gem 'aws-s3'
 
 gem 'paperclip'
 
+gem 'chosen-rails'
 
