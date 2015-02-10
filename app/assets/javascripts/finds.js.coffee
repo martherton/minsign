@@ -12,5 +12,5 @@ jQuery ->
     preventDuplicates: true
     prePopulate: $('#find_tag_list_tokens').data('load')
 
-    $(document).ready(ready)
+  $(document).ready(ready)
 	$(document).on('page:load', ready)
