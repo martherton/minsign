@@ -15,7 +15,7 @@
 
 		<% @declaratives.each do |declarative| %>
 <div class="reportcard" >
-			
+			<% if declarative.
 			<h2><% if @b == declarative.linkcat_id %><% else %><%= Linkcat.find(declarative.linkcat_id).linkcatname %><% @b = declarative.linkcat_id %><%end%></h2>
 			<h3><% if @request == Docstructure.find(declarative.docstructure_id).headingname %><% else %><% if @c == declarative.docstructure_id %><% else %><%= Docstructure.find(declarative.docstructure_id).headingname %><% @c = declarative.docstructure_id %><% end %><% end %></h3>
 			<h4><% if declarative.sandbox == true %><% if current_user.id == declarative.user_id %><%= declarative.declarativetext %><small>&nbsp(sandbox)</small><%else %><% end %><% else %><%= declarative.declarativetext %><% end %>
@@ -34,7 +34,7 @@
 		<h4>Sources</h4>
 	<% @declaratives.each do |declarativeu| %>
 	
-			 <% if @url == declarativeu.urlsource %><% else %><%= link_to declarativeu.urlsource, declarativeu.urlsource %><% @url = declarativeu.urlsource %><% end %>
+			 <% if @url == declarativeu.urlsource %><% else %><h6><%= link_to declarativeu.urlsource, declarativeu.urlsource %></h6><% @url = declarativeu.urlsource %><% end %>
 	<%end%>
 	</div>
 	
