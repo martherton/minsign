@@ -10,7 +10,7 @@
 
 <%= simple_form_for @declarative, url: user_declarative_path, method: :put do |f| %>
   <div class="navig">
-	<h4>Area</h4><%= f.input :linkcat_id, collection: @linkcat, value_method: :id, label_method: :linkcatname, label: false, prompt: "Area" %>
+	<h4>Topic</h4><%= f.input :linkcat_id, collection: @linkcat, value_method: :id, label_method: :linkcatname, label: false, prompt: "Area" %>
 
 	<h4>Heading</h4><%= f.input :docstructure_id, collection: @headings, value_method: :id, label_method: :headingname, label: false, prompt: "Heading" %>
   </div>

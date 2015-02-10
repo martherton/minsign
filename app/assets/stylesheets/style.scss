@@ -472,6 +472,10 @@ input[type="submit"] {
   width: 100%;
 }
 
+.navig a {
+  color: #0085CD;
+}
+
 .navig h4 {
   margin-bottom: 0.5em;
   text-align: center;
@@ -521,6 +525,12 @@ input[type="submit"] {
 
 .reportcard h3 {
   margin-left: 2%;
+}
+
+.reportcard small {
+
+  font-size: 0.3em;
+  color: #0085CD;
 }
 
 #searchreturn i {

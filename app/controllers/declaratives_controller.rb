@@ -49,84 +49,129 @@ class DeclarativesController < ApplicationController
 
 	def index
 		if current_user.has_role? :admin or :user
-				@a = 0
+				
+			
+				if params[:q] == 'h'  #check for topic h means not present
+					if params[:queryid].present? # check for heading with no topic
+						if params[:query].present? #Topic and query search
+							#Set up the Declaratives that the user can search
+							@user = current_user #identify current user
+							@linkrel = Linkcat.where(released: true) 
+							@decallowed = Declarative.where("linkcat_id = ? or user_id = ?", @linkrel[0], current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
+							@declarativesfromlinkcat = @decallowed.where(:docstructure_id => params[:queryid]) #Further reduce as this is only a heading search
+							@declarativess = @declarativesfromlinkcat.search(params[:query]) #search for non tagged terms
+							@declarativest = @declarativesfromlinkcat.tagged_with(params[:query]) #search for tagged terms
+							@declaratives = @declarativess | @declarativest #remove duplicate declaratives
+							
 
-				if params[:q] == 'h'
-					if params[:queryid].present?
-						@a = @a +1
-						@user = current_user
-						@linkrel = Linkcat.where(released: true)
-						@decallowed = Declarative.where("linkcat_id = ? or user_id = ?", @linkrel[0], current_user.id)
-						@declarativesfromlinkcat = @decallowed.where(:docstructure_id => params[:queryid]).order(:linkcat_id)
-						@declarativess = @declarativesfromlinkcat.search(params[:query]) 
-						@declarativest = @declarativesfromlinkcat.tagged_with(params[:query])
-						@searchterm = params[:query]
-						@module = Docstructure.find(params[:queryid])
-						@declaratives = @declarativess | @declarativest
+							#Labelling data for the search	
+							
+							@searchterm = params[:query]
+							@topic = "All"
+							@count = @declaratives.count
+							@request = Docstructure.find(params[:queryid]).headingname
+						else	#Heading search only
+							#Set up the Declaratives that the user can search
+							@user = current_user #identify current user
+							@linkrel = Linkcat.where(released: true) 
+							@decallowed = Declarative.where("linkcat_id = ? or user_id = ?", @linkrel[0], current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
+							@declarativesfromlinkcat = @decallowed.where(:docstructure_id => params[:queryid]) #Further reduce as this is only a heading search
+							@declarativess = @declarativesfromlinkcat.search(params[:query]) #search for non tagged terms
+							@declarativest = @declarativesfromlinkcat.tagged_with(params[:query]) #search for tagged terms
+							@declaratives = @declarativess | @declarativest #remove duplicate declaratives
+							
+
+							#Labelling data for the search	
+							
+							@searchterm = params[:query]
+							@topic = "All"
+							@count = @declaratives.count
+							@request = Docstructure.find(params[:queryid]).headingname
+						end	
+					elsif params[:query].present? #query only search
 						
-						@linkcatmax = Docstructure.where(:id => params[:queryid])
-						@count = @declaratives.count
-						@request = Docstructure.find(params[:queryid]).headingname
-					else
-						@a = @a +1
-						@user = current_user
-						@linkrel = Linkcat.where(released: true)
-						@decallowed = Declarative.where("linkcat_id = ? or user_id = ?", @linkrel[0], current_user.id)
-						@declarativesfromlinkcat = @decallowed.order(:linkcat_id)
-						@declarativess = @declarativesfromlinkcat.order(:docstructure_id).search(params[:query])
-						@declarativest = @declarativesfromlinkcat.order(:docstructure_id).tagged_with(params[:query])
-						@searchterm = params[:query]
-						@module = "All"
-						@declaratives = @declarativess | @declarativest
-						@linkcatmax = 0
-						@count = @declaratives.count
-						@request = "All"
+						#Set up the Declaratives that the user can search
+							@user = current_user #identify current user
+							@linkrel = Linkcat.where(released: true) 
+							@decallowed = Declarative.where("linkcat_id = ? or user_id = ?", @linkrel[0], current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
+							@declarativesfromlinkcat = @decallowed
+							@declarativess = @declarativesfromlinkcat.search(params[:query]) #search for non tagged terms
+							@declarativest = @declarativesfromlinkcat.tagged_with(params[:query]) #search for tagged terms
+							@declaratives = @declarativess | @declarativest #remove duplicate declaratives
+							
+
+							#Labelling data for the search	
+							
+							@searchterm = params[:query]
+							@topic = "All"
+							@count = @declaratives.count
+							@request = "All"
+					else #No entry return to search
+						flash[:failure] = "No search entered"
+						redirect_to	new_user_find_path(current_user.id)
 					end	
-				elsif params[:q].present?
-					if params[:query].present?
-						@a = @a +1
-						@user = current_user
-						@linkrel = Linkcat.where(released: true)
-							@decallowed = Declarative.where("linkcat_id = ? or user_id = ?", @linkrel[0], current_user.id)
-						@declarativesfromlinkcat = @decallowed.where(:linkcat_id => params[:q])
-						@declarativess = @declarativesfromlinkcat.search(params[:query]) 
-						@declarativest = @declarativesfromlinkcat.tagged_with(params[:query])
-						@declarativesu = @declarativesfromlinkcat.where(:docstructure_id => params[:qeuryid])
-						@searchterm = params[:query]
-						@module = Linkcat.find(params[:q])
-						@declarativesv = @declarativess | @declarativest
-						@declaratives = @declarativesv & @declarativesu
-						@linkcatmax = Linkcat.where(:id => params[:q])
-						@count = @declaratives.count
-						@request = Linkcat.find(params[:q]).linkcatname
-					else
-						@user = current_user
-						@linkrel = Linkcat.where(released: true)
-							@decallowed = Declarative.where("linkcat_id = ? or user_id = ?", @linkrel[0], current_user.id)
-						@declarativesfromlinkcat = @decallowed.where(:linkcat_id => params[:q])
+
+				elsif params[:queryid].present? #Check for heading if topic present
+					if params[:query].present? #Topic, heading and query serach (most detailed)
 						
-						@searchterm = params[:query]
-						@module = Linkcat.find(params[:q])
-						
-						@declaratives = @declarativesfromlinkcat
-						@linkcatmax = Linkcat.where(:id => params[:q])
-						@count = @declaratives.count
-						@request = Linkcat.find(params[:q]).linkcatname	
+						#Set up the Declaratives that the user can search
+							@user = current_user #identify current user
+							@linkrel = Linkcat.where(released: true) 
+							@decallowed = Declarative.where("linkcat_id = ? or user_id = ?", @linkrel[0], current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
+							@declarativesfromlinkcat = @decallowed.where("docstructure_id = ? AND linkcat_id = ?", params[:queryid], params[:q]) #Further reduce as this is only a heading search
+
+							@declarativess = @declarativesfromlinkcat.search(params[:query]) #search for non tagged terms
+							@declarativest = @declarativesfromlinkcat.tagged_with(params[:query]) #search for tagged terms
+							@declaratives = @declarativess | @declarativest #remove duplicate declaratives
+							
+
+							#Labelling data for the search	
+							
+							@searchterm = params[:query]
+							@topic = Linkcat.find(params[:q]).linkcatname
+							
+							@count = @declaratives.count
+							@request = Docstructure.find(params[:queryid]).headingname
+					else #Topic and heading search
+						#Set up the Declaratives that the user can search
+							@user = current_user #identify current user
+							@linkrel = Linkcat.where(released: true) 
+							@decallowed = Declarative.where("linkcat_id = ? or user_id = ?", @linkrel[0], current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
+							@declarativesfromlinkcat = @decallowed.where("docstructure_id = ? AND linkcat_id = ?", params[:queryid], params[:q]) #Further reduce as this is only a heading search
+
+							@declarativess = @declarativesfromlinkcat.search(params[:query]) #search for non tagged terms
+							@declarativest = @declarativesfromlinkcat.tagged_with(params[:query]) #search for tagged terms
+							@declaratives = @declarativess | @declarativest #remove duplicate declaratives
+							
+
+							#Labelling data for the search	
+							
+							@searchterm = params[:query]
+							@topic = Linkcat.find(params[:q]).linkcatname
+							
+							@count = @declaratives.count
+							@request = Docstructure.find(params[:queryid]).headingname
 					end	
-				else	
-					@a = @a +1
-					@user = current_user
-					@linkrel = Linkcat.where(released: true)
-						@decallowed = Declarative.where("linkcat_id = ? or user_id = ?", @linkrel[0], current_user.id)
-					@declarativesfromlinkcat = @decallowed.order(:docstructure_id)
-					@declarativess = @declarativesfromlinkcat.search(params[:query]) 
-					@declarativest = @declarativesfromlinkcat.tagged_with(params[:query])
-					@searchterm = params[:query]
-					@module = Linkcat.find(params[:q])
-					@declaratives = @declarativess | @declarativest
-					@linkcatmax = Linkcat.where(:id => params[:q])
-					@count = @declaratives.count
-					@request = Linkcat.find(params[:q]).linkcatname
+				else	#Topic only search
+					
+					#Set up the Declaratives that the user can search
+							@user = current_user #identify current user
+							@linkrel = Linkcat.where(released: true) 
+							@decallowed = Declarative.where("linkcat_id = ? or user_id = ?", @linkrel[0], current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
+							@declarativesfromlinkcat = @decallowed.where("linkcat_id = ?", params[:q]) #Further reduce as this is only a heading search
+
+							@declarativess = @declarativesfromlinkcat.search(params[:query]) #search for non tagged terms
+							@declarativest = @declarativesfromlinkcat.tagged_with(params[:query]) #search for tagged terms
+							@declaratives = @declarativess | @declarativest #remove duplicate declaratives
+							
+
+							#Labelling data for the search	
+							
+							@searchterm = params[:query]
+							@topic = Linkcat.find(params[:q]).linkcatname
+							
+							@count = @declaratives.count
+							@request = "All"
 				end	
 				
 		else

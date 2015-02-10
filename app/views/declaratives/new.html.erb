@@ -10,9 +10,11 @@
 
 <%= simple_form_for @declarative, url: user_declaratives_path, method: :post do |f| %>
   <div class="navig">
-	<h4>Area</h4><%= f.input :linkcat_id, collection: @linkcat.where(:linkcattype => "Information"), value_method: :id, label_method: :linkcatname, label: false, prompt: "Area", selected: @area %>
+	<h4>Topic</h4><%= f.input :linkcat_id, collection: @linkcat.where(:linkcattype => "Information"), value_method: :id, label_method: :linkcatname, label: false, prompt: "Area", selected: @area %>
+  <%= link_to "New Topic?", new_user_linkcat_path(current_user.id) %>
 
 	<h4>Heading</h4><%= f.input :docstructure_id, collection: @headings, value_method: :id, label_method: :headingname, label: false, prompt: "Heading", selected: @headinglast %>
+  <%= link_to "New heading?", new_user_docstructure_path(current_user.id) %>
   </div>
   <div class="declarativeentry">
 
@@ -41,9 +43,9 @@
                               order: [:day, :month, :year],label: false %>
 
 
-
-   <% f.input :sandbox, :input_html => { :checked => true }  %>
-
+<div class="hid">
+   <%= f.input :sandbox, :input_html => { :checked => true }  %>
+</div>
   <%= f.button :submit, 'Add' %>
   </div>
 

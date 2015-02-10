@@ -42,9 +42,9 @@ class FindsController < ApplicationController
 		    		redirect_to user_declaratives_path(current_user.id, queryid: @find.docstructure_id, query: @searchterm, q: 'h')
 		    	else	
 			    	if Linkcat.find(@find.linkcat_id).linkcattype == 'Curated Weblinks'
-			    		redirect_to user_wlinks_path(current_user.id, queryid: @find.linkcat_id, query: @find.searchterm)
+			    		redirect_to user_wlinks_path(current_user.id, queryid: @find.linkcat_id, query: @searchterm)
 			    	elsif 	Linkcat.find(@find.linkcat_id).linkcattype == 'Information'
-			    		redirect_to user_declaratives_path(current_user.id, q: @find.linkcat_id, query: @find.searchterm, queryid: @find.docstructure_id)
+			    		redirect_to user_declaratives_path(current_user.id, q: @find.linkcat_id, query: @searchterm, queryid: @find.docstructure_id)
 			    	end	
 			    end	
 			  else
