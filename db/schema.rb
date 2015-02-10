@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150209230701) do
+ActiveRecord::Schema.define(version: 20150210131011) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "contentcom"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20150209230701) do
     t.string   "units"
     t.text     "entryhierarchy"
     t.string   "texttype"
-    t.boolean  "entryend"
+    t.boolean  "entryend",                      null: false
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.string   "declarativeimage_file_name"
@@ -39,9 +39,9 @@ ActiveRecord::Schema.define(version: 20150209230701) do
     t.integer  "user_id"
     t.integer  "linkcat_id"
     t.integer  "docstructure_id"
-    t.boolean  "endsection"
+    t.boolean  "endsection",                    null: false
     t.string   "urlextra"
-    t.boolean  "sandbox"
+    t.boolean  "sandbox",                       null: false
     t.string   "listtitle"
     t.date     "reviewdate"
   end
@@ -51,9 +51,9 @@ ActiveRecord::Schema.define(version: 20150209230701) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
-    t.boolean  "released"
-    t.boolean  "sandbox"
-    t.boolean  "liveissue"
+    t.boolean  "released",    null: false
+    t.boolean  "sandbox",     null: false
+    t.boolean  "liveissue",   null: false
   end
 
   create_table "finds", force: :cascade do |t|
@@ -75,8 +75,8 @@ ActiveRecord::Schema.define(version: 20150209230701) do
     t.datetime "updated_at",    null: false
     t.string   "linkcatview"
     t.integer  "linkcatmaxres"
-    t.boolean  "released"
-    t.boolean  "sandbox"
+    t.boolean  "released",      null: false
+    t.boolean  "sandbox",       null: false
   end
 
   create_table "moreinfos", force: :cascade do |t|
