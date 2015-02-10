@@ -8,6 +8,7 @@ class DeclarativesController < ApplicationController
 		if current_user.has_role? :sandbox or :admin
 			@user = current_user
     	@declarative = @user.declaratives.new
+    	
     	@linkcat = Linkcat.all
     	@headings = Docstructure.all
     	@declarativelast = Declarative.where(user_id: @user.id).order("created_at").last
@@ -34,6 +35,7 @@ class DeclarativesController < ApplicationController
 				
 		    @user = current_user
 		    @declarative = @user.declaratives.new(declarative_params)
+		    @declarative.sandbox = true
 		    if @declarative.save
 		    	flash[:success] = "Data Entry Successfully Added"
 		    		redirect_to new_user_declarative_path
@@ -198,7 +200,7 @@ class DeclarativesController < ApplicationController
 		
 	    @user = current_user
 	    @declarative = @user.declaratives.find(params[:id])
-
+	    @declarative.sandbox = true
 	    if @declarative.update(declarative_params)
 	        flash[:success] = "Your heading was updated"
 	        redirect_to admin_declaratives_path(query: @declarative.linkcat_id)

@@ -24,6 +24,11 @@ class LinkcatsController < ApplicationController
 				
 		    @user = current_user
 		    @linkcat = @user.linkcats.new(linkcat_params)
+		    @linkcat.linkcattype = "Information"
+		    @linkcat.linkcatview = "Report"
+		    @linkcat.linkcatmaxres = 8
+		    @linkcat.sandbox = true
+		    @linkcat.released = false
 		    if @linkcat.save
 		    	redirect_to sandbox_user_path(current_user.id)
 		    	flash[:success] = "Your topic was created" 
@@ -51,7 +56,11 @@ class LinkcatsController < ApplicationController
 		
 	    @user = current_user
 	    @linkcat = @user.linkcats.find(params[:id])
-
+	    @linkcat.linkcattype = "Information"
+		    @linkcat.linkcatview = "Report"
+		    @linkcat.linkcatmaxres = 8
+		    @linkcat.sandbox = true
+		    @linkcat.released = false
 	    if @linkcat.update(linkcat_params)
 	        flash[:success] = "Your Topic was updated"
 	        redirect_to user_linkcats_path
