@@ -70,6 +70,7 @@ class Declarative < ActiveRecord::Base
 	end	
 
 	def createtags(text, idl, idd)
+		self.tag_list = ""
 		@text2 = text.split(" ")
 		t = 0
 		@text2.each do |text2|

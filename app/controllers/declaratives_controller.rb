@@ -197,9 +197,11 @@ class DeclarativesController < ApplicationController
 
 	def update
 		if current_user.has_role? :sandbox
-		
+			
 	    @user = current_user
+	    
 	    @declarative = @user.declaratives.find(params[:id])
+
 	    @declarative.sandbox = true
 	    if @declarative.update(declarative_params)
 	        flash[:success] = "Your heading was updated"
