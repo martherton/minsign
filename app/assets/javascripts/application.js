@@ -17,4 +17,5 @@
 //= require chosen-jquery
 //= require jquery.tokeninput
 //= require global
+//= require finds
 //= require_tree .
