@@ -29,8 +29,16 @@
 </div>	
 			
 		<% end %>
-
+		<% @url = "" %>
+		<div class="sources" >
+		<h4>Sources</h4>
+	<% @declaratives.each do |declarativeu| %>
 	
+			 <% if @url == declarativeu.urlsource %><% else %><%= link_to declarativeu.urlsource, declarativeu.urlsource %><% @url = declarativeu.urlsource %><% end %>
+	<%end%>
+	</div>
+	
+
 
 <div class="searchag" >
  <h4><%= link_to "Search again", new_user_find_path(current_user.id) %></h4>
