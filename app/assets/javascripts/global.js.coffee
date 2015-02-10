@@ -12,5 +12,5 @@ $(document).on "ready page:load", ->
     e.preventDefault
     $('#job_company_logo').click()
 
-  $('select').chosen({disable_search_threshold: 2})
+  $('select').chosen({disable_search_threshold: 2});
 
