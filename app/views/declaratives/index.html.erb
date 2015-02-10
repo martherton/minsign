@@ -12,23 +12,49 @@
 				
 	
 				<% @b=0 %>
+				<% @listitem = 0 %>
+				
+<div class="reportcard" >
 
 		<% @declaratives.each do |declarative| %>
-<div class="reportcard" >
-			<% if declarative.
-			<h2><% if @b == declarative.linkcat_id %><% else %><%= Linkcat.find(declarative.linkcat_id).linkcatname %><% @b = declarative.linkcat_id %><%end%></h2>
-			<h3><% if @request == Docstructure.find(declarative.docstructure_id).headingname %><% else %><% if @c == declarative.docstructure_id %><% else %><%= Docstructure.find(declarative.docstructure_id).headingname %><% @c = declarative.docstructure_id %><% end %><% end %></h3>
-			<h4><% if declarative.sandbox == true %><% if current_user.id == declarative.user_id %><%= declarative.declarativetext %><small>&nbsp(sandbox)</small><%else %><% end %><% else %><%= declarative.declarativetext %><% end %>
-			<% if declarative.urlextra.blank? %>
+			<% if declarative.texttype == "List title" %>
+				<div class="reportlisttitle" >
+					<% if @listitem == 1 %></div><% @listitem = 0 %><% else %><% end %>
+					<% if @b == declarative.linkcat_id %><% else %><h2><%= Linkcat.find(declarative.linkcat_id).linkcatname %></h2><% @b = declarative.linkcat_id %><%end%>
+					<% if @request == Docstructure.find(declarative.docstructure_id).headingname %><% else %><% if @c == declarative.docstructure_id %><% else %><h3><%= Docstructure.find(declarative.docstructure_id).headingname %></h3><% @c = declarative.docstructure_id %><% end %><% end %>
+					<% if declarative.sandbox == true %><% if current_user.id == declarative.user_id %><h4><%= declarative.declarativetext %><small>&nbsp(sandbox)</small><%else %><% end %><% else %><h4><%= declarative.declarativetext %><% end %>
+					<% if declarative.urlextra.blank? %>
+					<% else %>
+						<h4><%= link_to "Extra Sources", declarative.urlextra[0], target: '_blank' %>
+					<% end%></h4>
+				</div>
+			<% elsif declarative.texttype == "List Item" %>
+				<% if @listitem == 0 %><div class="reportlist" ><% else %><% end %>
+					<% @listitem = 1 %>
+					<% if @b == declarative.linkcat_id %><% else %><h2><%= Linkcat.find(declarative.linkcat_id).linkcatname %></h2><% @b = declarative.linkcat_id %><%end%>
+					<% if @request == Docstructure.find(declarative.docstructure_id).headingname %><% else %><% if @c == declarative.docstructure_id %><% else %><h3><%= Docstructure.find(declarative.docstructure_id).headingname %></h3><% @c = declarative.docstructure_id %><% end %><% end %>
+					<% if declarative.sandbox == true %><% if current_user.id == declarative.user_id %><h4><%= declarative.declarativetext %><small>&nbsp(sandbox)</small><%else %><% end %><% else %><h4><%= declarative.declarativetext %><% end %>
+					<% if declarative.urlextra.blank? %>
+					<% else %>
+						<%= link_to "Extra Sources", declarative.urlextra[0], target: '_blank' %>
+					<% end%></h4>
 			<% else %>
-				<%= link_to "Extra Sources", declarative.urlextra[0], target: '_blank' %></h4>
-			<% end%>
-			<% if declarative.declarativeimage.blank? %><% else %><%= image_tag declarative.declarativeimage.url %><% end %>
+				<% if @listitem == 1 %></div><% @listitem = 0 %><% else %><% end %>
+				<% if @b == declarative.linkcat_id %><% else %><h2><%= Linkcat.find(declarative.linkcat_id).linkcatname %></h2><% @b = declarative.linkcat_id %><%end%>
+				<% if @request == Docstructure.find(declarative.docstructure_id).headingname %><% else %><% if @c == declarative.docstructure_id %><% else %><h3><%= Docstructure.find(declarative.docstructure_id).headingname %></h3><% @c = declarative.docstructure_id %><% end %><% end %>
+				<% if declarative.sandbox == true %><% if current_user.id == declarative.user_id %><h4><%= declarative.declarativetext %><small>&nbsp(sandbox)</small><%else %><% end %><% else %><h4><%= declarative.declarativetext %><% end %>
+				<% if declarative.urlextra.blank? %>
+				<% else %>
+					<h4><%= link_to "Extra Sources", declarative.urlextra[0], target: '_blank' %>
+				<% end%></h4>
+				<% if declarative.declarativeimage.blank? %><% else %><%= image_tag declarative.declarativeimage.url %><% end %>
+			<% end %>
 			
 
-</div>	
 			
 		<% end %>
+</div>	
+
 		<% @url = "" %>
 		<div class="sources" >
 		<h4>Sources</h4>
