@@ -23,6 +23,7 @@ class Admin::LinkcatsController < ApplicationController
 				
 		    @user = current_user
 		    @linkcat = @user.linkcats.new(linkcat_params)
+		    @linkcat.sandbox = false
 		    if @linkcat.save
 		    	redirect_to admin_linkcats_path
 		  	else

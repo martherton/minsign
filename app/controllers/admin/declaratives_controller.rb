@@ -40,6 +40,7 @@ class Admin::DeclarativesController < ApplicationController
 				
 		    @user = current_user
 		    @declarative = @user.declaratives.new(declarative_params)
+		    @declarative.sandbox = false
 		    if @declarative.save
 		    	flash[:success] = "Data Entry Successfully Added"
 		    		redirect_to new_admin_declarative_path
