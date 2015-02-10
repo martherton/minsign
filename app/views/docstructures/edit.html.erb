@@ -13,7 +13,7 @@
   Is this a live issue<%= f.input :liveissue, label: false %>
 
   <div class="hid">
-  <b>Release to public?<%= f.input :released, label: false %></b>
+  <b>Release to public?<%= f.input :released, label: false, :iput_html => { :checked => false} %></b>
    <%= f.input :sandbox, :input_html => { :checked => true }  %>
   
   </div>
