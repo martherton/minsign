@@ -7,8 +7,7 @@
  * choose which one suits your project best!
  *
  */
-var ready;
-ready = function() {
+
  
 ;(function ($) {
   var DEFAULT_SETTINGS = {
@@ -1108,7 +1107,4 @@ ready = function() {
 
 }(jQuery));
 
-};
 
-$(document).ready(ready);
-$(document).on('page:load', ready);

@@ -11,6 +11,7 @@
 //	==================================================
 
 	// Show/Hide
+	;
 		$('.tip-tl').tipsy({ gravity: 'se', html: true, title: 'data-tooltip', offset: 5, live: true });
 		$('.tip-t').tipsy({ gravity: 's', html: true, title: 'data-tooltip', offset: 5, live: true });
 		$('.tip-tr').tipsy({ gravity: 'sw', html: true, title: 'data-tooltip', offset: 5, live: true });

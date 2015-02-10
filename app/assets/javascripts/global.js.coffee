@@ -1,4 +1,4 @@
-$(document).on "ready page:load", ->
+;$(document).on "ready page:load", ->
 
   $("div.input.file").append("<a class=\"upload_override\">Choose a file</a>")
 
