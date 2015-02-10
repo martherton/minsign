@@ -25,7 +25,7 @@ def index
 		    @user = current_user
 		    @docstructure = @user.docstructures.new(docstructure_params)
 		    @docstructure.sandbox = true
-		    @docstructures.released = false
+		    @docstructure.released = false
 		    if @docstructure.save
 		    	redirect_to user_docstructures_path(current_user.id)
 		  	else
@@ -52,7 +52,7 @@ def index
 	    @user = current_user
 	    @docstructure = @user.docstructures.find(params[:id])
 	    @docstructure.sandbox = true
-		    @docstructures.released = false
+		    @docstructure.released = false
 	    if @docstructure.update(docstructure_params)
 	        flash[:success] = "Your heading was updated"
 	        redirect_to admin_docstructures_path
