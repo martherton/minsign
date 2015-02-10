@@ -18,8 +18,9 @@
 
 		<% @declaratives.each do |declarative| %>
 			<% if declarative.texttype == "List title" %>
-				<div class="reportlisttitle" >
 					<% if @listitem == 1 %></div><% @listitem = 0 %><% else %><% end %>
+				
+				<div class="reportlisttitle" >
 					<% if @b == declarative.linkcat_id %><% else %><h2><%= Linkcat.find(declarative.linkcat_id).linkcatname %></h2><% @b = declarative.linkcat_id %><%end%>
 					<% if @request == Docstructure.find(declarative.docstructure_id).headingname %><% else %><% if @c == declarative.docstructure_id %><% else %><h3><%= Docstructure.find(declarative.docstructure_id).headingname %></h3><% @c = declarative.docstructure_id %><% end %><% end %>
 					<% if declarative.sandbox == true %><% if current_user.id == declarative.user_id %><h4><%= declarative.declarativetext %><small>&nbsp(sandbox)</small><%else %><% end %><% else %><h4><%= declarative.declarativetext %><% end %>
