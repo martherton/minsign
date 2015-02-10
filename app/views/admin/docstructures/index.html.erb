@@ -13,6 +13,7 @@
 			<th>Edit heading</th>
 			<th>Live issue?</th>
 			<th>Released?</th>
+			<th>Sandbox?</th>
 		</tr>
 	</thead>
 	<tbody>	
@@ -21,9 +22,10 @@
 			<td><%= docstructure.headingname %></td>
 			<td><%= User.find(docstructure.user_id).fname %>&nbsp<%=	User.find(docstructure.user_id).lname %></td>
 			
-			<td><%= link_to "Edit", edit_admin_docstructure_path(docstructure.id) %></td>
+			<td id="tablink"><%= link_to "Edit", edit_admin_docstructure_path(docstructure.id) %></td>
 			<td><% if docstructure.liveissue == true %>Yes<% else %>Historic<% end %>
 			<td><%= docstructure.released %></td>
+			<td><%= docstructure.sandbox %></td>
 			
 				
 		</tr>		
