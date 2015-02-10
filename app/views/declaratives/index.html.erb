@@ -26,7 +26,7 @@
 					<% if declarative.sandbox == true %><% if current_user.id == declarative.user_id %><h4><%= declarative.declarativetext %><small>&nbsp(sandbox)</small><%else %><% end %><% else %><h4><%= declarative.declarativetext %><% end %>
 					<% if declarative.urlextra.blank? %>
 					<% else %>
-						<h4><%= link_to "Extra Sources", declarative.urlextra[0], target: '_blank' %>
+						<%= link_to "Extra Sources", declarative.urlextra[0], target: '_blank' %>
 					<% end%></h4>
 				</div>
 			<% elsif declarative.texttype == "List Item" %>
@@ -46,7 +46,7 @@
 				<% if declarative.sandbox == true %><% if current_user.id == declarative.user_id %><h4><%= declarative.declarativetext %><small>&nbsp(sandbox)</small><%else %><% end %><% else %><h4><%= declarative.declarativetext %><% end %>
 				<% if declarative.urlextra.blank? %>
 				<% else %>
-					<h4><%= link_to "Extra Sources", declarative.urlextra[0], target: '_blank' %>
+					<%= link_to "Extra Sources", declarative.urlextra[0], target: '_blank' %>
 				<% end%></h4>
 				<% if declarative.declarativeimage.blank? %><% else %><%= image_tag declarative.declarativeimage.url %><% end %>
 			<% end %>
@@ -55,7 +55,7 @@
 			
 		<% end %>
 					<% if @listitem == 1 %></div><% @listitem = 0 %><% else %><% end %>
-		
+
 </div>	
 
 		<% @url = "" %>
