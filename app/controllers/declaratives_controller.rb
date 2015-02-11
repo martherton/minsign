@@ -8,7 +8,10 @@ class DeclarativesController < ApplicationController
 		if current_user.has_role? :sandbox or :admin
 			@user = current_user
     	@declarative = @user.declaratives.new
-    	
+    	if params[:q].present?
+    		@declarative.declarativejusttext = params[:q]
+    	else
+    	end	
     	@linkcat = Linkcat.all
     	@headings = Docstructure.all
     	@declarativelast = Declarative.where(user_id: @user.id).order("created_at").last
@@ -42,7 +45,7 @@ class DeclarativesController < ApplicationController
 		    	
 		  	else
 		  		flash[:error] = "Check your input"
-		    	redirect_to new_user_declarative_path
+		    	redirect_to new_user_declarative_path(current_user.id, q: @declarative.declarativejusttext)
 		   	end 
 		else
 			redirect_to	new_user_find_path(current_user.id)
@@ -204,7 +207,7 @@ class DeclarativesController < ApplicationController
 
 	    @declarative.sandbox = true
 	    if @declarative.update(declarative_params)
-	        flash[:success] = "Your heading was updated"
+	        flash[:success] = "Your note was updated"
 	        redirect_to admin_declaratives_path(query: @declarative.linkcat_id)
 	    else
 	      flash[:error] = "Oops. There has been a problem, please retry."

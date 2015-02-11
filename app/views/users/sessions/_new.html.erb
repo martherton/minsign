@@ -9,7 +9,7 @@
     
     <%= f.input :password, required: false, label: false, placeholder: "Password" %>
     </br>
-    <%= f.input :remember_me, label: "Remember me", label_html: {id: "remlab"}, as: :boolean if devise_mapping.rememberable? %>
+    <small><%= f.input :remember_me, label: "Remember me", label_html: {id: "remlab"}, as: :boolean if devise_mapping.rememberable? %></small>
  
 
  

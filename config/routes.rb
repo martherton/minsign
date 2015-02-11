@@ -11,9 +11,11 @@ Rails.application.routes.draw do
   get 'contactus', to: 'staticpages#contactus' #link to static confirmed page
   get 'howitworks', to: 'staticpages#howitworks' #link to static confirmed page
   get 'aboutus', to: 'staticpages#aboutus' #link to static confirmed page
+  get 'pricing', to: 'staticpages#pricing'
 
   get 'reset', to: 'staticpages#reset' #link to static confirmed page
   get 'broken', to: 'admin/wlinks#brokenlinks'
+  get 'instructions', to: 'users#sandboxinstr'
   
 
 
@@ -37,6 +39,7 @@ Rails.application.routes.draw do
       get 'sandbox'
       get 'deletesandbox'
       get 'dataentered'
+      get 'sandboxinstr'
     end  
     resources :finds, :path_names => { :new => 'search'}
       

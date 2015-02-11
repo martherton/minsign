@@ -2,8 +2,9 @@
     <%= image_tag 'logo.svg' %>
 	
 </div>	
-
-
+<div class="sanddash">
+<h4><% if current_user.has_role? :sandbox %><%= link_to "Sandbox Dash", sandbox_user_path(current_user.id) %><% else %><% end %></h4>
+</div>
 
 <div class="userinfo" >
   <div class="accounttype" >

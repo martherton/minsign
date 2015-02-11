@@ -2,6 +2,8 @@
 		<%= image_tag 'logo.svg' %>
 	
 </div>	
+
+
 <div class="userinfo" >
   <div class="accounttype" >
     <h4> Account type:&nbsp
@@ -45,6 +47,9 @@
 			<td><b><%= link_to "Enter research", new_admin_declarative_path %></b></td>
 			<td>Entry of new Declarative</td>
 		</tr>	
+		<tr>
+			<td><b><% if current_user.has_role? :sandbox %><%= link_to "Sandbox Dash", sandbox_user_path(current_user.id) %><% else %><% end %></b></td>
+			<td>Go to the Sandbox dashboard</td>
 	</tbody>
 </table>		
 </div>

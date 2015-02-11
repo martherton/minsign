@@ -3,7 +3,7 @@
 		<%= image_tag 'logo.svg' %>
 </div>	 
 
-<div class="newsearch">
+<div class="newsearch"> 
 
 
 
@@ -20,11 +20,17 @@
 		<%= f.input :user_id, input_html: { value: params[:user_id]} %>
 
 	</div>
-	<p></p>
+	
 	<div class="searchbutton">
+
 		<%= f.button :submit, 'Search' %>
 	</div>
 
 <% end %>
+<div class="searchhelp">
+	
+	<h6><sup><%= link_to " ?", instructions_path(anchor: 'helpsearch'), id: 'searchhelp' %></sup></h6>
+	
+	</div>
 </div>
 </section>

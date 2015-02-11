@@ -27,9 +27,12 @@ def index
 		    @docstructure.sandbox = true
 		    @docstructure.released = false
 		    if @docstructure.save
-		    	redirect_to user_docstructures_path(current_user.id)
+		    	flash[:success] = "New heading created"
+		    	redirect_to new_user_declarative_path(current_user.id)
+		    	
 		  	else
-		    	render :new
+		    	flash[:failure] = "There was a problem please try again"
+		    	redirect_to new_user_docstructure(current_user.id)
 		   	end 
 		else
 			redirect_to	new_user_find_path(current_user.id)

@@ -6,6 +6,10 @@ class StaticpagesController < ApplicationController
 	def landing
 		# render layout: false # this will show the view of the landing page unstyled
 	end
+
+	def pricing
+
+	end	
 	
 	def thanks
 

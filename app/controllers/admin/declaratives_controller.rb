@@ -13,6 +13,10 @@ class Admin::DeclarativesController < ApplicationController
 		if current_user.has_role? :admin
 			@user = current_user
     	@declarative = @user.declaratives.new
+    	if params[:q].present?
+    		@declarative.declarativejusttext = params[:q]
+    	else
+    	end	
     	@linkcat = Linkcat.all
 
     	@headings = Docstructure.all
@@ -47,7 +51,8 @@ class Admin::DeclarativesController < ApplicationController
 		    	
 		  	else
 		  		flash[:error] = "Check your input"
-		    	redirect_to new_admin_declarative_path
+		    	redirect_to new_admin_declarative_path(current_user.id, q: @declarative.declarativejusttext)
+
 		   	end 
 		else
 			redirect_to	new_user_find_path(current_user.id)

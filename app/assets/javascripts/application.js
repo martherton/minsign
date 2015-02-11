@@ -16,6 +16,9 @@
 //= require turbolinks
 //= require chosen-jquery
 //= require jquery.tokeninput
+//= require jquery.qtip.min
+//= require imagesloaded.pkgd.min
 //= require global
+//= require script1
 //= require finds
 //= require_tree .
