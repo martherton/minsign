@@ -15,6 +15,10 @@ class StaticpagesController < ApplicationController
 
 	end
 
+	def technology
+
+	end	
+
 	def thanks2
 
 	end	

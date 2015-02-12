@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'howitworks', to: 'staticpages#howitworks' #link to static confirmed page
   get 'aboutus', to: 'staticpages#aboutus' #link to static confirmed page
   get 'pricing', to: 'staticpages#pricing'
+  get 'technology', to: 'staticpages#technology'
 
   get 'reset', to: 'staticpages#reset' #link to static confirmed page
   get 'broken', to: 'admin/wlinks#brokenlinks'

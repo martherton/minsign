@@ -367,7 +367,7 @@
 
 .contentmod {
   text-align: center;
-  margin-top: 20%;
+  margin-top: 10%;
   margin-bottom: 10%;
   width: 90%;
   margin-left: 5%;
@@ -755,6 +755,86 @@ background-image:  url(image-path('simple4.jpg'));
   text-align: left;
 }
 
+.quote {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto; 
+}
+
+.quote h2 {
+  text-align: justify;
+}
+
+.tech {
+  margin-top: 8%;
+}
+
+.tech h1 {
+  text-align: center;
+}
+
+.techimage img {
+  width: 100%;
+}
+.techimage {
+  width: 50%;
+  margin-left: 25%;
+  margin-bottom: 10%;
+}
+
+.techleft {
+  width: 20%;
+  margin-left: 4%;
+  float: left;
+}
+
+.techright {
+  width: 20%;
+  margin-right: 4%;
+  float: right;
+}
+
+.techleft h3,
+.techright h3 {
+  color: #0085CD;
+}
+
+.techleft h6,
+.techright h6 {
+  text-align: justify;
+}
+
+.contentmod h2 {
+  color: #0085CD;
+}
+
+.contentleft{
+  width: 25%;
+  margin-left: 10%;
+  float: left;
+}
+
+.contentright {
+  width: 55%;
+ 
+  float: right;
+}
+
+.contentright h5,
+.contentleft h5{
+  text-align: center;
+}
+
+
+.contentright li img {
+  height: 10%;
+  width: 10%;
+}
+
+.contentleft li img {
+  height: 20%;
+  width: 20%;
+}
 }
   /* --- end media queries ---- */
 
