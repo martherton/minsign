@@ -22,6 +22,7 @@ class Admin::DocstructuresController < ApplicationController
 				
 		    @user = current_user
 		    @docstructure = @user.docstructures.new(docstructure_params)
+		    @docstructure.sandbox = false
 		    if @docstructure.save
 		    	redirect_to admin_docstructures_path
 		  	else
