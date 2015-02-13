@@ -808,7 +808,7 @@ div.input.date {
 
 .pricing {
   height: 100%;
-  margin-top: 10%;
+  margin-top: 8%;
   margin-bottom: 10%;
   width: 90%;
   margin-left: 5%;
@@ -844,7 +844,7 @@ div.input.date {
 }
 
 .pricing td {
-  font-size: 1.5em;
+  font-size: 1.3em;
 }
 
 .pricing tbody td {
@@ -870,6 +870,17 @@ div.input.date {
   width: 26%;
   margin-left:67%;
   margin-top:0;
+}
+
+.howtopay {
+  width: 90%;
+  margin-left: 5%;
+  margin-top: -10%;
+  margin-bottom: 4%;
+}
+
+.howtopay h2 {
+  text-align: center;
 }
 }
   /* --- end media queries ---- */
