@@ -34,6 +34,12 @@ Rails.application.routes.draw do
   resources :users do
     resources :linkcats
     resources :wlinks
+    resources :packages
+    resources :friendships do
+      member do
+        get 'approval'
+      end  
+     end 
     resources :docstructures
     resources :declaratives
     member do
@@ -46,6 +52,7 @@ Rails.application.routes.draw do
       
     member do
       get 'dashboard'
+
     end  
   end  
   resources :wlinks
@@ -59,6 +66,7 @@ Rails.application.routes.draw do
   end    
 
   namespace :admin do
+    resources :packages
     resources :users do
       member do
         get 'dashboard'
@@ -69,7 +77,7 @@ Rails.application.routes.draw do
     resources :wlinks 
     resources :declaratives
     resources :docstructures
-      
+    
           
     resources :finds
   end  

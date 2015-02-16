@@ -2,13 +2,18 @@
 		<%= image_tag 'logo.svg' %>
 	
 </div>	
+
 <div class ="edituser">
 <h4>Approve and set role</h4>
 
 <%= simple_form_for [@user], url: admin_user_path, method: :put do |f| %>
 <%= f.input :email, label: false %>
 <%= f.input :approved %>
+<%= f.input :freeuser %>
 <%= f.association :roles, as: :check_boxes %>
+
+<%= f.association :linkcats, collection: @linkcat, as: :check_boxes, value_method: :id, label_method: :linkcatname%>
+
 <%= f.button :submit, "Alter user info" %>
  
 <% end %>

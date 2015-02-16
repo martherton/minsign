@@ -12,7 +12,7 @@ class Admin::LinkcatsController < ApplicationController
 	def new
 		if current_user.has_role? :admin
 			@user = current_user
-    	@linkcat = @user.linkcats.new
+    	@linkcat = Linkcat.new
 		else
 			redirect_to	new_user_find_path(current_user.id)
 		end	
@@ -22,7 +22,7 @@ class Admin::LinkcatsController < ApplicationController
 		if current_user.has_role? :admin
 				
 		    @user = current_user
-		    @linkcat = @user.linkcats.new(linkcat_params)
+		    @linkcat = Linkcat.new(linkcat_params)
 		    @linkcat.sandbox = false
 		    if @linkcat.save
 		    	redirect_to admin_linkcats_path
@@ -38,7 +38,7 @@ class Admin::LinkcatsController < ApplicationController
 		if current_user.has_role? :admin
 
 	    @user = current_user
-	    @linkcat = @user.linkcats.find(params[:id])
+	    @linkcat = Linkcat.find(params[:id])
 	  else
 			redirect_to	new_user_find_path(current_user.id)
 	  end  
@@ -48,7 +48,7 @@ class Admin::LinkcatsController < ApplicationController
 		if current_user.has_role? :admin
 		
 	    @user = current_user
-	    @linkcat = @user.linkcats.find(params[:id])
+	    @linkcat = Linkcat.find(params[:id])
 
 	    if @linkcat.update(linkcat_params)
 	        flash[:success] = "Your linkcat was updated"

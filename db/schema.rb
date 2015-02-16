@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150210131011) do
+ActiveRecord::Schema.define(version: 20150216114332) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "contentcom"
@@ -66,6 +66,14 @@ ActiveRecord::Schema.define(version: 20150210131011) do
     t.string   "tag_list_tokens"
   end
 
+  create_table "friendships", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean  "approved"
+    t.integer  "user_id"
+    t.integer  "friend_id"
+  end
+
   create_table "linkcats", force: :cascade do |t|
     t.string   "linkcatname"
     t.string   "linkcattype"
@@ -78,6 +86,14 @@ ActiveRecord::Schema.define(version: 20150210131011) do
     t.boolean  "released",      null: false
     t.boolean  "sandbox",       null: false
   end
+
+  create_table "linkcats_users", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "linkcat_id"
+  end
+
+  add_index "linkcats_users", ["linkcat_id"], name: "index_linkcats_users_on_linkcat_id"
+  add_index "linkcats_users", ["user_id"], name: "index_linkcats_users_on_user_id"
 
   create_table "moreinfos", force: :cascade do |t|
     t.string   "email"
@@ -142,6 +158,8 @@ ActiveRecord::Schema.define(version: 20150210131011) do
     t.string   "lname"
     t.string   "company"
     t.string   "position"
+    t.string   "mpackage"
+    t.boolean  "freeuser"
   end
 
   add_index "users", ["approved"], name: "index_users_on_approved"

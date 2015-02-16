@@ -15,6 +15,11 @@ class Admin::UsersController < ApplicationController
 	def edit
 		if current_user.has_role? :admin
 			@user = User.find(params[:id])
+			@admins = User.with_role(:admin)
+
+			@linkcat1 = Linkcat.where(user_id: @admins)
+			@linkcat2 = @linkcat1.where(released: true)
+			@linkcat = @linkcat2.where(sandbox: 0)
 		else
 			redirect_to	new_user_find_path(current_user.id)
 		end			
@@ -28,7 +33,7 @@ class Admin::UsersController < ApplicationController
 
 			if @user.update(user_params)
 	        flash[:success] = "Updated!"
-	        
+	        if @user.approved_changed?
 	        # send approved mail
 	        if @user.update(approved: 'true')
 	        	
@@ -78,6 +83,8 @@ class Admin::UsersController < ApplicationController
 					    })
 					    response
 					  end
+					else
+					end
 					redirect_to admin_users_path
 					
       
@@ -107,6 +114,6 @@ class Admin::UsersController < ApplicationController
 	private
 
 	def user_params
-		params.require(:user).permit(:email, :approved, :role_ids => [] )
+		params.require(:user).permit(:email, :approved, :freeuser, :role_ids => [], :linkcat_ids => [] )
 	end	
 end

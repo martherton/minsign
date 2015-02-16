@@ -13,9 +13,11 @@
       <%= role.name %>,
     <% end %>
     </h4>
+    
    
     <h4>Modules allowed:&nbsp
-    All</h4>
+    
+    <% @user.linkcats.each do |linkcat| %><%= linkcat.linkcatname %>,<% end %></h4>
   </div>  
 
 
@@ -105,4 +107,82 @@
   
 
       <%= render 'comments/new' %>
+</div>
+
+
+<div class="friends" >
+<h2>Friends</h2>
+<ul>
+<% @user.inverse_friends.each do |user| %>
+
+  
+    <% @friendship = Friendship.find_by user_id: user.id, friend_id: @user.id %>
+    <% if @friendship.nil? %>
+    <% else %>
+      <% if @friendship.approved == true %>
+      <li><h5><%=h user.fname %>&nbsp<%=h user.lname %><%= link_to "Remove friend", user_friendship_path(current_user.id, user.id, q: @friendship.id), method: :delete %></h5></li>
+      <%else%>
+      <%end%>
+    <% end %>
+<% end %>    
+<% @user.friendships.each do |friendship| %>
+
+    <% @friendship = Friendship.find_by user_id: @user.id, friend_id: friendship.friend_id %>
+    <% if @friendship.nil? %>
+    <% else %>
+      <% if @friendship.approved.blank? %>
+      
+      <% else %>
+    
+      <li><h5><%=h User.find(friendship.friend_id).fname %>&nbsp<%=h User.find(friendship.friend_id).lname %><%= link_to "Remove friend", user_friendship_path(current_user.id, friendship.id, q: @friendship.id), method: :delete %></h5></li>
+      <%end%>
+    <%end%>
+<% end %>
+
+</ul>
+      <h2>Your request to friends awaiting approval</h2>
+
+<ul>
+
+<% @user.friendships.each do |friendship| %>
+    
+    <% @friendship = Friendship.find_by user_id: @user.id, friend_id: friendship.friend_id %>
+    <% if @friendship.nil? %>
+    <% else %>
+      <% if @friendship.approved.blank? %>
+        <li><h5><%=h friendship.friend.email %></h5></li>
+      <% else %>
+      <% end %>
+    <% end%>    
+<% end %>
+</ul>
+
+
+
+
+<h2>Friend requests for you</h2>
+
+<ul>
+  <% @user.inverse_friends.each do |user| %>
+
+  
+    <% @friendship = Friendship.find_by user_id: user.id, friend_id: @user.id %>
+    <% if @friendship.approved.nil? %>
+    <li><h5><%=h user.fname %>&nbsp<%=h user.lname %>
+
+   
+    
+    <%= link_to "Approve friend request", approval_user_friendship_path(@friendship.friend_id, @friendship.id, q: 'approved') %>
+    <%= link_to "Decline friend request", approval_user_friendship_path(@friendship.friend_id, @friendship.id, q: 'declined') %></h5>
+    </li>
+    <%else%>
+    <%end%>
+    
+  <% end %>
+
+
+</Ul>      
+<h2>Add friends</h2>
+
+<%= render 'friendships/new' %>
 </div>

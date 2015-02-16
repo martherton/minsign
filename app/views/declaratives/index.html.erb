@@ -23,7 +23,7 @@
 				<div class="reportlisttitle" >
 					<% if @b == declarative.linkcat_id %><% else %><h2><%= Linkcat.find(declarative.linkcat_id).linkcatname %></h2><% @b = declarative.linkcat_id %><%end%>
 					<% if @request == Docstructure.find(declarative.docstructure_id).headingname %><% else %><% if @c == declarative.docstructure_id %><% else %><h3><%= Docstructure.find(declarative.docstructure_id).headingname %></h3><% @c = declarative.docstructure_id %><% end %><% end %>
-					<% if declarative.sandbox == true %><% if current_user.id == declarative.user_id %><h4><%= declarative.declarativetext %><small>&nbsp(sandbox)</small><%else %><% end %><% else %><h4><%= declarative.declarativetext %><% end %>
+					<% if declarative.sandbox == true %><h4><%= declarative.declarativetext %><% if current_user.id == declarative.user_id %><small>&nbsp(personal)</small><%else %><small>&nbsp(friend&nbsp<%= User.find(declarative.user_id).fname %>&nbsp<%= User.find(declarative.user_id).lname %>)</small><% end %><% else %><h4><%= declarative.declarativetext %><% end %>
 					<% if declarative.urlextra.blank? %>
 					<% else %>
 						<%= link_to "Extra Sources", declarative.urlextra[0], target: '_blank' %>
@@ -34,7 +34,7 @@
 					<% @listitem = 1 %>
 					<% if @b == declarative.linkcat_id %><% else %><h2><%= Linkcat.find(declarative.linkcat_id).linkcatname %></h2><% @b = declarative.linkcat_id %><%end%>
 					<% if @request == Docstructure.find(declarative.docstructure_id).headingname %><% else %><% if @c == declarative.docstructure_id %><% else %><h3><%= Docstructure.find(declarative.docstructure_id).headingname %></h3><% @c = declarative.docstructure_id %><% end %><% end %>
-					<% if declarative.sandbox == true %><% if current_user.id == declarative.user_id %><h4><%= declarative.declarativetext %><small>&nbsp(sandbox)</small><%else %><% end %><% else %><h4><%= declarative.declarativetext %><% end %>
+					<% if declarative.sandbox == true %><h4><%= declarative.declarativetext %><% if current_user.id == declarative.user_id %><small>&nbsp(personal)</small><%else %><small>&nbsp(friend&nbsp<%= User.find(declarative.user_id).fname %>&nbsp<%= User.find(declarative.user_id).lname %>)</small><% end %><% else %><h4><%= declarative.declarativetext %><% end %>
 					<% if declarative.urlextra.blank? %>
 					<% else %>
 						<%= link_to "Extra Sources", declarative.urlextra[0], target: '_blank' %>
@@ -43,7 +43,7 @@
 				<% if @listitem == 1 %></div><% @listitem = 0 %><% else %><% end %>
 				<% if @b == declarative.linkcat_id %><% else %><h2><%= Linkcat.find(declarative.linkcat_id).linkcatname %></h2><% @b = declarative.linkcat_id %><%end%>
 				<% if @request == Docstructure.find(declarative.docstructure_id).headingname %><% else %><% if @c == declarative.docstructure_id %><% else %><h3><%= Docstructure.find(declarative.docstructure_id).headingname %></h3><% @c = declarative.docstructure_id %><% end %><% end %>
-				<% if declarative.sandbox == true %><% if current_user.id == declarative.user_id %><h4><%= declarative.declarativetext %><small>&nbsp(sandbox)</small><%else %><% end %><% else %><h4><%= declarative.declarativetext %><% end %>
+				<% if declarative.sandbox == true %><h4><%= declarative.declarativetext %><% if current_user.id == declarative.user_id %><small>&nbsp(personal)</small><%else %><small>&nbsp(friend&nbsp<%= User.find(declarative.user_id).fname %>&nbsp<%= User.find(declarative.user_id).lname %>)</small><% end %><% else %><h4><%= declarative.declarativetext %><% end %>
 				<% if declarative.urlextra.blank? %>
 				<% else %>
 					<%= link_to "Extra Sources", declarative.urlextra[0], target: '_blank' %>

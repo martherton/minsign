@@ -1,0 +1,21 @@
+<% @friendship = Friendship.new %>
+
+
+<div class="morefriend" >
+
+<%= simple_form_for @friendship, url: user_friendships_path(current_user.id), method: :post do |f| %>
+	
+
+	<%= f.input :emailf, as: :string, label: false, placeholder: "Enter the email of the person you wish to be add to your network", id: "friendinput" %>
+	
+	<div class="hidlinkcat" >
+	
+		<%= f.input :user_id, input_html: { value: current_user.id} %>
+		
+
+	</div>
+
+	<%= f.button :submit, 'Submit friend request' %>
+
+<% end %>
+</Div>

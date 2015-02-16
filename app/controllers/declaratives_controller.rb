@@ -34,6 +34,15 @@ class DeclarativesController < ApplicationController
 	end
 	
 	def create
+		if current_user.has_role :sandbox #Limit the amount of items a free user can input
+			if Declarative.where(created_at: (Time.now - 1.month)..Time.now).where(user_id: current_user.id).count > 500
+				flash[:failure] = "This month's limit has been reached, please upgrade if you require more space"
+				redirect_to new_user_declarative_path
+			else	
+			end
+		else
+		end	
+				
 		if current_user.has_role? :admin or :sandbox
 				
 		    @user = current_user
@@ -61,9 +70,20 @@ class DeclarativesController < ApplicationController
 						if params[:query].present? #Topic and query search
 							#Set up the Declaratives that the user can search
 							@user = current_user #identify current user
-							@linkrel = Linkcat.where(released: true) 
-							@decallowed = Declarative.where("linkcat_id = ? or user_id = ?", @linkrel[0], current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
-							@declarativesfromlinkcat = @decallowed.where(:docstructure_id => params[:queryid]) #Further reduce as this is only a heading search
+							@linkrel = @user.linkcats.map(&:id) #This allows content we have allowed in the user package 
+							@friends1 = @user.inverse_friendships.map(&:user_id) | @user.friendships.map(&:friend_id) #find all friends
+							@friendsun = @user.friendships.where(approved: nil).map(&:friend_id) #remove unapproved friends
+							@friends = @friends1 - @friendsun
+							@admins = Role.find_by_name('admin').users.map(&:id)
+							
+							@decallowed = Declarative.where("(linkcat_id IN (?) AND user_id IN(?)) or user_id IN (?) or user_id = ?", @linkrel, @admin, @friends, current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
+							if current_user.has_role? :admin #Ensures admin sandbox posts are not removed if you are admin
+								@decallowed2 = @decallowed
+							else	
+								@decallowed2 = @decallowed.where.not("user_id IN (?) AND sandbox = ?", @admins, true) #removes admin sandbox
+							end	
+							
+							@declarativesfromlinkcat = @decallowed2.where(:docstructure_id => params[:queryid]) #Further reduce as this is only a heading search
 							@declarativess = @declarativesfromlinkcat.search(params[:query]) #search for non tagged terms
 							@declarativest = @declarativesfromlinkcat.tagged_with(params[:query]) #search for tagged terms
 							@declaratives = @declarativess | @declarativest #remove duplicate declaratives
@@ -78,9 +98,20 @@ class DeclarativesController < ApplicationController
 						else	#Heading search only
 							#Set up the Declaratives that the user can search
 							@user = current_user #identify current user
-							@linkrel = Linkcat.where(released: true) 
-							@decallowed = Declarative.where("linkcat_id = ? or user_id = ?", @linkrel[0], current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
-							@declarativesfromlinkcat = @decallowed.where(:docstructure_id => params[:queryid]) #Further reduce as this is only a heading search
+							@linkrel = @user.linkcats.map(&:id)
+							@friends1 = @user.inverse_friendships.map(&:user_id) | @user.friendships.map(&:friend_id)
+							@friendsun = @user.friendships.where(approved: nil).map(&:friend_id) #remove unapproved friends
+							@friends = @friends1 - @friendsun
+							@admins = Role.find_by_name('admin').users.map(&:id)
+							
+							@decallowed = Declarative.where("(linkcat_id IN (?) AND user_id IN(?)) or user_id IN (?) or user_id = ?", @linkrel, @admin, @friends, current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
+							if current_user.has_role? :admin #Ensures admin sandbox posts are not removed if you are admin
+								@decallowed2 = @decallowed
+							else	
+								@decallowed2 = @decallowed.where.not("user_id IN (?) AND sandbox = ?", @admins, true) #removes admin sandbox
+							end	
+							
+							@declarativesfromlinkcat = @decallowed2.where(:docstructure_id => params[:queryid]) #Further reduce as this is only a heading search
 							@declarativess = @declarativesfromlinkcat.search(params[:query]) #search for non tagged terms
 							@declarativest = @declarativesfromlinkcat.tagged_with(params[:query]) #search for tagged terms
 							@declaratives = @declarativess | @declarativest #remove duplicate declaratives
@@ -97,9 +128,20 @@ class DeclarativesController < ApplicationController
 						
 						#Set up the Declaratives that the user can search
 							@user = current_user #identify current user
-							@linkrel = Linkcat.where(released: true) 
-							@decallowed = Declarative.where("linkcat_id = ? or user_id = ?", @linkrel[0], current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
-							@declarativesfromlinkcat = @decallowed
+							@linkrel = @user.linkcats.map(&:id)
+							@friends1 = @user.inverse_friendships.map(&:user_id) | @user.friendships.map(&:friend_id)
+							@friendsun = @user.friendships.where(approved: nil).map(&:friend_id) #remove unapproved friends
+							@friends = @friends1 - @friendsun
+							@admins = Role.find_by_name('admin').users.map(&:id)
+							
+							@decallowed = Declarative.where("(linkcat_id IN (?) AND user_id IN(?)) or user_id IN (?) or user_id = ?", @linkrel, @admin, @friends, current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
+							if current_user.has_role? :admin #Ensures admin sandbox posts are not removed if you are admin
+								@decallowed2 = @decallowed
+							else	
+								@decallowed2 = @decallowed.where.not("user_id IN (?) AND sandbox = ?", @admins, true) #removes admin sandbox
+							end	
+							
+							@declarativesfromlinkcat = @decallowed2
 							@declarativess = @declarativesfromlinkcat.search(params[:query]) #search for non tagged terms
 							@declarativest = @declarativesfromlinkcat.tagged_with(params[:query]) #search for tagged terms
 							@declaratives = @declarativess | @declarativest #remove duplicate declaratives
@@ -121,9 +163,20 @@ class DeclarativesController < ApplicationController
 						
 						#Set up the Declaratives that the user can search
 							@user = current_user #identify current user
-							@linkrel = Linkcat.where(released: true) 
-							@decallowed = Declarative.where("linkcat_id = ? or user_id = ?", @linkrel[0], current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
-							@declarativesfromlinkcat = @decallowed.where("docstructure_id = ? AND linkcat_id = ?", params[:queryid], params[:q]) #Further reduce as this is only a heading search
+							@linkrel = @user.linkcats.map(&:id)
+							@friends1 = @user.inverse_friendships.map(&:user_id) | @user.friendships.map(&:friend_id)
+							@friendsun = @user.friendships.where(approved: nil).map(&:friend_id) #remove unapproved friends
+							@friends = @friends1 - @friendsun
+							@admins = Role.find_by_name('admin').users.map(&:id)
+							
+							@decallowed = Declarative.where("(linkcat_id IN (?) AND user_id IN(?)) or user_id IN (?) or user_id = ?", @linkrel, @admin, @friends, current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
+							if current_user.has_role? :admin #Ensures admin sandbox posts are not removed if you are admin
+								@decallowed2 = @decallowed
+							else	
+								@decallowed2 = @decallowed.where.not("user_id IN (?) AND sandbox = ?", @admins, true) #removes admin sandbox
+							end	
+							
+							@declarativesfromlinkcat = @decallowed2.where("docstructure_id = ? AND linkcat_id = ?", params[:queryid], params[:q]) #Further reduce as this is only a heading search
 
 							@declarativess = @declarativesfromlinkcat.search(params[:query]) #search for non tagged terms
 							@declarativest = @declarativesfromlinkcat.tagged_with(params[:query]) #search for tagged terms
@@ -140,9 +193,20 @@ class DeclarativesController < ApplicationController
 					else #Topic and heading search
 						#Set up the Declaratives that the user can search
 							@user = current_user #identify current user
-							@linkrel = Linkcat.where(released: true) 
-							@decallowed = Declarative.where("linkcat_id = ? or user_id = ?", @linkrel[0], current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
-							@declarativesfromlinkcat = @decallowed.where("docstructure_id = ? AND linkcat_id = ?", params[:queryid], params[:q]) #Further reduce as this is only a heading search
+							@linkrel = @user.linkcats.map(&:id)
+							@friends1 = @user.inverse_friendships.map(&:user_id) | @user.friendships.map(&:friend_id)
+							@friendsun = @user.friendships.where(approved: nil).map(&:friend_id) #remove unapproved friends
+							@friends = @friends1 - @friendsun
+							@admins = Role.find_by_name('admin').users.map(&:id)
+							
+							@decallowed = Declarative.where("(linkcat_id IN (?) AND user_id IN(?)) or user_id IN (?) or user_id = ?", @linkrel, @admin, @friends, current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
+							if current_user.has_role? :admin #Ensures admin sandbox posts are not removed if you are admin
+								@decallowed2 = @decallowed
+							else	
+								@decallowed2 = @decallowed.where.not("user_id IN (?) AND sandbox = ?", @admins, true) #removes admin sandbox
+							end	
+							
+							@declarativesfromlinkcat = @decallowed2.where("docstructure_id = ? AND linkcat_id = ?", params[:queryid], params[:q]) #Further reduce as this is only a heading search
 
 							@declarativess = @declarativesfromlinkcat.search(params[:query]) #search for non tagged terms
 							@declarativest = @declarativesfromlinkcat.tagged_with(params[:query]) #search for tagged terms
@@ -161,13 +225,23 @@ class DeclarativesController < ApplicationController
 					
 					#Set up the Declaratives that the user can search
 							@user = current_user #identify current user
-							@linkrel = Linkcat.where(released: true) 
-							@decallowed = Declarative.where("linkcat_id = ? or user_id = ?", @linkrel[0], current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
-							@declarativesfromlinkcat = @decallowed.where("linkcat_id = ?", params[:q]) #Further reduce as this is only a heading search
+							@linkrel = @user.linkcats.map(&:id)
+							@friends1 = @user.inverse_friendships.map(&:user_id) | @user.friendships.map(&:friend_id)
+							@friendsun = @user.friendships.where(approved: nil).map(&:friend_id) #remove unapproved friends
+							@friends = @friends1 - @friendsun
+							@admins = Role.find_by_name('admin').users.map(&:id)
+							
+							@decallowed = Declarative.where("(linkcat_id IN (?) AND user_id IN(?)) or user_id IN (?) or user_id = ?", @linkrel, @admin, @friends, current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
+							if current_user.has_role? :admin #Ensures admin sandbox posts are not removed if you are admin
+								@decallowed2 = @decallowed
+							else	
+								@decallowed2 = @decallowed.where.not("user_id IN (?) AND sandbox = ?", @admins, true) #removes admin sandbox
+							end	
+							
+							
 
-							@declarativess = @declarativesfromlinkcat.search(params[:query]) #search for non tagged terms
-							@declarativest = @declarativesfromlinkcat.tagged_with(params[:query]) #search for tagged terms
-							@declaratives = @declarativess | @declarativest #remove duplicate declaratives
+							@declaratives = @decallowed2
+							
 							
 
 							#Labelling data for the search	

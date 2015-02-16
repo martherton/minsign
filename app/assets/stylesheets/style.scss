@@ -882,6 +882,30 @@ div.input.date {
 .howtopay h2 {
   text-align: center;
 }
+
+.message {
+  margin-bottom: 10%;
+}
+
+.friends {
+  width: 70%;
+  margin-left: 12.5%;
+  margin-bottom: 5%;
+}
+
+.friends h5 {
+  margin-left:5%;
+}
+
+.friends h5 a {
+  color: #0085CD;
+  margin-left: 5%;
+  font-size: 0.8em
+}
+
+.friends input[type="text"] {
+  width: 80%;
+}
 }
   /* --- end media queries ---- */
 
