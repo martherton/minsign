@@ -74,16 +74,17 @@ class DeclarativesController < ApplicationController
 							@friends1 = @user.inverse_friendships.map(&:user_id) | @user.friendships.map(&:friend_id) #find all friends
 							@friendsun = @user.friendships.where(approved: nil).map(&:friend_id) #remove unapproved friends
 							@friends = @friends1 - @friendsun
-							@admins = Role.find_by_name('admin').users.map(&:id)
-							
+							@admins = Role.find_by_name('admin').users.map(&:id) #find admin users
+							@linkcatun = Linkcat.where("released = ?", false).map(&:id) #find all unreleased linkcats
 							@decallowed = Declarative.where("(linkcat_id IN (?) AND user_id IN(?)) or user_id IN (?) or user_id = ?", @linkrel, @admin, @friends, current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
 							if current_user.has_role? :admin #Ensures admin sandbox posts are not removed if you are admin
 								@decallowed2 = @decallowed
 							else	
 								@decallowed2 = @decallowed.where.not("user_id IN (?) AND sandbox = ?", @admins, true) #removes admin sandbox
+								@decallowed3 = @decallowed2.where.not("user_id IN (?) AND linkcat_id IN (?)", @admins, @linkcatun) #remove content from unreleased topics that have an admin creator
 							end	
 							
-							@declarativesfromlinkcat = @decallowed2.where(:docstructure_id => params[:queryid]) #Further reduce as this is only a heading search
+							@declarativesfromlinkcat = @decallowed3.where(:docstructure_id => params[:queryid]) #Further reduce as this is only a heading search
 							@declarativess = @declarativesfromlinkcat.search(params[:query]) #search for non tagged terms
 							@declarativest = @declarativesfromlinkcat.tagged_with(params[:query]) #search for tagged terms
 							@declaratives = @declarativess | @declarativest #remove duplicate declaratives
@@ -103,15 +104,17 @@ class DeclarativesController < ApplicationController
 							@friendsun = @user.friendships.where(approved: nil).map(&:friend_id) #remove unapproved friends
 							@friends = @friends1 - @friendsun
 							@admins = Role.find_by_name('admin').users.map(&:id)
+							@linkcatun = Linkcat.where("released = ?", false).map(&:id) #find all unreleased linkcats
 							
 							@decallowed = Declarative.where("(linkcat_id IN (?) AND user_id IN(?)) or user_id IN (?) or user_id = ?", @linkrel, @admin, @friends, current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
 							if current_user.has_role? :admin #Ensures admin sandbox posts are not removed if you are admin
 								@decallowed2 = @decallowed
 							else	
 								@decallowed2 = @decallowed.where.not("user_id IN (?) AND sandbox = ?", @admins, true) #removes admin sandbox
+								@decallowed3 = @decallowed2.where.not("user_id IN (?) AND linkcat_id IN (?)", @admins, @linkcatun) #remove content from unreleased topics that have an admin creator
 							end	
 							
-							@declarativesfromlinkcat = @decallowed2.where(:docstructure_id => params[:queryid]) #Further reduce as this is only a heading search
+							@declarativesfromlinkcat = @decallowed3.where(:docstructure_id => params[:queryid]) #Further reduce as this is only a heading search
 							@declarativess = @declarativesfromlinkcat.search(params[:query]) #search for non tagged terms
 							@declarativest = @declarativesfromlinkcat.tagged_with(params[:query]) #search for tagged terms
 							@declaratives = @declarativess | @declarativest #remove duplicate declaratives
@@ -133,15 +136,17 @@ class DeclarativesController < ApplicationController
 							@friendsun = @user.friendships.where(approved: nil).map(&:friend_id) #remove unapproved friends
 							@friends = @friends1 - @friendsun
 							@admins = Role.find_by_name('admin').users.map(&:id)
+							@linkcatun = Linkcat.where("released = ?", false).map(&:id) #find all unreleased linkcats
 							
 							@decallowed = Declarative.where("(linkcat_id IN (?) AND user_id IN(?)) or user_id IN (?) or user_id = ?", @linkrel, @admin, @friends, current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
 							if current_user.has_role? :admin #Ensures admin sandbox posts are not removed if you are admin
 								@decallowed2 = @decallowed
 							else	
 								@decallowed2 = @decallowed.where.not("user_id IN (?) AND sandbox = ?", @admins, true) #removes admin sandbox
+								@decallowed3 = @decallowed2.where.not("user_id IN (?) AND linkcat_id IN (?)", @admins, @linkcatun) #remove content from unreleased topics that have an admin creator
 							end	
 							
-							@declarativesfromlinkcat = @decallowed2
+							@declarativesfromlinkcat = @decallowed3
 							@declarativess = @declarativesfromlinkcat.search(params[:query]) #search for non tagged terms
 							@declarativest = @declarativesfromlinkcat.tagged_with(params[:query]) #search for tagged terms
 							@declaratives = @declarativess | @declarativest #remove duplicate declaratives
@@ -168,15 +173,17 @@ class DeclarativesController < ApplicationController
 							@friendsun = @user.friendships.where(approved: nil).map(&:friend_id) #remove unapproved friends
 							@friends = @friends1 - @friendsun
 							@admins = Role.find_by_name('admin').users.map(&:id)
+							@linkcatun = Linkcat.where("released = ?", false).map(&:id) #find all unreleased linkcats
 							
 							@decallowed = Declarative.where("(linkcat_id IN (?) AND user_id IN(?)) or user_id IN (?) or user_id = ?", @linkrel, @admin, @friends, current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
 							if current_user.has_role? :admin #Ensures admin sandbox posts are not removed if you are admin
 								@decallowed2 = @decallowed
 							else	
 								@decallowed2 = @decallowed.where.not("user_id IN (?) AND sandbox = ?", @admins, true) #removes admin sandbox
+								@decallowed3 = @decallowed2.where.not("user_id IN (?) AND linkcat_id IN (?)", @admins, @linkcatun) #remove content from unreleased topics that have an admin creator
 							end	
 							
-							@declarativesfromlinkcat = @decallowed2.where("docstructure_id = ? AND linkcat_id = ?", params[:queryid], params[:q]) #Further reduce as this is only a heading search
+							@declarativesfromlinkcat = @decallowed3.where("docstructure_id = ? AND linkcat_id = ?", params[:queryid], params[:q]) #Further reduce as this is only a heading search
 
 							@declarativess = @declarativesfromlinkcat.search(params[:query]) #search for non tagged terms
 							@declarativest = @declarativesfromlinkcat.tagged_with(params[:query]) #search for tagged terms
@@ -198,15 +205,17 @@ class DeclarativesController < ApplicationController
 							@friendsun = @user.friendships.where(approved: nil).map(&:friend_id) #remove unapproved friends
 							@friends = @friends1 - @friendsun
 							@admins = Role.find_by_name('admin').users.map(&:id)
+							@linkcatun = Linkcat.where("released = ?", false).map(&:id) #find all unreleased linkcats
 							
 							@decallowed = Declarative.where("(linkcat_id IN (?) AND user_id IN(?)) or user_id IN (?) or user_id = ?", @linkrel, @admin, @friends, current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
 							if current_user.has_role? :admin #Ensures admin sandbox posts are not removed if you are admin
 								@decallowed2 = @decallowed
 							else	
 								@decallowed2 = @decallowed.where.not("user_id IN (?) AND sandbox = ?", @admins, true) #removes admin sandbox
+								@decallowed3 = @decallowed2.where.not("user_id IN (?) AND linkcat_id IN (?)", @admins, @linkcatun) #remove content from unreleased topics that have an admin creator
 							end	
 							
-							@declarativesfromlinkcat = @decallowed2.where("docstructure_id = ? AND linkcat_id = ?", params[:queryid], params[:q]) #Further reduce as this is only a heading search
+							@declarativesfromlinkcat = @decallowed3.where("docstructure_id = ? AND linkcat_id = ?", params[:queryid], params[:q]) #Further reduce as this is only a heading search
 
 							@declarativess = @declarativesfromlinkcat.search(params[:query]) #search for non tagged terms
 							@declarativest = @declarativesfromlinkcat.tagged_with(params[:query]) #search for tagged terms
@@ -230,17 +239,19 @@ class DeclarativesController < ApplicationController
 							@friendsun = @user.friendships.where(approved: nil).map(&:friend_id) #remove unapproved friends
 							@friends = @friends1 - @friendsun
 							@admins = Role.find_by_name('admin').users.map(&:id)
+							@linkcatun = Linkcat.where("released = ?", false).map(&:id) #find all unreleased linkcats
 							
 							@decallowed = Declarative.where("(linkcat_id IN (?) AND user_id IN(?)) or user_id IN (?) or user_id = ?", @linkrel, @admin, @friends, current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
 							if current_user.has_role? :admin #Ensures admin sandbox posts are not removed if you are admin
 								@decallowed2 = @decallowed
 							else	
 								@decallowed2 = @decallowed.where.not("user_id IN (?) AND sandbox = ?", @admins, true) #removes admin sandbox
+								@decallowed3 = @decallowed2.where.not("user_id IN (?) AND linkcat_id IN (?)", @admins, @linkcatun) #remove content from unreleased topics that have an admin creator
 							end	
 							
 							
 
-							@declaratives = @decallowed2
+							@declaratives = @decallowed3
 							
 							
 
