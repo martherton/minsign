@@ -35,8 +35,10 @@
 
 
 
-
-   
+   <% if current_user.freeuser == false %>
+    <%= f.input :declarativeimage, label: false %>
+   <% else %>
+   <% end %> 
   
 
   <%= f.input :reviewdate, as: :date, start_year: Date.today.year - 50,
