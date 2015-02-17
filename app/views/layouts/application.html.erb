@@ -65,13 +65,14 @@
     <li><h4><% if current_user.has_role? :sandbox %><%= link_to image_tag("small101.svg",height: "23px", alt: "Enter note", title: "Enter note"), new_user_declarative_path(current_user.id) %><% else %><% end %></h4></li>
 
     <li><h4><%= link_to image_tag("magnifier58.svg", height: "23px", alt: "Search page", title: "Search page"), new_user_find_path(current_user.id) %></h4></li>
-    <li><h4><%= link_to image_tag("exit16.svg", height: "23px", alt: "Sign Out", title: "Sign out"), destroy_user_session_path, :method => :delete %></h4></li>
-
-  <% if current_user.has_role? :admin %>
+    <% if current_user.has_role? :admin %>
     <li><%= link_to image_tag("user160.svg", height: "23px", alt: "Dashboard", title: "Dashboard"), dashboard_admin_user_path(current_user.id) %></li>
   <% else %>
     <li><%= link_to image_tag("user160.svg", height: "23px", alt: "Dashboard", title: "Dashboard"),dashboard_user_path(current_user.id) %></li>
-  <% end %>    
+  <% end %> 
+    <li><h4><%= link_to image_tag("exit16.svg", height: "23px", alt: "Sign Out", title: "Sign out"), destroy_user_session_path, :method => :delete %></h4></li>
+
+     
 <% end %>
     
 </ul>
