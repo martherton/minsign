@@ -1,0 +1,11 @@
+<div class="logo" id="logosearch" >
+    <%= image_tag 'logo.svg' %>
+	
+</div>	
+<div class="cal">
+<h5>Upcoming updates required</h5>
+<div id="calendar">
+
+</div>
+</div>
+<% @events = Declarative.where("user_id = ?", current_user.id).where.not("reviewdate = ?", :updated_at)%><%= @events%>

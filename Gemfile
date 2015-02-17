@@ -75,3 +75,7 @@ gem 'chosen-rails'
 
 gem 'jquery-turbolinks'
 
+gem 'fullcalendar-rails'
+
+gem 'momentjs-rails'
+

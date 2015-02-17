@@ -320,6 +320,14 @@ class DeclarativesController < ApplicationController
 	  end	 
 	end
 
+	def event
+
+    @events = Declarative.where("user_id = ?", current_user.id)
+	 	
+
+    
+  end
+
 	
 end
 	

@@ -15,10 +15,14 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require chosen-jquery
+
+//= require moment
 //= require jquery.tokeninput
 //= require jquery.qtip.min
 //= require imagesloaded.pkgd.min
+//= require fullcalendar
 //= require global
 //= require script1
+//= require calendar
 //= require finds
 //= require_tree .

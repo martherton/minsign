@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get 'reset', to: 'staticpages#reset' #link to static confirmed page
   get 'broken', to: 'admin/wlinks#brokenlinks'
   get 'instructions', to: 'users#sandboxinstr'
+  get 'current', to: 'docstructures#current'
+  get :event, as: :event, to: 'declaratives#event'
   
 
 
@@ -27,7 +29,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
-
+  
   
   resources :moreinfos
   resources :comments
@@ -41,14 +43,16 @@ Rails.application.routes.draw do
       end  
      end 
     resources :docstructures
-    resources :declaratives
+    resources :declaratives    
     member do
       get 'sandbox'
       get 'deletesandbox'
       get 'dataentered'
       get 'sandboxinstr'
+      get 'calendar'
     end  
     resources :finds, :path_names => { :new => 'search'}
+
       
     member do
       get 'dashboard'
@@ -66,7 +70,7 @@ Rails.application.routes.draw do
   end    
 
   namespace :admin do
-    resources :packages
+    
     resources :users do
       member do
         get 'dashboard'
@@ -75,7 +79,7 @@ Rails.application.routes.draw do
     end    
     resources :linkcats
     resources :wlinks 
-    resources :declaratives
+    resources :declaratives 
     resources :docstructures
     
           

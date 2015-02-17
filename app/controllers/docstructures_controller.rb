@@ -73,6 +73,10 @@ def index
 
 	end
 
+	def current
+		@current = Docstructure.where("user_id = ?", current_user.id).where("liveissue = ?", true)
+	end	
+
 	private
 
 	def docstructure_params

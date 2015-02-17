@@ -1,0 +1,11 @@
+<div class="logo" id="logofinds" >
+		<%= image_tag 'logo.svg' %>
+</div>	
+<div class= "currentissues">
+<ul>
+<h3>Current Issues</h3>
+<% @current.each do |current| %>
+<li><h5><%= current.headingname %></h5></li>
+<% end %>
+</ul>
+</div>

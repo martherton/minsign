@@ -98,6 +98,8 @@ class Declarative < ActiveRecord::Base
 
 	end
 
+	 
+
 	
 
 
