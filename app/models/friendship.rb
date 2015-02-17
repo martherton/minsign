@@ -5,14 +5,14 @@ class Friendship < ActiveRecord::Base
 	attr_accessor :emailf
 
 	after_save do 
-		send_friend_email(@useremail)
+		send_friend_email
 	end	
 		
 	
 	private
 
-	def send_friend_email(email)
-
+	def send_friend_email
+		FriendMailer.friend_request(self).deliver
 	end	
 
 end
