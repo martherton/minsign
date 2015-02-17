@@ -4,7 +4,7 @@ class Friendship < ActiveRecord::Base
 
 	attr_accessor :emailf
 
-	after_save do 
+	after_create do 
 		send_friend_email
 	end	
 		
