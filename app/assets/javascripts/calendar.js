@@ -5,7 +5,12 @@
     $('#calendar').fullCalendar({
         // put your options and callbacks here
         
-        events: '/event.json'
+        events: '/event.json',
+        header: {
+    left:   'title',
+    center: 'month,basicWeek, basicDay',
+    right:  'today prev,next'
+}
     })
 
 });
