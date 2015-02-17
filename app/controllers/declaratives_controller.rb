@@ -251,7 +251,7 @@ class DeclarativesController < ApplicationController
 							
 							
 
-							@declaratives = @decallowed3.where(linkcat_id: :q)
+							@declaratives = @decallowed3.where("linkcat_id = ?", params[:q])
 							
 							
 
