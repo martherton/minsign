@@ -85,7 +85,7 @@
       
       <% else %>
     
-    	<li><h5><%=h friendship.fname %>&nbsp<%=h friendship.lname %><%= link_to "Remove friend", user_friendship_path(current_user.id, friendship.id, q: @friendship.id), method: :delete %></h5></li>
+    	<li><h5><%=h friendship.friend.fname %>&nbsp<%=h friendship.friendlname %><%= link_to "Remove friend", user_friendship_path(current_user.id, friendship.id, q: @friendship.id), method: :delete %></h5></li>
   		<%end%>
   	<%end%>
 <% end %>
