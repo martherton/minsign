@@ -56,17 +56,22 @@ class FindsController < ApplicationController
 			redirect_to	new_user_find_path(current_user.id)
 		end	   
 	end
+	
+	
 
 	def tags
-	  tags = Declarative.all_tag_counts.by_tag_name(params[:q]).token_input_tags
-
+	  tag1 = Declarative.all_tag_counts.by_tag_name(params[:q]).token_input_tags 
+	  tag2 = Wlink.all_tag_counts.by_tag_name(params[:q]).token_input_tags
+	  tags = tag1 | tag2
 	  respond_to do |format|
     	format.json { render json: tags }
   	end
+
+
 	end
 	
-
-	private
+private
+	
 
 	def find_params
 		params.require(:find).permit(:searchterm, :linkcat_id, :user_id, :docstructure_id, :tag_list_tokens)
@@ -75,6 +80,9 @@ class FindsController < ApplicationController
 
 	def find_tags
   	@declarative_tags = params[:id].present? ? Declarative.find(params[:id]).tags.token_input_tags : []
+  	@wlink_tags = params[:id].present? ? Wlink.find(params[:id]).tags.token_input_tags : []
+  	@all_tags = @declarative_tags && @wlink_tags
+
 	end
 
 

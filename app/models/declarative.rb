@@ -98,9 +98,7 @@ class Declarative < ActiveRecord::Base
 
 	end
 
-	def dec_allowed
-
-	end	
+	
 
 
 
