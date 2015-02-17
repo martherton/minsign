@@ -259,8 +259,11 @@ class DeclarativesController < ApplicationController
 							
 							@searchterm = params[:query]
 							@topic = Linkcat.find(params[:q]).linkcatname
-							
-							@count = @declaratives.count
+							if @declaratives.nil?
+								@count = 0
+							else	
+								@count = @declaratives.count
+							end	
 							@request = "All"
 				end	
 				
