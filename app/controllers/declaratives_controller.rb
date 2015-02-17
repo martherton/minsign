@@ -78,7 +78,7 @@ class DeclarativesController < ApplicationController
 							@linkcatun = Linkcat.where("released = ?", false).map(&:id) #find all unreleased linkcats
 							@decallowed = Declarative.where("(linkcat_id IN (?) AND user_id IN(?)) or user_id IN (?) or user_id = ?", @linkrel, @admin, @friends, current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
 							if current_user.has_role? :admin #Ensures admin sandbox posts are not removed if you are admin
-								@decallowed2 = @decallowed
+								@decallowed3 = @decallowed
 							else	
 								@decallowed2 = @decallowed.where.not("user_id IN (?) AND sandbox = ?", @admins, true) #removes admin sandbox
 								@decallowed3 = @decallowed2.where.not("user_id IN (?) AND linkcat_id IN (?)", @admins, @linkcatun) #remove content from unreleased topics that have an admin creator
@@ -108,7 +108,7 @@ class DeclarativesController < ApplicationController
 							
 							@decallowed = Declarative.where("(linkcat_id IN (?) AND user_id IN(?)) or user_id IN (?) or user_id = ?", @linkrel, @admin, @friends, current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
 							if current_user.has_role? :admin #Ensures admin sandbox posts are not removed if you are admin
-								@decallowed2 = @decallowed
+								@decallowed3 = @decallowed
 							else	
 								@decallowed2 = @decallowed.where.not("user_id IN (?) AND sandbox = ?", @admins, true) #removes admin sandbox
 								@decallowed3 = @decallowed2.where.not("user_id IN (?) AND linkcat_id IN (?)", @admins, @linkcatun) #remove content from unreleased topics that have an admin creator
@@ -140,7 +140,7 @@ class DeclarativesController < ApplicationController
 							
 							@decallowed = Declarative.where("(linkcat_id IN (?) AND user_id IN(?)) or user_id IN (?) or user_id = ?", @linkrel, @admin, @friends, current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
 							if current_user.has_role? :admin #Ensures admin sandbox posts are not removed if you are admin
-								@decallowed2 = @decallowed
+								@decallowed3 = @decallowed
 							else	
 								@decallowed2 = @decallowed.where.not("user_id IN (?) AND sandbox = ?", @admins, true) #removes admin sandbox
 								@decallowed3 = @decallowed2.where.not("user_id IN (?) AND linkcat_id IN (?)", @admins, @linkcatun) #remove content from unreleased topics that have an admin creator
@@ -177,7 +177,7 @@ class DeclarativesController < ApplicationController
 							
 							@decallowed = Declarative.where("(linkcat_id IN (?) AND user_id IN(?)) or user_id IN (?) or user_id = ?", @linkrel, @admin, @friends, current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
 							if current_user.has_role? :admin #Ensures admin sandbox posts are not removed if you are admin
-								@decallowed2 = @decallowed
+								@decallowed3 = @decallowed
 							else	
 								@decallowed2 = @decallowed.where.not("user_id IN (?) AND sandbox = ?", @admins, true) #removes admin sandbox
 								@decallowed3 = @decallowed2.where.not("user_id IN (?) AND linkcat_id IN (?)", @admins, @linkcatun) #remove content from unreleased topics that have an admin creator
@@ -209,7 +209,7 @@ class DeclarativesController < ApplicationController
 							
 							@decallowed = Declarative.where("(linkcat_id IN (?) AND user_id IN(?)) or user_id IN (?) or user_id = ?", @linkrel, @admin, @friends, current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
 							if current_user.has_role? :admin #Ensures admin sandbox posts are not removed if you are admin
-								@decallowed2 = @decallowed
+								@decallowed3 = @decallowed
 							else	
 								@decallowed2 = @decallowed.where.not("user_id IN (?) AND sandbox = ?", @admins, true) #removes admin sandbox
 								@decallowed3 = @decallowed2.where.not("user_id IN (?) AND linkcat_id IN (?)", @admins, @linkcatun) #remove content from unreleased topics that have an admin creator
@@ -243,7 +243,7 @@ class DeclarativesController < ApplicationController
 							
 							@decallowed = Declarative.where("(linkcat_id IN (?) AND user_id IN(?)) or user_id IN (?) or user_id = ?", @linkrel, @admin, @friends, current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
 							if current_user.has_role? :admin #Ensures admin sandbox posts are not removed if you are admin
-								@decallowed2 = @decallowed
+								@decallowed3 = @decallowed
 							else	
 								@decallowed2 = @decallowed.where.not("user_id IN (?) AND sandbox = ?", @admins, true) #removes admin sandbox
 								@decallowed3 = @decallowed2.where.not("user_id IN (?) AND linkcat_id IN (?)", @admins, @linkcatun) #remove content from unreleased topics that have an admin creator
