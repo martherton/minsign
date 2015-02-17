@@ -53,10 +53,18 @@ class FriendshipsController < ApplicationController
 						@friendship.friend_id = @friendid
 						if @friendship.save
 							flash[:success] = "Friend request sent"
-							redirect_to dashboard_user_path(current_user.id)
+							if current_user.has_role :admin
+								redirect_to dashboard_admin_user_path(current_user.id)
+							else	
+								redirect_to dashboard_user_path(current_user.id)
+							end	
 						else
 							flash[:error] = "Unable to send friend request"
-							redirect_to dashboard_user_path(current_user.id)
+							if current_user.has_role :admin
+								redirect_to dashboard_admin_user_path(current_user.id)
+							else
+								redirect_to dashboard_user_path(current_user.id)
+							end	
 						end
 					end	
 
