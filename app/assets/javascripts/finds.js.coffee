@@ -5,7 +5,7 @@
 ;
 
 jQuery ->
-  $('#find_tag_list_tokens').tokenInput '/finds/tags.json',
+  $('#find_tag_list_tokens').tokenInput '/finds/tags.json', 
     theme: 'facebook'
     minChars: 2
     allowCustomEntry: true
