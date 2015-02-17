@@ -8,7 +8,7 @@ class WlinksController < ApplicationController
 		if current_user.has_role? :admin or :user
 			@user = current_user
 			@linkcatrel = @user.linkcats.map(&:id)  #linkcats in your package
-			if @linkcatrel.include? params[:queryid]
+			if @linkcatrel.include? params[:queryid].to_f
 				@wlinksfromlinkcat = Wlink.where(:linkcat_id => params[:queryid])
 				@wlinkss = @wlinksfromlinkcat.search(params[:query]) 
 				@wlinkst = @wlinksfromlinkcat.tagged_with(params[:query])
