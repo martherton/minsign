@@ -12,7 +12,7 @@ class DeclarativesController < ApplicationController
     		@declarative.declarativejusttext = params[:q]
     	else
     	end	
-    	@linkcat = Linkcat.all
+    	@linkcat = Linkcat.where("linkcattype = ?","Information")
     	@headings = Docstructure.all
     	@declarativelast = Declarative.where(user_id: @user.id).order("created_at").last
     	if @declarativelast.nil?
