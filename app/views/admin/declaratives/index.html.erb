@@ -46,7 +46,7 @@
 			<td id="tablink"><% if dec.urlextra.blank? %><% else %><%= link_to dec.urlextra[0], dec.urlextra[0] %><% end %></td>
 			<td><%= dec.tag_list %></td>
 			<td><%= dec.declarativeimage_file_name %></td>
-			<td><% if dec.reviewdate == dec.created_at.to_date %>No review<% else %><%= dec.reviewdate %><% end %></td>
+			<td><% if dec.reviewdate == dec.updated_at.to_date %>No review<% else %><%= dec.reviewdate %><% end %></td>
 
 
 
