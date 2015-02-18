@@ -342,10 +342,11 @@ class DeclarativesController < ApplicationController
 
 				
 					
-						if @decup[index] == @reviewdate[index]
+						if @decup[index] >= @reviewdate[index]
 						else
 							@decidr = @decidr.push(decid)	 
 						end
+
 					
 					
 				
