@@ -3,9 +3,14 @@
 </div>	
 <div class= "currentissues">
 <ul>
-<h3>Current Issues</h3>
+
+
+	<h3>Current Issues<sup><%= link_to " ?", instructions_path(anchor: 'issuescurrent1'), id: 'currentissues' %></sup></h3>
+	
+	
+
 <% @current.each do |current| %>
-<li><h5><%= current.headingname %></h5></li>
+<li><h5><%= link_to current.headingname, user_declaratives_path(current_user.id, :q => "h", :queryid => current.id) %></h5></li>
 <% end %>
 </ul>
 </div>

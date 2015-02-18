@@ -98,10 +98,7 @@ class Declarative < ActiveRecord::Base
 
 	end
 
-	 def self.dater(a,b)
-	 	b = b.to_date
-	 	where.("a =?",b)
-	 end	
+	
 
 	
 

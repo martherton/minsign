@@ -368,3 +368,84 @@ $(document).ready(function()
          });
      });
  });
+$(document).ready(function()
+ {
+     // MAKE SURE YOUR SELECTOR MATCHES SOMETHING IN YOUR HTML!!!
+     $('#currentissues').each(function() {
+         $(this).qtip({
+            content: {
+                button: true,
+                title: 'Current Issues',
+                text: function(event, api) {
+                    $.ajax({
+                        url: api.elements.target.attr('href') // Use href attribute as URL
+                    })
+                    .then(function(content) {
+                        // Set the tooltip content upon successful retrieval
+                        var elements = $("<div />").append( $.parseHTML(content) ).find('#issuescurrent1');
+                        api.set('content.text', elements);
+                    }, function(xhr, status, error) {
+                        // Upon failure... set the tooltip content to error
+                        api.set('content.text', status + ': ' + error);
+                    });
+        
+                    return 'Loading...'; // Set some initial text
+                }
+            },
+            position: {
+                viewport: $(window),
+                my: 'bottom left',  // Position my top left...
+                at: 'top right', // at the bottom right of...
+                target: $('#helpicon a')
+            },
+            hide: {
+                event: 'click' 
+            },
+                style: {
+                    classes: 'qtip-tipped',
+                    height: 100
+                }
+         });
+     });
+ });
+
+$(document).ready(function()
+ {
+     // MAKE SURE YOUR SELECTOR MATCHES SOMETHING IN YOUR HTML!!!
+     $('#calendarprompt').each(function() {
+         $(this).qtip({
+            content: {
+                button: true,
+                title: 'Event Calendar',
+                text: function(event, api) {
+                    $.ajax({
+                        url: api.elements.target.attr('href') // Use href attribute as URL
+                    })
+                    .then(function(content) {
+                        // Set the tooltip content upon successful retrieval
+                        var elements = $("<div />").append( $.parseHTML(content) ).find('#calendar1');
+                        api.set('content.text', elements);
+                    }, function(xhr, status, error) {
+                        // Upon failure... set the tooltip content to error
+                        api.set('content.text', status + ': ' + error);
+                    });
+        
+                    return 'Loading...'; // Set some initial text
+                }
+            },
+            position: {
+                viewport: $(window),
+                my: 'bottom left',  // Position my top left...
+                at: 'top right', // at the bottom right of...
+                target: $('#helpicon a')
+            },
+            hide: {
+                event: 'click' 
+            },
+                style: {
+                    classes: 'qtip-tipped',
+                    height: 100
+                }
+         });
+     });
+ });
