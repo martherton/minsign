@@ -8,7 +8,7 @@
         events: '/event.json',
         header: {
     left:   'title',
-    center: 'month,basicWeek, basicDay',
+    center: ' month, basicWeek, basicDay',
     right:  'today prev,next'
 }
     })

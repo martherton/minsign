@@ -321,15 +321,42 @@ class DeclarativesController < ApplicationController
 	end
 
 	def event
+		@event = Declarative.where("user_id = ?", current_user.id)
+    @decupdate = @event.map(&:updated_at)
+		@decup = []
+		@decupdate.each do |decu|
+			@decup = @decup.push(decu.to_date)
+		end	
+		
+		@reviewdates = @event.map(&:reviewdate)
+		@reviewdate = []
+		@reviewdates.each do |reviewdate|
+			@reviewdate = @reviewdate.push(reviewdate.to_date)
+		end	
+		@decid = @event.map(&:id)
+		@decidr = []
+		@count = 0
+		@decid.each_with_index do |decid, index|
+			
+			
 
-    @events = Declarative.where("user_id = ?", current_user.id)
-	 	
+				
+					
+						if @decup[index] == @reviewdate[index]
+						else
+							@decidr = @decidr.push(decid)	 
+						end
+					
+					
+				
+				
+			
+		end				
+		@events = @event.where("id IN (?)", @decidr)
 
-    
-  end
 
-	
-end
+   
+	end
 	
 	private
 
@@ -338,7 +365,7 @@ end
 	end	
 
 	
-
+end
 
 
 
