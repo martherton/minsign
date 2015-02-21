@@ -76,7 +76,8 @@ class Declarative < ActiveRecord::Base
 		@text2.each do |text2|
 			if text2.first == "#"
 				@text3 = text2.remove("#")
-				self.tag_list = [self.tag_list,@text3].join(',')
+				@text4 = @text3.remove(".")
+				self.tag_list = [self.tag_list,@text4].join(',')
 			else
 			end
 		end	
