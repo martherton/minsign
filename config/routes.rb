@@ -18,7 +18,10 @@ Rails.application.routes.draw do
   get 'broken', to: 'admin/wlinks#brokenlinks'
   get 'instructions', to: 'users#sandboxinstr'
   get 'current', to: 'docstructures#current'
+  
   get :event, as: :event, to: 'declaratives#event'
+  get :searched, as: :searched, to: 'declaratives#searched'
+
   
 
 
@@ -50,8 +53,10 @@ Rails.application.routes.draw do
       get 'dataentered'
       get 'sandboxinstr'
       get 'calendar'
+
     end  
-    resources :finds, :path_names => { :new => 'search'}
+    resources :finds, :path_names => { :new => 'search'}   
+
 
       
     member do
@@ -83,7 +88,7 @@ Rails.application.routes.draw do
     resources :docstructures
     
           
-    resources :finds
+    resources :finds    
   end  
 
    

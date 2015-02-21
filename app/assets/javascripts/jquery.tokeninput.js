@@ -53,7 +53,7 @@
     tokenLimit: null,
     tokenDelimiter: ",",
     preventDuplicates: false,
-    tokenValue: "id",
+    tokenValue: "name",
 
     // Behavioral settings
     allowFreeTagging: false,

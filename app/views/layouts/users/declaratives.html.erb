@@ -53,21 +53,21 @@
   ga('send', 'pageview');
 
   </script>
-   <script type="text/javascript">
+  <script type="text/javascript">
       $(document).ready(function() {
       $('#find_tag_list_tokens').tokenInput('/finds/tags.json', {
           theme: 'facebook',
           minChars: 2,
           allowCustomEntry: true,
           preventDuplicates: true,
-          prePopulate: null
+          prePopulate: <%= @searchedtags.to_json.html_safe %>
       });
    });      
     </script>
   
 </head> 
-<body class="nonland">
-<div class="navholder">
+<body class="nonland" >
+<div class="navholder" data-no-turbolink>
 
 <ul class="basicnav">
 <% if user_signed_in? %>

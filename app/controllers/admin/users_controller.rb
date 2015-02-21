@@ -30,72 +30,94 @@ class Admin::UsersController < ApplicationController
 
 			@user = User.find(params[:id])
 			
-
-			if @user.update(user_params)
-	        flash[:success] = "Updated!"
-	        if @user.approved_changed?
-	        # send approved mail
-	        if @user.update(approved: 'true')
+			 if @user.approved == false
+				if @user.update(user_params)
+		        if @user.approved == true
+		        
+		        	flash[:success] = "Updated and approval email sent"
+		        # send approved mail
+	       
 	        	
 	    				@user.send_reset_password_instructions
 	  
-	 							# Add to appropriate Mailchimp list
-	  	
-	    				
-	    					return true if (Rails.env.test? && !testing)
-	    					list_id = ENV['MAILCHIMP_MINERVA_LIST_ID']
+ 							# Add to appropriate Mailchimp list
+  	
+    				
+    					return true if (Rails.env.test? && !testing)
+    					list_id = ENV['MAILCHIMP_MINERVA_LIST_ID']
 
-	    					response = Rails.configuration.mailchimp.lists.unsubscribe({
-	      				id: list_id,
-					      email: {email: @user.email},
-					      double_optin: false,
-					      merge_vars: { :GROUPINGS => [{ :id =>"18233", :name => "Status of people", :groups => ['Signed up but unapproved']}] },
-						    })
-
-						    response = Rails.configuration.mailchimp.lists.subscribe({
-						      id: list_id,
-						      email: {email: @user.email},
-						      double_optin: false,
-						      merge_vars: { :GROUPINGS => [{ :id =>"18233", :name => "Status of people", :groups => ['Approved Current User']}] },
-						    })
-						    response
-						  
-						elsif @user.update(approved: 'false')
-
-	    				AdminMailer.sending_unapproval_mail(@user).deliver
-
-
-					  	return true if (Rails.env.test? && !testing)
-	  					list_id = ENV['MAILCHIMP_MINERVA_LIST_ID']
-
-	  					response = Rails.configuration.mailchimp.lists.unsubscribe({
-	    				id: list_id,
-				      email: {email: email},
+    					response = Rails.configuration.mailchimp.lists.unsubscribe({
+      				id: list_id,
+				      email: {email: @user.email},
 				      double_optin: false,
-				      merge_vars: { :GROUPINGS => [{ :id =>"18233", :name => "Status of people", :groups => ['Approved Current User']}] },
+				      merge_vars: { :GROUPINGS => [{ :id =>"18233", :name => "Status of people", :groups => ['Signed up but unapproved']}] },
 					    })
 
 					    response = Rails.configuration.mailchimp.lists.subscribe({
 					      id: list_id,
-					      email: {email: email},
+					      email: {email: @user.email},
 					      double_optin: false,
-					      merge_vars: { :GROUPINGS => [{ :id =>"18233", :name => "Status of people", :groups => ['User who has left']}] },
+					      merge_vars: { :GROUPINGS => [{ :id =>"18233", :name => "Status of people", :groups => ['Approved Current User']}] },
 					    })
 					    response
+							redirect_to admin_users_path
+
+					  else
+					  	flash[:success] = "Updated"
+							redirect_to admin_users_path
+
+					  end	
+					else 
+						flash[:failure] = "There has been a problem"
+					end	
+				else	
+					if @user.update(user_params)
+						if @user.approved == false
+
+									flash[:success] = "Updated and removal email sent"
+			    				AdminMailer.sending_unapproval_mail(@user).deliver
+
+
+							  	return true if (Rails.env.test? && !testing)
+			  					list_id = ENV['MAILCHIMP_MINERVA_LIST_ID']
+
+			  					response = Rails.configuration.mailchimp.lists.unsubscribe({
+			    				id: list_id,
+						      email: {email: email},
+						      double_optin: false,
+						      merge_vars: { :GROUPINGS => [{ :id =>"18233", :name => "Status of people", :groups => ['Approved Current User']}] },
+							    })
+
+							    response = Rails.configuration.mailchimp.lists.subscribe({
+							      id: list_id,
+							      email: {email: email},
+							      double_optin: false,
+							      merge_vars: { :GROUPINGS => [{ :id =>"18233", :name => "Status of people", :groups => ['User who has left']}] },
+							    })
+							    response
+									redirect_to admin_users_path
+
+					  else
+					  	flash[:success] = "Updated"
+							redirect_to admin_users_path
+
 					  end
 					else
-					end
-					redirect_to admin_users_path
+						flash[:failure] = "There was a problem"  
+		  		
+  				end   
+				end	
+			
 					
       
-	    else
-	      flash[:error] = "Oops. There has been a problem, please retry."
-	      render :edit
+	    
 
-	    end
+	    
     else
 			redirect_to	new_user_find_path(current_user.id)
 		end	
+				
+
 	end	
 
 	def dashboard

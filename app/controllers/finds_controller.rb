@@ -1,7 +1,7 @@
 class FindsController < ApplicationController
 	before_filter :authenticate_user!
 	before_filter :find_tags, only: [:new, :create, :edit, :update]
-
+	
 	def index
 
 	end
@@ -18,24 +18,32 @@ class FindsController < ApplicationController
 			@heading2 = Docstructure.where("released = ?", true)
 			@heading = @heading1 | @heading2
 			@find = @user.finds.new
+
 		else
 			redirect_to root_path
 		end		
+
 	end
+
+
+
+
 	
 	def show
 
 	end	
 
-	def edit
-
+	def update
+		
+			   
 	end	
 	
-	def create
+	def create  
 		if current_user.has_role? :admin or :user
 				
 		    @user = current_user
 		    @find = @user.finds.new(find_params)
+		    	
 		    if @find.save
 		    	@searchterm = @find.tag_list.join(",")
 		    	if @find.linkcat_id.nil?
@@ -57,7 +65,7 @@ class FindsController < ApplicationController
 		end	   
 	end
 	
-	
+
 
 	def tags
 	  tag1 = Declarative.all_tag_counts.by_tag_name(params[:q]).token_input_tags 

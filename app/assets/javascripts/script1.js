@@ -1,6 +1,6 @@
 // Using qtip2 to pull in the appropriate part of the instruction documenttion
 
-$(document).ready(function()
+;$(document).ready(function()
  {
      // MAKE SURE YOUR SELECTOR MATCHES SOMETHING IN YOUR HTML!!!
      $('#topic').each(function() {

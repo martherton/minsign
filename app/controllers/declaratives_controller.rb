@@ -1,6 +1,6 @@
 class DeclarativesController < ApplicationController
 
-
+layout 'users/declaratives'
 
 
 	def new
@@ -61,10 +61,18 @@ class DeclarativesController < ApplicationController
 		end	 
 	end
 
+	
+
 	def index
 		if current_user.has_role? :admin or :user
 				
-			
+			@tags = Find.last.tag_list
+			@tagish = ActsAsTaggableOn::Tag.select(:id, :name)
+			@searchedtags = @tagish.where("name IN (?)", @tags)
+				
+
+
+								
 				if params[:q] == 'h'  #check for topic h means not present
 					if params[:queryid].present? # check for heading with no topic
 						if params[:query].present? #Topic and query search
@@ -153,7 +161,6 @@ class DeclarativesController < ApplicationController
 							
 
 							#Labelling data for the search	
-							
 							@searchterm = params[:query]
 							@topic = "All"
 							@count = @declaratives.count
@@ -256,7 +263,6 @@ class DeclarativesController < ApplicationController
 							
 
 							#Labelling data for the search	
-							
 							@searchterm = params[:query]
 							@topic = Linkcat.find(params[:q]).linkcatname
 							if @declaratives.nil?

@@ -1,0 +1,38 @@
+	
+
+<% if current_user.has_role? :user or :user %>
+			<% @user = current_user %>
+			<% @find = @user.finds.last %>
+			<% @find.tag_list_tokens = nil %>
+			
+		<% else %>
+			<% redirect_to root_path %>
+		<% end		 %>
+	
+
+<div class="newsearch">
+<%= simple_form_for [@user, @find], url: user_finds_path(@user.id), method: :post do |f| %>
+	<div class="searchform" >
+		
+		<div class="mover">
+		<%= f.text_field :tag_list_tokens, label: false, placeholder: "Enter search terms", data: {load: @all_tags} %>
+		
+		</div>
+		
+		</div>
+	<div class="hidlinkcat" >
+	
+		<%= f.input :user_id, input_html: { value: params[:user_id]} %>
+		<% if params[:q] == "h" %><% else %><%= f.input :linkcat_id, input_html: { value: params[:q]} %><% end %>
+		<% if params[:queryid].present? %><%= f.input :docstructure_id, input_html: { value: params[:queryid]} %><% else %><% end %>
+
+
+	</div>
+	
+	<div class="searchbutton">
+
+		<%= f.button :submit, 'Refine Search' %>
+	</div>
+
+<% end %>
+</div>

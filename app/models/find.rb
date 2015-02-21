@@ -12,9 +12,9 @@ class Find < ActiveRecord::Base
 
    private
 
-	def self.search(query)
+	def self.search(query) #remember lib/extended/tag_extend.rb (ilikes are here, in declaratives.rb and tag_extend)
   	
-  	where("searchterm ilike ?", "%#{query}%") 
+  	where("searchterm like ?", "%#{query}%") 
 
 	end
 

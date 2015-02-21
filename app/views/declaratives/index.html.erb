@@ -5,9 +5,13 @@
 </div>	
 <div id="searchreturn" >
 	
-	<h2>Report for <i><%= @user.fname %></i>&nbspon&nbsp<i><%= @request %></i>&nbsp in&nbsp<i><%= @topic %></i>&nbsptopic<% if @searchterm.blank? %><% else %>&nbspfiltered for the search term <i><%= @searchterm %><% end %></i>.</h2>
+	<h2>Report for <i><%= @user.fname %></i>&nbspon&nbsp<i><%= @request %></i>&nbsp in&nbsp<i><%= @topic %></i>&nbsptopic<% if @searchterm.blank? %><% else %>&nbspfiltered for the search term <i><%= @searchterm %><%= @pretags %><% end %></i>.</h2>
+
 	
-</div>
+	</div>
+
+<%= render 'finds/edit' %>
+
  
 				
 	
