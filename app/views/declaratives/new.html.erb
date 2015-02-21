@@ -18,7 +18,7 @@
   
 
    
-    <h4 id="navigtext">Set date for review<sup><%= link_to " ?", instructions_path(anchor: 'dateenter'), id: 'enterdate' %></sup></h4>
+    <h4 id="navigtext">Review Date<sup><%= link_to " ?", instructions_path(anchor: 'dateenter'), id: 'enterdate' %></sup></h4>
  
 
   <%= f.input :reviewdate, as: :date, start_year: Date.today.year - 50,
