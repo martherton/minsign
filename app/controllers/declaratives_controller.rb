@@ -302,6 +302,7 @@ layout 'users/declaratives'
 								@count = @declaratives.count
 							end	
 							@request = "All"
+						end	
 				end	
 				
 		else
