@@ -1,8 +1,8 @@
 module TagExtend
   extend ActiveSupport::Concern
 
-  included do
-    scope :by_tag_name, -> name { where("name like ?", "%#{name}%") }
+  included do 
+    scope :by_tag_name, -> name { where("name ilike ?", "%#{name}%") }
 
     def self.token_input_tags
         where(nil).map{|t| {id: t.name, name: t.name }}
