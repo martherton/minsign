@@ -13,6 +13,8 @@
 			<th>Company</th>
 			<th>Position</th>
 			<th>Confirmed at</th>
+			<th>last sign in</th>
+			<Th>Sign ins</Th>
 			<th>Approved?</th>
 			<th>Paid</th>
 			<th>Role</th>
@@ -28,6 +30,8 @@
 			<td><%= user.company %></td>
 			<td><%= user.position %></td>
 			<td><%= user.confirmed_at %></td>
+			<td><%= user.last_sign_in_at %></td>
+			<td><%= user.sign_in_count %></td>
 			<td><%= user.approved %></td>
 			<td><%if user.freeuser == true %>Free<% else %>Paid<% end %></td>
 			<td><%= user.roles(:select => :name).collect(&:name) %></td>
