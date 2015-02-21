@@ -63,6 +63,8 @@
           <ul class="sinav", id="hidlink"  >
             
             <li  ><%= link_to "How it works", howitworks_path, id: "hidlinkf" %></li>
+            <li><%= link_to "Content", content_path, id: "hidlinkf"%></li>
+            <li><%= link_to "Technology", technology_path, id: "hidlinkf" %></li>
             <li  ><%= link_to "Pricing", pricing_path, id: "hidlinkf" %></li>
 
             <li  ><%= link_to "About us", aboutus_path, id: "hidlinkg" %></li>
@@ -89,8 +91,7 @@
      <li><% if user_signed_in? %><%= link_to "Search", new_user_find_path(current_user.id) %><% else %><%= link_to "Home", root_path %><% end %></li>
 
      <li><%= link_to "Legal", legal_path %></li>
-     <li><%= link_to "Content", content_path %></li>
-     <li><%= link_to "Technology", technology_path %></li>
+     
 
      <li><%= link_to "Contact us", contactus_path %></li>
      <li><small>Email us at info@minervasi.com</small></li>
