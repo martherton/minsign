@@ -268,7 +268,7 @@ layout 'users/declaratives'
 							@topic = Linkcat.find(params[:q]).linkcatname
 							
 							@count = @declaratives.count
-							@request = Docstructure.find(params[:queryid]).headingname
+							@request = "All"
 					else # topic only search	
 					#Set up the Declaratives that the user can search
 							@user = current_user #identify current user
