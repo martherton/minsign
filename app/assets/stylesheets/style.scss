@@ -444,23 +444,51 @@ input[type="submit"] {
 
 .declarativeentry textarea {
   margin-bottom: 0.5em;
+  height: 6em;
 
 }
 
 .declarative_declarativejusttext {
   width: 98%;
   display: inline-block;
+  height: 6em;
+
 }
 
-.declarativeentry .radio_buttons {
-  display: inline-block;
-  border: solid 1px;
+.radiofloat .radio_buttons {
+  
+  
   padding: 0.3em;
-  background-color: #0085CD;
-  color: #FFFFFF;
+  
+  color: #0085CD;
   font-size: 0.7em;
 
 }
+
+.declarative_entryhierarchy {
+  display: inline-block;
+}
+
+#declarative_entryhierarchy_claim,
+#declarative_entryhierarchy_evidence,
+#declarative_entryhierarchy_fact,
+#declarative_texttype_text,
+#declarative_texttype_list_title,
+#declarative_texttype_list_item {
+  width: 1em;
+}
+
+
+
+.navig .chosen-single {
+  font-size: 0.8em
+}
+
+.navig .declarative_reviewdate {
+  width: 60%;
+  margin-right: 0;
+}
+
 
 .declarativeentry .control-label {
   padding: 0.1em;
@@ -480,7 +508,7 @@ input[type="submit"] {
 
 .declarativeentry .boolean {
   display: inline-block;
-  background-color: #0085CD;
+  
   color: #FFFFFF;
   padding: 0.15em;
   font-size: 0.8em;
@@ -498,10 +526,15 @@ input[type="submit"] {
   float: right;
 }
 
+.navig .upload_override {
+  display: none;
+}
+
 div.input.date {
   display: inline-block;
   float: right;
-  margin-right: 5%;
+  position: relative;
+  bottom: 2em;
 }
 
 .declarativeentry h4 span {
@@ -562,6 +595,19 @@ div.input.date {
 .navig h4 {
   margin-bottom: 0.5em;
   text-align: center;
+}
+
+#navigtext {
+  text-align: left;
+}
+
+#navigtext1 {
+  width:20%;
+  display: inline-block;
+}
+
+.radiofloat {
+  display: inline-block;
 }
 
 .instructions {

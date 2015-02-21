@@ -15,39 +15,45 @@
 
 	<h4>Heading<sup><%= link_to " ?", instructions_path(anchor: 'sandheading'), id: 'heading' %></sup></h4><%= f.input :docstructure_id, collection: @headings, value_method: :id, label_method: :headingname, label: false, prompt: "Heading", selected: @headinglast %>
   <%= link_to "Create New Heading", new_user_docstructure_path(current_user.id) %><sup><%= link_to " ?", instructions_path(anchor: 'enternewheading'), id: 'newheading' %></sup>
-  </div>
-  <div class="declarativeentry">
-
-  <%= f.input :urlsource, label: false, placeholder: "url of source", input_html: {value: @urllast} %><sup><%= link_to " ?", instructions_path(anchor: 'urlentryinfo'), id: 'urlentry' %></sup>
   
 
-
-  <%= f.input :declarativejusttext, label: false, placeholder: "Note detail" %><sup><%= link_to " ?", instructions_path(anchor: 'textentry'), id: 'textenter' %></sup>
-
+   
+    <h4 id="navigtext">Set date for review<sup><%= link_to " ?", instructions_path(anchor: 'dateenter'), id: 'enterdate' %></sup></h4>
  
-  
-
-
-  
-  <h4>Type of data entered<sup><%= link_to " ?", instructions_path(anchor: 'datatype'), id: 'typedata' %></sup> <span>Set date for review<sup><%= link_to " ?", instructions_path(anchor: 'dateenter'), id: 'enterdate' %></sup><span></h4>
- <%= f.input :entryhierarchy, as: :radio_buttons, collection: ["Claim","Evidence","Fact"], label: false, label: false %>
-   <%= f.input :texttype, as: :radio_buttons, label: false, collection: ["Text","List title","List Item"] %>
-
-
-
-   <% if current_user.freeuser == false %>
-    <%= f.input :declarativeimage, label: false %>
-   <% else %>
-   <% end %> 
-  
 
   <%= f.input :reviewdate, as: :date, start_year: Date.today.year - 50,
                               end_year: Date.today.year, 
                               order: [:day, :month, :year],label: false %></p>
 
+          <% if current_user.freeuser == false %>
+    <%= f.input :declarativeimage, label: false %>
+   <% else %>
+   <% end %> 
+   
+  </div>
+  <div class="declarativeentry">
+
+  
+  <%= f.input :urlsource, label: false, placeholder: "url of source", input_html: {value: @urllast} %><sup><%= link_to " ?", instructions_path(anchor: 'urlentryinfo'), id: 'urlentry' %><%= f.input :entryend, label: "" %></sup>
+  
+
+
+  <%= f.input :declarativejusttext, label: false, placeholder: "Note detail" %><sup><%= link_to " ?", instructions_path(anchor: 'textentry'), id: 'textenter' %></sup>
+
+ <h4 id="navigtext1">Type of data entered<sup><%= link_to " ?", instructions_path(anchor: 'datatype'), id: 'typedata' %></sup> </h4>
+
+ <div class="radiofloat">
+
+  
+<%= f.input :entryhierarchy, as: :radio_buttons, collection: ["Claim","Evidence","Fact"], label: false, label: false %>
+   <%= f.input :texttype, as: :radio_buttons, label: false, collection: ["Text","List title","List Item"] %>
+
+  </div>
+ 
+
+    
+
   <div class="submitdec">
-  <%= f.input :entryend, label: "Finished with this source" %>
-   <%= f.input :endsection, label: 'Finished Entry for this Section' %>
 
 
   <%= f.button :submit, 'Add New Note' %>
