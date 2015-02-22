@@ -5,7 +5,7 @@ class Admin::UsersController < ApplicationController
 	def index
 		# @user = User.order('approved')
 		if current_user.has_role? :admin
-			@users = policy_scope(User)
+			@users = policy_scope(User).order(:approved).order(:created_at)
 		else
 			redirect_to	new_user_find_path(current_user.id)
 		end		
