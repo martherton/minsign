@@ -48,6 +48,7 @@ layout 'users/declaratives'
 		    @user = current_user
 		    @declarative = @user.declaratives.new(declarative_params)
 		    @declarative.sandbox = true
+		    @declarative.endsection = false
 		    if @declarative.save
 		    	flash[:success] = "Data Entry Successfully Added"
 		    		redirect_to new_user_declarative_path

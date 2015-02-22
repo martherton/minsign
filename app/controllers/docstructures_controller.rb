@@ -74,7 +74,7 @@ def index
 	end
 
 	def current
-		@current = Docstructure.where("user_id = ?", current_user.id).where("liveissue = ?", true)
+		@current = Docstructure.joins(:declaratives).where("declaratives.user_id = ?", current_user.id).where("docstructures.liveissue = ?", true)
 	end	
 
 	private
