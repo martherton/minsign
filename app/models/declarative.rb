@@ -39,6 +39,13 @@ class Declarative < ActiveRecord::Base
 		createtags(declarativejusttext, linkcat_id, docstructure_id)
 		findextraurl(declarativejusttext)
 		striplist(declarativetext)
+
+	before_update do 
+		choptext(declarativejusttext)
+		finddata(declarativejusttext)
+		createtags(declarativejusttext, linkcat_id, docstructure_id)
+		findextraurl(declarativejusttext)
+		striplist(declarativetext)	
 		
 	end
 		
