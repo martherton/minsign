@@ -25,7 +25,7 @@
 
 		<% @declaratives.each do |declarative| %> <!--work with each item in turn-->
 			<% if declarative.texttype == "List title" %> <!--Is it a list title? -->
-					<% if @listitem == 1 %></div><% @listitem = 0 %><% else %><% end %><!--check to see if this list immediately follows another, if so close the previous list div-->
+					<% if @listitem == 1 %></tbody></table></div><% @listitem = 0 %><% else %><% end %><!--check to see if this list immediately follows another, if so close the previous list div-->
 					<% if @d == 1 %></ul><% @d = 0 %><% else %><% end %><!--close ul if after normal item-->
 
 				<div class="reportlisttitle" ><!--open a list div-->
@@ -38,18 +38,18 @@
 					<% end%></h4>
 				</div><!--close the div on the list title-->
 			<% elsif declarative.texttype == "List Item" %><!--check if the item is a list item-->
-				<% if @listitem == 0 %><div class="reportlist" ><% else %><% end %><!--start new div if first list item, else don't-->
+				<% if @listitem == 0 %><div class="reportlist" ><table><tbody><% else %><% end %><!--start new div if first list item, else don't-->
 					<% if @d == 1 %></ul><% @d = 0 %><% else %><% end %><!--close ul if after normal item-->
 					<% @listitem = 1 %><!--let system know it is in list-->
 					<% if @b == declarative.linkcat_id %><% else %><h2><%= Linkcat.find(declarative.linkcat_id).linkcatname %></h2><% @b = declarative.linkcat_id %><%end%><!--just in case there is no lst heading in place, check it is not at the start of a new topic-->
 					<% if @request == Docstructure.find(declarative.docstructure_id).headingname %><% else %><% if @c == declarative.docstructure_id %><% else %><h3><%= Docstructure.find(declarative.docstructure_id).headingname %></h3><% @c = declarative.docstructure_id %><% end %><% end %><!--similar for heading-->
-					<% if declarative.sandbox == true %><h4><%= declarative.declarativetext %><% if current_user.id == declarative.user_id %><small>&nbsp(personal)</small><%else %><small>&nbsp(friend&nbsp<%= User.find(declarative.user_id).fname %>&nbsp<%= User.find(declarative.user_id).lname %>)</small><% end %><% else %><h4><%= declarative.declarativetext %><% end %><!--who created the lst item-->
+					<% if declarative.sandbox == true %><tr><td><%= declarative.listtext %><% if current_user.id == declarative.user_id %><small>&nbsp(personal)</small><% else %><small>&nbsp(friend&nbsp<%= User.find(declarative.user_id).fname %>&nbsp<%= User.find(declarative.user_id).lname %>)</small><% end %><% else %><tr><td><%= declarative.listtext %><% end %><!--who created the lst item-->
 					<% if declarative.urlextra.blank? %>
 					<% else %>
 						<%= link_to "Extra Sources", declarative.urlextra[0], target: '_blank' %>
-					<% end%></h4> 
+					<% end%></td><td><%= declarative.datapoint %></td><td><%= declarative.units %></td></tr> 
 			<% else %>
-				<% if @listitem == 1 %></div><% @listitem = 0 %><% else %><% end %><!--end list item div, if end of list-->
+				<% if @listitem == 1 %></tbody></table></div><% @listitem = 0 %><% else %><% end %><!--end list item div, if end of list-->
 				<% if @d == 0 %><ul id="sortable_<%= @e %>"><% @e += 1 %><% else %><% end %><!--start new ul-->
 				<% @d = 1 %><!-- let system know it is in norma ul-->
 				<% if @b == declarative.linkcat_id %><% else %><h2><%= Linkcat.find(declarative.linkcat_id).linkcatname %></h2><% @b = declarative.linkcat_id %><%end%><!--start of tpic?-->
@@ -65,7 +65,7 @@
 
 			
 		<% end %>
-					<% if @listitem == 1 %></div><% @listitem = 0 %><% else %><% end %>
+					<% if @listitem == 1 %></tbody></table></div><% @listitem = 0 %><% else %><% end %>
 					<%if @d == 1 %></ul><% @d=0 %><% else %><% end %>
 
 </div>	

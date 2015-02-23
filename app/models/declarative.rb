@@ -90,12 +90,12 @@ class Declarative < ActiveRecord::Base
 	end	
  
  def striplist(text)
- 		self.listtext = text.slice(0..(text.index('~')))
+ 		self.listtext = text.slice(0..(text.index('~'))).remove('~')
  end	
 
 	def self.search(query)
   	
-  	where("declarativetext ilike ?","%#{query}%") 
+  	where("declarativetext like ?","%#{query}%") 
 
 	end
 
