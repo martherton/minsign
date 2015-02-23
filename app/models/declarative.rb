@@ -40,6 +40,8 @@ class Declarative < ActiveRecord::Base
 		findextraurl(declarativejusttext)
 		striplist(declarativetext)
 
+	end	
+
 	before_update do 
 		choptext(declarativejusttext)
 		finddata(declarativejusttext)
