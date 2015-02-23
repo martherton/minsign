@@ -38,7 +38,7 @@ class Declarative < ActiveRecord::Base
 		finddata(declarativejusttext)
 		createtags(declarativejusttext, linkcat_id, docstructure_id)
 		findextraurl(declarativejusttext)
-		striplist(declarativejusttext)
+		striplist(declarativetext)
 		
 	end
 		
@@ -90,7 +90,9 @@ class Declarative < ActiveRecord::Base
 	end	
  
  def striplist(text)
+ 		if text.include? "~"
  		self.listtext = text.slice(0..(text.index('~'))).remove('~')
+ 	end
  end	
 
 	def self.search(query)
