@@ -18,6 +18,7 @@
 				<% @b=0 %><!-- var if list is at start of a new topic-->
 				<% @d = 0 %><!--var for normal items -->
 				<% @e = 0 %><!--var to know which sortable ul we are in-->
+				<% @f = 0 %><!--var to know which sortable table we are in-->
 				<% @listitem = 0 %><!--variable to let it know if it is in a list item or not -->
 				
 <div class="reportcard" >
@@ -39,7 +40,7 @@
 				</div><!--close the div on the list title-->
 			<% elsif declarative.texttype == "List Item" %><!--check if the item is a list item-->
 			<% if @d == 1 %></ul><% @d = 0 %><% else %><% end %><!--close ul if after normal item-->
-				<% if @listitem == 0 %><div class="reportlist" ><table id="datatable" class="tablesorter"><thead><tr><th>Item</th><th>Data</th><th>Units</th></tr></thead><tbody><% else %><% end %><!--start new div if first list item, else don't-->
+				<% if @listitem == 0 %><div class="reportlist" ><table id="datatable_<%= @f %>" class="tablesorter"><% @f += 1 %><thead><tr><th>Item</th><th>Data</th><th>Units</th></tr></thead><tbody><% else %><% end %><!--start new div if first list item, else don't-->
 
 					<% if @d == 1 %></ul><% @d = 0 %><% else %><% end %><!--close ul if after normal item-->
 					<% @listitem = 1 %><!--let system know it is in list-->
