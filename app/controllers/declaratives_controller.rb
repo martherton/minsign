@@ -85,7 +85,7 @@ layout 'users/declaratives'
 							@friends = @friends1 - @friendsun
 							@admins = Role.find_by_name('admin').users.map(&:id) #find admin users
 							@linkcatun = Linkcat.where("released = ?", false).map(&:id) #find all unreleased linkcats
-							@decallowed = Declarative.where("(linkcat_id IN (?) AND user_id IN(?)) or user_id IN (?) or user_id = ?", @linkrel, @admin, @friends, current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
+							@decallowed = Declarative.where("(linkcat_id IN (?) AND user_id IN(?)) or user_id IN (?) or user_id = ?", @linkrel, @admin, @friends, current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at).order(:datapoint) #set up a list of the declaratives allowed to be accessed by the user
 							if current_user.has_role? :admin #Ensures admin sandbox posts are not removed if you are admin
 								@decallowed3 = @decallowed
 							else	
@@ -115,7 +115,7 @@ layout 'users/declaratives'
 							@admins = Role.find_by_name('admin').users.map(&:id)
 							@linkcatun = Linkcat.where("released = ?", false).map(&:id) #find all unreleased linkcats
 							
-							@decallowed = Declarative.where("(linkcat_id IN (?) AND user_id IN(?)) or user_id IN (?) or user_id = ?", @linkrel, @admin, @friends, current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
+							@decallowed = Declarative.where("(linkcat_id IN (?) AND user_id IN(?)) or user_id IN (?) or user_id = ?", @linkrel, @admin, @friends, current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at).order(:datapoint) #set up a list of the declaratives allowed to be accessed by the user
 							if current_user.has_role? :admin #Ensures admin sandbox posts are not removed if you are admin
 								@decallowed3 = @decallowed
 							else	
@@ -147,7 +147,7 @@ layout 'users/declaratives'
 							@admins = Role.find_by_name('admin').users.map(&:id)
 							@linkcatun = Linkcat.where("released = ?", false).map(&:id) #find all unreleased linkcats
 							
-							@decallowed = Declarative.where("(linkcat_id IN (?) AND user_id IN(?)) or user_id IN (?) or user_id = ?", @linkrel, @admin, @friends, current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
+							@decallowed = Declarative.where("(linkcat_id IN (?) AND user_id IN(?)) or user_id IN (?) or user_id = ?", @linkrel, @admin, @friends, current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at).order(:datapoint) #set up a list of the declaratives allowed to be accessed by the user
 							if current_user.has_role? :admin #Ensures admin sandbox posts are not removed if you are admin
 								@decallowed3 = @decallowed
 							else	
@@ -183,7 +183,7 @@ layout 'users/declaratives'
 							@admins = Role.find_by_name('admin').users.map(&:id)
 							@linkcatun = Linkcat.where("released = ?", false).map(&:id) #find all unreleased linkcats
 							
-							@decallowed = Declarative.where("(linkcat_id IN (?) AND user_id IN(?)) or user_id IN (?) or user_id = ?", @linkrel, @admin, @friends, current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
+							@decallowed = Declarative.where("(linkcat_id IN (?) AND user_id IN(?)) or user_id IN (?) or user_id = ?", @linkrel, @admin, @friends, current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at).order(:datapoint) #set up a list of the declaratives allowed to be accessed by the user
 							if current_user.has_role? :admin #Ensures admin sandbox posts are not removed if you are admin
 								@decallowed3 = @decallowed
 							else	
@@ -215,7 +215,7 @@ layout 'users/declaratives'
 							@admins = Role.find_by_name('admin').users.map(&:id)
 							@linkcatun = Linkcat.where("released = ?", false).map(&:id) #find all unreleased linkcats
 							
-							@decallowed = Declarative.where("(linkcat_id IN (?) AND user_id IN(?)) or user_id IN (?) or user_id = ?", @linkrel, @admin, @friends, current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
+							@decallowed = Declarative.where("(linkcat_id IN (?) AND user_id IN(?)) or user_id IN (?) or user_id = ?", @linkrel, @admin, @friends, current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at).order(:datapoint) #set up a list of the declaratives allowed to be accessed by the user
 							if current_user.has_role? :admin #Ensures admin sandbox posts are not removed if you are admin
 								@decallowed3 = @decallowed
 							else	
@@ -248,7 +248,7 @@ layout 'users/declaratives'
 							@admins = Role.find_by_name('admin').users.map(&:id)
 							@linkcatun = Linkcat.where("released = ?", false).map(&:id) #find all unreleased linkcats
 							
-							@decallowed = Declarative.where("(linkcat_id IN (?) AND user_id IN(?)) or user_id IN (?) or user_id = ?", @linkrel, @admin, @friends, current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
+							@decallowed = Declarative.where("(linkcat_id IN (?) AND user_id IN(?)) or user_id IN (?) or user_id = ?", @linkrel, @admin, @friends, current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at).order(:datapoint) #set up a list of the declaratives allowed to be accessed by the user
 							if current_user.has_role? :admin #Ensures admin sandbox posts are not removed if you are admin
 								@decallowed3 = @decallowed
 							else	
@@ -280,7 +280,7 @@ layout 'users/declaratives'
 							@admins = Role.find_by_name('admin').users.map(&:id)
 							@linkcatun = Linkcat.where("released = ?", false).map(&:id) #find all unreleased linkcats
 							
-							@decallowed = Declarative.where("(linkcat_id IN (?) AND user_id IN(?)) or user_id IN (?) or user_id = ?", @linkrel, @admin, @friends, current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at) #set up a list of the declaratives allowed to be accessed by the user
+							@decallowed = Declarative.where("(linkcat_id IN (?) AND user_id IN(?)) or user_id IN (?) or user_id = ?", @linkrel, @admin, @friends, current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at).order(:datapoint) #set up a list of the declaratives allowed to be accessed by the user
 							if current_user.has_role? :admin #Ensures admin sandbox posts are not removed if you are admin
 								@decallowed3 = @decallowed
 							else	

@@ -25,6 +25,17 @@ body {
     font-style: normal;
 }
 
+@font-face {  
+  font-family: 'FontAwesome';  
+  src: url(font_path('fontawesome-webfont.eot'));  
+  src: url(font_path('fontawesome-webfont.eot?#iefix')) format('eot'),   
+       url(font_path('fontawesome-webfont.woff')) format('woff'),   
+       url(font_path('fontawesome-webfont.ttf')) format('truetype'),   
+       url(font_path('fontawesome-webfont.svg#FontAwesome')) format('svg');  
+  font-weight: normal;  
+  font-style: normal;  
+}  
+
 /*BASIC ELEMENT STYLING
 -------------------
 ----------*/
@@ -643,8 +654,16 @@ div.input.date {
   
 }
 
-.reportcard h4 {
+.reportcard li {
   margin-left: 5%;
+  margin-right:5%;
+}
+
+.reportcard h4 {
+  margin-left: 1%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  margin-right: 1%;
 }
 
 .reportcard h2,
@@ -980,6 +999,33 @@ div.input.date {
 .currentissues h5 {
   width: 90%;
   margin-left: 5%;
+}
+
+/*---STYLE sortable---*/
+
+.ui-sortable-placeholder {  
+    border: 3px dashed #aaa;  
+    height: 45px;  
+    width: 90%;  
+    background: #ccc;  
+}  
+
+.ui-sortable li.ui-state-default h4::after {  
+    content: "\f0c9";  
+    display: inline-block;  
+    font-family: "FontAwesome";  
+    position:absolute;
+    right: 15%;
+    text-align: right;  
+    
+    color: #0085CD;  
+    text-shadow: 0px 0px 0px rgba(0,0,0,0);  
+    cursor: move;  
+} 
+
+.ui-sortable li.ui-state-default {
+  background: #F5F5F5;
+  border-radius: 5px;
 }
 
 }

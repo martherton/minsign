@@ -14,6 +14,8 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery-ui/sortable
+//= require jquery-ui/datepicker
 //= require chosen-jquery
 
 //= require moment
