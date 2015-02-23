@@ -10,10 +10,10 @@
 
 <%= simple_form_for @declarative, url: admin_declarative_path, method: :put do |f| %>
   <div class="navig">
-	<h4>Topic<sup><%= link_to " ?", instructions_path(anchor: 'sandtopicenter'), id: 'topic' %></sup><%= link_to image_tag("pen61.svg", height: "16px", alt: "Search page", title: "Create topic"), new_user_linkcat_path(current_user.id), class: "createnew" %><sup class="createnew"><%= link_to " ?", instructions_path(anchor: 'enternewtopic'), id: 'newtopic' %></sup></h4><%= f.input :linkcat_id, collection: @linkcat.where(:linkcattype => "Information"), value_method: :id, label_method: :linkcatname, label: false, prompt: "Area", selected: @area %>
+	<h4>Topic<sup><%= link_to " ?", instructions_path(anchor: 'sandtopicenter'), id: 'topic' %></sup><%= link_to image_tag("pen61.svg", height: "16px", alt: "Search page", title: "Create topic"), new_user_linkcat_path(current_user.id), class: "createnew" %><sup class="createnew"><%= link_to " ?", instructions_path(anchor: 'enternewtopic'), id: 'newtopic' %></sup></h4><%= f.input :linkcat_id, collection: @linkcat.where(:linkcattype => "Information"), value_method: :id, label_method: :linkcatname, label: false, prompt: "Area" %>
   
 
-  <h4>Heading<sup><%= link_to " ?", instructions_path(anchor: 'sandheading'), id: 'heading' %></sup><%= link_to image_tag("pen61.svg", height: "16px", alt: "Search page", title: "create heading"), new_user_docstructure_path(current_user.id), class: "createnew" %><sup class="createnew"><%= link_to " ?", instructions_path(anchor: 'enternewheading'), id: 'newheading' %></sup></h4><%= f.input :docstructure_id, collection: @headings, value_method: :id, label_method: :headingname, label: false, prompt: "Heading", selected: @headinglast %>
+  <h4>Heading<sup><%= link_to " ?", instructions_path(anchor: 'sandheading'), id: 'heading' %></sup><%= link_to image_tag("pen61.svg", height: "16px", alt: "Search page", title: "create heading"), new_user_docstructure_path(current_user.id), class: "createnew" %><sup class="createnew"><%= link_to " ?", instructions_path(anchor: 'enternewheading'), id: 'newheading' %></sup></h4><%= f.input :docstructure_id, collection: @headings, value_method: :id, label_method: :headingname, label: false, prompt: "Heading" %>
 
   <h4 id="navigtext">Review Date<sup><%= link_to " ?", instructions_path(anchor: 'dateenter'), id: 'enterdate' %></sup></h4>
 
@@ -27,7 +27,7 @@
   </div>
   <div class="declarativeentry">
 
-  <%= f.input :urlsource, label: false, placeholder: "url of source", input_html: {value: @urllast} %><%= f.input :entryend, label: "" %>
+  <%= f.input :urlsource, label: false, placeholder: "url of source" %><%= f.input :entryend, label: "" %>
 
 
   <%= f.input :declarativejusttext, label: false, placeholder: "Note or description of image" %>
