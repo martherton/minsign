@@ -81,7 +81,7 @@ class Admin::DeclarativesController < ApplicationController
 	    @declarative = @user.declaratives.find(params[:id])
 
 	    if @declarative.update(declarative_params)
-	        flash[:success] = "Your heading was updated"
+	        flash[:success] = "Your data was updated"
 	        redirect_to admin_declaratives_path(query: @declarative.linkcat_id)
 	    else
 	      flash[:error] = "Oops. There has been a problem, please retry."
