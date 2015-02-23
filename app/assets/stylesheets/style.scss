@@ -551,6 +551,26 @@ input[type="submit"] {
   width: 80%;
 }
 
+.reportlist .datapoint {
+  color: #0085CD;
+}
+
+.reportlist thead {
+  height: 1em;
+}
+
+.reportlist th::after {  
+    content: "\f0dc";  
+    display: inline-block;  
+    font-family: "FontAwesome";  
+    margin-left: 1em;
+    text-align: right;  
+    
+    color: #0085CD;  
+    text-shadow: 0px 0px 0px rgba(0,0,0,0);  
+  
+} 
+
 div.input.date {
   display: inline-block;
   float: right;

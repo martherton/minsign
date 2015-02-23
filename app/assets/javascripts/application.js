@@ -20,6 +20,7 @@
 
 //= require moment
 //= require jquery.tokeninput
+//= require jquery.tablesorter
 //= require jquery.qtip.min
 //= require imagesloaded.pkgd.min
 //= require fullcalendar

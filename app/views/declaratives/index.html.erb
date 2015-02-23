@@ -39,7 +39,7 @@
 				</div><!--close the div on the list title-->
 			<% elsif declarative.texttype == "List Item" %><!--check if the item is a list item-->
 			<% if @d == 1 %></ul><% @d = 0 %><% else %><% end %><!--close ul if after normal item-->
-				<% if @listitem == 0 %><div class="reportlist" ><table><tbody><% else %><% end %><!--start new div if first list item, else don't-->
+				<% if @listitem == 0 %><div class="reportlist" ><table id="datatable" class="tablesorter"><thead><tr><th>Item</th><th>Data</th><th>Units</th></tr></thead><tbody><% else %><% end %><!--start new div if first list item, else don't-->
 
 					<% if @d == 1 %></ul><% @d = 0 %><% else %><% end %><!--close ul if after normal item-->
 					<% @listitem = 1 %><!--let system know it is in list-->
@@ -49,7 +49,7 @@
 					<% if declarative.urlextra.blank? %> 
 					<% else %>
 						<%= link_to "Extra Sources", declarative.urlextra[0], target: '_blank' %>
-					<% end%></h4></td><td><h4><%= declarative.datapoint %></h4></td><td><h4><%= declarative.units %></h4></td></tr> 
+					<% end%></h4></td><td class="datapoint"><h4><%= declarative.datapoint %></h4></td><td><h4><%= declarative.units %></h4></td></tr> 
 			<% else %>
 				<% if @listitem == 1 %></tbody></table></div><% @listitem = 0 %><% else %><% end %><!--end list item div, if end of list-->
 				<% if @d == 0 %><ul id="sortable_<%= @e %>"><% @e += 1 %><% else %><% end %><!--start new ul-->
