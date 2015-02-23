@@ -47,7 +47,7 @@
 					<% if declarative.urlextra.blank? %>
 					<% else %>
 						<%= link_to "Extra Sources", declarative.urlextra[0], target: '_blank' %>
-					<% end%></h4>
+					<% end%></h4> 
 			<% else %>
 				<% if @listitem == 1 %></div><% @listitem = 0 %><% else %><% end %><!--end list item div, if end of list-->
 				<% if @d == 0 %><ul id="sortable_<%= @e %>"><% @e += 1 %><% else %><% end %><!--start new ul-->

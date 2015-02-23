@@ -1,5 +1,6 @@
 class Admin::DeclarativesController < ApplicationController
 	before_filter :authenticate_user!
+	layout 'users/declaratives'
 	def index
 		if current_user.has_role? :admin
 			@declarative = policy_scope(Declarative)

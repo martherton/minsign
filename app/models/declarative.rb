@@ -87,11 +87,7 @@ class Declarative < ActiveRecord::Base
 		@dnametag = @dname.headingname
 		self.tag_list	= [self.tag_list,@lnametag,@dnametag].join(',')
 	end	
-
-	
-	
-  
-   
+ 
 
 	def self.search(query)
   	
