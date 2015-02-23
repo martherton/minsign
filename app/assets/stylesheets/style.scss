@@ -455,7 +455,7 @@ input[type="submit"] {
 
 .declarativeentry textarea {
   margin-bottom: 0.5em;
-  height: 6em;
+  height: 10em;
 
 }
 
@@ -470,14 +470,23 @@ input[type="submit"] {
   
   
   padding: 0.3em;
-  
+  border-radius: 10px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #0085CD;
   color: #0085CD;
   font-size: 0.7em;
+  display: inline-block;
 
 }
 
 .declarative_entryhierarchy {
   display: inline-block;
+}
+
+.declarativeentry h6 {
+  margin: 0;
+  margin-left: 5%;
 }
 
 #declarative_entryhierarchy_claim,
@@ -606,8 +615,9 @@ div.input.date {
 
 .submitdec {
   float: right;
-  width: 20%;
-  margin-right: 5%;
+  width: 28%;
+  margin-right: 2%;
+  border-radius: 5px;
 
 }
 
