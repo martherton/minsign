@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150216114332) do
+ActiveRecord::Schema.define(version: 20150223120906) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "contentcom"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20150216114332) do
     t.boolean  "sandbox",                       null: false
     t.string   "listtitle"
     t.date     "reviewdate"
+    t.string   "listtext"
   end
 
   create_table "docstructures", force: :cascade do |t|

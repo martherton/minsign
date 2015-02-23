@@ -38,6 +38,7 @@ class Declarative < ActiveRecord::Base
 		finddata(declarativejusttext)
 		createtags(declarativejusttext, linkcat_id, docstructure_id)
 		findextraurl(declarativejusttext)
+		striplist(declarativejusttext)
 		
 	end
 		
@@ -88,6 +89,9 @@ class Declarative < ActiveRecord::Base
 		self.tag_list	= [self.tag_list,@lnametag,@dnametag].join(',')
 	end	
  
+ def striplist(text)
+ 		self.listtext = text.slice(0..(text.index('~')))
+ end	
 
 	def self.search(query)
   	
