@@ -7,8 +7,7 @@ $(document).ready(function(){
   {
   $('#' + itemname).show();  
     }
-  }
-
+  };
 });
 
 
@@ -85,7 +84,7 @@ $(document).ready(function(){
 });
 $(document).ready(function(){
 
-$('#draft_topic').on('change', function() {
+$('#draft_linkcat_id').on('change', function() {
       if ( this.value == '')
       //.....................^.......
       {
@@ -155,3 +154,4 @@ $(document).ready(function(){
       }
     });
  });   
+  
