@@ -1,0 +1,135 @@
+<div class="logo" id="logosearch" >
+		<%= image_tag 'logo.svg' %>
+	
+</div>	
+<div class="draftover">
+<div class="draftform">
+<%= simple_form_for @draft, url: user_draft_path, method: :put do |f| %>
+<div id="sourcetype">
+<%= f.input :sourcetype, collection: ["Website","Meeting","Book","Brainstorm","Lecture","Other Publication"], label: false, prompt: "Notetaking from?" %>
+<div id="Website">
+	<%= f.simple_fields_for :webpages, @webpage do |p| %>
+	    <%= p.input :urlused, label: false, placeholder: "URL" %>
+	<% end %> 
+</div>
+<div id="Meeting">
+<%= f.simple_fields_for :meeting, @meeting do |q| %>
+	    <%= q.input :meetingwith, label: false, placeholder: "Person Meeting with" %>
+	    <%= q.input :meetingdate, as: :string, :input_html => { :class => 'jquery-ui-date'}, label: false, placeholder: "Optional meeting date"%>
+	    <%= q.input :meetingdate, as: :hidden, :input_html => { :id => 'recorded-at-alt'} %>
+
+	    
+
+	<% end %>
+
+</div>
+<div id="Book">
+<%= f.simple_fields_for :book, @book do |r| %>
+	    <%= r.input :ISBN, label:false, placeholder: "Type in ISBN and press enter" %>
+	    <div id="booker">
+	   <%= render "bookdata" %>
+	   </div>
+	<% end %>
+
+</div>
+<div id="Brainstorm">
+<%= f.simple_fields_for :brainstorm, @brainstorm do |s| %>
+	    <%= s.input :name, label: false, placeholder: "Optional location" %>
+	    
+
+	<% end %>
+
+</div>
+<div id="Otherpub">
+<%= f.simple_fields_for :otherpublication, @otherpublication do |t| %>
+	    <%= t.input :publicationtitle, label: false, placeholder: "Publication name" %>
+	    <%= t.input :article, label: false, placeholder: "Optional author" %>
+
+	<% end %>
+
+</div>
+<div id="Lecture">
+<%= f.simple_fields_for :lecture, @lecture do |u| %>
+	    <%= u.input :lecturer, label: false, placeholder: "Lecturer" %>
+	    <%= u.input :lecturetitle, label: false, placeholder: "Optional location" %>
+	    <%= u.input :lecturedate, as: :string, :input_html => { :class => 'jquery-ui-date'}, label: false, placeholder: "Optional lecture date"  %>
+	    <%= u.input :lecturedate, as: :hidden, :input_html => { :id => 'recorded-at-alt'} %>
+
+	<% end %>
+
+</div>
+</div>
+<div id = "topicchosen">
+<%= f.input :linkcat_id, collection: @topic, value_method: :id, label_method: :linkcatname, label: false, prompt: "Topic", include_blank: "Add New" %>
+
+
+</div>
+<div id="titleissue">
+<%= f.input :title, label: false, placeholder: "Untitled" %>
+</div>
+
+<%= f.input :draftnotes, label: false, placeholder: "Note detail - Use @ for a heading and # for tags", :input_html => {:rows => 10} %>
+
+<div class="submitdraft">
+
+
+  <%= f.button :submit, 'Save draft note' %>
+  </div>
+
+<% end %>
+</div>
+
+<%= simple_form_for(Image.new, html: { multipart: true, class: "dropzone"}) do |z|  %>
+<div class="dz-message" data-dz-message><span>Drag and drop images here for upload</span></div>
+  <div class="fallback">
+    <%= z.file_field :avatar %><br>
+    
+    <%= z.submit "Upload my Avatar" %>
+  </div>
+  <div class="hidlinkcat" >
+    <%= z.input :draft_id, input_html: { value: params[:id]} %>
+    </div>
+<% end %>
+
+<div class="images">
+  <%= render "images" %>
+</div>
+<div id="processor">
+<% if @draft.processed = false %>
+<%= link_to "Process draft", processdraft_user_draft_path %>
+<% else %>
+<% end %>
+</div>
+
+<div class="modal fade" id="newtopics">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Add a new topic</h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for @linkcat, url: user_linkcats_path, method: :post do |f| %>
+
+  <%= f.input :linkcatname, label: false, placeholder: "name" %>
+
+  
+
+  <%= f.input :linkcatdesc, label: false, placeholder: "description" %>
+
+ 
+
+  
+
+  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary"><%= f.button :submit, 'Add new topic' %></button>
+        <% end %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+</div>

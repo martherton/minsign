@@ -1,0 +1,2 @@
+class OtherpublicationsController < ApplicationController
+end

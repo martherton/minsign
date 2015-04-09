@@ -359,12 +359,14 @@ layout 'users/declaratives'
 	  end	 
 	end
 
+	
+
 	def event
 		@event = Declarative.where("user_id = ?", current_user.id).where.not(reviewdate: nil)
     @decupdate = @event.map(&:updated_at)
 		@decup = []
 		@decupdate.each do |decu|
-			@decup = @decup.push(decu.to_date)
+			@decup = @decup.push(decu.to_date)  
 		end	
 		
 		@reviewdates = @event.map(&:reviewdate)

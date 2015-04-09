@@ -1,0 +1,18 @@
+
+
+<h1>My Images</h1>
+
+<%= simple_form_for(Image.new, html: { multipart: true, class: "dropzone"}) do |f|  %>
+  <div class="fallback">
+    <%= f.file_field :avatar %><br>
+    
+    <%= f.submit "Upload my Avatar" %>
+  </div>
+  <div class="hidlinkcat" >
+    <%= f.input :draft_id, input_html: { value: "0"} %>
+    </div>
+<% end %>
+
+<div class="index">
+  <%= render "index" %>
+</div>

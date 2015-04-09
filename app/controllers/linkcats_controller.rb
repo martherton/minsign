@@ -32,7 +32,10 @@ class LinkcatsController < ApplicationController
 		    if @linkcat.save
 		    	flash[:success] = "Your topic was created" 
 
-		    	redirect_to new_user_declarative_path(current_user.id)
+		    	respond_to do |format|
+  				format.html { redirect_to :back }
+  				format.json { head :no_content }
+  			end
 		  	else
 		  		flash[:failure] = "Check the input"
 		    	render :new

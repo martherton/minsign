@@ -1,6 +1,6 @@
 class FindsController < ApplicationController
 	before_filter :authenticate_user!
-	before_filter :find_tags, only: [:new, :create, :edit, :update]
+	before_filter :find_tags, only: [:new, :create, :edit, :update] 
 	
 	def index
 
@@ -72,7 +72,7 @@ class FindsController < ApplicationController
 	  tag2 = Wlink.all_tag_counts.by_tag_name(params[:q]).token_input_tags
 	  tags = tag1 | tag2
 	  respond_to do |format|
-    	format.json { render json: tags }
+    	format.json { render json: tags } 
   	end
 
 

@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150223120906) do
+ActiveRecord::Schema.define(version: 20150409105939) do
+
+  create_table "books", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "author"
+    t.string   "title"
+    t.string   "ISBN"
+    t.string   "goodreads"
+    t.integer  "draft_id"
+  end
+
+  create_table "brainstorms", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "draft_id"
+    t.string   "name"
+  end
 
   create_table "comments", force: :cascade do |t|
     t.text     "contentcom"
@@ -45,6 +62,7 @@ ActiveRecord::Schema.define(version: 20150223120906) do
     t.string   "listtitle"
     t.date     "reviewdate"
     t.string   "listtext"
+    t.integer  "draft_id"
   end
 
   create_table "docstructures", force: :cascade do |t|
@@ -55,6 +73,20 @@ ActiveRecord::Schema.define(version: 20150223120906) do
     t.boolean  "released",    null: false
     t.boolean  "sandbox",     null: false
     t.boolean  "liveissue",   null: false
+    t.integer  "draft_id"
+  end
+
+  create_table "drafts", force: :cascade do |t|
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "sourcetype"
+    t.text     "draftnotes"
+    t.string   "topic"
+    t.boolean  "currentissue"
+    t.integer  "user_id"
+    t.boolean  "processed"
+    t.string   "title"
+    t.integer  "linkcat_id"
   end
 
   create_table "finds", force: :cascade do |t|
@@ -73,6 +105,25 @@ ActiveRecord::Schema.define(version: 20150223120906) do
     t.boolean  "approved"
     t.integer  "user_id"
     t.integer  "friend_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "draft_id"
+  end
+
+  create_table "lectures", force: :cascade do |t|
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "lecturer"
+    t.string   "lecturetitle"
+    t.date     "lecturedate"
+    t.integer  "draft_id"
   end
 
   create_table "linkcats", force: :cascade do |t|
@@ -96,8 +147,30 @@ ActiveRecord::Schema.define(version: 20150223120906) do
   add_index "linkcats_users", ["linkcat_id"], name: "index_linkcats_users_on_linkcat_id"
   add_index "linkcats_users", ["user_id"], name: "index_linkcats_users_on_user_id"
 
+  create_table "meetings", force: :cascade do |t|
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "meetingwith"
+    t.string   "meetingtopic"
+    t.integer  "draft_id"
+    t.date     "meetingdate"
+  end
+
   create_table "moreinfos", force: :cascade do |t|
     t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "otherpublications", force: :cascade do |t|
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "publicationtitle"
+    t.string   "article"
+    t.integer  "draft_id"
+  end
+
+  create_table "processdrafts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -175,6 +248,13 @@ ActiveRecord::Schema.define(version: 20150223120906) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
+
+  create_table "webpages", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "urlused"
+    t.integer  "draft_id"
+  end
 
   create_table "wlinks", force: :cascade do |t|
     t.string   "wlinkname"

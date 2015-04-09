@@ -126,13 +126,22 @@ input[type="email"] {
   border-width: 1px 1px 1px 1px;
 }
 
+.searchform .chosen-single span{
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.searchform .chosen-single {
+  margin-left: 10%;
+}
+
 
 input[type="submit"] {
   background-color: #0085CD;
   color: #FFFFFF;
   margin-top: 1em;
   width: 15em;
-  
+  border-radius: 5px;
   height: 2em;
 }
 
@@ -140,10 +149,11 @@ input[type="submit"] {
   -webkit-appearance: none;
   background-color: #0085CD;
   color: #FFFFFF;
-  height: 2em;
+  height: 1.2em;
   text-indent: 4px;
   border:0px;
         outline:0px;
+        border-radius: 5px;
 }
 
 
@@ -154,7 +164,20 @@ input[type="submit"] {
   color: #FFFFFF;
   border: 0;
   box-shadow: 0 0 0;
-  font-size: 1.2em
+  font-size: 1.2em;
+  
+}
+
+.chosen-single span {
+  font-size: 1.3em;
+  
+
+}
+
+.navig .chosen-container-single,
+.navig .chosen-single,
+.navig .chosen-single span {
+  height: 1.6em;
 }
 
 #declarative_linkcat_id_chosen .chosen-single,
@@ -237,6 +260,7 @@ input[type="submit"] {
 .basicnav {
   width: 70%;
   margin-left: 30%;
+
 }
 
 .basicnav a {
@@ -413,6 +437,11 @@ input[type="submit"] {
   text-align: center;
 }
 
+#logosearch {
+  margin-top: -3%;
+
+}
+
 
 
 /*DECLARATIVES INPUT STYLE
@@ -425,12 +454,11 @@ input[type="submit"] {
 
 .newdeclarative h2 {
   text-align: center;
+  color: #0085CD;
 }
 
 .declarativeentry {
-  width: 55%;
-  float: right;
-  margin-top: 3em;
+  
 
 }
 
@@ -444,7 +472,7 @@ input[type="submit"] {
 
 .declarative_urlsource {
   display: inline-block;
-  width: 98%;
+  width: 78%;
 }
 .declarativeentry input[type="text"],
 .declarativeentry textarea {
@@ -606,10 +634,25 @@ div.input.date {
   border-width: 1px;
 }
 
-#urlentry,
+
 #textenter {
   margin-left: -5%;
   color: #0085CD;
+}
+
+#urlentry {
+
+  margin-left: 1%;
+  color: #0085CD;
+}
+
+#declarative_urlsource {
+  margin-top: 3%;
+  width: 102%;
+}
+
+.navig .boolean {
+  display: inline-block;
 }
 
 
@@ -618,6 +661,7 @@ div.input.date {
   width: 28%;
   margin-right: 2%;
   border-radius: 5px;
+
 
 }
 
@@ -629,31 +673,46 @@ div.input.date {
   display: inline-block;
 }
 
+.submitdec input[type="submit"] {
+  margin-top: -5%;
+}
+
 
 
 
 
 .navig {
-  width: 27%;
-  float: left;
-  margin-left: 3%;
-}
-
-.navig .select{
-  width: 100%;
   
 }
 
-.navig .createnew {
-  position: relative;
-  left: 40%;
+.navig .select{
+  width: 78%;
+  display: inline-block;
+  margin-top: 3%;
+  
+}
+ 
 
 
+
+
+
+
+.navig span {
+  width: 100%;
 }
 
 .navig h4 {
   margin-bottom: 0.5em;
   text-align: center;
+  margin-bottom: 3%;
+
+}
+
+
+
+#urlsup {
+  margin-left: 5%;
 }
 
 #navigtext {
@@ -693,6 +752,8 @@ div.input.date {
 .reportcard {
   width: 80%;
   margin-left: 10%;
+  
+  
 }
 
 .reportcard a,
@@ -1077,6 +1138,207 @@ div.input.date {
 }
 
 }
+
+/* --- image cross to delete ---*/
+
+.img-wrap {
+    position: relative;
+    display: inline-block;
+    
+    font-size: 0;
+}
+.img-wrap .close {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 100;
+    background-color: #FFF;
+    padding: 5px 2px 2px ;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: .2;
+    text-align: center;
+    font-size: 18px;
+    line-height: 10px;
+    border-radius: 50%;
+}
+.img-wrap:hover .close {
+    opacity: 1;
+}
+
+/*---draft styling--*/
+
+.draftform #Meeting,
+.draftform #Lecture,
+.draftform #Brainstorm,
+.draftform #Website,
+.draftform #Book,
+.draftform #Otherpub,
+#newtopics {
+  display: none;
+}
+
+.draftover {
+  width: 90%;
+  margin-left: 5%;
+  background-color: #EBEBEB;
+  padding: 5px;
+  margin-top: 5%;
+}
+
+.draftover .draft_sourcetype {
+  width: 40%;
+  margin-bottom: 1%;
+
+}
+
+.draftover .draft_linkcat_id {
+  width: 70%;
+}
+
+.draftover .draft_sourcetype #draft_sourcetype,
+.draftover .draft_linkcat_id #draft_linkcat_id{
+  width: 95%;
+
+}
+.draftover  .chosen-single span {
+  font-size: 0.7em;
+  height: 80%;
+}
+#sourcetype {
+  width:49%;
+  float: left;
+  height: 20%;
+}
+
+#Website .url,
+{
+  font-size: 1em;
+  width: 100%;
+}
+
+#Meeting #draft_meeting_attributes_meetingwith,
+#Book, #draft_book_attributes_ISBN,
+#Brainstorm, #draft_brainstorm_attributes_name,
+#Lecture #draft_lecture_attributes_lecturer,
+#Lecture #draft_lecture_attributes_lecturetitle,
+#Otherpub #draft_otherpublication_attributes_publicationtitle,
+#Otherpub #draft_otherpublication_attributes_article
+ {
+  font-size: 1em;
+  width: 70%;
+  margin-bottom: 1%;
+}
+
+#Meeting #draft_meeting_attributes_meetingdate,
+#Lecture #draft_lecture_attributes_lecturedate {
+  font-size: 0.7em;
+  width: 40%;
+}
+
+#topicchosen {
+  width: 49%;
+  float: right;
+
+}
+
+#titleissue {
+  clear: both;
+}
+
+#topicchosen .select,
+#sourcetype .select {
+  height: 2.5em;
+}
+
+#issues .boolean {
+  display: inline-block;
+  margin-left: 1%;
+
+}
+
+#issues {
+  font-size: 0.7em;
+}
+#titleissue #draft_title {
+  width: 100%;
+  font-size: 1.5em;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+
+.draft_draftnotes textarea {
+  width: 100%;
+ 
+}
+
+
+
+.submitdraft {
+  margin-bottom: 1%;
+}
+
+#processor,
+#returndraft {
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+#processor a,
+#returndraft a {
+  background-color: #0085CD;
+  color: #FFFFFF;
+  padding: 0.5em;
+  border-style: solid;
+  border-radius: 10px;
+  border-color: #0085CD;
+}
+
+#returndraft {
+  width: 10%;
+  float: right;
+}
+
+.decprocess {
+  margin-top: 5%;
+  width: 90%;
+  margin-left: 5%;
+  background-color: #EBEBEB;
+  padding: 1%;
+}
+
+.decprocess #thtopic {
+  width: 19%;
+  margin-right: 1%;
+}
+.decprocess #thhead {
+  width: 24%;
+  margin-right: 1%;
+}
+
+.decprocess #thnote {
+  width: 44%;
+  margin-right: 1%;
+}
+
+.decprocess #threview {
+  margin-right: 1%;
+}
+
+.decprocess thead {
+  margin-bottom: 5%;
+}
+
+.decprocess input[type="checkbox"] {
+  margin-left: 10px;
+}
+
+.decprocess input[type="text"] {
+  font-size: 0.7em;
+}
+
+
   /* --- end media queries ---- */
 
 

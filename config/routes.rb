@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   
 
 
+  
+
   root 'staticpages#landing' #link to static landing page
   get 'thanks', to: 'staticpages#thanks' #link to static thankyou page
   get 'registerthanks', to: 'staticpages#thanks2'
@@ -18,8 +20,11 @@ Rails.application.routes.draw do
   get 'broken', to: 'admin/wlinks#brokenlinks'
   get 'instructions', to: 'users#sandboxinstr'
   get 'current', to: 'docstructures#current'
+  get 'imagesdraft', to: 'drafts#images'
+
   
   get :event, as: :event, to: 'declaratives#event'
+  get :headings, as: :headings, to: 'drafts#headings'
   get :searched, as: :searched, to: 'declaratives#searched'
 
   
@@ -32,7 +37,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
-  
+  resources :images, only: [:index, :create, :destroy]
   
   resources :moreinfos
   resources :comments
@@ -40,6 +45,17 @@ Rails.application.routes.draw do
     resources :linkcats
     resources :wlinks
     resources :packages
+    resources :drafts do
+      member do
+        get 'processdraft'
+        get 'processdraftf'
+       end 
+      
+      resources :images, only: [:index, :create]
+      collection do
+        get :tags, as: :tags
+      end
+    end  
     resources :friendships do
       member do
         get 'approval'
@@ -56,6 +72,7 @@ Rails.application.routes.draw do
 
     end  
     resources :finds, :path_names => { :new => 'search'}   
+    
 
 
       
@@ -72,7 +89,13 @@ Rails.application.routes.draw do
     collection do
         get :tags, as: :tags
       end
-  end    
+  end 
+  resources :drafts do
+
+      collection do
+        get :tags, as: :tags
+      end
+  end       
 
   namespace :admin do
     

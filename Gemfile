@@ -81,5 +81,9 @@ gem 'momentjs-rails'
 
 gem'jquery-ui-rails'
 
+gem 'dropzonejs-rails'
+
+gem 'openlibrary'
+
 
 

@@ -1,0 +1,45 @@
+<div class="logo" id="logosearch" >
+		<%= image_tag 'logo.svg' %>
+	
+</div>	
+<div class="decprocess">
+<h1>Review the items to be processed</h1>
+<% @count = 0 %>
+<%= form_tag(processdraftf_user_draft_path(current_user.id, params[:id]), method: "get") do %>
+<table>
+	<thead>
+		<tr>
+			<th id="thtopic">Topic</th>
+			<th id="thhead">Heading</th>
+			<th id="thnote">Note</th>
+			<th id="threview">Review date</th>
+			<th id+"thissue">Live Issue</th>
+		</tr>
+	</thead>		
+	<tbody>
+<% @ss2.each do |split2| %>
+<% @count = @count + 1 %>
+<% @item = "Test#{@count}" %>
+<% @item2 = "Issue#{@count}" %>
+		<tr>
+		 <td><%= @topic %></td>
+			<td><%= split2[0] %></td>
+			<td><%= split2[1] %></td>
+
+			<td><%= text_field_tag @item, nil, class: 'jquery-ui-date' %></td>
+			<td><%= check_box_tag @item2 %></td>
+		</tr>	
+
+<% end %>
+</tbody>
+</table>
+<p></p>
+  <%= submit_tag('Click here to process') %>
+
+<% end %>
+
+
+<div id="returndraft">
+<%= link_to "Return to draft", edit_user_draft_path(current_user.id, params[:id]) %>
+</div>
+</div>

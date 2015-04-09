@@ -2,6 +2,7 @@ class Declarative < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :docstructure
 	belongs_to :linkcat
+	belongs_to :draft
 	serialize :urlextra
 
 	has_attached_file :declarativeimage,
@@ -19,10 +20,9 @@ class Declarative < ActiveRecord::Base
 
   validates_attachment_content_type :declarativeimage, :content_type => /\Aimage\/.*\Z/
  
-  validates :urlsource, presence: true
+ 
   validates :declarativejusttext, presence: true, uniqueness: true
-  validates :entryhierarchy, presence: true
-  validates :texttype, presence: true
+  
   validates :linkcat_id, presence: true
   validates :docstructure_id, presence: true
 
@@ -106,7 +106,7 @@ class Declarative < ActiveRecord::Base
 
 	def self.search(query)
   	
-  	where("declarativetext ilike ?","%#{query}%") 
+  	where("declarativetext like ?","%#{query}%") 
 
 	end
 

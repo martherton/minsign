@@ -1,0 +1,10 @@
+<% @images = Image.where("draft_id = ?", params[:id]) %>
+<% @images.each do |image| %> 
+  <div class="img-thumbnail">
+  <div class="img-wrap">
+    <span class="close"><%= link_to "X", image_path(image.id), method: :delete %></span>
+    <%= image_tag image.avatar.url(:thumb), alt: image.avatar.url(:thumb) %>
+  </div>
+  </div>
+<% end %> 
+

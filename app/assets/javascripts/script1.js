@@ -1,6 +1,8 @@
 // Using qtip2 to pull in the appropriate part of the instruction documenttion
 
-;$(document).ready(function()
+
+
+$(document).ready(function()
  {
      // MAKE SURE YOUR SELECTOR MATCHES SOMETHING IN YOUR HTML!!!
      $('#topic').each(function() {
@@ -30,9 +32,7 @@
                 at: 'top right', // at the bottom right of...
                 target: $('#helpicon a')
             },
-            hide: {
-                event: 'click' 
-            },
+            hide: { event: 'mouseout' },
                 style: {
                     classes: 'qtip-tipped',
                     height: 100
@@ -71,9 +71,7 @@ $(document).ready(function()
                 at: 'top right', // at the bottom right of...
                 target: $('#helpicon a')
             },
-            hide: {
-                event: 'click' 
-            },
+            hide: { event: 'mouseout' },
                 style: {
                     classes: 'qtip-tipped',
                     height: 100
@@ -112,9 +110,7 @@ $(document).ready(function()
                 at: 'top right', // at the bottom right of...
                 target: $('#helpicon a')
             },
-            hide: {
-                event: 'click' 
-            },
+            hide: { event: 'mouseout' },
                 style: {
                     classes: 'qtip-tipped',
                     height: 100
@@ -153,9 +149,7 @@ $(document).ready(function()
                 at: 'top right', // at the bottom right of...
                 target: $('#helpicon a')
             },
-            hide: {
-                event: 'click' 
-            },
+            hide: { event: 'mouseout' },
                 style: {
                     classes: 'qtip-tipped',
                     height: 100
@@ -194,9 +188,7 @@ $(document).ready(function()
                 at: 'top right', // at the bottom right of...
                 target: $('#helpicon a')
             },
-            hide: {
-                event: 'click' 
-            },
+            hide: { event: 'mouseout' },
                 style: {
                     classes: 'qtip-tipped',
                     height: 100
@@ -235,9 +227,7 @@ $(document).ready(function()
                 at: 'top right', // at the bottom right of...
                 target: $('#helpicon a')
             },
-            hide: {
-                event: 'click' 
-            },
+            hide: { event: 'mouseout' },
                 style: {
                     classes: 'qtip-tipped',
                     height: 100
@@ -276,9 +266,7 @@ $(document).ready(function()
                 at: 'top right', // at the bottom right of...
                 target: $('#helpicon a')
             },
-            hide: {
-                event: 'click' 
-            },
+            hide: { event: 'mouseout' },
                 style: {
                     classes: 'qtip-tipped',
                     height: 100
@@ -317,9 +305,7 @@ $(document).ready(function()
                 at: 'top right', // at the bottom right of...
                 target: $('#helpicon a')
             },
-            hide: {
-                event: 'click' 
-            },
+            hide: { event: 'mouseout' },
                 style: {
                     classes: 'qtip-tipped',
                     height: 100
@@ -358,9 +344,7 @@ $(document).ready(function()
                 at: 'top right', // at the bottom right of...
                 target: $('#helpicon a')
             },
-            hide: {
-                event: 'click' 
-            },
+            hide: { event: 'mouseout' },
                 style: {
                     classes: 'qtip-tipped',
                     height: 100
@@ -398,9 +382,7 @@ $(document).ready(function()
                 at: 'top right', // at the bottom right of...
                 target: $('#helpicon a')
             },
-            hide: {
-                event: 'click' 
-            },
+            hide: { event: 'mouseout' },
                 style: {
                     classes: 'qtip-tipped',
                     height: 100
@@ -439,9 +421,7 @@ $(document).ready(function()
                 at: 'top right', // at the bottom right of...
                 target: $('#helpicon a')
             },
-            hide: {
-                event: 'click' 
-            },
+            hide: { event: 'mouseout' },
                 style: {
                     classes: 'qtip-tipped',
                     height: 100
@@ -449,3 +429,20 @@ $(document).ready(function()
          });
      });
  });
+//refresh draft edit partial for book
+$(document).ready(function() {
+  $("#draft_book_attributes_ISBN").keyup(function() {
+    
+     $.ajax({
+        url : "/drafts/bookdata",
+        data : "html", 
+        type: "GET",
+        success : function(data) {
+          $("div#booker").html(data)
+        }
+     });
+    
+  });
+});
+
+

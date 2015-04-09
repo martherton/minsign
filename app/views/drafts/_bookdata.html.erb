@@ -1,0 +1,12 @@
+ <div id="Book info">
+	    
+
+	    <% @book = @data.find_by_isbn(@draft.book.ISBN) %>
+	    <% if @book.nil? %>
+	    <% else %>
+	    <%= @book.title %>
+	    <% @author = @book.authors %>
+	    by
+	    <%= @author[0]["name"] %>
+	    <% end %>
+	 </div>

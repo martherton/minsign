@@ -1,0 +1,2 @@
+class BrainstormsController < ApplicationController
+end

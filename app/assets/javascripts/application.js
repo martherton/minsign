@@ -17,15 +17,21 @@
 //= require jquery-ui/sortable
 //= require jquery-ui/datepicker
 //= require chosen-jquery
-
 //= require moment
 //= require jquery.tokeninput
 //= require jquery.tablesorter
 //= require jquery.qtip.min
+//= require jquery.textcomplete
 //= require imagesloaded.pkgd.min
 //= require fullcalendar
+//= require dropzone
 //= require global
 //= require script1
+//= require images
+//= require drafts
 //= require calendar
+//= require autosize
 //= require finds
+//= require backbone
+//= require bootstrap.min
 //= require_tree .

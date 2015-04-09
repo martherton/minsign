@@ -3,7 +3,7 @@ class Find < ActiveRecord::Base
 
 	belongs_to :user
 
-	acts_as_taggable
+	acts_as_taggable 
 	
 	validates :user_id, presence: true
 	
@@ -14,7 +14,7 @@ class Find < ActiveRecord::Base
 
 	def self.search(query) #remember lib/extended/tag_extend.rb (ilikes are here, in declaratives.rb and tag_extend)
   	
-  	where("searchterm ilike ?", "%#{query}%") 
+  	where("searchterm like ?", "%#{query}%") 
 
 	end
 

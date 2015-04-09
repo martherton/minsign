@@ -1,0 +1,6 @@
+<% if @drafts.nil? %>
+<% else %>
+<% @drafts.each do |draft| %>
+<%= draft.sourcetype %>
+<% end %>
+<% end %>

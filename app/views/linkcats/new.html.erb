@@ -6,7 +6,7 @@
 <h2>New topic</h2>
 
 
-<%= simple_form_for @linkcat, url: user_linkcats_path, method: :post do |f| %>
+<%= simple_form_for @linkcat do |f| %>
 
   <%= f.input :linkcatname, label: false, placeholder: "name" %>
 
