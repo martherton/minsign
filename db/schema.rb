@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150409105939) do
+ActiveRecord::Schema.define(version: 20150409120732) do
 
   create_table "books", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -77,14 +77,14 @@ ActiveRecord::Schema.define(version: 20150409105939) do
   end
 
   create_table "drafts", force: :cascade do |t|
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.string   "sourcetype"
     t.text     "draftnotes"
     t.string   "topic"
     t.boolean  "currentissue"
     t.integer  "user_id"
-    t.boolean  "processed"
+    t.boolean  "processed",    default: false
     t.string   "title"
     t.integer  "linkcat_id"
   end

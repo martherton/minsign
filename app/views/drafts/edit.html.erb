@@ -95,9 +95,10 @@
   <%= render "images" %>
 </div>
 <div id="processor">
-<% if @draft.processed = false %>
+<% if @draft.processed == false %>
 <%= link_to "Process draft", processdraft_user_draft_path %>
 <% else %>
+
 <% end %>
 </div>
 
