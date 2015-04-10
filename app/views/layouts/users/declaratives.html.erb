@@ -124,17 +124,17 @@
     <li><h4>Hello <%= current_user.fname %></h4></li>
 
     
-      <li><h4><%= link_to image_tag("calendaricons.svg",height: "23px", alt: "Event Calendar", title: "Event calendar"), calendar_user_path(current_user.id) %></h4></li>    
-    <li><h4><% if current_user.has_role? :sandbox %><%= link_to image_tag("pencil1.svg",height: "23px", alt: "Enter note", title: "Enter note"), new_user_draft_path(current_user.id) %><% else %><% end %></h4></li>
-    <li><h4><% if current_user.has_role? :sandbox %><%= link_to image_tag("strom.svg",height: "23px", alt: "Your Current Issues", title: "Your Current Issues"), current_path(current_user.id) %><% else %><% end %></h4></li>
+      <li><h4><%= link_to "Calendar", calendar_user_path(current_user.id) %></h4></li>    
+    <li><h4><% if current_user.has_role? :sandbox %><%= link_to "New Note", new_user_draft_path(current_user.id) %><% else %><% end %></h4></li>
+    <li><h4><% if current_user.has_role? :sandbox %><%= link_to "Current Issues", current_path(current_user.id) %><% else %><% end %></h4></li>
 
-    <li><h4><%= link_to image_tag("magnifier58.svg", height: "23px", alt: "Search page", title: "Search page"), new_user_find_path(current_user.id) %></h4></li>
+    <li><h4><%= link_to "Search Research", new_user_find_path(current_user.id) %></h4></li>
     <% if current_user.has_role? :admin %>
-    <li><%= link_to image_tag("user160.svg", height: "23px", alt: "Dashboard", title: "Dashboard"), dashboard_admin_user_path(current_user.id) %></li>
+    <li><h4><%= link_to "Dashboard", dashboard_admin_user_path(current_user.id) %></h4></li>
   <% else %>
-    <li><%= link_to image_tag("user160.svg", height: "23px", alt: "Dashboard", title: "Dashboard"),dashboard_user_path(current_user.id) %></li>
+    <li><h4><%= link_to "Dashboard",dashboard_user_path(current_user.id) %></h4></li>
   <% end %> 
-    <li><h4><%= link_to image_tag("exit16.svg", height: "23px", alt: "Sign Out", title: "Sign out"), destroy_user_session_path, :method => :delete %></h4></li>
+    <li><h4><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></h4></li>
 
      
 <% end %>
