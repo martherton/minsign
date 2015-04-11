@@ -9,7 +9,7 @@
 <div id="sourcetype">
 <%= f.input :sourcetype, collection: ["Website","Meeting","Book","Brainstorm","Lecture","Other Publication"], label: false, prompt: "Notetaking from?" %>
 <div id="Website">
-	<%= f.simple_fields_for :webpages, @webpage do |p| %>
+	<%= f.simple_fields_for :webpage, @webpage do |p| %>
 	    <%= p.input :urlused, label: false, placeholder: "URL" %>
 	<% end %> 
 </div>

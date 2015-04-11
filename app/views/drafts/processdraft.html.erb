@@ -5,6 +5,8 @@
 <div class="decprocess">
 <h1>Review the items to be processed</h1>
 <% @count = 0 %>
+<% @counter = 0 %>
+
 <%= form_tag(processdraftf_user_draft_path(current_user.id, params[:id]), method: "get") do %>
 <table>
 	<thead>
@@ -27,12 +29,21 @@
 			<td><%= split2[1] %></td>
 
 			<td><%= text_field_tag @item, nil, class: 'jquery-ui-date' %></td>
-			<td><%= check_box_tag @item2 %></td>
+			<td><%= check_box_tag @item2, nil %></td>
 		</tr>	
 
 <% end %>
 </tbody>
 </table>
+<% if @images.nil? %>
+<% else %>
+<% @images.each do |image| %>
+<%= image_tag image.avatar.url %>
+<% @counter = @counter + 1 %>
+<% @imag = "Imag#{@counter}" %>
+<%= text_area_tag @imag, nil, placeholder: "Enter Image tags using @ and #{}", class: "taggingarea" %>
+<% end %>
+<% end %>
 <p></p>
   <%= submit_tag('Click here to process') %>
 

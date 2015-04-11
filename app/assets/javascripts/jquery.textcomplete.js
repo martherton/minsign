@@ -1154,3 +1154,36 @@ $('#draft_draftnotes').textcomplete([
 ], { maxCount: 20, debounce: 500 });
  
 });
+
+$(document).ready(function()
+ {
+$('.taggingarea').textcomplete([
+  { // mention strategy
+    match: /(^|\s)#(\w*)$/,
+    search: function (term, callback) {
+      
+      $.getJSON('/drafts/tags.json', { q: term })
+        .done(function (resp) { callback(resp); })
+        .fail(function ()     { callback([]);   });
+    },
+    replace: function (value) {
+      return '$1' + value + ', ';
+    },
+    cache: true
+  },
+  { // mention strategy
+    match: /(^|\s)@(\w*)$/,
+    search: function (term, callback) {
+      
+      $.getJSON('/headings.json', { q: term })
+        .done(function (resp) { callback(resp); })
+        .fail(function ()     { callback([]);   });
+    },
+    replace: function (value) {
+      return '$1' + value + ', ';
+    },
+    cache: true
+  }
+], { maxCount: 20, debounce: 500 });
+ 
+});

@@ -147,5 +147,7 @@
 $(document).ready(function()
  {
 autosize(document.querySelector('#draft_draftnotes'));
+autosize(document.querySelector('.taggingarea'));
+
 
 });

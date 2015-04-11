@@ -79,6 +79,7 @@ class DraftsController < ApplicationController
   	@topi = Linkcat.find(@draftfull.linkcat_id)
   	@topic = @topi.linkcatname
   	@draft = @draftfull.draftnotes
+    @images = Image.where("draft_id = ?", params[:id]).order(created_at: :desc)
   	@stringsplit = @draft.lines
   	@ss2 = []
   	@stringsplit.each do |split|
@@ -101,6 +102,7 @@ class DraftsController < ApplicationController
   	@topic = @topi.linkcatname
   	@draft = @draftfull.draftnotes
   	@dates = []
+    @images = Image.where("draft_id = ?", params[:id]).order(created_at: :desc)
 
   	@stringsplit = @draft.lines
   	@ss2 = []
@@ -121,9 +123,15 @@ class DraftsController < ApplicationController
   		@head = @head.squish
       @issues = "Issue#{@count3}"
       @issue2 = params[@issues]
+      if @issue2.blank?
+        @issue2 = 0
+      else
+        @issue2 = 1  
+      end
   		if Docstructure.find_by("headingname = ?", @head).nil?
   		
-  			Docstructure.create(:headingname => @head, :user_id => current_user.id, :sandbox => :true, :released => :false, :liveissue => @issue2, :draft_id => params[:id])	
+  			@doc = Docstructure.new(:headingname => @head, :user_id => current_user.id, :sandbox => true, :released => false, :liveissue => @issue2, :draft_id => params[:id])	
+        @doc.save
   		else	
   		end	
 
@@ -139,15 +147,27 @@ class DraftsController < ApplicationController
   		@docids = @docid.id
   		@dater = "Test#{@count2}"
   		@dater2 = params[@dater]
-  		@date = DateTime.strptime(@dater2, "%m/%d/%Y")
-
+      if @dater2.blank?
+        @date = Date.today
+      else
+  		  @date = DateTime.strptime(@dater2, "%m/%d/%Y")
+      end  
   		
   		if Declarative.find_by("declarativejusttext = ?", split[1]).nil?
-  			@dec = Declarative.new(declarativejusttext: split[1], docstructure_id: @docids, linkcat_id: @topi.id, draft_id: params[:id], urlsource: :nil, declarativetext: :nil, datapoint: :nil, units: :nil, entryhierarchy: :nil, texttype: :nil, entryend: :nil, endsection: :nil, :sandbox => true, urlextra: :nil, reviewdate: @date, listtext: :nil)
+  			@dec = Declarative.new(declarativejusttext: split[1], docstructure_id: @docids, linkcat_id: @topi.id, draft_id: params[:id], urlsource: :nil, declarativetext: :nil, datapoint: :nil, units: :nil, entryhierarchy: :nil, texttype: :nil, entryend: :nil, endsection: :nil, :sandbox => true, urlextra: :nil, reviewdate: @date, listtext: :nil, user_id: current_user.id)
   			@dec.save
   		else
   		end	
   	end
+
+    @count4 = 0
+    @images.each do |image|
+      @count4 = @count4 + 1
+      @taggings = "Imag#{@count4}"
+      @taggings2 = params[@taggings]
+      image.tag_list.add(@taggings2)
+    end 
+
   	@draftfull.update(processed: true)
   	redirect_to edit_user_draft_path(current_user.id, params[:id])
   end	
@@ -155,7 +175,7 @@ class DraftsController < ApplicationController
 	private
 
 	def draft_params
-		params.require(:draft).permit(:sourcetype, :draftnotes, :topic, :currentissue, :processed, :title, :linkcat_id, :tag_list_tokens, images_attributes: [:id, :avatar, :draft_id, :destroy], book_attributes: [:id, :author, :title, :ISBN, :goodreads, :destoy], brainstorm_attributes: [:id, :name, :destroy], lecture_attributes: [:id, :lecturer, :lecturetitle, :lecturedate, :destroy], meeting_attributes: [:id, :meetingwith, :meetingtopic, :draft_id, :destroy], otherpublication_attributes: [:id, :publicationtitle, :article, :destroy], webpage_attributes: [:id, :urlused, :destroy], declaratives_attributes: [:id, :urlsource, :declarativetext, :declarativejusttext, :user_id, :docstructure_id, :datapoint, :units, :entryhierarchy, :texttype, :entryend, :endsection, :linkcat_id, :user_id, :sandbox, :urlextra, :reviewdate, :listtext, :draft_id], docstructures_attributes: [:id, :headingname, :user_id, :sandbox, :liveissue, :draft_id, :released])
+		params.require(:draft).permit(:sourcetype, :draftnotes, :topic, :currentissue, :processed, :title, :linkcat_id, :tag_list_tokens, images_attributes: [:id, :avatar, :tag_list, :draft_id, :destroy], book_attributes: [:id, :author, :title, :ISBN, :goodreads, :destoy], brainstorm_attributes: [:id, :name, :destroy], lecture_attributes: [:id, :lecturer, :lecturetitle, :lecturedate, :destroy], meeting_attributes: [:id, :meetingwith, :meetingtopic, :draft_id, :destroy], otherpublication_attributes: [:id, :publicationtitle, :article, :destroy], webpage_attributes: [:id, :urlused, :destroy], declaratives_attributes: [:id, :urlsource, :declarativetext, :declarativejusttext, :user_id, :docstructure_id, :datapoint, :units, :entryhierarchy, :texttype, :entryend, :endsection, :linkcat_id, :user_id, :sandbox, :urlextra, :reviewdate, :listtext, :draft_id], docstructures_attributes: [:id, :headingname, :user_id, :sandbox, :liveissue, :draft_id, :released])
 	end	
 
 	def find_tags
