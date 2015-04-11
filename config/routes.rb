@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
-  resources :images, only: [:index, :create, :destroy]
+  resources :images, only: [:index, :create, :destroy, :tag]
   
   resources :moreinfos
   resources :comments

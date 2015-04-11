@@ -165,7 +165,10 @@ class DraftsController < ApplicationController
       @count4 = @count4 + 1
       @taggings = "Imag#{@count4}"
       @taggings2 = params[@taggings]
-      image.tag_list.add(@taggings2)
+      if @taggings2.blank?
+      else  
+        image.tag_list = @taggings2
+      end  
     end 
 
   	@draftfull.update(processed: true)

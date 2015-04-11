@@ -27,6 +27,6 @@ end
 
    private
   def image_params
-    params.require(:image).permit(:avatar, :draft_id, :tag_list)
+    params.require(:image).permit(:avatar, :draft_id, :tag_list => [])
   end
 end
