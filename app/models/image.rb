@@ -12,4 +12,5 @@ class Image < ActiveRecord::Base
         }
 	validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 	belongs_to :draft
+	acts_as_taggable
 end

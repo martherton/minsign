@@ -116,30 +116,48 @@
 </head> 
 <body class="nonland" >
 <div class="navholder" data-no-turbolink>
-
-<ul class="basicnav">
 <% if user_signed_in? %>
     <p></p>
-    <li id="helpicon"><h4 ><h4><%= link_to image_tag("faq8.png", height: "23px", alt: "Help", title: "Help page"), instructions_path %></h4></li>
-    <li><h4>Hello <%= current_user.fname %></h4></li>
+    <ul class="openingnav">
+    <li id="helpicon"><h4><%= link_to image_tag("faq8.png", height: "23px", alt: "Help", title: "Help page"), instructions_path %></h4></li>
+    <li id="helloperson">Hello <%= current_user.fname %></li>
+    </ul>
+    <% end %>
+<div id='cssmenu'>
 
+  <ul>
+
+<% if user_signed_in? %>
+
+      <li class='active has-sub'><a href='#'><span>Review</span></a>
+      <ul>
+      <li><a href='#'><span><%= link_to "Calendar", calendar_user_path(current_user.id) %></span></a></li>
+      <li class='last'><a href='#'><span><% if current_user.has_role? :sandbox %><%= link_to "Current Issues", current_path(current_user.id) %><% else %><% end %></span></a></li>
+      </ul>
+
+      <li class='active has-sub'><a href='#'><span>Notebook</span></a>
+      <ul>
+      <li><a href='#'><span><%= link_to "All notebooks", user_drafts_path(current_user.id) %></span></a></li>
+    <li class='last'><a href='#'><% if current_user.has_role? :sandbox %><%= link_to "New Note", new_user_draft_path(current_user.id) %><% else %><% end %></span></a></li>
+    </ul>
     
-      <li><h4><%= link_to "Calendar", calendar_user_path(current_user.id) %></h4></li>    
-    <li><h4><% if current_user.has_role? :sandbox %><%= link_to "New Note", new_user_draft_path(current_user.id) %><% else %><% end %></h4></li>
-    <li><h4><% if current_user.has_role? :sandbox %><%= link_to "Current Issues", current_path(current_user.id) %><% else %><% end %></h4></li>
 
-    <li><h4><%= link_to "Search Research", new_user_find_path(current_user.id) %></h4></li>
+    <li><a href='#'><%= link_to "Search Research", new_user_find_path(current_user.id) %></span></a></li>
+    <li class='active has-sub'><a href='#'><span>User</span></a>
+      <ul>
     <% if current_user.has_role? :admin %>
-    <li><h4><%= link_to "Dashboard", dashboard_admin_user_path(current_user.id) %></h4></li>
+    <li><a href='#'><%= link_to "Dashboard", dashboard_admin_user_path(current_user.id) %></span></a></li>
   <% else %>
-    <li><h4><%= link_to "Dashboard",dashboard_user_path(current_user.id) %></h4></li>
+    <li><a href='#'><%= link_to "Dashboard",dashboard_user_path(current_user.id) %></span></a></li>
   <% end %> 
-    <li><h4><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></h4></li>
+   <li class='last'><a href='#'><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></span></a></li>
+   </ul>
 
      
 <% end %>
     
 </ul>
+</div>
 </div>
 
 <% flash.each do |key, value| %>
