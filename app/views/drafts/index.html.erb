@@ -1,6 +1,46 @@
+<div class="draftindex" >
+<div class="logo" id="logosearch" >
+    <%= image_tag 'logo.svg' %>
+  
+</div>  
 <% if @drafts.nil? %>
 <% else %>
+<div class="cardshow" id="accordion">
+
 <% @drafts.each do |draft| %>
-<%= draft.sourcetype %>
+<h3><%= draft.sourcetype %>:&nbsp<%= draft.title %>&nbsp<span id="smallproc"><% if draft.processed == true %>(processed)<%else%><%end%></span><span id="datedraft"><%= draft.created_at.strftime("%d %b %y") %></span></h3>
+<div class="clearacc">
+			<div id='cssmenu'>
+					<ul>
+      			<li class='active has-sub'><a href='#'><span>Actions</span></a>
+      			<ul>
+
+<li><a href='#'><span><%= link_to "Show", user_draft_path(current_user.id, draft.id) %></span></a></li>
+
+<% if draft.processed == true %>
+
+</ul>
+<% else %>
+<li><a href='#'><span><%= link_to "Edit", edit_user_draft_path(current_user.id, draft.id) %></span></a></li>
+<li class='last'><a href='#'><%= link_to "Delete", user_draft_path(current_user.id, draft.id), method: :delete %></span></a></li>
+</ul>
+
 <% end %>
+</ul>
+</div>
+
+
+<div>
+  <%  @images = Image.where("draft_id = ?", draft.id) %>
+
+<% @images.each do |image| %>
+<%= image_tag image.avatar.url(:thumb) %>
 <% end %>
+</div>
+</div>
+<% end %>
+
+</div>
+
+<% end %>
+</div>

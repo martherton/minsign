@@ -67,6 +67,9 @@
     </script>
     <script>
       $(document).ready(function() {
+        $( "#accordion" ).accordion({
+          animate: 200, collapsible: true
+        });
         $( "#sortable_0" ).sortable({
           placeholder: "ui-sortable-placeholder"
         });

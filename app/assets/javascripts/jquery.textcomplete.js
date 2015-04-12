@@ -1182,7 +1182,7 @@ $('.taggingarea').textcomplete([
     replace: function (value) {
       return '$1' + value + ', ';
     },
-    cache: true
+    cache: true 
   }
 ], { maxCount: 20, debounce: 500 });
  

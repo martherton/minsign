@@ -18,6 +18,8 @@ class Draft < ActiveRecord::Base
 	accepts_nested_attributes_for :otherpublication, :allow_destroy => true
 	accepts_nested_attributes_for :webpage, :allow_destroy => true
 	acts_as_taggable
+  
+
 
 	private
 

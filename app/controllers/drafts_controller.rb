@@ -3,7 +3,7 @@ class DraftsController < ApplicationController
 	before_filter :find_tags, only: [:new, :create, :edit, :update]
 	layout 'users/declaratives'
 	def index
-		@drafts = Draft.all
+		@drafts = Draft.where("user_id = ?", current_user.id)
 
 	end	
 
@@ -74,6 +74,9 @@ class DraftsController < ApplicationController
   end	
 
   def processdraft
+    @user = current_user
+    @draft = @user.drafts.find(params[:id])
+    @draft.update(draft_params)
   	@stringsplit = []
   	@draftfull = Draft.find(params[:id])
   	@topi = Linkcat.find(@draftfull.linkcat_id)
@@ -168,12 +171,30 @@ class DraftsController < ApplicationController
       if @taggings2.blank?
       else  
         image.tag_list = @taggings2
+        image.save
       end  
     end 
 
   	@draftfull.update(processed: true)
   	redirect_to edit_user_draft_path(current_user.id, params[:id])
   end	
+
+  def destroy
+    
+    @user = current_user
+    @draft = @user.drafts.find(params[:id])
+    
+    @draft.destroy
+
+    
+    flash[:success] = "This note was deleted succesfully"
+    redirect_to user_drafts_path
+  end  
+
+  def show
+    @draft = Draft.find(params[:id])
+    @data = Openlibrary::Data
+  end  
 
 	private
 

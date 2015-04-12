@@ -1,0 +1,42 @@
+<div class="logo" id="logosearch" >
+    <%= image_tag 'logo.svg' %>
+  
+</div>  
+<div class="showdraft">
+
+<h4><%= @draft.sourcetype %>:&nbsp<%= @draft.title %></h4>
+<% if @draft.sourcetype == "Book" %>
+<% @book = @data.find_by_isbn(@draft.book.ISBN) %>
+	    <% if @book.nil? %>
+	    <% else %>
+	    <h6><%= @book.title %>
+	    <% @author = @book.authors %>
+	    by
+	    <%= @author[0]["name"] %></h6>
+	    <% end %>
+<% elsif @draft.sourcetype == "Website" %>
+	<h6><%= link_to @draft.webpage.urlused, @draft.webpage.urlused %></h6>
+<% elsif @draft.sourcetype == "Lecture" %>	
+	<h6><%= @draft.lecture.lecturer %>:&nbsp
+	
+	<%= @draft.lecture.lecturedate %></h6>
+<% elsif @draft.sourcetype == "Other Publication" %>	
+	<h6><%= @draft.otherpublication.publicationtitle %>:&nbsp
+	<%= @draft.otherpublication.article %></h6>
+<% elsif @draft.sourcetype == "Brainstorm" %>
+	<h6><%= @draft.brainstorm.name %></h6>
+<% elsif @draft.sourcetype == "Meeting" %>	
+	<h6><%= @draft.meeting.meetingwith %>:&nbsp
+	
+	<%= @draft.meeting.meetingdate %></h6>
+<% end %>
+<h5>Topic:&nbsp<%= Linkcat.find(@draft.linkcat_id).linkcatname %></h5>
+<textarea disabled class="notebookarea"><%= @draft.draftnotes %></textarea>
+<h6><% if @draft.processed == true %>PROCESSED<%else%><%end%></h6>
+<%  @images = Image.where("draft_id = ?", @draft.id) %>
+
+<% @images.each do |image| %>
+<%= image_tag image.avatar.url %>
+<% end %>
+</div>
+

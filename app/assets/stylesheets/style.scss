@@ -1169,6 +1169,32 @@ div.input.date {
   color: #0085CD;
 }
 
+.clearacc {
+  height: 12em;
+  overflow: auto;
+}
+
+.clearacc h4 {
+  font-size: 1.3em;
+  text-align: right;
+}
+
+.draftindex {
+  width: 90%;
+  margin-left: 5%;
+}
+
+
+
+#smallproc {
+  font-size: 0.7em;
+  color: #0085CD;
+}
+
+
+#datedraft {
+  float: right;
+}
 
 
 /* SANDBOX STYLING ------
@@ -1704,6 +1730,30 @@ div.input.date {
 
 #helloperson {
   margin-left: 1%;
+}
+
+.showdraft {
+  width: 90%;
+  margin-left: 5%;
+}
+
+.showdraft h4 {
+  margin-left: 5%;
+}
+
+.showdraft .notebookarea {
+  width: 100%;
+  background: url(http://i.stack.imgur.com/ynxjD.png) repeat-y;
+
+ font: normal 14px verdana;
+ line-height: 25px;
+ padding: 2px 100px;
+
+ border: none;
+}
+
+.cardshow {
+  margin-top: 5%;
 }
 
 

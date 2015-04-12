@@ -55,7 +55,7 @@
 				<% if @listitem == 1 %></tbody></table></div><% @listitem = 0 %><% else %><% end %><!--end list item div, if end of list-->
 				<% if @d == 0 %><ul id="sortable_<%= @e %>"><% @e += 1 %><% else %><% end %><!--start new ul-->
 				<% @d = 1 %><!-- let system know it is in norma ul-->
-				<% if @b == declarative.linkcat_id %><% else %><h2><%= Linkcat.find(declarative.linkcat_id).linkcatname %></h2><% @b = declarative.linkcat_id %><%end%><!--start of tpic?-->
+				<% if @b == declarative.linkcat_id %><% else %><h2><%= Linkcat.find(declarative.linkcat_id).linkcatname %></h2><% @b = declarative.linkcat_id %><%end%><!--start of topic?-->
 				<% if @request == Docstructure.find(declarative.docstructure_id).headingname %><% else %><% if @c == declarative.docstructure_id %><% else %><h3><%= Docstructure.find(declarative.docstructure_id).headingname %></h3><% @c = declarative.docstructure_id %><% end %><% end %><!--start of new heading?-->
 				<% if declarative.sandbox == true %><li class="ui-state-default"><h4><%= declarative.declarativetext %><% if current_user.id == declarative.user_id %><small>&nbsp(personal)</small><%else %><small>&nbsp(friend&nbsp<%= User.find(declarative.user_id).fname %>&nbsp<%= User.find(declarative.user_id).lname %>)</small><% end %><% else %><li class="ui-state-default"><h4><%= declarative.declarativetext %><% end %><!--who wrote item?-->
 				<% if declarative.urlextra.blank? %>
@@ -79,6 +79,31 @@
 	<% @declaratives.each do |declarativeu| %>
 	
 			 <% if @url == declarativeu.urlsource %><% else %><h6><%= link_to declarativeu.urlsource, declarativeu.urlsource %></h6><% @url = declarativeu.urlsource %><% end %>
+			 <% @draft = declarativeu.draft %>
+			 <% if @draft.sourcetype.nil? %>
+			 <% else %>
+			 <% if @draft.sourcetype == "Book" %>
+					<% @book = @data.find_by_isbn(@draft.book.ISBN) %>
+	    		<% if @book.nil? %>
+	    		<% else %>
+	    		<%= link_to @book.title, user_draft_path(current_user.id, @draft.id) %>
+	    		<% @author = @book.authors %>
+	    		by
+	    		<%= @author[0]["name"] %>
+	    		<% end %>
+				<% elsif @draft.sourcetype == "Website" %>
+					<%= link_to @draft.webpage.urlused, @draft.webpage.urlused %>
+				<% elsif @draft.sourcetype == "Lecture" %>	
+					Lecture given by <%= link_to @draft.lecture.lecturer, user_draft_path(current_user.id, @draft.id) %>
+				<% elsif @draft.sourcetype == "Other Publication" %>	
+					<%= @draft.otherpublication.publicationtitle %>:&nbsp
+					Note from article:&nbsp<%= link_to @draft.otherpublication.article, user_draft_path(current_user.id, @draft.id) %>
+				<% elsif @draft.sourcetype == "Brainstorm" %>
+					Brainstorm session:&nbsp<%= link_to @draft.brainstorm.name, user_draft_path(current_user.id, @draft.id) %>
+				<% elsif @draft.sourcetype == "Meeting" %>	
+					Metting with&nbsp<%= link_to @draft.meeting.meetingwith, user_draft_path(current_user.id, @draft.id) %>:&nbsp
+				<% end %>
+				<% end %>
 	<%end%>
 	</div>
 	
