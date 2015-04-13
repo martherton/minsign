@@ -76,7 +76,7 @@ class DraftsController < ApplicationController
   def processdraft
     @user = current_user
     @draft = @user.drafts.find(params[:id])
-    @draft.update(draft_params)
+    
   	@stringsplit = []
   	@draftfull = Draft.find(params[:id])
   	@topi = Linkcat.find(@draftfull.linkcat_id)
@@ -163,17 +163,30 @@ class DraftsController < ApplicationController
   		end	
   	end
 
-    @count4 = 0
+    @count4 = 0 #add tags to images
     @images.each do |image|
       @count4 = @count4 + 1
       @taggings = "Imag#{@count4}"
       @taggings2 = params[@taggings]
+      image.linkcat_id = Linkcat.find(@draftfull.linkcat_id).id
+      @tag3 = @taggings2.split(", ")
+      @tag3.each do |tags|
+        @tag = tags.remove(", ")
+        if Docstructure.find_by("headingname = ?", @tag).nil?
+        else
+          image.docstructure_id = Docstructure.find_by("headingname = ?", @tag).id
+          
+        end  
+      end  
       if @taggings2.blank?
       else  
         image.tag_list = @taggings2
-        image.save
-      end  
+        
+      end 
+      image.save 
     end 
+
+
 
   	@draftfull.update(processed: true)
   	redirect_to edit_user_draft_path(current_user.id, params[:id])
@@ -199,7 +212,7 @@ class DraftsController < ApplicationController
 	private
 
 	def draft_params
-		params.require(:draft).permit(:sourcetype, :draftnotes, :topic, :currentissue, :processed, :title, :linkcat_id, :tag_list_tokens, images_attributes: [:id, :avatar, :tag_list, :draft_id, :destroy], book_attributes: [:id, :author, :title, :ISBN, :goodreads, :destoy], brainstorm_attributes: [:id, :name, :destroy], lecture_attributes: [:id, :lecturer, :lecturetitle, :lecturedate, :destroy], meeting_attributes: [:id, :meetingwith, :meetingtopic, :draft_id, :destroy], otherpublication_attributes: [:id, :publicationtitle, :article, :destroy], webpage_attributes: [:id, :urlused, :destroy], declaratives_attributes: [:id, :urlsource, :declarativetext, :declarativejusttext, :user_id, :docstructure_id, :datapoint, :units, :entryhierarchy, :texttype, :entryend, :endsection, :linkcat_id, :user_id, :sandbox, :urlextra, :reviewdate, :listtext, :draft_id], docstructures_attributes: [:id, :headingname, :user_id, :sandbox, :liveissue, :draft_id, :released])
+		params.require(:draft).permit(:sourcetype, :draftnotes, :topic, :currentissue, :processed, :title, :linkcat_id, :tag_list_tokens, images_attributes: [:id, :avatar, :user_id, :tag_list, :draft_id, :docstructure_id, :linkcat_id, :destroy], book_attributes: [:id, :author, :title, :ISBN, :goodreads, :destroy], brainstorm_attributes: [:id, :name, :destroy], lecture_attributes: [:id, :lecturer, :lecturetitle, :lecturedate, :destroy], meeting_attributes: [:id, :meetingwith, :meetingtopic, :draft_id, :destroy], otherpublication_attributes: [:id, :publicationtitle, :article, :destroy], webpage_attributes: [:id, :urlused, :destroy], declaratives_attributes: [:id, :urlsource, :declarativetext, :declarativejusttext, :user_id, :docstructure_id, :datapoint, :units, :entryhierarchy, :texttype, :entryend, :endsection, :linkcat_id, :user_id, :sandbox, :urlextra, :reviewdate, :listtext, :draft_id], docstructures_attributes: [:id, :headingname, :user_id, :sandbox, :liveissue, :draft_id, :released])
 	end	
 
 	def find_tags

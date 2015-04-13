@@ -86,7 +86,7 @@ layout 'users/declaratives'
 							@admins = Role.find_by_name('admin').users.map(&:id) #find admin users
 							@linkcatun = Linkcat.where("released = ?", false).map(&:id) #find all unreleased linkcats
 							@decallowed = Declarative.where("(linkcat_id IN (?) AND user_id IN(?)) or user_id IN (?) or user_id = ?", @linkrel, @admin, @friends, current_user.id).order(:linkcat_id).order(:docstructure_id).order(:sandbox).order(:created_at).order(:datapoint) #set up a list of the declaratives allowed to be accessed by the user
-							@draftsallowed = Draft.where("user_id IN (?) or user_id =?", @friends, current_user.id) #To access images wwe need to know the drafts that are allowed
+							@imagesallowed = Image.where("user_id IN (?) or user_id =?", @friends, current_user.id) #To access images wwe need to know the drafts that are allowed
 							@imagesallowed = Image.where("draft_id IN = (?)", @draftsallowed.id) #Now get the images from the allowe draft ids
 							if current_user.has_role? :admin #Ensures admin sandbox posts are not removed if you are admin
 								@decallowed3 = @decallowed

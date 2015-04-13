@@ -89,6 +89,7 @@
   </div>
   <div class="hidlinkcat" >
     <%= z.input :draft_id, input_html: { value: params[:id]} %>
+    <%= z.input :user_id, input_html: { value: current_user.id} %>
     </div>
 <% end %>
 
@@ -97,10 +98,10 @@
 </div>
 <div id="processor">
 <% if @draft.processed == false %>
-<% if @draft.title.blank? %>
-<% else %>
-<%= link_to "Process draft", processdraft_user_draft_path %>
-<% end %>
+  <% if @draft.title.blank? %>
+  <% else %>
+    <%= link_to "Process draft", processdraft_user_draft_path %>
+  <% end %>
 <% else %>
 
 <% end %>

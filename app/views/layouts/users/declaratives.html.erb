@@ -126,6 +126,7 @@
     <li id="helloperson">Hello <%= current_user.fname %></li>
     </ul>
     <% end %>
+    <div id="cssmenuhol">
 <div id='cssmenu'>
 
   <ul>
@@ -141,8 +142,7 @@
       <li class='active has-sub'><a href='#'><span>Notebook</span></a>
       <ul>
       <li><a href='#'><span><%= link_to "All notebooks", user_drafts_path(current_user.id) %></span></a></li>
-    <li><a href='#'><span><% if current_user.has_role? :sandbox %><%= link_to "New Long Note", new_user_draft_path(current_user.id) %><% else %><% end %></span></a></li>
-    <li class='last'><a href='#'><% if current_user.has_role? :sandbox %><%= link_to "New Quick Note", new_user_declarative_path(current_user.id) %><% else %><% end %></span></a></li>
+    <li class='last'><a href='#'><% if current_user.has_role? :sandbox %><%= link_to "New Note taking", new_user_draft_path(current_user.id) %><% else %><% end %></span></a></li>
     </ul>
     
 
@@ -165,6 +165,7 @@
 <% end %>
     
 </ul>
+</div>
 </div>
 </div>
 

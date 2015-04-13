@@ -3,6 +3,7 @@ class Linkcat < ActiveRecord::Base
 	
 	has_many :wlinks
 	has_many :declaratives
+	has_many :images
 
 	validates :linkcattype, presence: true
 	validates :linkcatdesc, presence: true

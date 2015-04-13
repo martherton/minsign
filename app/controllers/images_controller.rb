@@ -6,7 +6,7 @@ class ImagesController < ApplicationController
 
   def create
   	 @image = Image.new(image_params)
-
+     
     if @image.save
       render json: { message: "success", fileID: @image.id }, :status => 200
       
@@ -27,6 +27,6 @@ end
 
    private
   def image_params
-    params.require(:image).permit(:avatar, :draft_id, :tag_list => [])
+    params.require(:image).permit(:avatar, :draft_id, :user_id, :docstructure_id, :linkcat_id, :tag_list => [])
   end
 end
