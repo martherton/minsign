@@ -5,7 +5,7 @@
 </div>	
 <div class="draftover">
 <div class="draftform">
-<%= simple_form_for @draft, url: user_draft_path, method: :put do |f| %>
+<%= simple_form_for @draft, url: user_draft_path, remote: true, format: :json, method: :put do |f| %>
 <div id="sourcetype">
 <%= f.input :sourcetype, collection: ["Website","Meeting","Book","Brainstorm","Lecture","Other Publication"], label: false, prompt: "Notetaking from?" %>
 <div id="Website">
@@ -97,7 +97,10 @@
 </div>
 <div id="processor">
 <% if @draft.processed == false %>
+<% if @draft.title.blank? %>
+<% else %>
 <%= link_to "Process draft", processdraft_user_draft_path %>
+<% end %>
 <% else %>
 
 <% end %>

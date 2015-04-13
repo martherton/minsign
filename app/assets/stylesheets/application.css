@@ -17,6 +17,7 @@
  *= require jquery-ui/accordion
  *= require textcomplete
  *= require dropzone/dropzone
+ *= require spinner
  *= require_tree .
  *= require bootstrap
  *= require_self

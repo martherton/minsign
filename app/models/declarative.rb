@@ -106,7 +106,7 @@ class Declarative < ActiveRecord::Base
 
 	def self.search(query)
   	
-  	where("declarativetext ilike ?","%#{query}%") 
+  	where("declarativetext like ?","%#{query}%") 
 
 	end
 

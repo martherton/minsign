@@ -141,7 +141,8 @@
       <li class='active has-sub'><a href='#'><span>Notebook</span></a>
       <ul>
       <li><a href='#'><span><%= link_to "All notebooks", user_drafts_path(current_user.id) %></span></a></li>
-    <li class='last'><a href='#'><% if current_user.has_role? :sandbox %><%= link_to "New Note", new_user_draft_path(current_user.id) %><% else %><% end %></span></a></li>
+    <li><a href='#'><span><% if current_user.has_role? :sandbox %><%= link_to "New Long Note", new_user_draft_path(current_user.id) %><% else %><% end %></span></a></li>
+    <li class='last'><a href='#'><% if current_user.has_role? :sandbox %><%= link_to "New Quick Note", new_user_declarative_path(current_user.id) %><% else %><% end %></span></a></li>
     </ul>
     
 
@@ -153,6 +154,10 @@
   <% else %>
     <li><a href='#'><%= link_to "Dashboard",dashboard_user_path(current_user.id) %></span></a></li>
   <% end %> 
+  <li><a href='#'><%= link_to "Edit Account", edit_user_registration_path(current_user.id) %></span></a></li>
+  <li><a href='#'><%= link_to "Created topics", user_linkcats_path(current_user.id) %></span></a></li>
+  <li><a href='#'><%= link_to "Created headings", user_docstructures_path(current_user.id) %></span></a></li>
+  <li><a href='#'><%= link_to "Processed data entered", dataentered_user_path(current_user.id) %></span></a></li>
    <li class='last'><a href='#'><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></span></a></li>
    </ul>
 
@@ -166,6 +171,18 @@
 <% flash.each do |key, value| %>
     <div class="flash <%= key %>"><%= value %></div>
   <% end %>
+  <div id="spinner">
+  <span class="dots"></span>
+  <span class="dots"></span>
+  <span class="dots"></span>
+  <span class="dots"></span>
+  <span class="dots"></span>
+  <span class="dots"></span>
+  <span class="dots"></span>
+  <span class="dots"></span>
+  <span class="dots"></span>
+  <span class="dots"></span>
+</div>
 
 <%= yield %>
 <div class="foot">

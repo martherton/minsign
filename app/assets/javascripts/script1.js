@@ -498,4 +498,33 @@ $('#cssmenu').prepend('<div id="indicatorContainer"><div id="pIndicator"><div id
 });
 } )( jQuery );
 
+$( document ).ready(function() {
+    $("#draft_draftnotes").blur(function() {
+     $(this).parents("form").submit()
+ });
+    $("#draft_title").blur(function() {
+     $(this).parents("form").submit()
+ });
+
+
+});    
+
+$( document ).ready(function() {
+
+  // hide spinner
+  $("#spinner").hide();
+
+
+  // show spinner on AJAX start
+  $(document).ajaxStart(function(){
+    $("#spinner").show();
+  });
+
+  // hide spinner on AJAX stop
+  $(document).ajaxStop(function(){
+    $("#spinner").hide();
+  });
+
+});
+
 

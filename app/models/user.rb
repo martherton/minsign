@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :linkcats
   has_many :wlinks
   has_many :drafts
+  has_many :images, through: :drafts
   has_many :finds 
   has_many :comments 
   has_many :docstructures

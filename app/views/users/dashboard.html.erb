@@ -2,9 +2,7 @@
     <%= image_tag 'logo.svg' %>
 	
 </div>	
-<div class="sanddash">
-<h4><% if current_user.has_role? :sandbox %><%= link_to "Personal entry admin", sandbox_user_path(current_user.id) %><% else %><% end %></h4>
-</div>
+
 
 <div class="userinfo" >
   <div class="accounttype" >
@@ -42,7 +40,7 @@
       </tr>
     </tbody>
   </table>
-  <%= link_to image_tag("padlock45.svg", height: "23px", alt: "Edit Account Details", title: "Edit Account"),  edit_user_registration_path(current_user.id)%>
+  
 </div>
 </div>        
 
